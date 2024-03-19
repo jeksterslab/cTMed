@@ -8,7 +8,6 @@
                    test_phi = TRUE,
                    ncores = NULL,
                    seed = NULL) {
-  tol <- 1e-14
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
@@ -36,7 +35,6 @@
           .MCPhiI(
             phi = phi,
             vcov_phi_vec_l = t(chol(vcov_phi_vec)),
-            tol = tol,
             test_phi = test_phi
           )
         )
@@ -97,7 +95,6 @@
           .MCPhiI(
             phi = phi,
             vcov_phi_vec_l = t(chol(vcov_phi_vec)),
-            tol = tol,
             test_phi = test_phi
           )
         )

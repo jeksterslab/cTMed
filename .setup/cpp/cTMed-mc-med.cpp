@@ -6,10 +6,7 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.MCMed)]]
-arma::mat MCMed(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
-                const double& delta_t, const int& from, const int& to,
-                const arma::vec& med, const int& R, const double& tol,
-                bool test_phi = true) {
+arma::mat MCMed(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const double& delta_t, const int& from, const int& to, const arma::vec& med, const int& R, bool test_phi = true) {
   arma::mat output(R, 4);
   int p = phi.n_rows;
   int q = p * p;
@@ -28,18 +25,20 @@ arma::mat MCMed(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
       arma::vec phi_vec_i = phi_vec + (vcov_phi_vec_l * arma::randn(q));
       arma::mat phi_i = arma::reshape(phi_vec_i, p, p);
       // Iterate over the diagonal elements
-      for (int i = 0; i < p; ++i) {
-        double diag_value = phi_i(i, i);
-        if (std::abs(diag_value) < tol) {
-          // Replace diagonal element with zero
-          phi_i(i, i) = 0.0;
-        }
-      }
+      // for (int i = 0; i < p; ++i) {
+      //   double diag_value = phi_i(i, i);
+      //   if (std::abs(diag_value) < tol) {
+      //     // Replace diagonal element with zero
+      //     phi_i(i, i) = 0.0;
+      //   }
+      // }
       // test phi
       if (test_phi) {
         iter += 1;
         if (iter > 1000000) {
-          Rcpp::stop("Max iterations reached.");
+          Rcpp::stop(
+            "Max iterations reached."
+          );
         }
         if (TestPhi(phi_i)) {
           run = false;
