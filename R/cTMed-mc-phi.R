@@ -220,7 +220,6 @@ MCPhi <- function(phi,
                   test_phi = TRUE,
                   ncores = NULL,
                   seed = NULL) {
-  tol <- 1e-14
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi)
@@ -231,8 +230,7 @@ MCPhi <- function(phi,
     R = R,
     test_phi = test_phi,
     ncores = ncores,
-    seed = seed,
-    tol = tol
+    seed = seed
   )
   par <- FALSE
   if (!is.null(ncores)) {
@@ -260,8 +258,7 @@ MCPhi <- function(phi,
           .MCPhiI(
             phi = phi,
             vcov_phi_vec_l = t(chol(vcov_phi_vec)),
-            test_phi = test_phi,
-            tol = tol
+            test_phi = test_phi
           )
         )
       }
@@ -274,7 +271,6 @@ MCPhi <- function(phi,
       phi = phi,
       vcov_phi_vec_l = t(chol(vcov_phi_vec)),
       R = R,
-      tol = tol,
       test_phi = test_phi
     )
   }

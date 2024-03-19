@@ -17,16 +17,16 @@
     .Call(`_cTMed_Indirect`, phi, delta_t, from, to, med)
 }
 
-.MCMed <- function(phi, vcov_phi_vec_l, delta_t, from, to, med, R, tol, test_phi = TRUE) {
-    .Call(`_cTMed_MCMed`, phi, vcov_phi_vec_l, delta_t, from, to, med, R, tol, test_phi)
+.MCMed <- function(phi, vcov_phi_vec_l, delta_t, from, to, med, R, test_phi = TRUE) {
+    .Call(`_cTMed_MCMed`, phi, vcov_phi_vec_l, delta_t, from, to, med, R, test_phi)
 }
 
-.MCPhiI <- function(phi, vcov_phi_vec_l, tol, test_phi = TRUE) {
-    .Call(`_cTMed_MCPhiI`, phi, vcov_phi_vec_l, tol, test_phi)
+.MCPhiI <- function(phi, vcov_phi_vec_l, test_phi = TRUE) {
+    .Call(`_cTMed_MCPhiI`, phi, vcov_phi_vec_l, test_phi)
 }
 
-.MCPhi <- function(phi, vcov_phi_vec_l, R, tol, test_phi = TRUE) {
-    .Call(`_cTMed_MCPhi`, phi, vcov_phi_vec_l, R, tol, test_phi)
+.MCPhi <- function(phi, vcov_phi_vec_l, R, test_phi = TRUE) {
+    .Call(`_cTMed_MCPhi`, phi, vcov_phi_vec_l, R, test_phi)
 }
 
 .Meds <- function(phi, delta_t, from, to, med) {

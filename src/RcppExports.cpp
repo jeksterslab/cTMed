@@ -72,8 +72,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // MCMed
-arma::mat MCMed(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const double& delta_t, const int& from, const int& to, const arma::vec& med, const int& R, const double& tol, bool test_phi);
-RcppExport SEXP _cTMed_MCMed(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP, SEXP RSEXP, SEXP tolSEXP, SEXP test_phiSEXP) {
+arma::mat MCMed(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const double& delta_t, const int& from, const int& to, const arma::vec& med, const int& R, bool test_phi);
+RcppExport SEXP _cTMed_MCMed(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP, SEXP RSEXP, SEXP test_phiSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -84,38 +84,35 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
     Rcpp::traits::input_parameter< const int& >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const double& >::type tol(tolSEXP);
     Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCMed(phi, vcov_phi_vec_l, delta_t, from, to, med, R, tol, test_phi));
+    rcpp_result_gen = Rcpp::wrap(MCMed(phi, vcov_phi_vec_l, delta_t, from, to, med, R, test_phi));
     return rcpp_result_gen;
 END_RCPP
 }
 // MCPhiI
-arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const double& tol, bool test_phi);
-RcppExport SEXP _cTMed_MCPhiI(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP tolSEXP, SEXP test_phiSEXP) {
+arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, bool test_phi);
+RcppExport SEXP _cTMed_MCPhiI(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP test_phiSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
     Rcpp::traits::input_parameter< const arma::mat& >::type vcov_phi_vec_l(vcov_phi_vec_lSEXP);
-    Rcpp::traits::input_parameter< const double& >::type tol(tolSEXP);
     Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCPhiI(phi, vcov_phi_vec_l, tol, test_phi));
+    rcpp_result_gen = Rcpp::wrap(MCPhiI(phi, vcov_phi_vec_l, test_phi));
     return rcpp_result_gen;
 END_RCPP
 }
 // MCPhi
-Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const int& R, const double& tol, bool test_phi);
-RcppExport SEXP _cTMed_MCPhi(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP RSEXP, SEXP tolSEXP, SEXP test_phiSEXP) {
+Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const int& R, bool test_phi);
+RcppExport SEXP _cTMed_MCPhi(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP RSEXP, SEXP test_phiSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
     Rcpp::traits::input_parameter< const arma::mat& >::type vcov_phi_vec_l(vcov_phi_vec_lSEXP);
     Rcpp::traits::input_parameter< const int& >::type R(RSEXP);
-    Rcpp::traits::input_parameter< const double& >::type tol(tolSEXP);
     Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCPhi(phi, vcov_phi_vec_l, R, tol, test_phi));
+    rcpp_result_gen = Rcpp::wrap(MCPhi(phi, vcov_phi_vec_l, R, test_phi));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -205,9 +202,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_Direct", (DL_FUNC) &_cTMed_Direct, 5},
     {"_cTMed_IndirectVec", (DL_FUNC) &_cTMed_IndirectVec, 5},
     {"_cTMed_Indirect", (DL_FUNC) &_cTMed_Indirect, 5},
-    {"_cTMed_MCMed", (DL_FUNC) &_cTMed_MCMed, 9},
-    {"_cTMed_MCPhiI", (DL_FUNC) &_cTMed_MCPhiI, 4},
-    {"_cTMed_MCPhi", (DL_FUNC) &_cTMed_MCPhi, 5},
+    {"_cTMed_MCMed", (DL_FUNC) &_cTMed_MCMed, 8},
+    {"_cTMed_MCPhiI", (DL_FUNC) &_cTMed_MCPhiI, 3},
+    {"_cTMed_MCPhi", (DL_FUNC) &_cTMed_MCPhi, 4},
     {"_cTMed_Meds", (DL_FUNC) &_cTMed_Meds, 5},
     {"_cTMed_MedVec", (DL_FUNC) &_cTMed_MedVec, 5},
     {"_cTMed_Med", (DL_FUNC) &_cTMed_Med, 5},
