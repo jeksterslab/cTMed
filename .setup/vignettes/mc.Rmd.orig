@@ -112,7 +112,7 @@ mc <- MCMed(
   from = "x",
   to = "y",
   med = "m",
-  R = 20000L,
+  R = 1000L,
   ncores = parallel::detectCores(),
   seed = 42
 )
@@ -155,7 +155,7 @@ mc <- MCMed(
   from = "x",
   to = "y",
   med = "m",
-  R = 20000L,
+  R = 1000L,
   ncores = parallel::detectCores(),
   seed = 42
 )
@@ -183,7 +183,7 @@ mc <- MCMed(
   from = "x",
   to = "y",
   med = "m",
-  R = 20000L,
+  R = 1000L,
   ncores = parallel::detectCores(),
   seed = 42
 )
