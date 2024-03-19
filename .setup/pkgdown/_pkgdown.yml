@@ -1,0 +1,40 @@
+destination: pkgdown
+url: https://github.com/jeksterslab/cTMed/
+
+template:
+  bootstrap: 5
+  bslib:
+    base_font: {google: "Roboto"}
+    heading_font: {google: "Roboto Slab"}
+    code_font: {google: "JetBrains Mono"}
+
+reference:
+- title: Main Functions
+  contents:
+  - has_keyword("main")
+- title: Effects
+  contents:
+  - has_keyword("effects")
+- title: Measure of Uncertainty
+  contents:
+  - has_keyword("uncertainty")
+- title: Tests
+  contents:
+  - has_keyword("test")
+- title: Methods
+  contents:
+  - has_keyword("methods")
+- title: Data
+  contents:
+  - has_keyword("data")
+
+articles:
+- title: Examples
+  contents:
+  - data
+  - ou
+  - delta
+  - mc
+- title: Session Information
+  contents:
+  - session/session
