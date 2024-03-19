@@ -22,7 +22,7 @@ Imports: Rcpp, numDeriv, parallel
 Suggests: knitr, rmarkdown, testthat, simStateSpace, expm
 RoxygenNote: 7.3.1
 NeedsCompilation: yes
-Packaged: 2024-03-19 04:37:57 UTC; root
+Packaged: 2024-03-19 05:15:56 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph]
     (<https://orcid.org/0000-0003-4818-8420>)
 Maintainer: Ivan Jacob Agaloos Pesigan <r.jeksterslab@gmail.com>
