@@ -17,14 +17,6 @@ arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, bool tes
     // generate data
     arma::vec phi_vec_i = phi_vec + (vcov_phi_vec_l * arma::randn(q));
     phi_i = arma::reshape(phi_vec_i, p, p);
-    // Iterate over the diagonal elements
-    // for (int i = 0; i < p; ++i) {
-    //  double diag_value = phi_i(i, i);
-    //  if (std::abs(diag_value) < tol) {
-    //    // Replace diagonal element with zero
-    //    phi_i(i, i) = 0.0;
-    //  }
-    // }
     // test phi
     if (test_phi) {
       iter += 1;
