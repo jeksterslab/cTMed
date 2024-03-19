@@ -6,8 +6,7 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Indirect)]]
-double Indirect(const arma::mat& phi, const double& delta_t, const int& from,
-                const int& to, const arma::vec& med) {
+double Indirect(const arma::mat& phi, const double& delta_t, const int& from, const int& to, const arma::vec& med) {
   int p = phi.n_rows;
   // total effect
   arma::mat total = arma::mat(p, p);

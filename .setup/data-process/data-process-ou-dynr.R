@@ -153,7 +153,8 @@ data_process_ou_dynr <- function(overwrite = FALSE) {
     )
     saveRDS(
       fit,
-      file = deboeck2015_ou_dynr_rds
+      file = deboeck2015_ou_dynr_rds,
+      compress = "xz"
     )
   }
 }

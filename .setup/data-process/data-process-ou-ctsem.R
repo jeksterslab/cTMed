@@ -70,7 +70,8 @@ data_process_ou_ctsem <- function(overwrite = FALSE) {
     )
     saveRDS(
       fit,
-      file = deboeck2015_ou_ctsem_rds
+      file = deboeck2015_ou_ctsem_rds,
+      compress = "xz"
     )
   }
 }

@@ -117,6 +117,32 @@ delta <- DeltaMed(
 plot(delta)
 ```
 
+```{r}
+#| include = FALSE
+file <- root$find_file(
+  ".setup",
+  "data-raw",
+  "delta.Rds"
+)
+saveRDS(delta, file = file, compress = "xz")
+```
+
+Notice that the lower and upper bounds of the confidence intervals are symmetric around the estimate.
+
+```{r ctsem-delta-2}
+#| echo = FALSE
+delta <- DeltaMed(
+  phi = phi,
+  vcov_phi_vec = vcov_phi_vec,
+  delta_t = seq(from = 15, to = 20, length.out = 1000),
+  from = "x",
+  to = "y",
+  med = "m",
+  ncores = parallel::detectCores()
+)
+plot(delta)
+```
+
 ## Using Results from the ctsem Package
 
 `phi` in the case of the `ctsem` results is the mean of the posterior distribution of the drift matrix
@@ -149,32 +175,6 @@ delta <- DeltaMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
   delta_t = seq(from = 0, to = 20, length.out = 1000),
-  from = "x",
-  to = "y",
-  med = "m",
-  ncores = parallel::detectCores()
-)
-plot(delta)
-```
-
-```{r}
-#| include = FALSE
-file <- root$find_file(
-  ".setup",
-  "data-raw",
-  "delta.Rds"
-)
-saveRDS(delta, file = file, compress = "xz")
-```
-
-Notice that the lower and upper bounds of the confidence intervals are symmetric around the estimate.
-
-```{r ctsem-delta-2}
-#| echo = FALSE
-delta <- DeltaMed(
-  phi = phi,
-  vcov_phi_vec = vcov_phi_vec,
-  delta_t = seq(from = 15, to = 20, length.out = 1000),
   from = "x",
   to = "y",
   med = "m",

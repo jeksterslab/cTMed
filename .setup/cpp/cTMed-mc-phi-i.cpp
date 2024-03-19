@@ -6,8 +6,7 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.MCPhiI)]]
-arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
-                 const double& tol, bool test_phi = true) {
+arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const double& tol, bool test_phi = true) {
   int p = phi.n_rows;
   int q = p * p;
   arma::mat phi_i = arma::mat(p, p);
@@ -30,7 +29,9 @@ arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
     if (test_phi) {
       iter += 1;
       if (iter > 1000000) {
-        Rcpp::stop("Max iterations reached.");
+        Rcpp::stop(
+          "Max iterations reached."
+        );
       }
       if (TestPhi(phi_i)) {
         run = false;
