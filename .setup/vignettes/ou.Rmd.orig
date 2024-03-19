@@ -388,7 +388,14 @@ unlink(
 ### Define the Model
 
 ```{r}
+#| warning = FALSE,
+#| message = FALSE
 library(ctsem)
+```
+
+```{r}
+#| warning = FALSE,
+#| message = FALSE
 model <- ctModel(
   type = "stanct",
   manifestNames = c("x", "m", "y"),
@@ -408,6 +415,8 @@ model <- ctModel(
 ### Fit the Model
 
 ```{r}
+#| warning = FALSE,
+#| message = FALSE
 set.seed(42)
 ctsem_fit <- ctStanFit(
   datalong = data,
