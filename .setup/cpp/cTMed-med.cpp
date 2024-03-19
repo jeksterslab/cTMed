@@ -6,7 +6,8 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Med)]]
-Rcpp::NumericVector Med(const arma::mat& phi, const double& delta_t, const int& from, const int& to, const arma::vec& med) {
+Rcpp::NumericVector Med(const arma::mat& phi, const double& delta_t,
+                        const int& from, const int& to, const arma::vec& med) {
   Rcpp::NumericVector output(4);
   int p = phi.n_rows;
   // total effect
