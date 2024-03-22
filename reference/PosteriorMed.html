@@ -209,8 +209,20 @@ Psychometrika, 87 (1), 214–252.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"deboeck2015phi"</span>, package <span class="op">=</span> <span class="st">"cTMed"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="va">deboeck2015phi</span><span class="op">$</span><span class="va">ctsem</span><span class="op">$</span><span class="va">posterior_phi</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="op">-</span><span class="fl">0.357</span>, <span class="fl">0.771</span>, <span class="op">-</span><span class="fl">0.450</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.0</span>, <span class="op">-</span><span class="fl">0.511</span>, <span class="fl">0.729</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">0.693</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  nrow <span class="op">=</span> <span class="fl">3</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">phi</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">phi</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"m"</span>, <span class="st">"y"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="MCPhi.html">MCPhi</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  phi <span class="op">=</span> <span class="va">phi</span>,</span></span>
+<span class="r-in"><span>  vcov_phi_vec <span class="op">=</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  R <span class="op">=</span> <span class="fl">100L</span> <span class="co"># use a large value for R in actual research</span></span></span>
+<span class="r-in"><span><span class="op">)</span><span class="op">$</span><span class="va">output</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Specific time-interval ----------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="fu">PosteriorMed</span><span class="op">(</span></span></span>
@@ -221,10 +233,10 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.1155 0.0313 1000 -0.1807 -0.0572</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.3021 0.0417 1000 -0.3851 -0.2208</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1865 0.0205 1000  0.1462  0.2252</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.0663 0.2002 100 -0.4239 0.3153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2163 0.1913 100 -0.5498 0.1594</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1500 0.1026 100 -0.0011 0.4358</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Range of time-intervals ---------------------------------------------------</span></span></span>
@@ -241,249 +253,249 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span><span class="co"># print, summary, confint, and plot</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.1155 0.0313 1000 -0.1807 -0.0572</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.3021 0.0417 1000 -0.3851 -0.2208</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1865 0.0205 1000  0.1462  0.2252</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.0663 0.2002 100 -0.4239 0.3153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2163 0.1913 100 -0.5498 0.1594</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1500 0.1026 100 -0.0011 0.4358</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           2  0.0896 0.0367 1000  0.0158  0.1538</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          2 -0.3504 0.0479 1000 -0.4472 -0.2556</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        2  0.4400 0.0399 1000  0.3612  0.5103</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           2  0.0906 0.3098 100 -0.5746 0.6958</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          2 -0.2609 0.2704 100 -0.8498 0.1805</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        2  0.3515 0.2662 100 -0.0060 1.0503</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           3  0.2823 0.0383 1000  0.2101  0.3591</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          3 -0.3108 0.0458 1000 -0.4073 -0.2250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        3  0.5932 0.0511 1000  0.4957  0.6917</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           3  0.2029 0.3627 100 -0.6059 0.9461</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          3 -0.2554 0.3273 100 -1.0098 0.1665</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        3  0.4583 0.3928 100 -0.0077 1.2430</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           4  0.3910 0.0384 1000  0.3201  0.4654</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          4 -0.2496 0.0420 1000 -0.3388 -0.1711</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        4  0.6406 0.0581 1000  0.5326  0.7543</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           4  0.2267 0.3608 100 -0.5552 0.9351</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          4 -0.2420 0.3864 100 -1.1261 0.1400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        4  0.4687 0.4758 100 -0.0096 1.2034</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           5  0.4242 0.0390 1000  0.3529  0.5006</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          5 -0.1911 0.0377 1000 -0.2699 -0.1233</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        5  0.6154 0.0619 1000  0.4990  0.7365</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           5  0.1909 0.3319 100 -0.5079 0.7811</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          5 -0.2341 0.4595 100 -1.2474 0.1124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        5  0.4250 0.5434 100 -0.0208 1.4488</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`6`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           6  0.4078 0.0401 1000  0.3357  0.4889</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          6 -0.1428 0.0331 1000 -0.2145 -0.0852</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        6  0.5505 0.0626 1000  0.4360  0.6811</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           6  0.1343 0.3006 100 -0.4715 0.8111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          6 -0.2352 0.5585 100 -1.4149 0.0897</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        6  0.3695 0.6199 100 -0.1028 1.6161</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`7`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           7  0.3647 0.0407 1000  0.2884  0.4476</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          7 -0.1052 0.0287 1000 -0.1663 -0.0569</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        7  0.4699 0.0607 1000  0.3604  0.5988</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           7  0.0840 0.2767 100 -0.4608 0.7527</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          7 -0.2459 0.6972 100 -1.6258 0.0678</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        7  0.3299 0.7259 100 -0.2704 1.7413</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`8`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           8  0.3111 0.0404 1000  0.2367  0.3955</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          8 -0.0769 0.0244 1000 -0.1293 -0.0369</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        8  0.3881 0.0567 1000  0.2839  0.5098</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           8  0.0517 0.2631 100 -0.4720 0.7403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          8 -0.2669 0.8923 100 -1.8422 0.0552</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        8  0.3186 0.8886 100 -0.2431 1.9354</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`9`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           9  0.2568 0.0393 1000  0.1861  0.3440</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          9 -0.0561 0.0205 1000 -0.1006 -0.0241</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        9  0.3129 0.0517 1000  0.2221  0.4203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           9  0.0376 0.2575 100 -0.5206 0.6966</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          9 -0.2993 1.1650 100 -2.1093 0.0460</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        9  0.3368 1.1393 100 -0.1402 2.1837</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`10`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          10  0.2070 0.0375 1000  0.1405  0.2875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         10 -0.0409 0.0171 1000 -0.0793 -0.0159</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       10  0.2478 0.0463 1000  0.1679  0.3490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          10  0.0358 0.2492 100 -0.4731 0.6284</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         10 -0.3453 1.5433 100 -2.4098 0.0385</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       10  0.3811 1.5093 100 -0.1732 2.4924</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`11`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          11  0.1638 0.0354 1000  0.1018  0.2397</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         11 -0.0298 0.0141 1000 -0.0622 -0.0101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       11  0.1935 0.0411 1000  0.1211  0.2859</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          11  0.0393 0.2268 100 -0.3797 0.5641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         11 -0.4085 2.0647 100 -2.7491 0.0329</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       11  0.4477 2.0341 100 -0.1625 2.8710</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`12`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          12  0.1278 0.0330 1000  0.0710  0.2019</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         12 -0.0217 0.0115 1000 -0.0482 -0.0064</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       12  0.1495 0.0364 1000  0.0870  0.2324</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          12  0.0423 0.1911 100 -0.3326 0.5419</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         12 -0.4939 2.7803 100 -3.1326 0.0280</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       12  0.5361 2.7610 100 -0.1188 3.3259</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`13`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          13  0.0987 0.0305 1000  0.0450  0.1700</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         13 -0.0159 0.0094 1000 -0.0382 -0.0039</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       13  0.1145 0.0322 1000  0.0588  0.1881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          13  0.0420 0.1603 100 -0.2069 0.5188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         13 -0.6084 3.7599 100 -3.5671 0.0231</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       13  0.6504 3.7551 100 -0.1015 3.8107</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`14`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          14  0.0755 0.0280 1000  0.0266  0.1390</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         14 -0.0116 0.0076 1000 -0.0298 -0.0025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       14  0.0872 0.0285 1000  0.0388  0.1522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          14  0.0382 0.1550 100 -0.1780 0.4695</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         14 -0.7619 5.0987 100 -4.0598 0.0191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       14  0.8001 5.1063 100 -0.0898 4.2987</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`15`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          15  0.0575 0.0254 1000  0.0138  0.1163</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         15 -0.0085 0.0061 1000 -0.0227 -0.0015</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       15  0.0660 0.0252 1000  0.0236  0.1255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          15  0.0325 0.1638 100 -0.2446 0.4721</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         15 -0.9674 6.9265 100 -4.6191 0.0158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       15  0.9999 6.9408 100 -0.1064 4.8460</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`16`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          16  0.0435 0.0228 1000  0.0061  0.0958</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         16 -0.0063 0.0049 1000 -0.0174 -0.0009</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       16  0.0498 0.0222 1000  0.0133  0.1012</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          16  0.0264 0.1612 100 -0.2405 0.4490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         16 -1.2431 9.4202 100 -5.2542 0.0131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       16  1.2695 9.4347 100 -0.0991 5.4632</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`17`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          17  0.0329 0.0202 1000 -0.0002  0.0798</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         17 -0.0046 0.0040 1000 -0.0138 -0.0006</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       17  0.0376 0.0195 1000  0.0069  0.0837</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est      se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          17  0.0210  0.1414 100 -0.2212 0.4266</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         17 -1.6134 12.8212 100 -5.9758 0.0108</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       17  1.6344 12.8311 100 -0.0868 6.1619</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`18`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          18  0.0248 0.0178 1000 -0.0031  0.0667</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         18 -0.0034 0.0032 1000 -0.0108 -0.0004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       18  0.0283 0.0171 1000  0.0026  0.0689</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est      se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          18  0.0166  0.1209 100 -0.1929 0.3485</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         18 -2.1117 17.4586 100 -6.7958 0.0090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       18  2.1282 17.4618 100 -0.0959 6.9557</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`19`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          19  0.0188 0.0155 1000 -0.0057  0.0557</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         19 -0.0026 0.0026 1000 -0.0085 -0.0002</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       19  0.0213 0.0148 1000  0.0000  0.0574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est      se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          19  0.0125  0.1190 100 -0.2074 0.3355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         19 -2.7833 23.7808 100 -7.7278 0.0075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       19  2.7959 23.7779 100 -0.1422 7.8622</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`20`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total          20  0.0142 0.0134 1000 -0.0062  0.0457</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct         20 -0.0019 0.0021 1000 -0.0067 -0.0001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       20  0.0161 0.0127 1000 -0.0021  0.0476</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est      se   R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total          20  0.0085  0.1277 100 -0.2735 0.3643</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct         20 -3.6902 32.3989 100 -8.7873 0.0077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect       20  3.6987 32.3920 100 -0.1749 8.8952</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval          est          se    R          2.5%         97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.115518099 0.031316531 1000 -1.806853e-01 -0.0571827460</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.302056960 0.041705145 1000 -3.850926e-01 -0.2208434854</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.186538861 0.020460481 1000  1.462255e-01  0.2252220873</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.089587379 0.036721787 1000  1.582884e-02  0.1537722458</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.350388271 0.047868112 1000 -4.472323e-01 -0.2556455800</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.439975649 0.039929600 1000  3.612339e-01  0.5103412594</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.282344077 0.038269018 1000  2.100693e-01  0.3591068915</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.310821035 0.045840795 1000 -4.073023e-01 -0.2249679864</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.593165111 0.051058345 1000  4.957330e-01  0.6916513757</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.390994083 0.038426314 1000  3.200667e-01  0.4653714163</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.249602833 0.042005259 1000 -3.388413e-01 -0.1711265455</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.640596916 0.058056830 1000  5.326268e-01  0.7543083409</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.424208590 0.039049982 1000  3.528790e-01  0.5005552678</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.191143189 0.037652502 1000 -2.698591e-01 -0.1233104994</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.615351779 0.061895298 1000  4.989640e-01  0.7364518107</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16    total        6  0.407754599 0.040066239 1000  3.356898e-01  0.4889478539</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17   direct        6 -0.142758812 0.033134258 1000 -2.145007e-01 -0.0852340813</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 indirect        6  0.550513411 0.062628921 1000  4.360076e-01  0.6811302539</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19    total        7  0.364703762 0.040673994 1000  2.883672e-01  0.4475926347</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20   direct        7 -0.105184837 0.028667674 1000 -1.663252e-01 -0.0569214806</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 indirect        7  0.469888599 0.060652758 1000  3.604058e-01  0.5987878046</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22    total        8  0.311143985 0.040411243 1000  2.367241e-01  0.3954568756</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23   direct        8 -0.076946691 0.024428189 1000 -1.292724e-01 -0.0368638809</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 indirect        8  0.388090676 0.056715371 1000  2.839492e-01  0.5097833376</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25    total        9  0.256830460 0.039284302 1000  1.861299e-01  0.3439783379</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26   direct        9 -0.056099736 0.020542248 1000 -1.005523e-01 -0.0241297482</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 indirect        9  0.312930196 0.051676207 1000  2.220737e-01  0.4202570931</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28    total       10  0.206951201 0.037524954 1000  1.405387e-01  0.2874525282</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29   direct       10 -0.040858024 0.017082975 1000 -7.930868e-02 -0.0159460477</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 indirect       10  0.247809225 0.046290844 1000  1.679185e-01  0.3490492686</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31    total       11  0.163761721 0.035378756 1000  1.018183e-01  0.2397237100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32   direct       11 -0.029769644 0.014076553 1000 -6.221530e-02 -0.0100726456</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 indirect       11  0.193531364 0.041089755 1000  1.210776e-01  0.2858786679</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34    total       12  0.127793298 0.033015778 1000  7.100337e-02  0.2019027385</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35   direct       12 -0.021719533 0.011513979 1000 -4.818757e-02 -0.0063573227</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 indirect       12  0.149512830 0.036354204 1000  8.704595e-02  0.2323881218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37    total       13  0.098655520 0.030529703 1000  4.503890e-02  0.1700186413</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38   direct       13 -0.015876710 0.009363452 1000 -3.819032e-02 -0.0039187407</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 indirect       13  0.114532230 0.032163101 1000  5.876935e-02  0.1881100610</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40    total       14  0.075532809 0.027970852 1000  2.659823e-02  0.1389955699</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41   direct       14 -0.011632163 0.007580847 1000 -2.979008e-02 -0.0024548439</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 indirect       14  0.087164971 0.028472391 1000  3.881018e-02  0.1521750330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43    total       15  0.057473022 0.025376798 1000  1.375712e-02  0.1162542213</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44   direct       15 -0.008543663 0.006117458 1000 -2.273703e-02 -0.0015291922</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 indirect       15  0.066016685 0.025190937 1000  2.355682e-02  0.1254674699</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46    total       16  0.043543449 0.022787893 1000  6.092219e-03  0.0958462020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47   direct       16 -0.006291639 0.004925104 1000 -1.744311e-02 -0.0009389311</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 indirect       16  0.049835088 0.022231282 1000  1.328823e-02  0.1011952830</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49    total       17  0.032906203 0.020249717 1000 -2.492109e-04  0.0798167522</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50   direct       17 -0.004645630 0.003959134 1000 -1.375335e-02 -0.0005980268</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51 indirect       17  0.037551832 0.019531812 1000  6.947388e-03  0.0837019995</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52    total       18  0.024846821 0.017808894 1000 -3.083680e-03  0.0667051359</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53   direct       18 -0.003439488 0.003179900 1000 -1.084383e-02 -0.0003786389</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54 indirect       18  0.028286309 0.017058636 1000  2.566918e-03  0.0688668286</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55    total       19  0.018777181 0.015507523 1000 -5.686615e-03  0.0556578513</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56   direct       19 -0.002553332 0.002553240 1000 -8.549718e-03 -0.0002336825</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57 indirect       19  0.021330513 0.014797956 1000 -3.882268e-05  0.0574084615</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58    total       20  0.014225482 0.013378947 1000 -6.189403e-03  0.0456581043</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59   direct       20 -0.001900525 0.002050344 1000 -6.740900e-03 -0.0001428763</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60 indirect       20  0.016126008 0.012746612 1000 -2.084834e-03  0.0475927768</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval          est         se   R         2.5%       97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.066299824  0.2002153 100 -0.423902167 0.315339143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.216303593  0.1913433 100 -0.549764444 0.159415215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.150003769  0.1026246 100 -0.001094792 0.435816958</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.090623284  0.3098150 100 -0.574557772 0.695774560</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.260851517  0.2703970 100 -0.849788233 0.180494187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.351474801  0.2662111 100 -0.005964304 1.050268207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.202907972  0.3626896 100 -0.605916962 0.946091905</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.255352776  0.3273100 100 -1.009805677 0.166471204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.458260748  0.3927837 100 -0.007687814 1.243027010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.226724362  0.3607985 100 -0.555156747 0.935113021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.241997321  0.3863791 100 -1.126149870 0.140026494</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.468721683  0.4757500 100 -0.009594575 1.203388302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.190853358  0.3319103 100 -0.507866028 0.781096912</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.234119836  0.4595047 100 -1.247443137 0.112373262</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.424973194  0.5433786 100 -0.020795707 1.448836101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16    total        6  0.134273125  0.3006482 100 -0.471516073 0.811063303</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17   direct        6 -0.235192881  0.5585085 100 -1.414894836 0.089660158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 indirect        6  0.369466006  0.6199379 100 -0.102794951 1.616056598</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19    total        7  0.084010223  0.2767290 100 -0.460763031 0.752679592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20   direct        7 -0.245937093  0.6971985 100 -1.625807017 0.067769068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 indirect        7  0.329947316  0.7259352 100 -0.270352819 1.741327758</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22    total        8  0.051707958  0.2631037 100 -0.472037218 0.740316973</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   direct        8 -0.266885138  0.8923068 100 -1.842225146 0.055156302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 indirect        8  0.318593095  0.8886201 100 -0.243096479 1.935449809</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25    total        9  0.037563250  0.2574818 100 -0.520622866 0.696635088</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26   direct        9 -0.299258739  1.1650312 100 -2.109254015 0.045967636</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 indirect        9  0.336821989  1.1393231 100 -0.140185488 2.183700525</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28    total       10  0.035805191  0.2491935 100 -0.473145512 0.628447278</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   direct       10 -0.345297129  1.5432868 100 -2.409785737 0.038534861</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 indirect       10  0.381102320  1.5092691 100 -0.173167583 2.492382582</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31    total       11  0.039257725  0.2268342 100 -0.379725365 0.564119707</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32   direct       11 -0.408485075  2.0646709 100 -2.749078903 0.032948914</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 indirect       11  0.447742799  2.0340666 100 -0.162533908 2.871021340</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34    total       12  0.042271436  0.1910646 100 -0.332642703 0.541851863</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35   direct       12 -0.493853932  2.7803110 100 -3.132647246 0.027992313</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 indirect       12  0.536125368  2.7610201 100 -0.118786071 3.325920299</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37    total       13  0.041996290  0.1603036 100 -0.206949476 0.518820839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38   direct       13 -0.608430287  3.7599417 100 -3.567098417 0.023096112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 indirect       13  0.650426577  3.7551020 100 -0.101468323 3.810662550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40    total       14  0.038249307  0.1549927 100 -0.178012854 0.469494377</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41   direct       14 -0.761883321  5.0987191 100 -4.059806294 0.019109227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 indirect       14  0.800132628  5.1063363 100 -0.089772180 4.298706305</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43    total       15  0.032462623  0.1638376 100 -0.244635705 0.472072140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44   direct       15 -0.967430894  6.9264536 100 -4.619054406 0.015773478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 indirect       15  0.999893516  6.9408057 100 -0.106373135 4.846016796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46    total       16  0.026366357  0.1612118 100 -0.240491247 0.449038472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47   direct       16 -1.243088331  9.4201706 100 -5.254187032 0.013058990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 indirect       16  1.269454688  9.4346929 100 -0.099052246 5.463161869</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49    total       17  0.021023782  0.1413955 100 -0.221161554 0.426589992</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50   direct       17 -1.613378190 12.8212234 100 -5.975773323 0.010825324</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 indirect       17  1.634401972 12.8311022 100 -0.086842612 6.161926867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52    total       18  0.016557857  0.1209461 100 -0.192907314 0.348456163</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53   direct       18 -2.111664824 17.4586152 100 -6.795788795 0.008985049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54 indirect       18  2.128222681 17.4618484 100 -0.095896897 6.955688267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55    total       19  0.012517173  0.1189947 100 -0.207440634 0.335474762</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56   direct       19 -2.783338385 23.7807864 100 -7.727818114 0.007466850</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57 indirect       19  2.795855558 23.7778854 100 -0.142215005 7.862230576</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58    total       20  0.008522724  0.1277064 100 -0.273460552 0.364275008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59   direct       20 -3.690155034 32.3989374 100 -8.787283115 0.007697666</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60 indirect       20  3.698677758 32.3920413 100 -0.174913646 8.895211276</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">posterior</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval         2.5 %        97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -1.806853e-01 -0.0571827460</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -3.850926e-01 -0.2208434854</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  1.462255e-01  0.2252220873</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  1.582884e-02  0.1537722458</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -4.472323e-01 -0.2556455800</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  3.612339e-01  0.5103412594</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  2.100693e-01  0.3591068915</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -4.073023e-01 -0.2249679864</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  4.957330e-01  0.6916513757</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  3.200667e-01  0.4653714163</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -3.388413e-01 -0.1711265455</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  5.326268e-01  0.7543083409</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  3.528790e-01  0.5005552678</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -2.698591e-01 -0.1233104994</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  4.989640e-01  0.7364518107</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16    total        6  3.356898e-01  0.4889478539</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17   direct        6 -2.145007e-01 -0.0852340813</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 indirect        6  4.360076e-01  0.6811302539</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19    total        7  2.883672e-01  0.4475926347</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20   direct        7 -1.663252e-01 -0.0569214806</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 indirect        7  3.604058e-01  0.5987878046</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22    total        8  2.367241e-01  0.3954568756</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23   direct        8 -1.292724e-01 -0.0368638809</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 indirect        8  2.839492e-01  0.5097833376</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25    total        9  1.861299e-01  0.3439783379</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26   direct        9 -1.005523e-01 -0.0241297482</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 indirect        9  2.220737e-01  0.4202570931</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28    total       10  1.405387e-01  0.2874525282</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29   direct       10 -7.930868e-02 -0.0159460477</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 indirect       10  1.679185e-01  0.3490492686</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31    total       11  1.018183e-01  0.2397237100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32   direct       11 -6.221530e-02 -0.0100726456</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 indirect       11  1.210776e-01  0.2858786679</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34    total       12  7.100337e-02  0.2019027385</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35   direct       12 -4.818757e-02 -0.0063573227</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 indirect       12  8.704595e-02  0.2323881218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37    total       13  4.503890e-02  0.1700186413</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38   direct       13 -3.819032e-02 -0.0039187407</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 indirect       13  5.876935e-02  0.1881100610</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40    total       14  2.659823e-02  0.1389955699</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41   direct       14 -2.979008e-02 -0.0024548439</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 indirect       14  3.881018e-02  0.1521750330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43    total       15  1.375712e-02  0.1162542213</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44   direct       15 -2.273703e-02 -0.0015291922</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 indirect       15  2.355682e-02  0.1254674699</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46    total       16  6.092219e-03  0.0958462020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47   direct       16 -1.744311e-02 -0.0009389311</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 indirect       16  1.328823e-02  0.1011952830</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49    total       17 -2.492109e-04  0.0798167522</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50   direct       17 -1.375335e-02 -0.0005980268</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51 indirect       17  6.947388e-03  0.0837019995</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52    total       18 -3.083680e-03  0.0667051359</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53   direct       18 -1.084383e-02 -0.0003786389</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54 indirect       18  2.566918e-03  0.0688668286</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55    total       19 -5.686615e-03  0.0556578513</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56   direct       19 -8.549718e-03 -0.0002336825</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57 indirect       19 -3.882268e-05  0.0574084615</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58    total       20 -6.189403e-03  0.0456581043</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59   direct       20 -6.740900e-03 -0.0001428763</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60 indirect       20 -2.084834e-03  0.0475927768</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval        2.5 %      97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.423902167 0.315339143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.549764444 0.159415215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1 -0.001094792 0.435816958</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2 -0.574557772 0.695774560</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.849788233 0.180494187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2 -0.005964304 1.050268207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3 -0.605916962 0.946091905</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -1.009805677 0.166471204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3 -0.007687814 1.243027010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4 -0.555156747 0.935113021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -1.126149870 0.140026494</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4 -0.009594575 1.203388302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5 -0.507866028 0.781096912</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -1.247443137 0.112373262</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5 -0.020795707 1.448836101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16    total        6 -0.471516073 0.811063303</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17   direct        6 -1.414894836 0.089660158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 indirect        6 -0.102794951 1.616056598</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19    total        7 -0.460763031 0.752679592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20   direct        7 -1.625807017 0.067769068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 indirect        7 -0.270352819 1.741327758</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22    total        8 -0.472037218 0.740316973</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   direct        8 -1.842225146 0.055156302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 indirect        8 -0.243096479 1.935449809</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25    total        9 -0.520622866 0.696635088</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26   direct        9 -2.109254015 0.045967636</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 indirect        9 -0.140185488 2.183700525</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28    total       10 -0.473145512 0.628447278</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   direct       10 -2.409785737 0.038534861</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 indirect       10 -0.173167583 2.492382582</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31    total       11 -0.379725365 0.564119707</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32   direct       11 -2.749078903 0.032948914</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 indirect       11 -0.162533908 2.871021340</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34    total       12 -0.332642703 0.541851863</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35   direct       12 -3.132647246 0.027992313</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 indirect       12 -0.118786071 3.325920299</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37    total       13 -0.206949476 0.518820839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38   direct       13 -3.567098417 0.023096112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 indirect       13 -0.101468323 3.810662550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40    total       14 -0.178012854 0.469494377</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41   direct       14 -4.059806294 0.019109227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 indirect       14 -0.089772180 4.298706305</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43    total       15 -0.244635705 0.472072140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44   direct       15 -4.619054406 0.015773478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 indirect       15 -0.106373135 4.846016796</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46    total       16 -0.240491247 0.449038472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47   direct       16 -5.254187032 0.013058990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 indirect       16 -0.099052246 5.463161869</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49    total       17 -0.221161554 0.426589992</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50   direct       17 -5.975773323 0.010825324</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 indirect       17 -0.086842612 6.161926867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52    total       18 -0.192907314 0.348456163</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53   direct       18 -6.795788795 0.008985049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54 indirect       18 -0.095896897 6.955688267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55    total       19 -0.207440634 0.335474762</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56   direct       19 -7.727818114 0.007466850</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57 indirect       19 -0.142215005 7.862230576</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58    total       20 -0.273460552 0.364275008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59   direct       20 -8.787283115 0.007697666</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60 indirect       20 -0.174913646 8.895211276</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="PosteriorMed-1.png" alt="" width="700" height="433"></span>
 <span class="r-plt img"><img src="PosteriorMed-2.png" alt="" width="700" height="433"></span>

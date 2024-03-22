@@ -88,10 +88,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># ---------------------------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co"># Example 1 -----------------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co"># ---------------------------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="op">-</span><span class="fl">0.357</span>, <span class="fl">0.771</span>, <span class="op">-</span><span class="fl">0.450</span>,</span></span>
 <span class="r-in"><span>    <span class="fl">0.0</span>, <span class="op">-</span><span class="fl">0.511</span>, <span class="fl">0.729</span>,</span></span>
@@ -143,53 +140,6 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [18,]       18  0.0134 -0.0022   0.0156</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [19,]       19  0.0096 -0.0015   0.0111</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [20,]       20  0.0068 -0.0011   0.0079</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># ---------------------------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co"># Example 2 -----------------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="co"># ---------------------------------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="op">-</span><span class="fl">6</span>, <span class="fl">5.5</span>, <span class="fl">0</span>, <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">1.25</span>, <span class="op">-</span><span class="fl">2.5</span>, <span class="fl">5.9</span>, <span class="op">-</span><span class="fl">7.3</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">0</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">6</span>, <span class="fl">2.5</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">5</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">6</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span>,</span></span>
-<span class="r-in"><span>  nrow <span class="op">=</span> <span class="fl">4</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">phi</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">phi</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"y"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Specific time-interval ----------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="va">med</span> <span class="op">&lt;-</span> <span class="fu"><a href="Med.html">Med</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  phi <span class="op">=</span> <span class="va">phi</span>,</span></span>
-<span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span>,</span></span>
-<span class="r-in"><span>  from <span class="op">=</span> <span class="st">"y2"</span>,</span></span>
-<span class="r-in"><span>  to <span class="op">=</span> <span class="st">"y4"</span>,</span></span>
-<span class="r-in"><span>  med <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"y1"</span>, <span class="st">"y3"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">med</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      interval  total direct indirect</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,]        1 0.0767 -0.166   0.2427</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Range of time-intervals ---------------------------------------------------</span></span></span>
-<span class="r-in"><span><span class="va">med</span> <span class="op">&lt;-</span> <span class="fu"><a href="Med.html">Med</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  phi <span class="op">=</span> <span class="va">phi</span>,</span></span>
-<span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,</span></span>
-<span class="r-in"><span>  from <span class="op">=</span> <span class="st">"y2"</span>,</span></span>
-<span class="r-in"><span>  to <span class="op">=</span> <span class="st">"y4"</span>,</span></span>
-<span class="r-in"><span>  med <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"y1"</span>, <span class="st">"y3"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">med</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       interval   total  direct indirect</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1,]        1  0.0767 -0.1660   0.2427</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2,]        2 -0.0025 -0.0140   0.0116</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3,]        3 -0.0004 -0.0012   0.0008</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4,]        4  0.0000 -0.0001   0.0001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5,]        5  0.0000  0.0000   0.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6,]        6  0.0000  0.0000   0.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7,]        7  0.0000  0.0000   0.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8,]        8  0.0000  0.0000   0.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9,]        9  0.0000  0.0000   0.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10,]       10  0.0000  0.0000   0.0000</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

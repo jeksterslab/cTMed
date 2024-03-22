@@ -13,19 +13,7 @@
     <loc>https://github.com/jeksterslab/cTMed/articles/cTMed.html</loc>
   </url>
   <url>
-    <loc>https://github.com/jeksterslab/cTMed/articles/data.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/cTMed/articles/delta.html</loc>
-  </url>
-  <url>
     <loc>https://github.com/jeksterslab/cTMed/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/cTMed/articles/mc.html</loc>
-  </url>
-  <url>
-    <loc>https://github.com/jeksterslab/cTMed/articles/ou.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/articles/session/session.html</loc>
@@ -110,6 +98,9 @@
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/print.ctmedmed.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/ryan2021.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/summary.ctmeddelta.html</loc>
