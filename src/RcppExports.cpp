@@ -172,6 +172,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// TestStable
+bool TestStable(const arma::mat& x);
+RcppExport SEXP _cTMed_TestStable(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(TestStable(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 // TotalVec
 arma::vec TotalVec(const arma::vec& phi_vec, const double& delta_t);
 RcppExport SEXP _cTMed_TotalVec(SEXP phi_vecSEXP, SEXP delta_tSEXP) {
@@ -209,6 +220,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_MedVec", (DL_FUNC) &_cTMed_MedVec, 5},
     {"_cTMed_Med", (DL_FUNC) &_cTMed_Med, 5},
     {"_cTMed_TestPhi", (DL_FUNC) &_cTMed_TestPhi, 1},
+    {"_cTMed_TestStable", (DL_FUNC) &_cTMed_TestStable, 1},
     {"_cTMed_TotalVec", (DL_FUNC) &_cTMed_TotalVec, 2},
     {"_cTMed_Total", (DL_FUNC) &_cTMed_Total, 2},
     {NULL, NULL, 0}

@@ -218,7 +218,8 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCPhi}()},
 \code{\link{Med}()},
 \code{\link{PosteriorMed}()},
-\code{\link{TestPhi}()}
+\code{\link{TestPhi}()},
+\code{\link{TestStable}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

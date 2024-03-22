@@ -7,6 +7,8 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 
 bool TestPhi(const arma::mat& phi);
+
+bool TestStable(const arma::mat& x);
 // -----------------------------------------------------------------------------
 // edit .setup/cpp/cTMed-direct-d-t-vec.cpp
 // Ivan Jacob Agaloos Pesigan
@@ -17,16 +19,14 @@ bool TestPhi(const arma::mat& phi);
 // [[Rcpp::export(.DirectVec)]]
 double DirectVec(const arma::vec& phi_vec, const double& delta_t,
                  const int& from, const int& to, const arma::vec& med) {
-  int q = phi_vec.n_elem;
-  int p = std::sqrt(q);
+  int p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
   arma::mat d = arma::eye(p, p);
   int m = med.n_elem;
   for (int i = 0; i < m; i++) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
-  arma::mat direct = arma::mat(p, p);
-  direct = arma::expmat(delta_t * d * phi * d);
+  arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
   return direct_dbl;
 }
@@ -46,8 +46,7 @@ double Direct(const arma::mat& phi, const double& delta_t, const int& from,
   for (int i = 0; i < m; i++) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
-  arma::mat direct = arma::mat(p, p);
-  direct = arma::expmat(delta_t * d * phi * d);
+  arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
   return direct_dbl;
 }
@@ -61,12 +60,10 @@ double Direct(const arma::mat& phi, const double& delta_t, const int& from,
 // [[Rcpp::export(.IndirectVec)]]
 double IndirectVec(const arma::vec& phi_vec, const double& delta_t,
                    const int& from, const int& to, const arma::vec& med) {
-  int q = phi_vec.n_elem;
-  int p = std::sqrt(q);
+  int p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
   // total effect
-  arma::mat total = arma::mat(p, p);
-  total = arma::expmat(delta_t * phi);
+  arma::mat total = arma::expmat(delta_t * phi);
   double total_dbl = total(to - 1, from - 1);
   // direct effect
   arma::mat d = arma::eye(p, p);
@@ -74,8 +71,7 @@ double IndirectVec(const arma::vec& phi_vec, const double& delta_t,
   for (int i = 0; i < m; i++) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
-  arma::mat direct = arma::mat(p, p);
-  direct = arma::expmat(delta_t * d * phi * d);
+  arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
   // indirect effect
   double indirect_dbl = total_dbl - direct_dbl;
@@ -93,8 +89,7 @@ double Indirect(const arma::mat& phi, const double& delta_t, const int& from,
                 const int& to, const arma::vec& med) {
   int p = phi.n_rows;
   // total effect
-  arma::mat total = arma::mat(p, p);
-  total = arma::expmat(delta_t * phi);
+  arma::mat total = arma::expmat(delta_t * phi);
   double total_dbl = total(to - 1, from - 1);
   // direct effect
   arma::mat d = arma::eye(p, p);
@@ -102,8 +97,7 @@ double Indirect(const arma::mat& phi, const double& delta_t, const int& from,
   for (int i = 0; i < m; i++) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
-  arma::mat direct = arma::mat(p, p);
-  direct = arma::expmat(delta_t * d * phi * d);
+  arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
   // indirect effect
   double indirect_dbl = total_dbl - direct_dbl;
@@ -127,22 +121,17 @@ arma::mat MCMed(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
   // needed for direct effect
   arma::mat d = arma::eye(p, p);
   int m = med.n_elem;
-  for (int j = 0; j < m; j++) {
-    d(med[j] - 1, med[j] - 1) = 0;
+  for (int i = 0; i < m; i++) {
+    d(med[i] - 1, med[i] - 1) = 0;
   }
   for (int i = 0; i < R; i++) {
     bool run = true;
-    int iter = 0;
     while (run) {
       // generate data
       arma::vec phi_vec_i = phi_vec + (vcov_phi_vec_l * arma::randn(q));
       arma::mat phi_i = arma::reshape(phi_vec_i, p, p);
       // test phi
       if (test_phi) {
-        iter += 1;
-        if (iter > 1000000) {
-          Rcpp::stop("Max iterations reached.");
-        }
         if (TestPhi(phi_i)) {
           run = false;
         }
@@ -152,12 +141,10 @@ arma::mat MCMed(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
       // output
       if (!run) {
         // total effect
-        arma::mat total = arma::mat(p, p);
-        total = arma::expmat(delta_t * phi_i);
+        arma::mat total = arma::expmat(delta_t * phi_i);
         double total_dbl = total(to - 1, from - 1);
         // direct effect
-        arma::mat direct = arma::mat(p, p);
-        direct = arma::expmat(delta_t * d * phi_i * d);
+        arma::mat direct = arma::expmat(delta_t * d * phi_i * d);
         double direct_dbl = direct(to - 1, from - 1);
         // indirect effect
         double indirect_dbl = total_dbl - direct_dbl;
@@ -186,17 +173,12 @@ arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
   arma::mat phi_i = arma::mat(p, p);
   arma::vec phi_vec = arma::vectorise(phi);
   bool run = true;
-  int iter = 0;
   while (run) {
     // generate data
     arma::vec phi_vec_i = phi_vec + (vcov_phi_vec_l * arma::randn(q));
     phi_i = arma::reshape(phi_vec_i, p, p);
     // test phi
     if (test_phi) {
-      iter += 1;
-      if (iter > 1000000) {
-        Rcpp::stop("Max iterations reached.");
-      }
       if (TestPhi(phi_i)) {
         run = false;
       }
@@ -222,17 +204,12 @@ Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
   arma::vec phi_vec = arma::vectorise(phi);
   for (int i = 0; i < R; i++) {
     bool run = true;
-    int iter = 0;
     while (run) {
       // generate data
       arma::vec phi_vec_i = phi_vec + (vcov_phi_vec_l * arma::randn(q));
       arma::mat phi_i = arma::reshape(phi_vec_i, p, p);
       // test phi
       if (test_phi) {
-        iter += 1;
-        if (iter > 1000000) {
-          Rcpp::stop("Max iterations reached.");
-        }
         if (TestPhi(phi_i)) {
           run = false;
         }
@@ -299,12 +276,10 @@ Rcpp::NumericVector MedVec(const arma::vec& phi_vec, const double& delta_t,
                            const int& from, const int& to,
                            const arma::vec& med) {
   Rcpp::NumericVector output(3);
-  int q = phi_vec.n_elem;
-  int p = std::sqrt(q);
+  int p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
   // total effect
-  arma::mat total = arma::mat(p, p);
-  total = arma::expmat(delta_t * phi);
+  arma::mat total = arma::expmat(delta_t * phi);
   double total_dbl = total(to - 1, from - 1);
   // direct effect
   arma::mat d = arma::eye(p, p);
@@ -312,8 +287,7 @@ Rcpp::NumericVector MedVec(const arma::vec& phi_vec, const double& delta_t,
   for (int i = 0; i < m; i++) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
-  arma::mat direct = arma::mat(p, p);
-  direct = arma::expmat(delta_t * d * phi * d);
+  arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
   // indirect effect
   double indirect_dbl = total_dbl - direct_dbl;
@@ -336,8 +310,7 @@ Rcpp::NumericVector Med(const arma::mat& phi, const double& delta_t,
   Rcpp::NumericVector output(4);
   int p = phi.n_rows;
   // total effect
-  arma::mat total = arma::mat(p, p);
-  total = arma::expmat(delta_t * phi);
+  arma::mat total = arma::expmat(delta_t * phi);
   double total_dbl = total(to - 1, from - 1);
   // direct effect
   arma::mat d = arma::eye(p, p);
@@ -345,8 +318,7 @@ Rcpp::NumericVector Med(const arma::mat& phi, const double& delta_t,
   for (int i = 0; i < m; i++) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
-  arma::mat direct = arma::mat(p, p);
-  direct = arma::expmat(delta_t * d * phi * d);
+  arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
   // indirect effect
   double indirect_dbl = total_dbl - direct_dbl;
@@ -368,8 +340,8 @@ Rcpp::NumericVector Med(const arma::mat& phi, const double& delta_t,
 //' Test the Drift Matrix
 //'
 //' Both have to be true for the function to return `TRUE`.
-//'   - Test that the largest eigen value of \eqn{\boldsymbol{\Phi}}
-//'     is less than one.
+//'   - Test that the real part of all eigenvalues of \eqn{\boldsymbol{\Phi}}
+//'     is less than zero.
 //'   - Test that the diagonal values of \eqn{\boldsymbol{\Phi}}
 //'     are between 0 to negative inifinity.
 //'
@@ -406,17 +378,57 @@ Rcpp::NumericVector Med(const arma::mat& phi, const double& delta_t,
 //' @export
 // [[Rcpp::export]]
 bool TestPhi(const arma::mat& phi) {
-  int p = phi.n_rows;
-  arma::vec phi_diag(p);
-  phi_diag = phi.diag(0);
+  arma::vec phi_diag = phi.diag(0);
   arma::cx_vec eigenvalues_phi = arma::eig_gen(phi);
-  bool test;
-  if (arma::all(arma::abs(eigenvalues_phi) < 1) && arma::all(phi_diag <= 0)) {
-    test = true;
-  } else {
-    test = false;
-  }
-  return test;
+  return arma::all(arma::real(eigenvalues_phi) < 0) && arma::all(phi_diag <= 0);
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-test-stable.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+
+//' Test Stability
+//'
+//' The function computes the eigenvalues of the input matrix `x`.
+//' It checks if the real part of all eigenvalues is negative.
+//' If all eigenvalues have negative real parts,
+//' the system is considered stable.
+//'
+//' @author Ivan Jacob Agaloos Pesigan
+//'
+//' @param x Numeric matrix.
+//'
+//' @examples
+//' x <- matrix(
+//'   data = c(
+//'     -0.357, 0.771, -0.450,
+//'     0.0, -0.511, 0.729,
+//'     0, 0, -0.693
+//'   ),
+//'   nrow = 3
+//' )
+//' TestStable(x)
+//' x <- matrix(
+//'   data = c(
+//'     -6, 5.5, 0, 0,
+//'     1.25, -2.5, 5.9, -7.3,
+//'     0, 0, -6, 2.5,
+//'     5, 0, 0, -6
+//'   ),
+//'   nrow = 4
+//' )
+//' TestStable(x)
+//'
+//' @family Continuous Time Mediation Functions
+//' @keywords cTMed test
+//' @export
+// [[Rcpp::export]]
+bool TestStable(const arma::mat& x) {
+  arma::cx_vec eigenvalues = arma::eig_gen(x);
+  return arma::all(arma::real(eigenvalues) < 0);
 }
 // -----------------------------------------------------------------------------
 // edit .setup/cpp/cTMed-total-d-t-vec.cpp
@@ -427,11 +439,9 @@ bool TestPhi(const arma::mat& phi) {
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.TotalVec)]]
 arma::vec TotalVec(const arma::vec& phi_vec, const double& delta_t) {
-  int q = phi_vec.n_elem;
-  int p = std::sqrt(q);
+  int p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
-  arma::mat total = arma::mat(p, p);
-  total = arma::expmat(delta_t * phi);
+  arma::mat total = arma::expmat(delta_t * phi);
   arma::vec total_vec = arma::vectorise(total);
   return total_vec;
 }
@@ -444,8 +454,6 @@ arma::vec TotalVec(const arma::vec& phi_vec, const double& delta_t) {
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Total)]]
 arma::mat Total(const arma::mat& phi, const double& delta_t) {
-  int p = phi.n_rows;
-  arma::mat total = arma::mat(p, p);
-  total = arma::expmat(delta_t * phi);
+  arma::mat total = arma::expmat(delta_t * phi);
   return total;
 }

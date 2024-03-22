@@ -48,15 +48,13 @@ Name/s of the mediator variable/s in \code{phi}.}
 Number of replications.}
 
 \item{test_phi}{Logical.
-Check the generated \eqn{\boldsymbol{\Phi}}
-and generate different values if the test fails.
-The test includes the following:
-\itemize{
-\item test that the largest eigen value of \eqn{\boldsymbol{\Phi}}
-is less than one, and
-\item test that the diagonal values of \eqn{\boldsymbol{\Phi}}
-are between 0 to negative inifinity.
-}}
+If \code{test_phi = TRUE},
+the function runs \code{\link[=TestPhi]{TestPhi()}}
+on the generated drift matrix \eqn{\boldsymbol{\Phi}}.
+If the \code{\link[=TestPhi]{TestPhi()}} returns \code{FALSE},
+the function generates a new drift matrix \eqn{\boldsymbol{\Phi}}
+and runs the test recursively
+until \code{\link[=TestPhi]{TestPhi()}} returns \code{TRUE}.}
 
 \item{ncores}{Positive integer.
 Number of cores to use.
@@ -326,6 +324,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{Med}()},
 \code{\link{PosteriorMed}()},
 \code{\link{TestPhi}()},
+\code{\link{TestStable}()},
 \code{\link{Total}()}
 }
 \author{
