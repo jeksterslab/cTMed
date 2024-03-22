@@ -7,3 +7,5 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 
 bool TestPhi(const arma::mat& phi);
+
+bool TestStable(const arma::mat& x);

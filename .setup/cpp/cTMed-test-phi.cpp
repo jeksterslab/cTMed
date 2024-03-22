@@ -9,8 +9,8 @@
 //' Test the Drift Matrix
 //'
 //' Both have to be true for the function to return `TRUE`.
-//'   - Test that the largest eigen value of \eqn{\boldsymbol{\Phi}}
-//'     is less than one.
+//'   - Test that the real part of all eigenvalues of \eqn{\boldsymbol{\Phi}}
+//'     is less than zero.
 //'   - Test that the diagonal values of \eqn{\boldsymbol{\Phi}}
 //'     are between 0 to negative inifinity.
 //'
@@ -47,15 +47,7 @@
 //' @export
 // [[Rcpp::export]]
 bool TestPhi(const arma::mat& phi) {
-  int p = phi.n_rows;
-  arma::vec phi_diag(p);
-  phi_diag = phi.diag(0);
+  arma::vec phi_diag = phi.diag(0);
   arma::cx_vec eigenvalues_phi = arma::eig_gen(phi);
-  bool test;
-  if (arma::all(arma::abs(eigenvalues_phi) < 1) && arma::all(phi_diag <= 0)) {
-    test = true;
-  } else {
-    test = false;
-  }
-  return test;
+  return arma::all(arma::real(eigenvalues_phi) < 0) && arma::all(phi_diag <= 0);
 }
