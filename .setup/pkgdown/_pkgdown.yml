@@ -29,12 +29,6 @@ reference:
   - has_keyword("data")
 
 articles:
-- title: Examples
-  contents:
-  - data
-  - ou
-  - delta
-  - mc
 - title: Session Information
   contents:
   - session/session

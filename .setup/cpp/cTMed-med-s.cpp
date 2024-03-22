@@ -6,8 +6,7 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Meds)]]
-const arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t,
-                     const int& from, const int& to, const arma::vec& med) {
+const arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t, const int& from, const int& to, const arma::vec& med) {
   int t = delta_t.n_rows;
   arma::mat output = arma::mat(t, 4);
   int p = phi.n_rows;

@@ -1,4 +1,4 @@
-#' Simulated Data Using Parameters from Deboeck and Preacher 2015
+#' Simulated Data Using Parameters from Deboeck and Preacher (2015)
 #'
 #' The data was simulated using [simStateSpace::SimSSMVARFixed()]
 #' from a discrete-time vector autoregressive model

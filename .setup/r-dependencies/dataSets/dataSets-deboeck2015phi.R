@@ -3,7 +3,7 @@
 #' Parameter estimates and sampling variance-covariance matrix
 #' of the continuous-time vector autoregressive model drift matrix
 #' using the data set `deboeck2015`.
-#' The model was fitted using the `dynr` package.
+#' The model was fitted using the `dynr` and `ctsem` packages.
 #'
 #' @format List with Two Elements:
 #'   \describe{
@@ -34,6 +34,11 @@
 #'   A method for continuous time mediation analysis.
 #'   Structural Equation Modeling: A Multidisciplinary Journal, 23 (1), 61–75.
 #'   \doi{10.1080/10705511.2014.973960}
+#'
+#'   Driver C. C., Voelkle M. C. (2018).
+#'   Hierarchical Bayesian continuous time dynamic modeling.
+#'   *Psychological Methods*, *23*(4), 774-799.
+#'   \doi{10.1037/met0000168}
 #'
 #'   Ou, L., Hunter, M. D., & Chow, S.-M. (2019).
 #'   What's for dynr: A package for linear and nonlinear dynamic modeling in R.
