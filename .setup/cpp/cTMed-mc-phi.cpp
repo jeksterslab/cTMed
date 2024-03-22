@@ -6,7 +6,8 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.MCPhi)]]
-Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const int& R, bool test_phi = true) {
+Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
+                 const int& R, bool test_phi = true) {
   Rcpp::List output(R);
   int p = phi.n_rows;
   int q = p * p;

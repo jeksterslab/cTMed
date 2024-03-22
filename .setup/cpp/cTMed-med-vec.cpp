@@ -6,7 +6,9 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.MedVec)]]
-Rcpp::NumericVector MedVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med) {
+Rcpp::NumericVector MedVec(const arma::vec& phi_vec, const double& delta_t,
+                           const int& from, const int& to,
+                           const arma::vec& med) {
   Rcpp::NumericVector output(3);
   int p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
