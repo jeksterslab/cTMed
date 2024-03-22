@@ -32,7 +32,7 @@ colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 mc <- MCPhi(
   phi = phi,
   vcov_phi_vec = 0.1 * diag(9),
-  R = 5
+  R = 100L # use a large value for R in actual research
 )
 print(mc)
 

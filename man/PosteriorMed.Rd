@@ -73,8 +73,20 @@ See \code{\link[=Total]{Total()}},
 \code{\link[=Indirect]{Indirect()}} for more details.
 }
 \examples{
-data("deboeck2015phi", package = "cTMed")
-phi <- deboeck2015phi$ctsem$posterior_phi
+phi <- matrix(
+  data = c(
+    -0.357, 0.771, -0.450,
+    0.0, -0.511, 0.729,
+    0, 0, -0.693
+  ),
+  nrow = 3
+)
+colnames(phi) <- rownames(phi) <- c("x", "m", "y")
+phi <- MCPhi(
+  phi = phi,
+  vcov_phi_vec = 0.1 * diag(9),
+  R = 100L # use a large value for R in actual research
+)$output
 
 # Specific time-interval ----------------------------------------------------
 PosteriorMed(

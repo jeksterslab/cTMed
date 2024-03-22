@@ -192,7 +192,7 @@
 #' MCPhi(
 #'   phi = phi,
 #'   vcov_phi_vec = 0.1 * diag(9),
-#'   R = 5
+#'   R = 100L # use a large value for R in actual research
 #' )
 #' phi <- matrix(
 #'   data = c(
@@ -207,7 +207,7 @@
 #' MCPhi(
 #'   phi = phi,
 #'   vcov_phi_vec = 0.1 * diag(16),
-#'   R = 5,
+#'   R = 100L, # use a large value for R in actual research
 #'   test_phi = FALSE
 #' )
 #'
