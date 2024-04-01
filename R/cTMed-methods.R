@@ -92,7 +92,7 @@ print.ctmedeffect <- function(x,
 #' # Range of time-intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -130,6 +130,7 @@ print.ctmedmed <- function(x,
 #' @return Returns the structure of the output.
 #'
 #' @examples
+#' set.seed(42)
 #' phi <- matrix(
 #'   data = c(
 #'     -0.357, 0.771, -0.450,
@@ -235,7 +236,7 @@ print.ctmedmcphi <- function(x,
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -272,6 +273,7 @@ print.ctmeddelta <- function(x,
 #'   number of Monte Carlo replications, and confidence intervals.
 #'
 #' @examples
+#' set.seed(42)
 #' phi <- matrix(
 #'   data = c(
 #'     -0.357, 0.771, -0.450,
@@ -330,7 +332,7 @@ print.ctmeddelta <- function(x,
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
@@ -390,7 +392,7 @@ print.ctmedmc <- function(x,
 #' # Range of time-intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -496,7 +498,7 @@ summary.ctmedmed <- function(object,
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -548,6 +550,7 @@ summary.ctmeddelta <- function(object,
 #'   Significance level \eqn{\alpha}.
 #'
 #' @examples
+#' set.seed(42)
 #' phi <- matrix(
 #'   data = c(
 #'     -0.357, 0.771, -0.450,
@@ -606,7 +609,7 @@ summary.ctmeddelta <- function(object,
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
@@ -710,7 +713,7 @@ summary.ctmedmc <- function(object,
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -778,6 +781,7 @@ confint.ctmeddelta <- function(object,
 #' @return Returns a matrix of confidence intervals.
 #'
 #' @examples
+#' set.seed(42)
 #' phi <- matrix(
 #'   data = c(
 #'     -0.357, 0.771, -0.450,
@@ -836,7 +840,7 @@ confint.ctmeddelta <- function(object,
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
@@ -912,7 +916,7 @@ confint.ctmedmc <- function(object,
 #' # Range of time-intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -984,7 +988,7 @@ plot.ctmedmed <- function(x,
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -1012,6 +1016,7 @@ plot.ctmeddelta <- function(x,
 #' @param ... Additional arguments.
 #'
 #' @examples
+#' set.seed(42)
 #' phi <- matrix(
 #'   data = c(
 #'     -0.357, 0.771, -0.450,
@@ -1058,7 +1063,7 @@ plot.ctmeddelta <- function(x,
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:20,
+#'   delta_t = 1:30,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
