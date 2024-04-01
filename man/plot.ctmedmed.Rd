@@ -28,7 +28,7 @@ colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 # Range of time-intervals ---------------------------------------------------
 med <- Med(
   phi = phi,
-  delta_t = 1:20,
+  delta_t = 1:30,
   from = "x",
   to = "y",
   med = "m"

@@ -198,6 +198,7 @@ which represents random fluctuations.
 }
 }
 \examples{
+set.seed(42)
 phi <- matrix(
   data = c(
     -0.357, 0.771, -0.450,

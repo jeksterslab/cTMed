@@ -64,7 +64,7 @@ vcov_phi_vec <- matrix(
 delta <- DeltaMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
-  delta_t = 1:20,
+  delta_t = 1:30,
   from = "x",
   to = "y",
   med = "m"

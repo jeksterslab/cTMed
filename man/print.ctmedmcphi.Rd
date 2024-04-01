@@ -20,6 +20,7 @@ Returns the structure of the output.
 Print Method for Object of Class \code{ctmedmcphi}
 }
 \examples{
+set.seed(42)
 phi <- matrix(
   data = c(
     -0.357, 0.771, -0.450,
