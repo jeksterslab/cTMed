@@ -70,7 +70,7 @@
       "indirect"
     ],
     type = "l",
-    col = "#e41a1c",
+    col = "#e66101",
     lty = 1,
     lwd = 2
   )
@@ -81,7 +81,7 @@
       "direct"
     ],
     type = "l",
-    col = "#377eb8",
+    col = "#fdb863",
     lty = 2,
     lwd = 2
   )
@@ -92,7 +92,7 @@
       "total"
     ],
     type = "l",
-    col = "#4daf4a",
+    col = "#5e3c99",
     lty = 3,
     lwd = 2
   )
@@ -100,7 +100,7 @@
     x = "topright",
     legend = c("Indirect", "Direct", "Total"),
     lty = c(1, 2, 3),
-    col = c("#e41a1c", "#377eb8", "#4daf4a"),
+    col = c("#e66101", "#fdb863", "#5e3c99"),
     cex = 0.8,
     lwd = 2
   )

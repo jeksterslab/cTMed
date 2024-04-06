@@ -106,13 +106,13 @@
   foo <- function(effect,
                   ci) {
     if (effect == "indirect") {
-      col <- "#e41a1c"
+      col <- "#e66101" # "#e41a1c"
     }
     if (effect == "direct") {
-      col <- "#377eb8"
+      col <- "#fdb863" # "#377eb8"
     }
     if (effect == "total") {
-      col <- "#4daf4a"
+      col <- "#5e3c99" # "#4daf4a"
     }
     ci <- ci[which(ci$effect == effect), ]
     graphics::plot.default(
@@ -135,6 +135,19 @@
         " Effect (Delta Method)"
       )
     )
+    for (i in seq_along(ci$interval)) {
+      if (!(ci$ll[i] <= 0 & 0 <= ci$ul[i])) {
+        graphics::segments(
+          x0 = ci$interval[i],
+          y0 = ci$ll[i],
+          x1 = ci$interval[i],
+          y1 = ci$ul[i],
+          col = col,
+          lty = 3,
+          lwd = 1
+        )
+      }
+    }
     graphics::abline(
       h = 0
     )
