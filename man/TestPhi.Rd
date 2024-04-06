@@ -52,6 +52,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCPhi}()},
 \code{\link{Med}()},
 \code{\link{PosteriorMed}()},
+\code{\link{PosteriorPhi}()},
 \code{\link{TestStable}()},
 \code{\link{Total}()}
 }
