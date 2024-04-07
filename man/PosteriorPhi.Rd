@@ -4,16 +4,16 @@
 \alias{PosteriorPhi}
 \title{Extract the Posterior Samples of the Drift Matrix}
 \usage{
-PosteriorPhi(x)
+PosteriorPhi(object)
 }
 \arguments{
-\item{x}{Object of class \code{ctStanFit}.
+\item{object}{Object of class \code{ctStanFit}.
 Output of the \code{\link[ctsem:ctStanFit]{ctsem::ctStanFit()}} function.}
 }
 \description{
 The function extracts the posterior samples
 of the drift matrix from a fitted model
-using the \code{\link[ctsem:ctStanFit]{ctsem::ctStanFit()}} function.
+from the \code{\link[ctsem:ctStanFit]{ctsem::ctStanFit()}} function.
 }
 \seealso{
 Other Continuous Time Mediation Functions: 

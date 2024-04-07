@@ -2,25 +2,25 @@
 #'
 #' The function extracts the posterior samples
 #' of the drift matrix from a fitted model
-#' using the [ctsem::ctStanFit()] function.
+#' from the [ctsem::ctStanFit()] function.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param x Object of class `ctStanFit`.
+#' @param object Object of class `ctStanFit`.
 #'   Output of the [ctsem::ctStanFit()] function.
 #'
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed uncertainty
 #' @export
-PosteriorPhi <- function(x) {
+PosteriorPhi <- function(object) {
   stopifnot(
     inherits(
       object,
       "ctStanFit"
     )
   )
-  varnames <- x$ctstanmodelbase$latentNames
-  posterior <- ctsem::ctExtract(x)$pop_DRIFT
+  varnames <- object$ctstanmodelbase$latentNames
+  posterior <- ctsem::ctExtract(object)$pop_DRIFT
   return(
     lapply(
       X = seq_len(dim(posterior)[1]),
