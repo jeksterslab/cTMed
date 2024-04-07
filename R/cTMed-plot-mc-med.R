@@ -158,7 +158,7 @@
       )
     )
     for (i in seq_along(ci$interval)) {
-      if (!(ci$ll[i] <= 0 & 0 <= ci$ul[i])) {
+      if (!(ci$ll[i] <= 0 && 0 <= ci$ul[i])) {
         graphics::segments(
           x0 = ci$interval[i],
           y0 = ci$ll[i],

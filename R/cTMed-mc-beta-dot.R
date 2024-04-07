@@ -50,22 +50,22 @@
           what = "rbind",
           args = thetahatstar
         )
-        # colnames(thetahatstar) <- c(
+        #colnames(thetahatstar) <- c(
         #  "total",
         #  "direct",
         #  "indirect",
         #  "interval"
-        # )
+        #)
         est <- .TotalVec(
           phi = phi,
           delta_t = i
         )
-        # names(est) <- c(
+        #names(est) <- c(
         #  "total",
         #  "direct",
         #  "indirect",
         #  "interval"
-        # )
+        #)
         out <- list(
           delta_t = i,
           est = est,
@@ -103,22 +103,22 @@
           what = "rbind",
           args = thetahatstar
         )
-        # colnames(thetahatstar) <- c(
+        #colnames(thetahatstar) <- c(
         #  "total",
         #  "direct",
         #  "indirect",
         #  "interval"
-        # )
+        #)
         est <- .TotalVec(
           phi = phi,
           delta_t = i
         )
-        # names(est) <- c(
+        #names(est) <- c(
         #  "total",
         #  "direct",
         #  "indirect",
         #  "interval"
-        # )
+        #)
         out <- list(
           delta_t = i,
           est = est,
