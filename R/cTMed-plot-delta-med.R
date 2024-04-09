@@ -106,10 +106,10 @@
   foo <- function(effect,
                   ci) {
     if (effect == "indirect") {
-      col <- "#e66101" # "#e41a1c"
+      col <- "#ca0020" # "#e41a1c"
     }
     if (effect == "direct") {
-      col <- "#fdb863" # "#377eb8"
+      col <- "#e66101" # "#377eb8"
     }
     if (effect == "total") {
       col <- "#5e3c99" # "#4daf4a"

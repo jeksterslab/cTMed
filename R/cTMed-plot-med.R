@@ -70,7 +70,7 @@
       "indirect"
     ],
     type = "l",
-    col = "#e66101",
+    col = "#ca0020",
     lty = 1,
     lwd = 2
   )
@@ -81,7 +81,7 @@
       "direct"
     ],
     type = "l",
-    col = "#fdb863",
+    col = "#e66101",
     lty = 2,
     lwd = 2
   )
