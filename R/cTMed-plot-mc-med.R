@@ -126,13 +126,13 @@
   foo <- function(effect,
                   ci) {
     if (effect == "indirect") {
-      col <- "#ca0020" # "#e41a1c"
+      col <- "#d7191c"
     }
     if (effect == "direct") {
-      col <- "#e66101" # "#377eb8"
+      col <- "#fdae61"
     }
     if (effect == "total") {
-      col <- "#5e3c99" # "#4daf4a"
+      col <- "#2c7bb6"
     }
     ci <- ci[which(ci$effect == effect), ]
     graphics::plot.default(
