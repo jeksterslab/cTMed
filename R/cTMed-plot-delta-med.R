@@ -6,6 +6,15 @@
 #'   Output of the [DeltaMed()] function.
 #' @param alpha Numeric.
 #'   Significance level.
+#' @param col_direct Character string.
+#'   Optional argument.
+#'   Color for the direct effect.
+#' @param col_indirect Character string.
+#'   Optional argument.
+#'   Color for the indirect effect.
+#' @param col_total Character string.
+#'   Optional argument.
+#'   Color for the total effect.
 #'
 #' @examples
 #' phi <- matrix(
@@ -65,7 +74,10 @@
 #' @keywords cTMed plot
 #' @noRd
 .PlotDeltaMed <- function(object,
-                          alpha = 0.05) {
+                          alpha = 0.05,
+                          col_direct = "#2c7bb6",
+                          col_indirect = "#d7191c",
+                          col_total = "#5e3c99") {
   if (length(object$output) == 1) {
     stop(
       paste0(
@@ -106,13 +118,13 @@
   foo <- function(effect,
                   ci) {
     if (effect == "indirect") {
-      col <- "#d7191c"
+      col <- col_indirect
     }
     if (effect == "direct") {
-      col <- "#fdae61"
+      col <- col_direct
     }
     if (effect == "total") {
-      col <- "#2c7bb6"
+      col <- col_total
     }
     ci <- ci[which(ci$effect == effect), ]
     graphics::plot.default(

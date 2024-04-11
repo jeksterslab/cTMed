@@ -900,6 +900,15 @@ confint.ctmedmc <- function(object,
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param x Object of class `ctmedmed`.
+#' @param col_direct Character string.
+#'   Optional argument.
+#'   Color for the direct effect.
+#' @param col_indirect Character string.
+#'   Optional argument.
+#'   Color for the indirect effect.
+#' @param col_total Character string.
+#'   Optional argument.
+#'   Color for the total effect.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -926,9 +935,15 @@ confint.ctmedmc <- function(object,
 #' @keywords methods
 #' @export
 plot.ctmedmed <- function(x,
+                          col_direct = "#2c7bb6",
+                          col_indirect = "#d7191c",
+                          col_total = "#5e3c99",
                           ...) {
   .PlotMed(
-    object = x
+    object = x,
+    col_direct = col_direct,
+    col_indirect = col_indirect,
+    col_total = col_total
   )
 }
 
@@ -939,6 +954,15 @@ plot.ctmedmed <- function(x,
 #' @param x Object of class `ctmeddelta`.
 #' @param alpha Numeric.
 #'   Significance level
+#' @param col_direct Character string.
+#'   Optional argument.
+#'   Color for the direct effect.
+#' @param col_indirect Character string.
+#'   Optional argument.
+#'   Color for the indirect effect.
+#' @param col_total Character string.
+#'   Optional argument.
+#'   Color for the total effect.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -999,10 +1023,16 @@ plot.ctmedmed <- function(x,
 #' @export
 plot.ctmeddelta <- function(x,
                             alpha = 0.05,
+                            col_direct = "#2c7bb6",
+                            col_indirect = "#d7191c",
+                            col_total = "#5e3c99",
                             ...) {
   .PlotDeltaMed(
     object = x,
-    alpha = alpha
+    alpha = alpha,
+    col_direct = col_direct,
+    col_indirect = col_indirect,
+    col_total = col_total
   )
 }
 
@@ -1013,6 +1043,15 @@ plot.ctmeddelta <- function(x,
 #' @param x Object of class `ctmedmc`.
 #' @param alpha Numeric.
 #'   Significance level
+#' @param col_direct Character string.
+#'   Optional argument.
+#'   Color for the direct effect.
+#' @param col_indirect Character string.
+#'   Optional argument.
+#'   Color for the indirect effect.
+#' @param col_total Character string.
+#'   Optional argument.
+#'   Color for the total effect.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -1075,9 +1114,15 @@ plot.ctmeddelta <- function(x,
 #' @export
 plot.ctmedmc <- function(x,
                          alpha = 0.05,
+                         col_direct = "#2c7bb6",
+                         col_indirect = "#d7191c",
+                         col_total = "#5e3c99",
                          ...) {
   .PlotMCMed(
     object = x,
-    alpha = alpha
+    alpha = alpha,
+    col_direct = col_direct,
+    col_indirect = col_indirect,
+    col_total = col_total
   )
 }

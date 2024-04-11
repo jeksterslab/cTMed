@@ -4,13 +4,32 @@
 \alias{plot.ctmeddelta}
 \title{Plot Method for an Object of Class \code{ctmeddelta}}
 \usage{
-\method{plot}{ctmeddelta}(x, alpha = 0.05, ...)
+\method{plot}{ctmeddelta}(
+  x,
+  alpha = 0.05,
+  col_direct = "#2c7bb6",
+  col_indirect = "#d7191c",
+  col_total = "#5e3c99",
+  ...
+)
 }
 \arguments{
 \item{x}{Object of class \code{ctmeddelta}.}
 
 \item{alpha}{Numeric.
 Significance level}
+
+\item{col_direct}{Character string.
+Optional argument.
+Color for the direct effect.}
+
+\item{col_indirect}{Character string.
+Optional argument.
+Color for the indirect effect.}
+
+\item{col_total}{Character string.
+Optional argument.
+Color for the total effect.}
 
 \item{...}{Additional arguments.}
 }

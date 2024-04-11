@@ -4,10 +4,28 @@
 \alias{plot.ctmedmed}
 \title{Plot Method for an Object of Class \code{ctmedmed}}
 \usage{
-\method{plot}{ctmedmed}(x, ...)
+\method{plot}{ctmedmed}(
+  x,
+  col_direct = "#2c7bb6",
+  col_indirect = "#d7191c",
+  col_total = "#5e3c99",
+  ...
+)
 }
 \arguments{
 \item{x}{Object of class \code{ctmedmed}.}
+
+\item{col_direct}{Character string.
+Optional argument.
+Color for the direct effect.}
+
+\item{col_indirect}{Character string.
+Optional argument.
+Color for the indirect effect.}
+
+\item{col_total}{Character string.
+Optional argument.
+Color for the total effect.}
 
 \item{...}{Additional arguments.}
 }
