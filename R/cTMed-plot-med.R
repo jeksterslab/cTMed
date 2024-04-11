@@ -4,6 +4,15 @@
 #'
 #' @param object R object.
 #'   Output of the [Med()] function.
+#' @param col_direct Character string.
+#'   Optional argument.
+#'   Color for the direct effect.
+#' @param col_indirect Character string.
+#'   Optional argument.
+#'   Color for the indirect effect.
+#' @param col_total Character string.
+#'   Optional argument.
+#'   Color for the total effect.
 #'
 #' @examples
 #' phi <- matrix(
@@ -29,7 +38,10 @@
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed plot
 #' @noRd
-.PlotMed <- function(object) {
+.PlotMed <- function(object,
+                     col_direct = "#2c7bb6",
+                     col_indirect = "#d7191c",
+                     col_total = "#5e3c99") {
   if (dim(object$output)[1] == 1) {
     stop(
       paste0(
@@ -70,7 +82,7 @@
       "indirect"
     ],
     type = "l",
-    col = "#d7191c",
+    col = col_indirect,
     lty = 1,
     lwd = 2
   )
@@ -81,7 +93,7 @@
       "direct"
     ],
     type = "l",
-    col = "#fdae61",
+    col = col_direct,
     lty = 2,
     lwd = 2
   )
@@ -92,7 +104,7 @@
       "total"
     ],
     type = "l",
-    col = "#2c7bb6",
+    col = col_total,
     lty = 3,
     lwd = 2
   )
@@ -100,7 +112,7 @@
     x = "topright",
     legend = c("Indirect", "Direct", "Total"),
     lty = c(1, 2, 3),
-    col = c("#d7191c", "#fdae61", "#2c7bb6"),
+    col = c(col_indirect, col_direct, col_total),
     cex = 0.8,
     lwd = 2
   )
