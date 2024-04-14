@@ -152,7 +152,7 @@
   rownames(ci) <- NULL
   effect <- unique(
     ci$effect
-  )  
+  )
   if (is.null(col)) {
     col <- grDevices::rainbow(length(effect))
   }
