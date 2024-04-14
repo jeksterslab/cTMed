@@ -28,7 +28,13 @@
     <loc>https://github.com/jeksterslab/cTMed/news/index.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/DeltaMed.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/Direct.html</loc>
@@ -37,19 +43,34 @@
     <loc>https://github.com/jeksterslab/cTMed/reference/Indirect.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/IndirectCentral.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/MCMed.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/MCPhi.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/MCTotalCentral.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/Med.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/PosteriorMed.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/PosteriorPhi.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/TestPhi.html</loc>
@@ -59,6 +80,9 @@
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/Total.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/TotalCentral.html</loc>
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/cTMed-package.html</loc>
