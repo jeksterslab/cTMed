@@ -52,8 +52,8 @@ of class \code{ctmeddelta} which is a list with the following elements:
 Each element in the \code{output} list has the following elements:
 \describe{
 \item{delta_t}{Time-interval.}
-\item{jacobian}{Jacobian matrix.},
-\item{est}{Estimated total, direct, and indirect effects.},
+\item{jacobian}{Jacobian matrix.}
+\item{est}{Estimated total, direct, and indirect effects.}
 \item{vcov}{Sampling variance-covariance matrix of the
 estimated total, direct, and indirect effects.}
 }
@@ -332,7 +332,7 @@ DeltaMed(
 delta <- DeltaMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
-  delta_t = 1:30,
+  delta_t = 1:5,
   from = "x",
   to = "y",
   med = "m"
@@ -368,21 +368,29 @@ Psychometrika, 87 (1), 214–252.
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{DeltaIndirectCentral}()},
+\code{\link{DeltaTotalCentral}()},
 \code{\link{Direct}()},
 \code{\link{Indirect}()},
+\code{\link{IndirectCentral}()},
+\code{\link{MCIndirectCentral}()},
 \code{\link{MCMed}()},
 \code{\link{MCPhi}()},
+\code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},
+\code{\link{PosteriorTotalCentral}()},
 \code{\link{TestPhi}()},
 \code{\link{TestStable}()},
-\code{\link{Total}()}
+\code{\link{Total}()},
+\code{\link{TotalCentral}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan
 }
 \concept{Continuous Time Mediation Functions}
 \keyword{cTMed}
-\keyword{main}
+\keyword{path}
 \keyword{uncertainty}

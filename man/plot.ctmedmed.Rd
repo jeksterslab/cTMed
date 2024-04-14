@@ -4,28 +4,18 @@
 \alias{plot.ctmedmed}
 \title{Plot Method for an Object of Class \code{ctmedmed}}
 \usage{
-\method{plot}{ctmedmed}(
-  x,
-  col_direct = "#2c7bb6",
-  col_indirect = "#d7191c",
-  col_total = "#5e3c99",
-  ...
-)
+\method{plot}{ctmedmed}(x, col = NULL, legend_pos = "topright", ...)
 }
 \arguments{
 \item{x}{Object of class \code{ctmedmed}.}
 
-\item{col_direct}{Character string.
+\item{col}{Character vector.
 Optional argument.
-Color for the direct effect.}
+Character vector of colors.}
 
-\item{col_indirect}{Character string.
+\item{legend_pos}{Character vector.
 Optional argument.
-Color for the indirect effect.}
-
-\item{col_total}{Character string.
-Optional argument.
-Color for the total effect.}
+Legend position.}
 
 \item{...}{Additional arguments.}
 }
@@ -46,7 +36,7 @@ colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 # Range of time-intervals ---------------------------------------------------
 med <- Med(
   phi = phi,
-  delta_t = 1:30,
+  delta_t = 1:5,
   from = "x",
   to = "y",
   med = "m"

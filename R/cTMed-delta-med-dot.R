@@ -1,12 +1,10 @@
 .DeltaMed <- function(delta_t,
                       phi,
                       vcov_phi_vec,
-                      p,
                       from,
                       to,
                       med) {
   constructor <- function(delta_t,
-                          p,
                           from,
                           to,
                           med) {
@@ -26,7 +24,6 @@
   }
   func <- constructor(
     delta_t = delta_t,
-    p = p,
     from = from,
     to = to,
     med = med

@@ -6,7 +6,7 @@
 \alias{cTMed-package}
 \title{cTMed: Continuous Time Mediation}
 \description{
-Calculates standard errors and confidence intervals for the indirect effect in continuous time mediation models.
+Calculates standard errors and confidence intervals for effects in continuous time mediation models.
 }
 \seealso{
 Useful links:

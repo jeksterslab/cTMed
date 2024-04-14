@@ -9,8 +9,16 @@
     .Call(`_cTMed_Direct`, phi, delta_t, from, to, med)
 }
 
-.IndirectVec <- function(phi_vec, delta_t, from, to, med) {
-    .Call(`_cTMed_IndirectVec`, phi_vec, delta_t, from, to, med)
+.IndirectCentrals <- function(phi, delta_t) {
+    .Call(`_cTMed_IndirectCentrals`, phi, delta_t)
+}
+
+.IndirectCentralVec <- function(phi_vec, delta_t) {
+    .Call(`_cTMed_IndirectCentralVec`, phi_vec, delta_t)
+}
+
+.IndirectCentral <- function(phi, delta_t) {
+    .Call(`_cTMed_IndirectCentral`, phi, delta_t)
 }
 
 .Indirect <- function(phi, delta_t, from, to, med) {
@@ -121,6 +129,18 @@ TestPhi <- function(phi) {
 #' @export
 TestStable <- function(x) {
     .Call(`_cTMed_TestStable`, x)
+}
+
+.TotalCentrals <- function(phi, delta_t) {
+    .Call(`_cTMed_TotalCentrals`, phi, delta_t)
+}
+
+.TotalCentralVec <- function(phi_vec, delta_t) {
+    .Call(`_cTMed_TotalCentralVec`, phi_vec, delta_t)
+}
+
+.TotalCentral <- function(phi, delta_t) {
+    .Call(`_cTMed_TotalCentral`, phi, delta_t)
 }
 
 .TotalVec <- function(phi_vec, delta_t) {

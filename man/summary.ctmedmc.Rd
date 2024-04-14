@@ -88,7 +88,7 @@ summary(mc)
 mc <- MCMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
-  delta_t = 1:30,
+  delta_t = 1:5,
   from = "x",
   to = "y",
   med = "m",

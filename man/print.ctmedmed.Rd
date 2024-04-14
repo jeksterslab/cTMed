@@ -43,7 +43,7 @@ print(med)
 # Range of time-intervals ---------------------------------------------------
 med <- Med(
   phi = phi,
-  delta_t = 1:30,
+  delta_t = 1:5,
   from = "x",
   to = "y",
   med = "m"

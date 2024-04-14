@@ -196,6 +196,13 @@ plot(med)
 # Methods -------------------------------------------------------------------
 # Med has a number of methods including
 # print, summary, and plot
+med <- Med(
+  phi = phi,
+  delta_t = 1:5,
+  from = "x",
+  to = "y",
+  med = "m"
+)
 print(med)
 summary(med)
 plot(med)
@@ -221,16 +228,24 @@ Psychometrika, 87 (1), 214–252.
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{DeltaIndirectCentral}()},
 \code{\link{DeltaMed}()},
+\code{\link{DeltaTotalCentral}()},
 \code{\link{Direct}()},
 \code{\link{Indirect}()},
+\code{\link{IndirectCentral}()},
+\code{\link{MCIndirectCentral}()},
 \code{\link{MCMed}()},
 \code{\link{MCPhi}()},
+\code{\link{MCTotalCentral}()},
+\code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},
+\code{\link{PosteriorTotalCentral}()},
 \code{\link{TestPhi}()},
 \code{\link{TestStable}()},
-\code{\link{Total}()}
+\code{\link{Total}()},
+\code{\link{TotalCentral}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan
@@ -238,4 +253,4 @@ Ivan Jacob Agaloos Pesigan
 \concept{Continuous Time Mediation Functions}
 \keyword{cTMed}
 \keyword{effects}
-\keyword{main}
+\keyword{path}

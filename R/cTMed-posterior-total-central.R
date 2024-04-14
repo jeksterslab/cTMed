@@ -1,24 +1,18 @@
 #' Posterior Distribution
-#' of Total, Direct, and Indirect Effects
-#' of X on Y Through M
+#' of the Total Effect Centrality
 #' Over a Specific Time-Interval
 #' or a Range of Time-Intervals
 #'
 #' This function generates a posterior
 #' distribution
-#' of the total, direct and indirect effects
-#' of the independent variable \eqn{X}
-#' on the dependent variable \eqn{Y}
-#' through mediator variables \eqn{\mathbf{m}}
+#' of the total effect centrality
 #' over a specific time-interval \eqn{\Delta t}
 #' or a range of time-intervals
 #' using the posterior distribution
 #' of the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
-#' @details See [Total()],
-#'   [Direct()], and
-#'   [Indirect()] for more details.
+#' @details See [TotalCentral()] for more details.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -37,7 +31,7 @@
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
-#'     \item{fun}{Function used (PosteriorMed).}
+#'     \item{fun}{Function used (PosteriorTotalCentral).}
 #'     \item{output}{A list with length of `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
@@ -98,25 +92,19 @@
 #' )$output
 #'
 #' # Specific time-interval ----------------------------------------------------
-#' PosteriorMed(
+#' PosteriorTotalCentral(
 #'   phi = phi,
-#'   delta_t = 1,
-#'   from = "x",
-#'   to = "y",
-#'   med = "m"
+#'   delta_t = 1
 #' )
 #'
 #' # Range of time-intervals ---------------------------------------------------
-#' posterior <- PosteriorMed(
+#' posterior <- PosteriorTotalCentral(
 #'   phi = phi,
-#'   delta_t = 1:5,
-#'   from = "x",
-#'   to = "y",
-#'   med = "m"
+#'   delta_t = 1:5
 #' )
 #'
 #' # Methods -------------------------------------------------------------------
-#' # PosteriorMed has a number of methods including
+#' # PosteriorTotalCentral has a number of methods including
 #' # print, summary, confint, and plot
 #' print(posterior)
 #' summary(posterior)
@@ -124,40 +112,23 @@
 #' plot(posterior)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed uncertainty path
+#' @keywords cTMed uncertainty network
 #' @export
-PosteriorMed <- function(phi,
-                         delta_t,
-                         from,
-                         to,
-                         med,
-                         ncores = NULL) {
+PosteriorTotalCentral <- function(phi,
+                                  delta_t,
+                                  ncores = NULL) {
   stopifnot(
     is.list(phi),
     is.matrix(phi[[1]])
   )
-  idx <- rownames(phi[[1]])
-  stopifnot(
-    idx == colnames(phi[[1]]),
-    length(from) == 1,
-    length(to) == 1,
-    from %in% idx,
-    to %in% idx
-  )
-  for (i in seq_len(length(med))) {
-    stopifnot(
-      med[i] %in% idx
-    )
-  }
+  total <- TRUE
   args <- list(
     phi = phi,
     delta_t = delta_t,
-    from = from,
-    to = to,
-    med = med,
     ncores = ncores,
     method = "posterior",
-    network = FALSE
+    network = TRUE,
+    total = total
   )
   delta_t <- sort(
     ifelse(
@@ -166,31 +137,17 @@ PosteriorMed <- function(phi,
       no = delta_t
     )
   )
-  from <- which(idx == from)
-  to <- which(idx == to)
-  med <- sapply(
-    X = med,
-    FUN = function(x,
-                   idx) {
-      return(
-        which(idx == x)
-      )
-    },
-    idx = idx
-  )
-  output <- .PosteriorMed(
+  output <- .PosteriorCentral(
     phi = phi,
     delta_t = delta_t,
-    from = from,
-    to = to,
-    med = med,
+    total = total,
     ncores = ncores
   )
   names(output) <- delta_t
   out <- list(
     call = match.call(),
     args = args,
-    fun = "PosteriorMed",
+    fun = "PosteriorTotalCentral",
     output = output
   )
   class(out) <- c(

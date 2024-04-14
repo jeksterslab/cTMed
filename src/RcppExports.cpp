@@ -41,18 +41,39 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// IndirectVec
-double IndirectVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med);
-RcppExport SEXP _cTMed_IndirectVec(SEXP phi_vecSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+// IndirectCentrals
+arma::mat IndirectCentrals(const arma::mat& phi, const arma::vec& delta_t);
+RcppExport SEXP _cTMed_IndirectCentrals(SEXP phiSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(IndirectCentrals(phi, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// IndirectCentralVec
+Rcpp::NumericVector IndirectCentralVec(const arma::vec& phi_vec, const double& delta_t);
+RcppExport SEXP _cTMed_IndirectCentralVec(SEXP phi_vecSEXP, SEXP delta_tSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
     Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
-    rcpp_result_gen = Rcpp::wrap(IndirectVec(phi_vec, delta_t, from, to, med));
+    rcpp_result_gen = Rcpp::wrap(IndirectCentralVec(phi_vec, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// IndirectCentral
+Rcpp::NumericVector IndirectCentral(const arma::mat& phi, const double& delta_t);
+RcppExport SEXP _cTMed_IndirectCentral(SEXP phiSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(IndirectCentral(phi, delta_t));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -117,7 +138,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // Meds
-const arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t, const int& from, const int& to, const arma::vec& med);
+arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t, const int& from, const int& to, const arma::vec& med);
 RcppExport SEXP _cTMed_Meds(SEXP phiSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -183,6 +204,42 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// TotalCentrals
+arma::mat TotalCentrals(const arma::mat& phi, const arma::vec& delta_t);
+RcppExport SEXP _cTMed_TotalCentrals(SEXP phiSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(TotalCentrals(phi, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// TotalCentralVec
+Rcpp::NumericVector TotalCentralVec(const arma::vec& phi_vec, const double& delta_t);
+RcppExport SEXP _cTMed_TotalCentralVec(SEXP phi_vecSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(TotalCentralVec(phi_vec, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// TotalCentral
+Rcpp::NumericVector TotalCentral(const arma::mat& phi, const double& delta_t);
+RcppExport SEXP _cTMed_TotalCentral(SEXP phiSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(TotalCentral(phi, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
 // TotalVec
 arma::vec TotalVec(const arma::vec& phi_vec, const double& delta_t);
 RcppExport SEXP _cTMed_TotalVec(SEXP phi_vecSEXP, SEXP delta_tSEXP) {
@@ -211,7 +268,9 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_DirectVec", (DL_FUNC) &_cTMed_DirectVec, 5},
     {"_cTMed_Direct", (DL_FUNC) &_cTMed_Direct, 5},
-    {"_cTMed_IndirectVec", (DL_FUNC) &_cTMed_IndirectVec, 5},
+    {"_cTMed_IndirectCentrals", (DL_FUNC) &_cTMed_IndirectCentrals, 2},
+    {"_cTMed_IndirectCentralVec", (DL_FUNC) &_cTMed_IndirectCentralVec, 2},
+    {"_cTMed_IndirectCentral", (DL_FUNC) &_cTMed_IndirectCentral, 2},
     {"_cTMed_Indirect", (DL_FUNC) &_cTMed_Indirect, 5},
     {"_cTMed_MCMed", (DL_FUNC) &_cTMed_MCMed, 8},
     {"_cTMed_MCPhiI", (DL_FUNC) &_cTMed_MCPhiI, 3},
@@ -221,6 +280,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_Med", (DL_FUNC) &_cTMed_Med, 5},
     {"_cTMed_TestPhi", (DL_FUNC) &_cTMed_TestPhi, 1},
     {"_cTMed_TestStable", (DL_FUNC) &_cTMed_TestStable, 1},
+    {"_cTMed_TotalCentrals", (DL_FUNC) &_cTMed_TotalCentrals, 2},
+    {"_cTMed_TotalCentralVec", (DL_FUNC) &_cTMed_TotalCentralVec, 2},
+    {"_cTMed_TotalCentral", (DL_FUNC) &_cTMed_TotalCentral, 2},
     {"_cTMed_TotalVec", (DL_FUNC) &_cTMed_TotalVec, 2},
     {"_cTMed_Total", (DL_FUNC) &_cTMed_Total, 2},
     {NULL, NULL, 0}

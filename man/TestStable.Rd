@@ -39,16 +39,24 @@ TestStable(x)
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{DeltaIndirectCentral}()},
 \code{\link{DeltaMed}()},
+\code{\link{DeltaTotalCentral}()},
 \code{\link{Direct}()},
 \code{\link{Indirect}()},
+\code{\link{IndirectCentral}()},
+\code{\link{MCIndirectCentral}()},
 \code{\link{MCMed}()},
 \code{\link{MCPhi}()},
+\code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},
+\code{\link{PosteriorTotalCentral}()},
 \code{\link{TestPhi}()},
-\code{\link{Total}()}
+\code{\link{Total}()},
+\code{\link{TotalCentral}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

@@ -1,20 +1,14 @@
-#' Plot Results of The MCMed or the PosteriorMed Functions
+#' Plot Total, Direct, and Indirect Effects Confidence Intervals
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object R object.
-#'   Output of the [MCMed()] or the [PosteriorMed()] functions.
+#'   Output of the [DeltaMed()], [MCMed()], [PosteriorMed()] functions.
 #' @param alpha Numeric.
 #'   Significance level.
-#' @param col_direct Character string.
+#' @param col Character vector.
 #'   Optional argument.
-#'   Color for the direct effect.
-#' @param col_indirect Character string.
-#'   Optional argument.
-#'   Color for the indirect effect.
-#' @param col_total Character string.
-#'   Optional argument.
-#'   Color for the total effect.
+#'   Character vector of colors.
 #'
 #' @examples
 #' set.seed(42)
@@ -60,22 +54,11 @@
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
-#' MCMed(
-#'   phi = phi,
-#'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1,
-#'   from = "x",
-#'   to = "y",
-#'   med = "m",
-#'   R = 100L # use a large value for R in actual research
-#' )
-#'
 #' # Range of time-intervals ---------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
@@ -83,14 +66,22 @@
 #' )
 #' plot(mc)
 #'
+#' delta <- DeltaMed(
+#'   phi = phi,
+#'   vcov_phi_vec = vcov_phi_vec,
+#'   delta_t = 1:5,
+#'   from = "x",
+#'   to = "y",
+#'   med = "m"
+#' )
+#' plot(delta)
+#'
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed plot
 #' @noRd
-.PlotMCMed <- function(object,
+.PlotMedCI <- function(object,
                        alpha = 0.05,
-                       col_direct = "#2c7bb6",
-                       col_indirect = "#d7191c",
-                       col_total = "#5e3c99") {
+                       col = NULL) {
   if (length(object$output) == 1) {
     stop(
       paste0(
@@ -105,47 +96,76 @@
   stopifnot(
     alpha > 0 && alpha < 1
   )
-  if (object$fun == "PosteriorMed") {
-    ylab <- "Posterior"
-    method <- "Posterior"
-  }
-  if (object$fun == "MCMed") {
+  if (object$args$method == "mc") {
+    mc <- TRUE
     ylab <- "Estimate"
     method <- "Monte Carlo Method"
   }
-  ci <- .MCCI(
-    object = object,
-    alpha = alpha
-  )
-  ci <- do.call(
-    what = "rbind",
-    args = ci
-  )
-  colnames(ci) <- c(
-    "interval",
-    "est",
-    "se",
-    "R",
-    "ll",
-    "ul"
-  )
+  if (object$args$method == "posterior") {
+    mc <- TRUE
+    ylab <- "Posterior"
+    method <- "Posterior"
+  }
+  if (object$args$method == "delta") {
+    mc <- FALSE
+    ylab <- "Estimate"
+    method <- "Delta Method"
+  }
+  if (mc) {
+    ci <- .MCCI(
+      object = object,
+      alpha = alpha
+    )
+    ci <- do.call(
+      what = "rbind",
+      args = ci
+    )
+    colnames(ci) <- c(
+      "interval",
+      "est",
+      "se",
+      "R",
+      "ll",
+      "ul"
+    )
+  } else {
+    ci <- .DeltaCI(
+      object = object,
+      alpha = alpha
+    )
+    ci <- do.call(
+      what = "rbind",
+      args = ci
+    )
+    colnames(ci) <- c(
+      "interval",
+      "est",
+      "se",
+      "z",
+      "p",
+      "ll",
+      "ul"
+    )
+  }
   effect <- rownames(ci)
   ci <- as.data.frame(
     ci
   )
   ci$effect <- effect
   rownames(ci) <- NULL
+  effect <- unique(
+    ci$effect
+  )
+  if (is.null(col)) {
+    col <- c(
+      "#5e3c99",
+      "#2c7bb6",
+      "#d7191c"
+    )
+  }
   foo <- function(effect,
+                  col,
                   ci) {
-    if (effect == "indirect") {
-      col <- col_indirect
-    }
-    if (effect == "direct") {
-      col <- col_direct
-    }
-    if (effect == "total") {
-      col <- col_total
-    }
     ci <- ci[which(ci$effect == effect), ]
     graphics::plot.default(
       x = 0,
@@ -210,7 +230,14 @@
       lwd = 2
     )
   }
-  foo(effect = "total", ci = ci)
-  foo(effect = "direct", ci = ci)
-  foo(effect = "indirect", ci = ci)
+  stopifnot(
+    length(effect) == length(col)
+  )
+  for (i in seq_along(effect)) {
+    foo(
+      effect = effect[i],
+      col = col[i],
+      ci = ci
+    )
+  }
 }

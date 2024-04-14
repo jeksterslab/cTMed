@@ -4,14 +4,7 @@
 \alias{plot.ctmedmc}
 \title{Plot Method for an Object of Class \code{ctmedmc}}
 \usage{
-\method{plot}{ctmedmc}(
-  x,
-  alpha = 0.05,
-  col_direct = "#2c7bb6",
-  col_indirect = "#d7191c",
-  col_total = "#5e3c99",
-  ...
-)
+\method{plot}{ctmedmc}(x, alpha = 0.05, col = NULL, ...)
 }
 \arguments{
 \item{x}{Object of class \code{ctmedmc}.}
@@ -19,17 +12,9 @@
 \item{alpha}{Numeric.
 Significance level}
 
-\item{col_direct}{Character string.
+\item{col}{Character vector.
 Optional argument.
-Color for the direct effect.}
-
-\item{col_indirect}{Character string.
-Optional argument.
-Color for the indirect effect.}
-
-\item{col_total}{Character string.
-Optional argument.
-Color for the total effect.}
+Character vector of colors.}
 
 \item{...}{Additional arguments.}
 }
@@ -84,7 +69,7 @@ vcov_phi_vec <- matrix(
 mc <- MCMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
-  delta_t = 1:30,
+  delta_t = 1:5,
   from = "x",
   to = "y",
   med = "m",

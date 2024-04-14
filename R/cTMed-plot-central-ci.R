@@ -1,20 +1,16 @@
-#' Plot Results of The DeltaMed Function
+#' Plot Centrality Confidence Intervals
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object R object.
-#'   Output of the [DeltaMed()] function.
+#'   Output of any of the following functions:
+#'   [DeltaTotalCentral()],
+#'   [DeltaIndirectCentral()].
 #' @param alpha Numeric.
 #'   Significance level.
-#' @param col_direct Character string.
+#' @param col Character vector.
 #'   Optional argument.
-#'   Color for the direct effect.
-#' @param col_indirect Character string.
-#'   Optional argument.
-#'   Color for the indirect effect.
-#' @param col_total Character string.
-#'   Optional argument.
-#'   Color for the total effect.
+#'   Character vector of colors.
 #'
 #' @examples
 #' phi <- matrix(
@@ -60,24 +56,25 @@
 #' )
 #'
 #' # Range of time-intervals ---------------------------------------------------
-#' delta <- DeltaMed(
+#' total_central <- DeltaTotalCentral(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
-#'   from = "x",
-#'   to = "y",
-#'   med = "m"
+#'   delta_t = 1:5
 #' )
-#' plot(delta)
+#' plot(total_central)
+#' indirect_central <- DeltaIndirectCentral(
+#'   phi = phi,
+#'   vcov_phi_vec = vcov_phi_vec,
+#'   delta_t = 1:5
+#' )
+#' plot(indirect_central)
 #'
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed plot
 #' @noRd
-.PlotDeltaMed <- function(object,
-                          alpha = 0.05,
-                          col_direct = "#2c7bb6",
-                          col_indirect = "#d7191c",
-                          col_total = "#5e3c99") {
+.PlotCentralCI <- function(object,
+                           alpha = 0.05,
+                           col = NULL) {
   if (length(object$output) == 1) {
     stop(
       paste0(
@@ -92,40 +89,77 @@
   stopifnot(
     alpha > 0 && alpha < 1
   )
-  ci <- .DeltaCI(
-    object = object,
-    alpha = alpha
-  )
-  ci <- do.call(
-    what = "rbind",
-    args = ci
-  )
-  colnames(ci) <- c(
-    "interval",
-    "est",
-    "se",
-    "z",
-    "p",
-    "ll",
-    "ul"
-  )
+  if (object$args$method == "mc") {
+    mc <- TRUE
+    ylab <- "Estimate"
+    method <- "Monte Carlo Method"
+  }
+  if (object$args$method == "posterior") {
+    mc <- TRUE
+    ylab <- "Posterior"
+    method <- "Posterior"
+  }
+  if (object$args$method == "delta") {
+    mc <- FALSE
+    ylab <- "Estimate"
+    method <- "Delta Method"
+  }
+  if (mc) {
+    ci <- .MCCI(
+      object = object,
+      alpha = alpha
+    )
+    ci <- do.call(
+      what = "rbind",
+      args = ci
+    )
+    colnames(ci) <- c(
+      "interval",
+      "est",
+      "se",
+      "R",
+      "ll",
+      "ul"
+    )
+  } else {
+    ci <- .DeltaCI(
+      object = object,
+      alpha = alpha
+    )
+    ci <- do.call(
+      what = "rbind",
+      args = ci
+    )
+    colnames(ci) <- c(
+      "interval",
+      "est",
+      "se",
+      "z",
+      "p",
+      "ll",
+      "ul"
+    )
+  }
   effect <- rownames(ci)
   ci <- as.data.frame(
     ci
   )
   ci$effect <- effect
   rownames(ci) <- NULL
+  effect <- unique(
+    ci$effect
+  )
+  if (is.null(col)) {
+    col <- grDevices::rainbow(length(effect))
+  }
+  if (object$args$total) {
+    centrality <- " Total Effect Centrality of "
+  } else {
+    centrality <- " Indirect Effect Centrality of "
+  }
   foo <- function(effect,
+                  col,
                   ci) {
-    if (effect == "indirect") {
-      col <- col_indirect
-    }
-    if (effect == "direct") {
-      col <- col_direct
-    }
-    if (effect == "total") {
-      col <- col_total
-    }
     ci <- ci[which(ci$effect == effect), ]
     graphics::plot.default(
       x = 0,
@@ -134,17 +168,15 @@
       ylim = range(c(ci$est, ci$ll, ci$ul)),
       type = "n",
       xlab = "Time-Interval",
-      ylab = "Estimate",
+      ylab = ylab,
       main = paste0(
         (1 - alpha) * 100,
-        "% CI for the ",
-        gsub(
-          pattern = "(^|[[:space:]])([[:alpha:]])",
-          replacement = "\\1\\U\\2",
-          x = effect,
-          perl = TRUE
-        ),
-        " Effect (Delta Method)"
+        "% CI for the",
+        centrality,
+        effect,
+        " (",
+        method,
+        ")"
       )
     )
     for (i in seq_along(ci$interval)) {
@@ -188,7 +220,14 @@
       lwd = 2
     )
   }
-  foo(effect = "total", ci = ci)
-  foo(effect = "direct", ci = ci)
-  foo(effect = "indirect", ci = ci)
+  stopifnot(
+    length(effect) == length(col)
+  )
+  for (i in seq_along(effect)) {
+    foo(
+      effect = effect[i],
+      col = col[i],
+      ci = ci
+    )
+  }
 }

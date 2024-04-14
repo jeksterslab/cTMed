@@ -23,11 +23,17 @@
           interval = i$delta_t,
           ci
         )
-        rownames(ci) <- c(
-          "total",
-          "direct",
-          "indirect"
-        )
+        if (object$args$network) {
+          rownames(ci) <- colnames(
+            object$args$phi
+          )
+        } else {
+          rownames(ci) <- c(
+            "total",
+            "direct",
+            "indirect"
+          )
+        }
         return(ci)
       }
     )

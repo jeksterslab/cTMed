@@ -176,12 +176,19 @@
 #' # Methods -------------------------------------------------------------------
 #' # Med has a number of methods including
 #' # print, summary, and plot
+#' med <- Med(
+#'   phi = phi,
+#'   delta_t = 1:5,
+#'   from = "x",
+#'   to = "y",
+#'   med = "m"
+#' )
 #' print(med)
 #' summary(med)
 #' plot(med)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed effects main
+#' @keywords cTMed effects path
 #' @export
 Med <- function(phi,
                 delta_t,
@@ -211,7 +218,8 @@ Med <- function(phi,
     delta_t = delta_t,
     from = from,
     to = to,
-    med = med
+    med = med,
+    network = FALSE
   )
   from <- which(idx == from)
   to <- which(idx == to)

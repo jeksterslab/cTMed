@@ -92,7 +92,7 @@ print.ctmedeffect <- function(x,
 #' # Range of time-intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -104,16 +104,37 @@ print.ctmedeffect <- function(x,
 print.ctmedmed <- function(x,
                            digits = 4,
                            ...) {
+  if (x$args$network) {
+    if (x$args$total) {
+      cat(
+        paste0(
+          "\nTotal Effect Centrality\n\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n\n"
+        )
+      )
+    }
+  } else {
+    cat(
+      paste0(
+        "\nTotal, Direct, and Indirect Effects\n\n"
+      )
+    )
+  }
+  varnames <- colnames(x$output)
+  varnames <- c(
+    "interval",
+    varnames[which(varnames != "interval")]
+  )
   base::print(
     round(
       x$output[
         ,
-        c(
-          "interval",
-          "total",
-          "direct",
-          "indirect"
-        ),
+        varnames,
         drop = FALSE
       ],
       digits = digits
@@ -236,7 +257,7 @@ print.ctmedmcphi <- function(x,
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -249,6 +270,27 @@ print.ctmeddelta <- function(x,
                              alpha = 0.05,
                              digits = 4,
                              ...) {
+  if (x$args$network) {
+    if (x$args$total) {
+      cat(
+        paste0(
+          "\nTotal Effect Centrality\n\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n\n"
+        )
+      )
+    }
+  } else {
+    cat(
+      paste0(
+        "\nTotal, Direct, and Indirect Effects\n\n"
+      )
+    )
+  }
   base::print(
     lapply(
       X = .DeltaCI(
@@ -332,7 +374,7 @@ print.ctmeddelta <- function(x,
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
@@ -346,6 +388,27 @@ print.ctmedmc <- function(x,
                           alpha = 0.05,
                           digits = 4,
                           ...) {
+  if (x$args$network) {
+    if (x$args$total) {
+      cat(
+        paste0(
+          "\nTotal Effect Centrality\n\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n\n"
+        )
+      )
+    }
+  } else {
+    cat(
+      paste0(
+        "\nTotal, Direct, and Indirect Effects\n\n"
+      )
+    )
+  }
   base::print(
     lapply(
       X = .MCCI(
@@ -392,7 +455,7 @@ print.ctmedmc <- function(x,
 #' # Range of time-intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -404,21 +467,37 @@ print.ctmedmc <- function(x,
 summary.ctmedmed <- function(object,
                              digits = 4,
                              ...) {
-  return(
-    round(
-      object$output[
-        ,
-        c(
-          "interval",
-          "total",
-          "direct",
-          "indirect"
-        ),
-        drop = FALSE
-      ],
-      digits = digits
+  if (object$args$network) {
+    return(
+      round(
+        object$output[
+          ,
+          c(
+            "interval",
+            colnames(object$args$phi)
+          ),
+          drop = FALSE
+        ],
+        digits = digits
+      )
     )
-  )
+  } else {
+    return(
+      round(
+        object$output[
+          ,
+          c(
+            "interval",
+            "total",
+            "direct",
+            "indirect"
+          ),
+          drop = FALSE
+        ],
+        digits = digits
+      )
+    )
+  }
 }
 
 #' Summary Method for an Object of Class `ctmeddelta`
@@ -498,7 +577,7 @@ summary.ctmedmed <- function(object,
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -510,6 +589,27 @@ summary.ctmedmed <- function(object,
 summary.ctmeddelta <- function(object,
                                alpha = 0.05,
                                ...) {
+  if (object$args$network) {
+    if (object$args$total) {
+      cat(
+        paste0(
+          "\nTotal Effect Centrality\n\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n\n"
+        )
+      )
+    }
+  } else {
+    cat(
+      paste0(
+        "\nTotal, Direct, and Indirect Effects\n\n"
+      )
+    )
+  }
   ci <- .DeltaCI(
     object = object,
     alpha = alpha
@@ -522,7 +622,11 @@ summary.ctmeddelta <- function(object,
   ci <- as.data.frame(
     ci
   )
-  ci$effect <- effect
+  if (object$args$network) {
+    ci$variable <- effect
+  } else {
+    ci$effect <- effect
+  }
   rownames(ci) <- NULL
   varnames <- colnames(ci)
   p <- dim(ci)[2]
@@ -609,7 +713,7 @@ summary.ctmeddelta <- function(object,
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
@@ -622,6 +726,27 @@ summary.ctmeddelta <- function(object,
 summary.ctmedmc <- function(object,
                             alpha = 0.05,
                             ...) {
+  if (object$args$network) {
+    if (object$args$total) {
+      cat(
+        paste0(
+          "\nTotal Effect Centrality\n\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n\n"
+        )
+      )
+    }
+  } else {
+    cat(
+      paste0(
+        "\nTotal, Direct, and Indirect Effects\n\n"
+      )
+    )
+  }
   ci <- .MCCI(
     object = object,
     alpha = alpha
@@ -634,7 +759,11 @@ summary.ctmedmc <- function(object,
   ci <- as.data.frame(
     ci
   )
-  ci$effect <- effect
+  if (object$args$network) {
+    ci$variable <- effect
+  } else {
+    ci$effect <- effect
+  }
   rownames(ci) <- NULL
   varnames <- colnames(ci)
   p <- dim(ci)[2]
@@ -713,7 +842,7 @@ summary.ctmedmc <- function(object,
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -759,7 +888,11 @@ confint.ctmeddelta <- function(object,
   ci <- as.data.frame(
     ci
   )
-  ci$effect <- effect
+  if (object$args$network) {
+    ci$variable <- effect
+  } else {
+    ci$effect <- effect
+  }
   rownames(ci) <- NULL
   varnames <- colnames(ci)
   p <- dim(ci)[2]
@@ -840,7 +973,7 @@ confint.ctmeddelta <- function(object,
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
@@ -887,7 +1020,11 @@ confint.ctmedmc <- function(object,
   ci <- as.data.frame(
     ci
   )
-  ci$effect <- effect
+  if (object$args$network) {
+    ci$variable <- effect
+  } else {
+    ci$effect <- effect
+  }
   rownames(ci) <- NULL
   varnames <- colnames(ci)
   p <- dim(ci)[2]
@@ -900,15 +1037,12 @@ confint.ctmedmc <- function(object,
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param x Object of class `ctmedmed`.
-#' @param col_direct Character string.
+#' @param col Character vector.
 #'   Optional argument.
-#'   Color for the direct effect.
-#' @param col_indirect Character string.
+#'   Character vector of colors.
+#' @param legend_pos Character vector.
 #'   Optional argument.
-#'   Color for the indirect effect.
-#' @param col_total Character string.
-#'   Optional argument.
-#'   Color for the total effect.
+#'   Legend position.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -925,7 +1059,7 @@ confint.ctmedmc <- function(object,
 #' # Range of time-intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -935,16 +1069,26 @@ confint.ctmedmc <- function(object,
 #' @keywords methods
 #' @export
 plot.ctmedmed <- function(x,
-                          col_direct = "#2c7bb6",
-                          col_indirect = "#d7191c",
-                          col_total = "#5e3c99",
+                          col = NULL,
+                          legend_pos = "topright",
                           ...) {
-  .PlotMed(
-    object = x,
-    col_direct = col_direct,
-    col_indirect = col_indirect,
-    col_total = col_total
-  )
+  if (x$args$network) {
+    return(
+      .PlotCentral(
+        object = x,
+        col = col,
+        legend_pos = legend_pos
+      )
+    )
+  } else {
+    return(
+      .PlotMed(
+        object = x,
+        col = col,
+        legend_pos = legend_pos
+      )
+    )
+  }
 }
 
 #' Plot Method for an Object of Class `ctmeddelta`
@@ -954,15 +1098,9 @@ plot.ctmedmed <- function(x,
 #' @param x Object of class `ctmeddelta`.
 #' @param alpha Numeric.
 #'   Significance level
-#' @param col_direct Character string.
+#' @param col Character vector.
 #'   Optional argument.
-#'   Color for the direct effect.
-#' @param col_indirect Character string.
-#'   Optional argument.
-#'   Color for the indirect effect.
-#' @param col_total Character string.
-#'   Optional argument.
-#'   Color for the total effect.
+#'   Character vector of colors.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -1012,7 +1150,7 @@ plot.ctmedmed <- function(x,
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m"
@@ -1023,17 +1161,25 @@ plot.ctmedmed <- function(x,
 #' @export
 plot.ctmeddelta <- function(x,
                             alpha = 0.05,
-                            col_direct = "#2c7bb6",
-                            col_indirect = "#d7191c",
-                            col_total = "#5e3c99",
+                            col = NULL,
                             ...) {
-  .PlotDeltaMed(
-    object = x,
-    alpha = alpha,
-    col_direct = col_direct,
-    col_indirect = col_indirect,
-    col_total = col_total
-  )
+  if (x$args$network) {
+    return(
+      .PlotCentralCI(
+        object = x,
+        alpha = alpha,
+        col = col
+      )
+    )
+  } else {
+    return(
+      .PlotMedCI(
+        object = x,
+        alpha = alpha,
+        col = col
+      )
+    )
+  }
 }
 
 #' Plot Method for an Object of Class `ctmedmc`
@@ -1043,15 +1189,9 @@ plot.ctmeddelta <- function(x,
 #' @param x Object of class `ctmedmc`.
 #' @param alpha Numeric.
 #'   Significance level
-#' @param col_direct Character string.
+#' @param col Character vector.
 #'   Optional argument.
-#'   Color for the direct effect.
-#' @param col_indirect Character string.
-#'   Optional argument.
-#'   Color for the indirect effect.
-#' @param col_total Character string.
-#'   Optional argument.
-#'   Color for the total effect.
+#'   Character vector of colors.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -1102,7 +1242,7 @@ plot.ctmeddelta <- function(x,
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
@@ -1114,15 +1254,23 @@ plot.ctmeddelta <- function(x,
 #' @export
 plot.ctmedmc <- function(x,
                          alpha = 0.05,
-                         col_direct = "#2c7bb6",
-                         col_indirect = "#d7191c",
-                         col_total = "#5e3c99",
+                         col = NULL,
                          ...) {
-  .PlotMCMed(
-    object = x,
-    alpha = alpha,
-    col_direct = col_direct,
-    col_indirect = col_indirect,
-    col_total = col_total
-  )
+  if (x$args$network) {
+    return(
+      .PlotCentralCI(
+        object = x,
+        alpha = alpha,
+        col = col
+      )
+    )
+  } else {
+    return(
+      .PlotMedCI(
+        object = x,
+        alpha = alpha,
+        col = col
+      )
+    )
+  }
 }

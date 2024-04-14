@@ -10,7 +10,7 @@ bool TestPhi(const arma::mat& phi);
 
 bool TestStable(const arma::mat& x);
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-direct-d-t-vec.cpp
+// edit .setup/cpp/cTMed-direct-vec.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
@@ -19,19 +19,18 @@ bool TestStable(const arma::mat& x);
 // [[Rcpp::export(.DirectVec)]]
 double DirectVec(const arma::vec& phi_vec, const double& delta_t,
                  const int& from, const int& to, const arma::vec& med) {
+  int ms = med.n_elem;
   int p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
   arma::mat d = arma::eye(p, p);
-  int m = med.n_elem;
-  for (int i = 0; i < m; i++) {
-    d(med[i] - 1, med[i] - 1) = 0;
+  for (int m = 0; m < ms; m++) {
+    d(med[m] - 1, med[m] - 1) = 0;
   }
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  double direct_dbl = direct(to - 1, from - 1);
-  return direct_dbl;
+  return direct(to - 1, from - 1);
 }
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-direct-d-t.cpp
+// edit .setup/cpp/cTMed-direct.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
@@ -40,45 +39,101 @@ double DirectVec(const arma::vec& phi_vec, const double& delta_t,
 // [[Rcpp::export(.Direct)]]
 double Direct(const arma::mat& phi, const double& delta_t, const int& from,
               const int& to, const arma::vec& med) {
+  int ms = med.n_elem;
   int p = phi.n_rows;
   arma::mat d = arma::eye(p, p);
-  int m = med.n_elem;
-  for (int i = 0; i < m; i++) {
-    d(med[i] - 1, med[i] - 1) = 0;
+  for (int m = 0; m < ms; m++) {
+    d(med[m] - 1, med[m] - 1) = 0;
   }
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  double direct_dbl = direct(to - 1, from - 1);
-  return direct_dbl;
+  return direct(to - 1, from - 1);
 }
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-indirect-d-t-vec.cpp
+// edit .setup/cpp/cTMed-indirect-central-s.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::export(.IndirectVec)]]
-double IndirectVec(const arma::vec& phi_vec, const double& delta_t,
-                   const int& from, const int& to, const arma::vec& med) {
-  int p = std::sqrt(phi_vec.n_elem);
-  arma::mat phi = arma::reshape(phi_vec, p, p);
-  // total effect
-  arma::mat total = arma::expmat(delta_t * phi);
-  double total_dbl = total(to - 1, from - 1);
-  // direct effect
-  arma::mat d = arma::eye(p, p);
-  int m = med.n_elem;
-  for (int i = 0; i < m; i++) {
-    d(med[i] - 1, med[i] - 1) = 0;
+// [[Rcpp::export(.IndirectCentrals)]]
+arma::mat IndirectCentrals(const arma::mat& phi, const arma::vec& delta_t) {
+  int ts = delta_t.n_rows;
+  int p = phi.n_rows;
+  arma::mat output = arma::mat(p, ts);
+  for (int t = 0; t < ts; t++) {
+    arma::mat total = arma::expmat(delta_t[t] * phi);
+    for (int m = 0; m < p; m++) {
+      arma::mat d = arma::eye(p, p);
+      d(m, m) = 0;
+      arma::mat direct = arma::expmat(delta_t[t] * d * phi * d);
+      for (int i = 0; i < p; i++) {
+        for (int j = 0; j < p; j++) {
+          if (!(m == i || m == j || i == j)) {
+            output(m, t) += total(i, j) - direct(i, j);
+          }
+        }
+      }
+    }
   }
-  arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  double direct_dbl = direct(to - 1, from - 1);
-  // indirect effect
-  double indirect_dbl = total_dbl - direct_dbl;
-  return indirect_dbl;
+  return output.t();
 }
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-indirect-d-t.cpp
+// edit .setup/cpp/cTMed-indirect-central-vec.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.IndirectCentralVec)]]
+Rcpp::NumericVector IndirectCentralVec(const arma::vec& phi_vec,
+                                       const double& delta_t) {
+  int p = std::sqrt(phi_vec.n_elem);
+  arma::mat phi = arma::reshape(phi_vec, p, p);
+  arma::mat total = arma::expmat(delta_t * phi);
+  Rcpp::NumericVector output(p);
+  for (int m = 0; m < p; m++) {
+    arma::mat d = arma::eye(p, p);
+    d(m, m) = 0;
+    arma::mat direct = arma::expmat(delta_t * d * phi * d);
+    for (int i = 0; i < p; i++) {
+      for (int j = 0; j < p; j++) {
+        if (!(m == i || m == j || i == j)) {
+          output(m) += total(i, j) - direct(i, j);
+        }
+      }
+    }
+  }
+  return output;
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-indirect-central.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.IndirectCentral)]]
+Rcpp::NumericVector IndirectCentral(const arma::mat& phi,
+                                    const double& delta_t) {
+  int p = phi.n_rows;
+  arma::mat total = arma::expmat(delta_t * phi);
+  Rcpp::NumericVector output(p);
+  for (int m = 0; m < p; m++) {
+    arma::mat d = arma::eye(p, p);
+    d(m, m) = 0;
+    arma::mat direct = arma::expmat(delta_t * d * phi * d);
+    for (int i = 0; i < p; i++) {
+      for (int j = 0; j < p; j++) {
+        if (!(m == i || m == j || i == j)) {
+          output(m) += total(i, j) - direct(i, j);
+        }
+      }
+    }
+  }
+  return output;
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-indirect.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
@@ -87,24 +142,20 @@ double IndirectVec(const arma::vec& phi_vec, const double& delta_t,
 // [[Rcpp::export(.Indirect)]]
 double Indirect(const arma::mat& phi, const double& delta_t, const int& from,
                 const int& to, const arma::vec& med) {
+  int ms = med.n_elem;
   int p = phi.n_rows;
-  // total effect
   arma::mat total = arma::expmat(delta_t * phi);
   double total_dbl = total(to - 1, from - 1);
-  // direct effect
   arma::mat d = arma::eye(p, p);
-  int m = med.n_elem;
-  for (int i = 0; i < m; i++) {
-    d(med[i] - 1, med[i] - 1) = 0;
+  for (int m = 0; m < ms; m++) {
+    d(med[m] - 1, med[m] - 1) = 0;
   }
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
-  // indirect effect
-  double indirect_dbl = total_dbl - direct_dbl;
-  return indirect_dbl;
+  return total_dbl - direct_dbl;
 }
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-mc-med-d-t.cpp
+// edit .setup/cpp/cTMed-mc-med.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
@@ -225,47 +276,43 @@ Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
   return output;
 }
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-med-d-t-s.cpp
+// edit .setup/cpp/cTMed-med-s.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Meds)]]
-const arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t,
-                     const int& from, const int& to, const arma::vec& med) {
-  int t = delta_t.n_rows;
-  arma::mat output = arma::mat(t, 4);
+arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t, const int& from,
+               const int& to, const arma::vec& med) {
+  int ts = delta_t.n_rows;
+  int ms = med.n_elem;
   int p = phi.n_rows;
+  arma::mat output = arma::mat(ts, 4);
   arma::mat total = arma::mat(p, p);
-  double total_dbl;
-  arma::mat d = arma::eye(p, p);
-  int m = med.n_elem;
-  for (int i = 0; i < m; i++) {
-    d(med[i] - 1, med[i] - 1) = 0;
-  }
   arma::mat direct = arma::mat(p, p);
+  arma::mat d = arma::eye(p, p);
+  double total_dbl;
   double direct_dbl;
   double indirect_dbl;
-  for (int i = 0; i < t; i++) {
-    // total effect
-    total = arma::expmat(delta_t[i] * phi);
+  for (int m = 0; m < ms; m++) {
+    d(med[m] - 1, med[m] - 1) = 0;
+  }
+  for (int t = 0; t < ts; t++) {
+    total = arma::expmat(delta_t[t] * phi);
     total_dbl = total(to - 1, from - 1);
-    // direct effect
-    direct = arma::expmat(delta_t[i] * d * phi * d);
+    direct = arma::expmat(delta_t[t] * d * phi * d);
     direct_dbl = direct(to - 1, from - 1);
-    // indirect effect
     indirect_dbl = total_dbl - direct_dbl;
-    // output
-    output(i, 0) = total_dbl;
-    output(i, 1) = direct_dbl;
-    output(i, 2) = indirect_dbl;
-    output(i, 3) = delta_t[i];
+    output(t, 0) = total_dbl;
+    output(t, 1) = direct_dbl;
+    output(t, 2) = indirect_dbl;
+    output(t, 3) = delta_t[t];
   }
   return output;
 }
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-med-d-t.cpp
+// edit .setup/cpp/cTMed-med-vec.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
@@ -275,30 +322,26 @@ const arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t,
 Rcpp::NumericVector MedVec(const arma::vec& phi_vec, const double& delta_t,
                            const int& from, const int& to,
                            const arma::vec& med) {
-  Rcpp::NumericVector output(3);
+  int ms = med.n_elem;
   int p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
-  // total effect
   arma::mat total = arma::expmat(delta_t * phi);
   double total_dbl = total(to - 1, from - 1);
-  // direct effect
   arma::mat d = arma::eye(p, p);
-  int m = med.n_elem;
-  for (int i = 0; i < m; i++) {
-    d(med[i] - 1, med[i] - 1) = 0;
+  for (int m = 0; m < ms; m++) {
+    d(med[m] - 1, med[m] - 1) = 0;
   }
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
-  // indirect effect
   double indirect_dbl = total_dbl - direct_dbl;
-  // output
+  Rcpp::NumericVector output(3);
   output(0) = total_dbl;
   output(1) = direct_dbl;
   output(2) = indirect_dbl;
   return output;
 }
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-med-d-t.cpp
+// edit .setup/cpp/cTMed-med.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
@@ -307,22 +350,18 @@ Rcpp::NumericVector MedVec(const arma::vec& phi_vec, const double& delta_t,
 // [[Rcpp::export(.Med)]]
 Rcpp::NumericVector Med(const arma::mat& phi, const double& delta_t,
                         const int& from, const int& to, const arma::vec& med) {
-  Rcpp::NumericVector output(4);
+  int ms = med.n_elem;
   int p = phi.n_rows;
-  // total effect
   arma::mat total = arma::expmat(delta_t * phi);
   double total_dbl = total(to - 1, from - 1);
-  // direct effect
   arma::mat d = arma::eye(p, p);
-  int m = med.n_elem;
-  for (int i = 0; i < m; i++) {
-    d(med[i] - 1, med[i] - 1) = 0;
+  for (int m = 0; m < ms; m++) {
+    d(med[m] - 1, med[m] - 1) = 0;
   }
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
-  // indirect effect
   double indirect_dbl = total_dbl - direct_dbl;
-  // output
+  Rcpp::NumericVector output(4);
   output(0) = total_dbl;
   output(1) = direct_dbl;
   output(2) = indirect_dbl;
@@ -431,7 +470,56 @@ bool TestStable(const arma::mat& x) {
   return arma::all(arma::real(eigenvalues) < 0);
 }
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-total-d-t-vec.cpp
+// edit .setup/cpp/cTMed-total-central-s.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.TotalCentrals)]]
+arma::mat TotalCentrals(const arma::mat& phi, const arma::vec& delta_t) {
+  int ts = delta_t.n_rows;
+  int p = phi.n_rows;
+  arma::mat output = arma::mat(p, ts);
+  for (int t = 0; t < ts; t++) {
+    arma::mat total = arma::expmat(delta_t[t] * phi);
+    output.col(t) = arma::vectorise(arma::sum(total, 0) - total.diag().t());
+  }
+  return output.t();
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-total-central-vec.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.TotalCentralVec)]]
+Rcpp::NumericVector TotalCentralVec(const arma::vec& phi_vec,
+                                    const double& delta_t) {
+  int p = std::sqrt(phi_vec.n_elem);
+  arma::mat phi = arma::reshape(phi_vec, p, p);
+  arma::mat total = arma::expmat(delta_t * phi);
+  arma::vec total_central =
+      arma::vectorise(arma::sum(total, 0) - total.diag().t());
+  return Rcpp::NumericVector(total_central.begin(), total_central.end());
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-total-central.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.TotalCentral)]]
+Rcpp::NumericVector TotalCentral(const arma::mat& phi, const double& delta_t) {
+  arma::mat total = arma::expmat(delta_t * phi);
+  arma::vec total_central =
+      arma::vectorise(arma::sum(total, 0) - total.diag().t());
+  return Rcpp::NumericVector(total_central.begin(), total_central.end());
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-total-vec.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
@@ -442,11 +530,10 @@ arma::vec TotalVec(const arma::vec& phi_vec, const double& delta_t) {
   int p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
   arma::mat total = arma::expmat(delta_t * phi);
-  arma::vec total_vec = arma::vectorise(total);
-  return total_vec;
+  return arma::vectorise(total);
 }
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-total-d-t.cpp
+// edit .setup/cpp/cTMed-total.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
@@ -454,6 +541,5 @@ arma::vec TotalVec(const arma::vec& phi_vec, const double& delta_t) {
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Total)]]
 arma::mat Total(const arma::mat& phi, const double& delta_t) {
-  arma::mat total = arma::expmat(delta_t * phi);
-  return total;
+  return arma::expmat(delta_t * phi);
 }

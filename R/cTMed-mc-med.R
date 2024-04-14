@@ -259,7 +259,7 @@
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:30,
+#'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
 #'   med = "m",
@@ -275,7 +275,7 @@
 #' confint(mc, level = 0.95)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed uncertainty main
+#' @keywords cTMed uncertainty path
 #' @export
 MCMed <- function(phi,
                   vcov_phi_vec,
@@ -310,7 +310,9 @@ MCMed <- function(phi,
     R = R,
     test_phi = test_phi,
     ncores = ncores,
-    seed = seed
+    seed = seed,
+    method = "mc",
+    network = FALSE
   )
   delta_t <- sort(
     ifelse(
