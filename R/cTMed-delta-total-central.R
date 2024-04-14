@@ -313,7 +313,6 @@ DeltaTotalCentral <- function(phi,
                               vcov_phi_vec,
                               delta_t,
                               ncores = NULL) {
-  p <- dim(phi)[1]
   total <- TRUE
   args <- list(
     phi = phi,

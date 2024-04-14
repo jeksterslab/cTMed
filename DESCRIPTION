@@ -30,4 +30,3 @@ Suggests:
     testthat,
     simStateSpace,
     expm
-RoxygenNote: 7.3.1

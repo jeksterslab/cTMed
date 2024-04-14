@@ -6,8 +6,7 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Direct)]]
-double Direct(const arma::mat& phi, const double& delta_t, const int& from,
-              const int& to, const arma::vec& med) {
+double Direct(const arma::mat& phi, const double& delta_t, const int& from, const int& to, const arma::vec& med) {
   int ms = med.n_elem;
   int p = phi.n_rows;
   arma::mat d = arma::eye(p, p);

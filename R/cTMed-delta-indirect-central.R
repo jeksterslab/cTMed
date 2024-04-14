@@ -313,7 +313,6 @@ DeltaIndirectCentral <- function(phi,
                                  vcov_phi_vec,
                                  delta_t,
                                  ncores = NULL) {
-  p <- dim(phi)[1]
   total <- FALSE
   args <- list(
     phi = phi,
