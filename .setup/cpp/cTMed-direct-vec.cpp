@@ -6,7 +6,8 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.DirectVec)]]
-double DirectVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med) {
+double DirectVec(const arma::vec& phi_vec, const double& delta_t,
+                 const int& from, const int& to, const arma::vec& med) {
   int ms = med.n_elem;
   int p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
