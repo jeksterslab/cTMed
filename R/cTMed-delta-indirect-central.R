@@ -1,23 +1,17 @@
 #' Delta Method Sampling Variance-Covariance Matrix
-#' for the Total, Direct, and Indirect Effects of X on Y
-#' Through M
+#' for the Indirect Effect Centrality
 #' Over a Specific Time-Interval
 #' or a Range of Time-Intervals
 #'
 #' This function computes the delta method
 #' sampling variance-covariance matrix
-#' for the total, direct, and indirect effects
-#' of the independent variable \eqn{X}
-#' on the dependent variable \eqn{Y}
-#' through mediator variables \eqn{\mathbf{m}}
+#' for the indirect effect centrality
 #' over a specific time-interval \eqn{\Delta t}
 #' or a range of time-intervals
 #' using the first-order stochastic differential equation model's
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
-#' @details See [Total()],
-#'   [Direct()], and
-#'   [Indirect()] for more details.
+#' @details See [IndirectCentral()] more details.
 #'
 #' ## Delta Method
 #'   Let \eqn{\boldsymbol{\theta}} be
@@ -234,7 +228,7 @@
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
-#'     \item{fun}{Function used (DeltaMed).}
+#'     \item{fun}{Function used (DeltaIndirectCentral).}
 #'     \item{output}{A list with length of `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
@@ -290,28 +284,22 @@
 #' )
 #'
 #' # Specific time-interval ----------------------------------------------------
-#' DeltaMed(
+#' DeltaIndirectCentral(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1,
-#'   from = "x",
-#'   to = "y",
-#'   med = "m"
+#'   delta_t = 1
 #' )
 #'
 #' # Range of time-intervals ---------------------------------------------------
-#' delta <- DeltaMed(
+#' delta <- DeltaIndirectCentral(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
-#'   delta_t = 1:5,
-#'   from = "x",
-#'   to = "y",
-#'   med = "m"
+#'   delta_t = 1:5
 #' )
 #' plot(delta)
 #'
 #' # Methods -------------------------------------------------------------------
-#' # DeltaMed has a number of methods including
+#' # DeltaIndirectCentral has a number of methods including
 #' # print, summary, confint, and plot
 #' print(delta)
 #' summary(delta)
@@ -319,39 +307,22 @@
 #' plot(delta)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed uncertainty path
+#' @keywords cTMed uncertainty network
 #' @export
-DeltaMed <- function(phi,
-                     vcov_phi_vec,
-                     delta_t,
-                     from,
-                     to,
-                     med,
-                     ncores = NULL) {
-  idx <- rownames(phi)
-  p <- length(idx)
-  stopifnot(
-    idx == colnames(phi),
-    length(from) == 1,
-    length(to) == 1,
-    from %in% idx,
-    to %in% idx
-  )
-  for (i in seq_len(length(med))) {
-    stopifnot(
-      med[i] %in% idx
-    )
-  }
+DeltaIndirectCentral <- function(phi,
+                                 vcov_phi_vec,
+                                 delta_t,
+                                 ncores = NULL) {
+  p <- dim(phi)[1]
+  total <- FALSE
   args <- list(
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
     delta_t = delta_t,
-    from = from,
-    to = to,
-    med = med,
     ncores = ncores,
     method = "delta",
-    network = FALSE
+    network = TRUE,
+    total = total
   )
   delta_t <- sort(
     ifelse(
@@ -359,18 +330,6 @@ DeltaMed <- function(phi,
       yes = .Machine$double.xmin,
       no = delta_t
     )
-  )
-  from <- which(idx == from)
-  to <- which(idx == to)
-  med <- sapply(
-    X = med,
-    FUN = function(x,
-                   idx) {
-      return(
-        which(idx == x)
-      )
-    },
-    idx = idx
   )
   par <- FALSE
   if (!is.null(ncores)) {
@@ -387,29 +346,25 @@ DeltaMed <- function(phi,
     output <- parallel::parLapply(
       cl = cl,
       X = delta_t,
-      fun = .DeltaMed,
+      fun = .DeltaCentral,
       phi = phi,
       vcov_phi_vec = vcov_phi_vec,
-      from = from,
-      to = to,
-      med = med
+      total = total
     )
   } else {
     output <- lapply(
       X = delta_t,
-      FUN = .DeltaMed,
+      FUN = .DeltaCentral,
       phi = phi,
       vcov_phi_vec = vcov_phi_vec,
-      from = from,
-      to = to,
-      med = med
+      total = total
     )
   }
   names(output) <- delta_t
   out <- list(
     call = match.call(),
     args = args,
-    fun = "DeltaMed",
+    fun = "DeltaIndirectCentral",
     output = output
   )
   class(out) <- c(

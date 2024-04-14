@@ -1,14 +1,12 @@
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-mc-med-d-t.cpp
+// edit .setup/cpp/cTMed-mc-med.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.MCMed)]]
-arma::mat MCMed(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
-                const double& delta_t, const int& from, const int& to,
-                const arma::vec& med, const int& R, bool test_phi = true) {
+arma::mat MCMed(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const double& delta_t, const int& from, const int& to, const arma::vec& med, const int& R, bool test_phi = true) {
   arma::mat output(R, 4);
   int p = phi.n_rows;
   int q = p * p;

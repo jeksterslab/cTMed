@@ -7,14 +7,15 @@
     lapply(
       X = object$output,
       FUN = function(x) {
-        thetahat <- x$est[1:3]
-        thetahatstar <- x$thetahatstar[, 1:3, drop = FALSE]
+        idx <- seq_len(length(x$est) - 1)
+        thetahat <- x$est[idx]
+        thetahatstar <- x$thetahatstar[, idx, drop = FALSE]
         probs <- .PCProbs(alpha = alpha)
         ci <- vector(
           mode = "list",
-          length = 3
+          length = length(idx)
         )
-        for (i in seq_len(3)) {
+        for (i in idx) {
           ci[[i]] <- .PCCI(
             thetahatstar = thetahatstar[, i],
             thetahat = thetahat[i],

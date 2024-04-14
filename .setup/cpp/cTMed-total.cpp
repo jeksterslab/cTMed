@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-total-d-t.cpp
+// edit .setup/cpp/cTMed-total.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
 
@@ -7,6 +7,5 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Total)]]
 arma::mat Total(const arma::mat& phi, const double& delta_t) {
-  arma::mat total = arma::expmat(delta_t * phi);
-  return total;
+  return arma::expmat(delta_t * phi);
 }

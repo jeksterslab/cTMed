@@ -1,9 +1,10 @@
-#' Plot Results of The Med Function
+#' Plot Results of The TotalCentral
+#' or The IndirectCentral Functions
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object R object.
-#'   Output of the [Med()] function.
+#'   Output of the [TotalCentral()] or the [IndirectCentral()] functions.
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
@@ -23,21 +24,23 @@
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
 #' # Range of time-intervals ---------------------------------------------------
-#' med <- Med(
+#' total_central <- TotalCentral(
 #'   phi = phi,
-#'   delta_t = 1:5,
-#'   from = "x",
-#'   to = "y",
-#'   med = "m"
+#'   delta_t = 1:5
 #' )
-#' plot(med)
+#' plot(total_central)
+#' indirect_central <- IndirectCentral(
+#'   phi = phi,
+#'   delta_t = 1:5
+#' )
+#' plot(indirect_central)
 #'
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed plot
 #' @noRd
-.PlotMed <- function(object,
-                     col = NULL,
-                     legend_pos = "topright") {
+.PlotCentral <- function(object,
+                         col = NULL,
+                         legend_pos = "topright") {
   if (dim(object$output)[1] == 1) {
     stop(
       paste0(
@@ -48,16 +51,18 @@
       )
     )
   }
-  if (is.null(col)) {
-    col_direct <- "#2c7bb6"
-    col_indirect <- "#d7191c"
-    col_total <- "#5e3c99"
+  if (object$args$total) {
+    main <- "Total Effect Centrality"
   } else {
-    col_direct <- col[1]
-    col_indirect <- col[2]
-    col_total <- col[3]
+    main <- "Indirect Effect Centrality"
   }
   delta_t <- object$output[, "interval"]
+  varnames <- colnames(
+    object$args$phi
+  )
+  if (is.null(col)) {
+    col <- grDevices::rainbow(length(varnames))
+  }
   graphics::plot.default(
     x = 0,
     y = 0,
@@ -65,59 +70,35 @@
     ylim = range(
       object$output[
         ,
-        c(
-          "total",
-          "direct",
-          "indirect"
-        )
+        varnames
       ]
     ),
     type = "n",
     xlab = "Time-Interval",
     ylab = "Parameter Value",
-    main = "Total, Direct, and Indirect Effects"
+    main = main
   )
   graphics::abline(
     h = 0
   )
-  graphics::lines(
-    x = delta_t,
-    y = object$output[
-      ,
-      "indirect"
-    ],
-    type = "l",
-    col = col_indirect,
-    lty = 1,
-    lwd = 2
-  )
-  graphics::lines(
-    x = delta_t,
-    y = object$output[
-      ,
-      "direct"
-    ],
-    type = "l",
-    col = col_direct,
-    lty = 2,
-    lwd = 2
-  )
-  graphics::lines(
-    x = delta_t,
-    y = object$output[
-      ,
-      "total"
-    ],
-    type = "l",
-    col = col_total,
-    lty = 3,
-    lwd = 2
-  )
+  for (i in seq_along(varnames)) {
+    graphics::lines(
+      x = delta_t,
+      y = object$output[
+        ,
+        varnames[i]
+      ],
+      type = "l",
+      col = col[i],
+      lty = i,
+      lwd = 2
+    )
+  }
   graphics::legend(
     x = legend_pos,
-    legend = c("Indirect", "Direct", "Total"),
-    lty = c(1, 2, 3),
-    col = c(col_indirect, col_direct, col_total),
+    legend = varnames,
+    lty = seq_len(length(varnames)),
+    col = col,
     cex = 0.8,
     lwd = 2
   )

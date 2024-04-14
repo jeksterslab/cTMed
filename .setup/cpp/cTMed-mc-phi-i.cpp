@@ -6,8 +6,7 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.MCPhiI)]]
-arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
-                 bool test_phi = true) {
+arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, bool test_phi = true) {
   int p = phi.n_rows;
   int q = p * p;
   arma::mat phi_i = arma::mat(p, p);

@@ -9,9 +9,12 @@ template:
     code_font: {google: "JetBrains Mono"}
 
 reference:
-- title: Main Functions
+- title: Mediation
   contents:
-  - has_keyword("main")
+  - has_keyword("path")
+- title: Network Centrality
+  contents:
+  - has_keyword("network")
 - title: Effects
   contents:
   - has_keyword("effects")
@@ -24,9 +27,6 @@ reference:
 - title: Methods
   contents:
   - has_keyword("methods")
-- title: Data
-  contents:
-  - has_keyword("data")
 
 articles:
 - title: Session Information
