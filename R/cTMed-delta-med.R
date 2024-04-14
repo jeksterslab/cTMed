@@ -329,7 +329,6 @@ DeltaMed <- function(phi,
                      med,
                      ncores = NULL) {
   idx <- rownames(phi)
-  p <- length(idx)
   stopifnot(
     idx == colnames(phi),
     length(from) == 1,
