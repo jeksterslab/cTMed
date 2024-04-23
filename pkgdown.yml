@@ -1,10 +1,10 @@
 pandoc: 3.1.1
-pkgdown: 2.0.8
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   cTMed: cTMed.html
   session: session/session.html
-last_built: 2024-04-14T02:07Z
+last_built: 2024-04-23T23:37Z
 urls:
   reference: https://github.com/jeksterslab/cTMed/reference
   article: https://github.com/jeksterslab/cTMed/articles
