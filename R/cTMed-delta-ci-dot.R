@@ -28,11 +28,28 @@
             object$args$phi
           )
         } else {
-          rownames(ci) <- c(
-            "total",
-            "direct",
-            "indirect"
-          )
+          if (object$fun == "DeltaMed") {
+            rownames(ci) <- c(
+              "total",
+              "direct",
+              "indirect"
+            )
+          }
+          if (object$fun == "DeltaBeta") {
+            varnames <- colnames(
+              object$args$phi
+            )
+            x <- expand.grid(
+              to = varnames,
+              from = varnames
+            )
+            rownames(ci) <- sapply(
+              X = seq_len(dim(x)[1]),
+              FUN = function(i) {
+                paste0("from ", x[i, 2], " to ", x[i, 1])
+              }
+            )
+          }
         }
         return(ci)
       }
