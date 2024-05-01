@@ -57,6 +57,7 @@ plot(total_central)
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{DeltaBeta}()},
 \code{\link{DeltaIndirectCentral}()},
 \code{\link{DeltaMed}()},
 \code{\link{DeltaTotalCentral}()},

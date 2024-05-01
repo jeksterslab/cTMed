@@ -285,11 +285,19 @@ print.ctmeddelta <- function(x,
       )
     }
   } else {
-    cat(
-      paste0(
-        "\nTotal, Direct, and Indirect Effects\n\n"
+    if (x$fun == "DeltaMed") {
+      cat(
+        paste0(
+          "\nTotal, Direct, and Indirect Effects\n\n"
+        )
       )
-    )
+    } else {
+      cat(
+        paste0(
+          "\nElements of the matrix of lagged coefficients\n\n"
+        )
+      )
+    }
   }
   base::print(
     lapply(
@@ -591,24 +599,38 @@ summary.ctmeddelta <- function(object,
                                ...) {
   if (object$args$network) {
     if (object$args$total) {
-      cat(
-        paste0(
-          "\nTotal Effect Centrality\n\n"
+      if (interactive()) {
+        cat(
+          paste0(
+            "\nTotal Effect Centrality\n\n"
+          )
         )
-      )
+      }
     } else {
-      cat(
-        paste0(
-          "\nIndirect Effect Centrality\n\n"
+      if (interactive()) {
+        cat(
+          paste0(
+            "\nIndirect Effect Centrality\n\n"
+          )
         )
-      )
+      }
     }
   } else {
-    cat(
-      paste0(
-        "\nTotal, Direct, and Indirect Effects\n\n"
-      )
-    )
+    if (interactive()) {
+      if (object$fun == "DeltaMed") {
+        cat(
+          paste0(
+            "\nTotal, Direct, and Indirect Effects\n\n"
+          )
+        )
+      } else {
+        cat(
+          paste0(
+            "\nElements of the matrix of lagged coefficients\n\n"
+          )
+        )
+      }
+    }
   }
   ci <- .DeltaCI(
     object = object,
@@ -728,24 +750,30 @@ summary.ctmedmc <- function(object,
                             ...) {
   if (object$args$network) {
     if (object$args$total) {
-      cat(
-        paste0(
-          "\nTotal Effect Centrality\n\n"
+      if (interactive()) {
+        cat(
+          paste0(
+            "\nTotal Effect Centrality\n\n"
+          )
         )
-      )
+      }
     } else {
+      if (interactive()) {
+        cat(
+          paste0(
+            "\nIndirect Effect Centrality\n\n"
+          )
+        )
+      }
+    }
+  } else {
+    if (interactive()) {
       cat(
         paste0(
-          "\nIndirect Effect Centrality\n\n"
+          "\nTotal, Direct, and Indirect Effects\n\n"
         )
       )
     }
-  } else {
-    cat(
-      paste0(
-        "\nTotal, Direct, and Indirect Effects\n\n"
-      )
-    )
   }
   ci <- .MCCI(
     object = object,
@@ -1172,13 +1200,22 @@ plot.ctmeddelta <- function(x,
       )
     )
   } else {
-    return(
-      .PlotMedCI(
+    if (x$fun == "DeltaMed") {
+      return(
+        .PlotMedCI(
+          object = x,
+          alpha = alpha,
+          col = col
+        )
+      )
+    }
+    if (x$fun == "DeltaBeta") {
+      .PlotBetaCI(
         object = x,
         alpha = alpha,
         col = col
       )
-    )
+    }
   }
 }
 
