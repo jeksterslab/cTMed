@@ -240,6 +240,18 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// TotalDeltaT
+Rcpp::NumericVector TotalDeltaT(const arma::mat& phi, const double& delta_t);
+RcppExport SEXP _cTMed_TotalDeltaT(SEXP phiSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(TotalDeltaT(phi, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
 // TotalVec
 arma::vec TotalVec(const arma::vec& phi_vec, const double& delta_t);
 RcppExport SEXP _cTMed_TotalVec(SEXP phi_vecSEXP, SEXP delta_tSEXP) {
@@ -283,6 +295,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_TotalCentrals", (DL_FUNC) &_cTMed_TotalCentrals, 2},
     {"_cTMed_TotalCentralVec", (DL_FUNC) &_cTMed_TotalCentralVec, 2},
     {"_cTMed_TotalCentral", (DL_FUNC) &_cTMed_TotalCentral, 2},
+    {"_cTMed_TotalDeltaT", (DL_FUNC) &_cTMed_TotalDeltaT, 2},
     {"_cTMed_TotalVec", (DL_FUNC) &_cTMed_TotalVec, 2},
     {"_cTMed_Total", (DL_FUNC) &_cTMed_Total, 2},
     {NULL, NULL, 0}

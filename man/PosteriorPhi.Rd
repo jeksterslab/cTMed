@@ -24,6 +24,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{Direct}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
+\code{\link{MCBeta}()},
 \code{\link{MCIndirectCentral}()},
 \code{\link{MCMed}()},
 \code{\link{MCPhi}()},
