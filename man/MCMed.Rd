@@ -89,7 +89,8 @@ of the total, direct and indirect effects
 of the independent variable \eqn{X}
 on the dependent variable \eqn{Y}
 through mediator variables \eqn{\mathbf{m}}
-at a particular time-interval \eqn{\Delta t}
+over a specific time-interval \eqn{\Delta t}
+or a range of time-intervals
 using the first-order stochastic differential equation model
 drift matrix \eqn{\boldsymbol{\Phi}}.
 }
@@ -363,6 +364,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{Direct}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
+\code{\link{MCBeta}()},
 \code{\link{MCIndirectCentral}()},
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},

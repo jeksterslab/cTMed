@@ -1210,10 +1210,12 @@ plot.ctmeddelta <- function(x,
       )
     }
     if (x$fun == "DeltaBeta") {
-      .PlotBetaCI(
-        object = x,
-        alpha = alpha,
-        col = col
+      return(
+        .PlotBetaCI(
+          object = x,
+          alpha = alpha,
+          col = col
+        )
       )
     }
   }
@@ -1302,12 +1304,23 @@ plot.ctmedmc <- function(x,
       )
     )
   } else {
-    return(
-      .PlotMedCI(
-        object = x,
-        alpha = alpha,
-        col = col
+    if (x$fun == "MCMed") {
+      return(
+        .PlotMedCI(
+          object = x,
+          alpha = alpha,
+          col = col
+        )
       )
-    )
+    }
+    if (x$fun == "MCBeta") {
+      return(
+        .PlotBetaCI(
+          object = x,
+          alpha = alpha,
+          col = col
+        )
+      )
+    }
   }
 }

@@ -143,6 +143,10 @@ TestStable <- function(x) {
     .Call(`_cTMed_TotalCentral`, phi, delta_t)
 }
 
+.TotalDeltaT <- function(phi, delta_t) {
+    .Call(`_cTMed_TotalDeltaT`, phi, delta_t)
+}
+
 .TotalVec <- function(phi_vec, delta_t) {
     .Call(`_cTMed_TotalVec`, phi_vec, delta_t)
 }

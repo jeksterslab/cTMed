@@ -1,23 +1,18 @@
 #' Monte Carlo Sampling Distribution
-#' of Total, Direct, and Indirect Effects
-#' of X on Y Through M
+#' for the Elements of the Matrix of Lagged Coefficients
 #' Over a Specific Time-Interval
 #' or a Range of Time-Intervals
 #'
 #' This function generates a Monte Carlo method
 #' sampling distribution
-#' of the total, direct and indirect effects
-#' of the independent variable \eqn{X}
-#' on the dependent variable \eqn{Y}
-#' through mediator variables \eqn{\mathbf{m}}
+#' for the elements of the matrix of lagged coefficients
+#' \eqn{\boldsymbol{\beta}}
 #' over a specific time-interval \eqn{\Delta t}
 #' or a range of time-intervals
 #' using the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
-#' @details See [Total()],
-#'   [Direct()], and
-#'   [Indirect()] for more details.
+#' @details See [Total()].
 #'
 #' ## Monte Carlo Method
 #'   Let \eqn{\boldsymbol{\theta}} be
@@ -191,7 +186,7 @@
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
-#'     \item{fun}{Function used (MCMed).}
+#'     \item{fun}{Function used (MCBeta).}
 #'     \item{output}{A list with length of `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
@@ -246,68 +241,47 @@
 #' )
 #'
 #' # Specific time-interval ----------------------------------------------------
-#' MCMed(
+#' MCBeta(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
 #'   delta_t = 1,
-#'   from = "x",
-#'   to = "y",
-#'   med = "m",
 #'   R = 100L # use a large value for R in actual research
 #' )
 #'
 #' # Range of time-intervals ---------------------------------------------------
-#' mc <- MCMed(
+#' mc <- MCBeta(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
 #'   delta_t = 1:5,
-#'   from = "x",
-#'   to = "y",
-#'   med = "m",
 #'   R = 100L # use a large value for R in actual research
 #' )
 #' plot(mc)
 #'
 #' # Methods -------------------------------------------------------------------
-#' # MCMed has a number of methods including
+#' # MCBeta has a number of methods including
 #' # print, summary, confint, and plot
 #' print(mc)
 #' summary(mc)
 #' confint(mc, level = 0.95)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed uncertainty path
+#' @keywords cTMed uncertainty beta
 #' @export
-MCMed <- function(phi,
-                  vcov_phi_vec,
-                  delta_t,
-                  from,
-                  to,
-                  med,
-                  R,
-                  test_phi = TRUE,
-                  ncores = NULL,
-                  seed = NULL) {
+MCBeta <- function(phi,
+                   vcov_phi_vec,
+                   delta_t,
+                   R,
+                   test_phi = TRUE,
+                   ncores = NULL,
+                   seed = NULL) {
   idx <- rownames(phi)
   stopifnot(
-    idx == colnames(phi),
-    length(from) == 1,
-    length(to) == 1,
-    from %in% idx,
-    to %in% idx
+    idx == colnames(phi)
   )
-  for (i in seq_len(length(med))) {
-    stopifnot(
-      med[i] %in% idx
-    )
-  }
   args <- list(
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
     delta_t = delta_t,
-    from = from,
-    to = to,
-    med = med,
     R = R,
     test_phi = test_phi,
     ncores = ncores,
@@ -322,25 +296,10 @@ MCMed <- function(phi,
       no = delta_t
     )
   )
-  from <- which(idx == from)
-  to <- which(idx == to)
-  med <- sapply(
-    X = med,
-    FUN = function(x,
-                   idx) {
-      return(
-        which(idx == x)
-      )
-    },
-    idx = idx
-  )
-  output <- .MCMed(
+  output <- .MCBeta(
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
     delta_t = delta_t,
-    from = from,
-    to = to,
-    med = med,
     R = R,
     test_phi = test_phi,
     ncores = ncores,
@@ -350,7 +309,7 @@ MCMed <- function(phi,
   out <- list(
     call = match.call(),
     args = args,
-    fun = "MCMed",
+    fun = "MCBeta",
     output = output
   )
   class(out) <- c(
