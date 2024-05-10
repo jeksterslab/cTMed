@@ -5,18 +5,18 @@ of the total, direct and indirect effects
 of the independent variable \(X\)
 on the dependent variable \(Y\)
 through mediator variables \(\mathbf{m}\)
-over a specific time-interval \(\Delta t\)
-or a range of time-intervals
+over a specific time interval \(\Delta t\)
+or a range of time intervals
 using the posterior distribution
 of the first-order stochastic differential equation model
-drift matrix \(\boldsymbol{\Phi}\)."><title>Posterior Distribution of Total, Direct, and Indirect Effects of X on Y Through M Over a Specific Time-Interval or a Range of Time-Intervals — PosteriorMed • cTMed</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.9/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Posterior Distribution of Total, Direct, and Indirect Effects of X on Y Through M Over a Specific Time-Interval or a Range of Time-Intervals — PosteriorMed"><meta property="og:description" content="This function generates a posterior
+drift matrix \(\boldsymbol{\Phi}\)."><title>Posterior Distribution of Total, Direct, and Indirect Effects of X on Y Through M Over a Specific Time Interval or a Range of Time Intervals — PosteriorMed • cTMed</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.9/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Posterior Distribution of Total, Direct, and Indirect Effects of X on Y Through M Over a Specific Time Interval or a Range of Time Intervals — PosteriorMed"><meta property="og:description" content="This function generates a posterior
 distribution
 of the total, direct and indirect effects
 of the independent variable \(X\)
 on the dependent variable \(Y\)
 through mediator variables \(\mathbf{m}\)
-over a specific time-interval \(\Delta t\)
-or a range of time-intervals
+over a specific time interval \(\Delta t\)
+or a range of time intervals
 using the posterior distribution
 of the first-order stochastic differential equation model
 drift matrix \(\boldsymbol{\Phi}\)."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -66,7 +66,7 @@ drift matrix \(\boldsymbol{\Phi}\)."><!-- mathjax --><script src="https://cdnjs.
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Posterior Distribution of Total, Direct, and Indirect Effects of X on Y Through M Over a Specific Time-Interval or a Range of Time-Intervals</h1>
+      <img src="" class="logo" alt=""><h1>Posterior Distribution of Total, Direct, and Indirect Effects of X on Y Through M Over a Specific Time Interval or a Range of Time Intervals</h1>
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/HEAD/R/cTMed-posterior-med.R"><code>R/cTMed-posterior-med.R</code></a></small>
       <div class="d-none name"><code>PosteriorMed.Rd</code></div>
     </div>
@@ -78,8 +78,8 @@ of the total, direct and indirect effects
 of the independent variable \(X\)
 on the dependent variable \(Y\)
 through mediator variables \(\mathbf{m}\)
-over a specific time-interval \(\Delta t\)
-or a range of time-intervals
+over a specific time interval \(\Delta t\)
+or a range of time intervals
 using the posterior distribution
 of the first-order stochastic differential equation model
 drift matrix \(\boldsymbol{\Phi}\).</p>
@@ -199,6 +199,7 @@ Psychometrika, 87 (1), 214–252.
 <code><a href="MCPhi.html">MCPhi</a>()</code>,
 <code><a href="MCTotalCentral.html">MCTotalCentral</a>()</code>,
 <code><a href="Med.html">Med</a>()</code>,
+<code><a href="PosteriorBeta.html">PosteriorBeta</a>()</code>,
 <code><a href="PosteriorIndirectCentral.html">PosteriorIndirectCentral</a>()</code>,
 <code><a href="PosteriorPhi.html">PosteriorPhi</a>()</code>,
 <code><a href="PosteriorTotalCentral.html">PosteriorTotalCentral</a>()</code>,
@@ -262,7 +263,7 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  R <span class="op">=</span> <span class="fl">1000L</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">$</span><span class="va">output</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Specific time-interval ----------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co"># Specific time interval ----------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="fu">PosteriorMed</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  phi <span class="op">=</span> <span class="va">phi</span>,</span></span>
 <span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span>,</span></span>
@@ -275,12 +276,12 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.1003 0.0331 1000 -0.1629 -0.0357</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2671 0.0437 1000 -0.3527 -0.1827</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1668 0.0192 1000  0.1314  0.2042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.0987 0.0343 1000 -0.1701 -0.0300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2641 0.0446 1000 -0.3502 -0.1702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1653 0.0193 1000  0.1286  0.2053</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Range of time-intervals ---------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co"># Range of time intervals ---------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">posterior</span> <span class="op">&lt;-</span> <span class="fu">PosteriorMed</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  phi <span class="op">=</span> <span class="va">phi</span>,</span></span>
 <span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span></span>
@@ -298,69 +299,72 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.1003 0.0331 1000 -0.1629 -0.0357</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2671 0.0437 1000 -0.3527 -0.1827</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1668 0.0192 1000  0.1314  0.2042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.0987 0.0343 1000 -0.1701 -0.0300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2641 0.0446 1000 -0.3502 -0.1702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1653 0.0193 1000  0.1286  0.2053</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           2  0.0784 0.0372 1000 -0.0008  0.1483</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          2 -0.3208 0.0515 1000 -0.4184 -0.2231</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        2  0.3992 0.0386 1000  0.3304  0.4754</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           2  0.0785 0.0393 1000  0.0000  0.1517</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          2 -0.3180 0.0535 1000 -0.4308 -0.2088</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        2  0.3964 0.0390 1000  0.3195  0.4767</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           3  0.2487 0.0370 1000  0.1747  0.3159</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          3 -0.2923 0.0488 1000 -0.3896 -0.2008</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        3  0.5409 0.0494 1000  0.4517  0.6395</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           3  0.2477 0.0384 1000  0.1714  0.3179</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          3 -0.2903 0.0517 1000 -0.4047 -0.1909</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        3  0.5380 0.0498 1000  0.4431  0.6380</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           4  0.3432 0.0357 1000  0.2710  0.4142</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          4 -0.2392 0.0435 1000 -0.3304 -0.1583</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        4  0.5823 0.0552 1000  0.4832  0.6994</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           4  0.3418 0.0360 1000  0.2754  0.4139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          4 -0.2381 0.0468 1000 -0.3407 -0.1511</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        4  0.5799 0.0557 1000  0.4771  0.6990</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se    R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           5  0.3684 0.0350 1000  0.2993  0.4399</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          5 -0.1854 0.0378 1000 -0.2671 -0.1152</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        5  0.5538 0.0574 1000  0.4477  0.6784</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           5  0.3672 0.0345 1000  0.3061  0.4371</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          5 -0.1849 0.0412 1000 -0.2781 -0.1139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        5  0.5522 0.0585 1000  0.4486  0.6830</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval         est         se    R          2.5%       97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.10028765 0.03305188 1000 -0.1628532567 -0.03569231</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.26708215 0.04374925 1000 -0.3526653024 -0.18272081</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.16679450 0.01922145 1000  0.1313789256  0.20419138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.07840908 0.03722557 1000 -0.0008439241  0.14828608</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.32082233 0.05148946 1000 -0.4184056128 -0.22307445</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.39923141 0.03863736 1000  0.3304258647  0.47536953</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.24868527 0.03696357 1000  0.1747274560  0.31593635</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.29226178 0.04881295 1000 -0.3895777054 -0.20080932</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.54094705 0.04938299 1000  0.4517322049  0.63946479</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.34315675 0.03573105 1000  0.2709737602  0.41424872</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.23918198 0.04350754 1000 -0.3303887570 -0.15831588</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.58233872 0.05518154 1000  0.4831636588  0.69936274</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.36838544 0.03499415 1000  0.2992505123  0.43992607</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.18537411 0.03777463 1000 -0.2670724148 -0.11523301</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.55375955 0.05738803 1000  0.4477157042  0.67844044</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.09874978 0.03427846 1000 -1.700557e-01 -0.03002761</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.26407276 0.04455356 1000 -3.502412e-01 -0.17021325</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.16532298 0.01933558 1000  1.286486e-01  0.20525832</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.07845305 0.03927390 1000  2.223319e-05  0.15171207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.31798223 0.05351151 1000 -4.307985e-01 -0.20877122</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.39643528 0.03904472 1000  3.195414e-01  0.47673554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.24765137 0.03839409 1000  1.714414e-01  0.31791498</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.29031802 0.05167949 1000 -4.047201e-01 -0.19085616</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.53796940 0.04982119 1000  4.430896e-01  0.63799533</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.34181243 0.03596326 1000  2.754323e-01  0.41387188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.23809561 0.04681167 1000 -3.407235e-01 -0.15107266</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.57990804 0.05574685 1000  4.771289e-01  0.69903936</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.36723237 0.03449657 1000  3.061464e-01  0.43714997</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.18492755 0.04120676 1000 -2.780756e-01 -0.11385791</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.55215992 0.05846350 1000  4.485900e-01  0.68301642</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">posterior</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval         2.5 %      97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.1628532567 -0.03569231</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.3526653024 -0.18272081</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.1313789256  0.20419138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2 -0.0008439241  0.14828608</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.4184056128 -0.22307445</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.3304258647  0.47536953</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.1747274560  0.31593635</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.3895777054 -0.20080932</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.4517322049  0.63946479</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.2709737602  0.41424872</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.3303887570 -0.15831588</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.4831636588  0.69936274</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.2992505123  0.43992607</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.2670724148 -0.11523301</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.4477157042  0.67844044</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -1.700557e-01 -0.03002761</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -3.502412e-01 -0.17021325</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  1.286486e-01  0.20525832</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  2.223319e-05  0.15171207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -4.307985e-01 -0.20877122</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  3.195414e-01  0.47673554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  1.714414e-01  0.31791498</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -4.047201e-01 -0.19085616</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  4.430896e-01  0.63799533</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  2.754323e-01  0.41387188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -3.407235e-01 -0.15107266</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  4.771289e-01  0.69903936</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  3.061464e-01  0.43714997</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -2.780756e-01 -0.11385791</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  4.485900e-01  0.68301642</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="PosteriorMed-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="PosteriorMed-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="PosteriorMed-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
