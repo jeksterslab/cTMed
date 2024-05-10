@@ -1,12 +1,12 @@
 #' Monte Carlo Sampling Distribution
 #' of Indirect Effect Centrality
-#' Over a Specific Time-Interval
-#' or a Range of Time-Intervals
+#' Over a Specific Time Interval
+#' or a Range of Time Intervals
 #'
 #' This function generates a Monte Carlo method
 #' sampling distribution
 #' of the indirect effect centrality
-#' at a particular time-interval \eqn{\Delta t}
+#' at a particular time interval \eqn{\Delta t}
 #' using the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
@@ -238,7 +238,7 @@
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' MCIndirectCentral(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -246,7 +246,7 @@
 #'   R = 100L # use a large value for R in actual research
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' mc <- MCIndirectCentral(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,

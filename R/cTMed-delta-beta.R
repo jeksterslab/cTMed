@@ -1,14 +1,14 @@
 #' Delta Method Sampling Variance-Covariance Matrix
 #' for the Elements of the Matrix of Lagged Coefficients
-#' Over a Specific Time-Interval
-#' or a Range of Time-Intervals
+#' Over a Specific Time Interval
+#' or a Range of Time Intervals
 #'
 #' This function computes the delta method
 #' sampling variance-covariance matrix
 #' for the elements of the matrix of lagged coefficients
 #' \eqn{\boldsymbol{\beta}}
-#' over a specific time-interval \eqn{\Delta t}
-#' or a range of time-intervals
+#' over a specific time interval \eqn{\Delta t}
+#' or a range of time intervals
 #' using the first-order stochastic differential equation model's
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
@@ -234,7 +234,7 @@
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
-#'     \item{delta_t}{Time-interval.}
+#'     \item{delta_t}{Time interval.}
 #'     \item{jacobian}{Jacobian matrix.}
 #'     \item{est}{Estimated total, direct, and indirect effects.}
 #'     \item{vcov}{Sampling variance-covariance matrix of the
@@ -284,14 +284,14 @@
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' DeltaBeta(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
 #'   delta_t = 1
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' delta <- DeltaBeta(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,

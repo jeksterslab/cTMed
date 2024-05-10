@@ -5,8 +5,8 @@
 \title{Delta Method Sampling Variance-Covariance Matrix
 for the Total, Direct, and Indirect Effects of X on Y
 Through M
-Over a Specific Time-Interval
-or a Range of Time-Intervals}
+Over a Specific Time Interval
+or a Range of Time Intervals}
 \usage{
 DeltaMed(phi, vcov_phi_vec, delta_t, from, to, med, ncores = NULL)
 }
@@ -51,7 +51,7 @@ of class \code{ctmeddelta} which is a list with the following elements:
 }
 Each element in the \code{output} list has the following elements:
 \describe{
-\item{delta_t}{Time-interval.}
+\item{delta_t}{Time interval.}
 \item{jacobian}{Jacobian matrix.}
 \item{est}{Estimated total, direct, and indirect effects.}
 \item{vcov}{Sampling variance-covariance matrix of the
@@ -65,8 +65,8 @@ for the total, direct, and indirect effects
 of the independent variable \eqn{X}
 on the dependent variable \eqn{Y}
 through mediator variables \eqn{\mathbf{m}}
-over a specific time-interval \eqn{\Delta t}
-or a range of time-intervals
+over a specific time interval \eqn{\Delta t}
+or a range of time intervals
 using the first-order stochastic differential equation model's
 drift matrix \eqn{\boldsymbol{\Phi}}.
 }
@@ -318,7 +318,7 @@ vcov_phi_vec <- matrix(
   nrow = 9
 )
 
-# Specific time-interval ----------------------------------------------------
+# Specific time interval ----------------------------------------------------
 DeltaMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -328,7 +328,7 @@ DeltaMed(
   med = "m"
 )
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 delta <- DeltaMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -380,6 +380,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},

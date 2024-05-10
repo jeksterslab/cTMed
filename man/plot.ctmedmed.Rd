@@ -33,7 +33,7 @@ phi <- matrix(
 )
 colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 med <- Med(
   phi = phi,
   delta_t = 1:5,

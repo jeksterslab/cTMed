@@ -18,7 +18,7 @@ Significance level \eqn{\alpha}.}
 }
 \value{
 Returns a matrix of
-time-interval,
+time interval,
 estimates,
 standard errors,
 test statistics,
@@ -72,7 +72,7 @@ vcov_phi_vec <- matrix(
   nrow = 9
 )
 
-# Specific time-interval ----------------------------------------------------
+# Specific time interval ----------------------------------------------------
 delta <- DeltaMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -83,7 +83,7 @@ delta <- DeltaMed(
 )
 print(delta)
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 delta <- DeltaMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,

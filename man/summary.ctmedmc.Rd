@@ -17,7 +17,7 @@ Significance level \eqn{\alpha}.}
 \value{
 Returns a matrix of
 effects,
-time-interval,
+time interval,
 estimates,
 standard errors,
 test statistics,
@@ -72,7 +72,7 @@ vcov_phi_vec <- matrix(
   nrow = 9
 )
 
-# Specific time-interval ----------------------------------------------------
+# Specific time interval ----------------------------------------------------
 mc <- MCMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -84,7 +84,7 @@ mc <- MCMed(
 )
 summary(mc)
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 mc <- MCMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,

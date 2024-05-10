@@ -4,8 +4,8 @@
 \alias{MCBeta}
 \title{Monte Carlo Sampling Distribution
 for the Elements of the Matrix of Lagged Coefficients
-Over a Specific Time-Interval
-or a Range of Time-Intervals}
+Over a Specific Time Interval
+or a Range of Time Intervals}
 \usage{
 MCBeta(
   phi,
@@ -74,8 +74,8 @@ This function generates a Monte Carlo method
 sampling distribution
 for the elements of the matrix of lagged coefficients
 \eqn{\boldsymbol{\beta}}
-over a specific time-interval \eqn{\Delta t}
-or a range of time-intervals
+over a specific time interval \eqn{\Delta t}
+or a range of time intervals
 using the first-order stochastic differential equation model
 drift matrix \eqn{\boldsymbol{\Phi}}.
 }
@@ -289,7 +289,7 @@ vcov_phi_vec <- matrix(
   nrow = 9
 )
 
-# Specific time-interval ----------------------------------------------------
+# Specific time interval ----------------------------------------------------
 MCBeta(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -297,7 +297,7 @@ MCBeta(
   R = 100L # use a large value for R in actual research
 )
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 mc <- MCBeta(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -346,6 +346,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},

@@ -18,7 +18,7 @@
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #' delta_t <- 1
 #'
-#' # Time-Interval of One -----------------------------------------------------
+#' # Time Interval of One -----------------------------------------------------
 #'
 #' ## Total Effect ------------------------------------------------------------
 #' total_dt <- Total(
@@ -79,7 +79,7 @@ print.ctmedeffect <- function(x,
 #' )
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
 #'   delta_t = 1,
@@ -89,7 +89,7 @@ print.ctmedeffect <- function(x,
 #' )
 #' print(med)
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
 #'   delta_t = 1:5,
@@ -191,7 +191,7 @@ print.ctmedmcphi <- function(x,
 #' @param digits Integer indicating the number of decimal places to display.
 #' @param ... further arguments.
 #' @return Returns a matrix of
-#'   time-interval,
+#'   time interval,
 #'   estimates,
 #'   standard errors,
 #'   test statistics,
@@ -242,7 +242,7 @@ print.ctmedmcphi <- function(x,
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -253,7 +253,7 @@ print.ctmedmcphi <- function(x,
 #' )
 #' print(delta)
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -366,7 +366,7 @@ print.ctmeddelta <- function(x,
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -378,7 +378,7 @@ print.ctmeddelta <- function(x,
 #' )
 #' print(mc)
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -450,7 +450,7 @@ print.ctmedmc <- function(x,
 #' )
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
 #'   delta_t = 1,
@@ -460,7 +460,7 @@ print.ctmedmc <- function(x,
 #' )
 #' summary(med)
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
 #'   delta_t = 1:5,
@@ -571,7 +571,7 @@ summary.ctmedposteriorphi <- function(object,
 #'
 #' @return Returns a matrix of
 #'   effects,
-#'   time-interval,
+#'   time interval,
 #'   estimates,
 #'   standard errors,
 #'   test statistics,
@@ -627,7 +627,7 @@ summary.ctmedposteriorphi <- function(object,
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -638,7 +638,7 @@ summary.ctmedposteriorphi <- function(object,
 #' )
 #' summary(delta)
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -719,7 +719,7 @@ summary.ctmeddelta <- function(object,
 #'
 #' @return Returns a matrix of
 #'   effects,
-#'   time-interval,
+#'   time interval,
 #'   estimates,
 #'   standard errors,
 #'   test statistics,
@@ -776,7 +776,7 @@ summary.ctmeddelta <- function(object,
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -788,7 +788,7 @@ summary.ctmeddelta <- function(object,
 #' )
 #' summary(mc)
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -912,7 +912,7 @@ summary.ctmedmc <- function(object,
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -923,7 +923,7 @@ summary.ctmedmc <- function(object,
 #' )
 #' confint(delta)
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -1042,7 +1042,7 @@ confint.ctmeddelta <- function(object,
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -1054,7 +1054,7 @@ confint.ctmeddelta <- function(object,
 #' )
 #' confint(mc)
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -1141,7 +1141,7 @@ confint.ctmedmc <- function(object,
 #' )
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
 #'   delta_t = 1:5,
@@ -1231,7 +1231,7 @@ plot.ctmedmed <- function(x,
 #'   nrow = 9
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' delta <- DeltaMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -1334,7 +1334,7 @@ plot.ctmeddelta <- function(x,
 #'   nrow = 9
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -1361,7 +1361,7 @@ plot.ctmedmc <- function(x,
       )
     )
   } else {
-    if (x$fun == "MCMed") {
+    if (x$fun == "MCMed" || x$fun == "PosteriorMed") {
       return(
         .PlotMedCI(
           object = x,
@@ -1370,7 +1370,7 @@ plot.ctmedmc <- function(x,
         )
       )
     }
-    if (x$fun == "MCBeta") {
+    if (x$fun == "MCBeta" || x$fun == "PosteriorBeta") {
       return(
         .PlotBetaCI(
           object = x,

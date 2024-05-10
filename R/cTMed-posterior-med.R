@@ -1,8 +1,8 @@
 #' Posterior Distribution
 #' of Total, Direct, and Indirect Effects
 #' of X on Y Through M
-#' Over a Specific Time-Interval
-#' or a Range of Time-Intervals
+#' Over a Specific Time Interval
+#' or a Range of Time Intervals
 #'
 #' This function generates a posterior
 #' distribution
@@ -10,8 +10,8 @@
 #' of the independent variable \eqn{X}
 #' on the dependent variable \eqn{Y}
 #' through mediator variables \eqn{\mathbf{m}}
-#' over a specific time-interval \eqn{\Delta t}
-#' or a range of time-intervals
+#' over a specific time interval \eqn{\Delta t}
+#' or a range of time intervals
 #' using the posterior distribution
 #' of the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
@@ -97,7 +97,7 @@
 #'   R = 1000L
 #' )$output
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' PosteriorMed(
 #'   phi = phi,
 #'   delta_t = 1,
@@ -106,7 +106,7 @@
 #'   med = "m"
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' posterior <- PosteriorMed(
 #'   phi = phi,
 #'   delta_t = 1:5,

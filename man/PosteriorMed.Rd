@@ -5,8 +5,8 @@
 \title{Posterior Distribution
 of Total, Direct, and Indirect Effects
 of X on Y Through M
-Over a Specific Time-Interval
-or a Range of Time-Intervals}
+Over a Specific Time Interval
+or a Range of Time Intervals}
 \usage{
 PosteriorMed(phi, delta_t, from, to, med, ncores = NULL)
 }
@@ -63,8 +63,8 @@ of the total, direct and indirect effects
 of the independent variable \eqn{X}
 on the dependent variable \eqn{Y}
 through mediator variables \eqn{\mathbf{m}}
-over a specific time-interval \eqn{\Delta t}
-or a range of time-intervals
+over a specific time interval \eqn{\Delta t}
+or a range of time intervals
 using the posterior distribution
 of the first-order stochastic differential equation model
 drift matrix \eqn{\boldsymbol{\Phi}}.
@@ -123,7 +123,7 @@ phi <- MCPhi(
   R = 1000L
 )$output
 
-# Specific time-interval ----------------------------------------------------
+# Specific time interval ----------------------------------------------------
 PosteriorMed(
   phi = phi,
   delta_t = 1,
@@ -132,7 +132,7 @@ PosteriorMed(
   med = "m"
 )
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 posterior <- PosteriorMed(
   phi = phi,
   delta_t = 1:5,
@@ -183,6 +183,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorPhi}()},
 \code{\link{PosteriorTotalCentral}()},

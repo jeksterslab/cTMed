@@ -3,7 +3,7 @@
 \name{Total}
 \alias{Total}
 \title{Total Effect Matrix
-Over a Specific Time-Interval}
+Over a Specific Time Interval}
 \usage{
 Total(phi, delta_t)
 }
@@ -29,13 +29,13 @@ of class \code{ctmedeffect} which is a list with the following elements:
 }
 \description{
 This function computes the total effects matrix
-over a specific time-interval \eqn{\Delta t}
+over a specific time interval \eqn{\Delta t}
 using the first-order stochastic differential equation model's
 drift matrix \eqn{\boldsymbol{\Phi}}.
 }
 \details{
 The total effect matrix
-over a specific time-interval \eqn{\Delta t}
+over a specific time interval \eqn{\Delta t}
 is given by
 \deqn{
     \mathrm{Total}_{\Delta t}
@@ -48,7 +48,7 @@ is given by
   }
 where
 \eqn{\boldsymbol{\Phi}} denotes the drift matrix, and
-\eqn{\Delta t} the time-interval.
+\eqn{\Delta t} the time interval.
 \subsection{Linear Stochastic Differential Equation Model}{
 
 The measurement model is given by
@@ -224,6 +224,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},
