@@ -21,14 +21,17 @@ PosteriorPhi <- function(object) {
   )
   varnames <- object$ctstanmodelbase$latentNames
   posterior <- ctsem::ctExtract(object)$pop_DRIFT
-  return(
-    lapply(
-      X = seq_len(dim(posterior)[1]),
-      FUN = function(i) {
-        phi <- posterior[i, , ]
-        colnames(phi) <- rownames(phi) <- varnames
-        return(phi)
-      }
-    )
+  out <- lapply(
+    X = seq_len(dim(posterior)[1]),
+    FUN = function(i) {
+      phi <- posterior[i, , ]
+      colnames(phi) <- rownames(phi) <- varnames
+      return(phi)
+    }
   )
+  class(out) <- c(
+    "ctmedposteriorphi",
+    class(out)
+  )
+  return(out)
 }
