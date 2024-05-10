@@ -103,6 +103,7 @@
 #' print(posterior)
 #' summary(posterior)
 #' confint(posterior, level = 0.95)
+#' plot(posterior)
 #'
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed uncertainty beta

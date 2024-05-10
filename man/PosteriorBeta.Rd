@@ -124,6 +124,7 @@ plot(posterior)
 print(posterior)
 summary(posterior)
 confint(posterior, level = 0.95)
+plot(posterior)
 
 }
 \references{
