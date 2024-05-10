@@ -263,6 +263,7 @@
 #' print(mc)
 #' summary(mc)
 #' confint(mc, level = 0.95)
+#' plot(mc)
 #'
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed uncertainty beta
