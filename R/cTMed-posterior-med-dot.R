@@ -34,7 +34,7 @@
               "total",
               "direct",
               "indirect",
-              "delta_t"
+              "interval"
             )
             return(
               out
@@ -72,7 +72,7 @@
               "total",
               "direct",
               "indirect",
-              "delta_t"
+              "interval"
             )
             return(
               out
