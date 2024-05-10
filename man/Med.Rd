@@ -4,8 +4,8 @@
 \alias{Med}
 \title{Total, Direct, and Indirect Effects of X on Y
 Through M
-Over a Specific Time-Interval
-or a Range of Time-Intervals}
+Over a Specific Time Interval
+or a Range of Time Intervals}
 \usage{
 Med(phi, delta_t, from, to, med)
 }
@@ -43,8 +43,8 @@ This function computes the total, direct, and indirect effects
 of the independent variable \eqn{X}
 on the dependent variable \eqn{Y}
 through mediator variables \eqn{\mathbf{m}}
-over a specific time-interval \eqn{\Delta t}
-or a range of time-intervals
+over a specific time interval \eqn{\Delta t}
+or a range of time intervals
 using the first-order stochastic differential equation model's
 drift matrix \eqn{\boldsymbol{\Phi}}.
 }
@@ -174,7 +174,7 @@ phi <- matrix(
 )
 colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 
-# Specific time-interval ----------------------------------------------------
+# Specific time interval ----------------------------------------------------
 Med(
   phi = phi,
   delta_t = 1,
@@ -183,7 +183,7 @@ Med(
   med = "m"
 )
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 med <- Med(
   phi = phi,
   delta_t = 1:30,
@@ -240,6 +240,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCMed}()},
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},
+\code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},

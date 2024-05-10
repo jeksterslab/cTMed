@@ -1,29 +1,23 @@
-#' Posterior Distribution
-#' of the Total Effect Centrality
+#' Posterior Sampling Distribution
+#' for the Elements of the Matrix of Lagged Coefficients
 #' Over a Specific Time Interval
 #' or a Range of Time Intervals
 #'
 #' This function generates a posterior
-#' distribution
-#' of the total effect centrality
+#' sampling distribution
+#' for the elements of the matrix of lagged coefficients
+#' \eqn{\boldsymbol{\beta}}
 #' over a specific time interval \eqn{\Delta t}
 #' or a range of time intervals
-#' using the posterior distribution
-#' of the first-order stochastic differential equation model
+#' using the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
-#' @details See [TotalCentral()] for more details.
+#' @details See [Total()].
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @inheritParams MCMed
-#' @param phi List of numeric matrices.
-#'   Each element of the list is a sample
-#'   from the posterior distribution
-#'   of the drift matrix (\eqn{\boldsymbol{\Phi}}).
-#'   Each matrix should have row and column names
-#'   pertaining to the variables in the system.
-#'
+#' @inheritParams Indirect
+#' @inheritParams MCPhi
 #' @inherit Indirect references
 #'
 #' @return Returns an object
@@ -31,14 +25,13 @@
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
-#'     \item{fun}{Function used (PosteriorTotalCentral).}
+#'     \item{fun}{Function used (PosteriorBeta).}
 #'     \item{output}{A list with length of `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
-#'     \item{est}{Mean of the posterior distribution
-#'     of the total, direct, and indirect effects.}
-#'     \item{thetahatstar}{Posterior distribution of the
+#'     \item{est}{A vector of total, direct, and indirect effects.}
+#'     \item{thetahatstar}{A matrix of Monte Carlo
 #'     total, direct, and indirect effects.}
 #'   }
 #'
@@ -92,43 +85,41 @@
 #' )$output
 #'
 #' # Specific time interval ----------------------------------------------------
-#' PosteriorTotalCentral(
+#' PosteriorBeta(
 #'   phi = phi,
 #'   delta_t = 1
 #' )
 #'
 #' # Range of time intervals ---------------------------------------------------
-#' posterior <- PosteriorTotalCentral(
+#' posterior <- PosteriorBeta(
 #'   phi = phi,
 #'   delta_t = 1:5
 #' )
+#' plot(posterior)
 #'
 #' # Methods -------------------------------------------------------------------
-#' # PosteriorTotalCentral has a number of methods including
+#' # PosteriorBeta has a number of methods including
 #' # print, summary, confint, and plot
 #' print(posterior)
 #' summary(posterior)
 #' confint(posterior, level = 0.95)
-#' plot(posterior)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed uncertainty network
+#' @keywords cTMed uncertainty beta
 #' @export
-PosteriorTotalCentral <- function(phi,
-                                  delta_t,
-                                  ncores = NULL) {
+PosteriorBeta <- function(phi,
+                          delta_t,
+                          ncores = NULL) {
+  idx <- rownames(phi)
   stopifnot(
-    is.list(phi),
-    is.matrix(phi[[1]])
+    idx == colnames(phi)
   )
-  total <- TRUE
   args <- list(
     phi = phi,
     delta_t = delta_t,
     ncores = ncores,
-    method = "posterior",
-    network = TRUE,
-    total = total
+    method = "mc",
+    network = FALSE
   )
   delta_t <- sort(
     ifelse(
@@ -137,17 +128,16 @@ PosteriorTotalCentral <- function(phi,
       no = delta_t
     )
   )
-  output <- .PosteriorCentral(
+  output <- .PosteriorBeta(
     phi = phi,
     delta_t = delta_t,
-    total = total,
     ncores = ncores
   )
   names(output) <- delta_t
   out <- list(
     call = match.call(),
     args = args,
-    fun = "PosteriorTotalCentral",
+    fun = "PosteriorBeta",
     output = output
   )
   class(out) <- c(

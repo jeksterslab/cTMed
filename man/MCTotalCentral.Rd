@@ -4,8 +4,8 @@
 \alias{MCTotalCentral}
 \title{Monte Carlo Sampling Distribution
 of Total Effect Centrality
-Over a Specific Time-Interval
-or a Range of Time-Intervals}
+Over a Specific Time Interval
+or a Range of Time Intervals}
 \usage{
 MCTotalCentral(
   phi,
@@ -73,7 +73,7 @@ total, direct, and indirect effects.}
 This function generates a Monte Carlo method
 sampling distribution
 of the total effect centrality
-at a particular time-interval \eqn{\Delta t}
+at a particular time interval \eqn{\Delta t}
 using the first-order stochastic differential equation model
 drift matrix \eqn{\boldsymbol{\Phi}}.
 }
@@ -287,7 +287,7 @@ vcov_phi_vec <- matrix(
   nrow = 9
 )
 
-# Specific time-interval ----------------------------------------------------
+# Specific time interval ----------------------------------------------------
 MCTotalCentral(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -295,7 +295,7 @@ MCTotalCentral(
   R = 100L # use a large value for R in actual research
 )
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 mc <- MCTotalCentral(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -345,6 +345,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCMed}()},
 \code{\link{MCPhi}()},
 \code{\link{Med}()},
+\code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},

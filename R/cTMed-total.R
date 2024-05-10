@@ -1,13 +1,13 @@
 #' Total Effect Matrix
-#' Over a Specific Time-Interval
+#' Over a Specific Time Interval
 #'
 #' This function computes the total effects matrix
-#' over a specific time-interval \eqn{\Delta t}
+#' over a specific time interval \eqn{\Delta t}
 #' using the first-order stochastic differential equation model's
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
 #' @details The total effect matrix
-#'   over a specific time-interval \eqn{\Delta t}
+#'   over a specific time interval \eqn{\Delta t}
 #'   is given by
 #'   \deqn{
 #'     \mathrm{Total}_{\Delta t}
@@ -20,7 +20,7 @@
 #'   }
 #'   where
 #'   \eqn{\boldsymbol{\Phi}} denotes the drift matrix, and
-#'   \eqn{\Delta t} the time-interval.
+#'   \eqn{\Delta t} the time interval.
 #'
 #'   ## Linear Stochastic Differential Equation Model
 #'

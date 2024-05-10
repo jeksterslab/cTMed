@@ -31,7 +31,7 @@ phi <- matrix(
 colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 delta_t <- 1
 
-# Time-Interval of One -----------------------------------------------------
+# Time Interval of One -----------------------------------------------------
 
 ## Total Effect ------------------------------------------------------------
 total_dt <- Total(

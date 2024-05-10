@@ -4,8 +4,8 @@
 \alias{DeltaIndirectCentral}
 \title{Delta Method Sampling Variance-Covariance Matrix
 for the Indirect Effect Centrality
-Over a Specific Time-Interval
-or a Range of Time-Intervals}
+Over a Specific Time Interval
+or a Range of Time Intervals}
 \usage{
 DeltaIndirectCentral(phi, vcov_phi_vec, delta_t, ncores = NULL)
 }
@@ -41,7 +41,7 @@ of class \code{ctmeddelta} which is a list with the following elements:
 }
 Each element in the \code{output} list has the following elements:
 \describe{
-\item{delta_t}{Time-interval.}
+\item{delta_t}{Time interval.}
 \item{jacobian}{Jacobian matrix.}
 \item{est}{Estimated total, direct, and indirect effects.}
 \item{vcov}{Sampling variance-covariance matrix of the
@@ -52,8 +52,8 @@ estimated total, direct, and indirect effects.}
 This function computes the delta method
 sampling variance-covariance matrix
 for the indirect effect centrality
-over a specific time-interval \eqn{\Delta t}
-or a range of time-intervals
+over a specific time interval \eqn{\Delta t}
+or a range of time intervals
 using the first-order stochastic differential equation model's
 drift matrix \eqn{\boldsymbol{\Phi}}.
 }
@@ -303,14 +303,14 @@ vcov_phi_vec <- matrix(
   nrow = 9
 )
 
-# Specific time-interval ----------------------------------------------------
+# Specific time interval ----------------------------------------------------
 DeltaIndirectCentral(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
   delta_t = 1
 )
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 delta <- DeltaIndirectCentral(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -359,6 +359,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},

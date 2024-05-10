@@ -65,7 +65,7 @@ vcov_phi_vec <- matrix(
   nrow = 9
 )
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 mc <- MCMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,

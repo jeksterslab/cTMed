@@ -30,13 +30,13 @@ phi <- matrix(
 )
 colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 
-# Specific time-interval ----------------------------------------------------
+# Specific time interval ----------------------------------------------------
 TotalCentral(
   phi = phi,
   delta_t = 1
 )
 
-# Range of time-intervals ---------------------------------------------------
+# Range of time intervals ---------------------------------------------------
 total_central <- TotalCentral(
   phi = phi,
   delta_t = 1:30
@@ -70,6 +70,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},

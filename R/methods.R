@@ -59,7 +59,7 @@
 #'   nrow = 9
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' total_central <- DeltaTotalCentral(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -191,7 +191,7 @@
       xlim = range(ci$interval),
       ylim = range(c(ci$est, ci$ll, ci$ul)),
       type = "n",
-      xlab = "Time-Interval",
+      xlab = "Time Interval",
       ylab = ylab,
       main = main
     )
@@ -303,7 +303,7 @@
 #'   nrow = 9
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' beta <- DeltaBeta(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -404,7 +404,7 @@
       xlim = range(ci$interval),
       ylim = range(c(ci$est, ci$ll, ci$ul)),
       type = "n",
-      xlab = "Time-Interval",
+      xlab = "Time Interval",
       ylab = ylab,
       main = paste0(
         (1 - alpha) * 100,
@@ -490,7 +490,7 @@
 #' )
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' total_central <- TotalCentral(
 #'   phi = phi,
 #'   delta_t = 1:5
@@ -541,7 +541,7 @@
       ]
     ),
     type = "n",
-    xlab = "Time-Interval",
+    xlab = "Time Interval",
     ylab = "Parameter Value",
     main = main
   )
@@ -627,7 +627,7 @@
 #'   nrow = 9
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -746,7 +746,7 @@
       xlim = range(ci$interval),
       ylim = range(c(ci$est, ci$ll, ci$ul)),
       type = "n",
-      xlab = "Time-Interval",
+      xlab = "Time Interval",
       ylab = ylab,
       main = paste0(
         (1 - alpha) * 100,
@@ -836,7 +836,7 @@
 #' )
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' med <- Med(
 #'   phi = phi,
 #'   delta_t = 1:5,
@@ -887,7 +887,7 @@
       ]
     ),
     type = "n",
-    xlab = "Time-Interval",
+    xlab = "Time Interval",
     ylab = "Parameter Value",
     main = "Total, Direct, and Indirect Effects"
   )

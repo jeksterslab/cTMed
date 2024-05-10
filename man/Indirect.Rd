@@ -3,7 +3,7 @@
 \name{Indirect}
 \alias{Indirect}
 \title{Indirect Effect of X on Y Through M
-Over a Specific Time-Interval}
+Over a Specific Time Interval}
 \usage{
 Indirect(phi, delta_t, from, to, med)
 }
@@ -41,7 +41,7 @@ This function computes the indirect effect
 of the independent variable \eqn{X}
 on the dependent variable \eqn{Y}
 through mediator variables \eqn{\mathbf{m}}
-over a specific time-interval \eqn{\Delta t}
+over a specific time interval \eqn{\Delta t}
 using the first-order stochastic differential equation model's
 drift matrix \eqn{\boldsymbol{\Phi}}.
 }
@@ -50,7 +50,7 @@ The indirect effect
 of the independent variable \eqn{X}
 on the dependent variable \eqn{Y}
 relative to some mediator variables \eqn{\mathbf{m}}
-over a specific time-interval \eqn{\Delta t}
+over a specific time interval \eqn{\Delta t}
 is given by
 \deqn{
     \mathrm{Indirect}_{\Delta t}
@@ -77,7 +77,7 @@ for the index/indices of mediator variables \eqn{\mathbf{m}}
 and one otherwise,
 \eqn{i} the row index of \eqn{Y} in \eqn{\boldsymbol{\Phi}},
 \eqn{j} the column index of \eqn{X} in \eqn{\boldsymbol{\Phi}}, and
-\eqn{\Delta t} the time-interval.
+\eqn{\Delta t} the time interval.
 \subsection{Linear Stochastic Differential Equation Model}{
 
 The measurement model is given by
@@ -258,6 +258,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},

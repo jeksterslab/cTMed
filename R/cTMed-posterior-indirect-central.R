@@ -1,13 +1,13 @@
 #' Posterior Distribution
 #' of the Indirect Effect Centrality
-#' Over a Specific Time-Interval
-#' or a Range of Time-Intervals
+#' Over a Specific Time Interval
+#' or a Range of Time Intervals
 #'
 #' This function generates a posterior
 #' distribution
 #' of the indirect effect centrality
-#' over a specific time-interval \eqn{\Delta t}
-#' or a range of time-intervals
+#' over a specific time interval \eqn{\Delta t}
+#' or a range of time intervals
 #' using the posterior distribution
 #' of the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
@@ -91,13 +91,13 @@
 #'   R = 1000L
 #' )$output
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' PosteriorIndirectCentral(
 #'   phi = phi,
 #'   delta_t = 1
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' posterior <- PosteriorIndirectCentral(
 #'   phi = phi,
 #'   delta_t = 1:5

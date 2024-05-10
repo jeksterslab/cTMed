@@ -1,8 +1,8 @@
 #' Monte Carlo Sampling Distribution
 #' of Total, Direct, and Indirect Effects
 #' of X on Y Through M
-#' Over a Specific Time-Interval
-#' or a Range of Time-Intervals
+#' Over a Specific Time Interval
+#' or a Range of Time Intervals
 #'
 #' This function generates a Monte Carlo method
 #' sampling distribution
@@ -10,8 +10,8 @@
 #' of the independent variable \eqn{X}
 #' on the dependent variable \eqn{Y}
 #' through mediator variables \eqn{\mathbf{m}}
-#' over a specific time-interval \eqn{\Delta t}
-#' or a range of time-intervals
+#' over a specific time interval \eqn{\Delta t}
+#' or a range of time intervals
 #' using the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
@@ -245,7 +245,7 @@
 #'   nrow = 9
 #' )
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,
@@ -256,7 +256,7 @@
 #'   R = 100L # use a large value for R in actual research
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' mc <- MCMed(
 #'   phi = phi,
 #'   vcov_phi_vec = vcov_phi_vec,

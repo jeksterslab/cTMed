@@ -15,13 +15,13 @@
 #' )
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
-#' # Specific time-interval ----------------------------------------------------
+#' # Specific time interval ----------------------------------------------------
 #' IndirectCentral(
 #'   phi = phi,
 #'   delta_t = 1
 #' )
 #'
-#' # Range of time-intervals ---------------------------------------------------
+#' # Range of time intervals ---------------------------------------------------
 #' indirect_central <- IndirectCentral(
 #'   phi = phi,
 #'   delta_t = 1:30

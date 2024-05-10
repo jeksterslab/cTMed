@@ -1,11 +1,11 @@
 #' Direct Effect of X on Y
-#' Over a Specific Time-Interval
+#' Over a Specific Time Interval
 #'
 #' This function computes the direct effect
 #' of the independent variable \eqn{X}
 #' on the dependent variable \eqn{Y}
 #' through mediator variables \eqn{\mathbf{m}}
-#' over a specific time-interval \eqn{\Delta t}
+#' over a specific time interval \eqn{\Delta t}
 #' using the first-order stochastic differential equation model's
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
@@ -33,7 +33,7 @@
 #'   are set to zero and the rest to one,
 #'   \eqn{i} the row index of \eqn{Y} in \eqn{\boldsymbol{\Phi}},
 #'   \eqn{j} the column index of \eqn{X} in \eqn{\boldsymbol{\Phi}}, and
-#'   \eqn{\Delta t} the time-interval.
+#'   \eqn{\Delta t} the time interval.
 #'
 #'   ## Linear Stochastic Differential Equation Model
 #'
