@@ -53,7 +53,7 @@
 #'
 #' Both have to be true for the function to return `TRUE`.
 #'   - Test that the real part of all eigenvalues of \eqn{\boldsymbol{\Phi}}
-#'     is less than zero.
+#'     are less than zero.
 #'   - Test that the diagonal values of \eqn{\boldsymbol{\Phi}}
 #'     are between 0 to negative inifinity.
 #'

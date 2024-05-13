@@ -14,7 +14,7 @@ The drift matrix (\eqn{\boldsymbol{\Phi}}).}
 Both have to be true for the function to return \code{TRUE}.
 \itemize{
 \item Test that the real part of all eigenvalues of \eqn{\boldsymbol{\Phi}}
-is less than zero.
+are less than zero.
 \item Test that the diagonal values of \eqn{\boldsymbol{\Phi}}
 are between 0 to negative inifinity.
 }
