@@ -139,7 +139,7 @@
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
-#'     \item{fun}{Function used (Med).}
+#'     \item{fun}{Function used ("Med").}
 #'     \item{output}{A matrix of total, direct, and indirect effects.}
 #'   }
 #'

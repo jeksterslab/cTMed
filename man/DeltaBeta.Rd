@@ -36,7 +36,7 @@ of class \code{ctmeddelta} which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
 \item{args}{Function arguments.}
-\item{fun}{Function used (DeltaBeta).}
+\item{fun}{Function used ("DeltaBeta").}
 \item{output}{A list with length of \code{length(delta_t)}.}
 }
 Each element in the \code{output} list has the following elements:
@@ -368,7 +368,8 @@ Other Continuous Time Mediation Functions:
 \code{\link{TestPhi}()},
 \code{\link{TestStable}()},
 \code{\link{Total}()},
-\code{\link{TotalCentral}()}
+\code{\link{TotalCentral}()},
+\code{\link{Trajectory}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan
