@@ -25,7 +25,7 @@
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
-#'     \item{fun}{Function used (PosteriorBeta).}
+#'     \item{fun}{Function used ("PosteriorBeta").}
 #'     \item{output}{A list with length of `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:

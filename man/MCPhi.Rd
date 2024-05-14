@@ -40,7 +40,14 @@ is a large value.}
 \item{seed}{Random seed.}
 }
 \value{
-Returns a list of simulated drift matrices.
+Returns an object
+of class \code{ctmedmc} which is a list with the following elements:
+\describe{
+\item{call}{Function call.}
+\item{args}{Function arguments.}
+\item{fun}{Function used ("MCPhi").}
+\item{output}{A list simulated drift matrices.}
+}
 }
 \description{
 This function generates random
@@ -253,7 +260,8 @@ Other Continuous Time Mediation Functions:
 \code{\link{TestPhi}()},
 \code{\link{TestStable}()},
 \code{\link{Total}()},
-\code{\link{TotalCentral}()}
+\code{\link{TotalCentral}()},
+\code{\link{Trajectory}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan

@@ -77,7 +77,8 @@ Other Continuous Time Mediation Functions:
 \code{\link{PosteriorTotalCentral}()},
 \code{\link{TestPhi}()},
 \code{\link{TestStable}()},
-\code{\link{Total}()}
+\code{\link{Total}()},
+\code{\link{Trajectory}()}
 }
 \author{
 Ivan Jacob Agaloos Pesigan
