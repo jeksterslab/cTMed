@@ -94,6 +94,9 @@
     <loc>https://github.com/jeksterslab/cTMed/reference/TotalCentral.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/Trajectory.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/cTMed-package.html</loc>
   </url>
   <url>
@@ -115,6 +118,9 @@
     <loc>https://github.com/jeksterslab/cTMed/reference/plot.ctmedmed.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/plot.ctmedtraj.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/print.ctmeddelta.html</loc>
   </url>
   <url>
@@ -130,6 +136,9 @@
     <loc>https://github.com/jeksterslab/cTMed/reference/print.ctmedmed.html</loc>
   </url>
   <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/print.ctmedtraj.html</loc>
+  </url>
+  <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/summary.ctmeddelta.html</loc>
   </url>
   <url>
@@ -140,5 +149,8 @@
   </url>
   <url>
     <loc>https://github.com/jeksterslab/cTMed/reference/summary.ctmedposteriorphi.html</loc>
+  </url>
+  <url>
+    <loc>https://github.com/jeksterslab/cTMed/reference/summary.ctmedtraj.html</loc>
   </url>
 </urlset>
