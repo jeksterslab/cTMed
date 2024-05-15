@@ -38,7 +38,7 @@ print.ctmedtraj <- function(x,
     x$direct
   )
   direct$total <- FALSE
-  out <- cbind(
+  out <- rbind(
     total,
     direct
   )
@@ -89,12 +89,12 @@ summary.ctmedtraj <- function(object,
     x$direct
   )
   direct$total <- FALSE
-  out <- cbind(
+  out <- rbind(
     total,
     direct
   )
   return(
-    out[, -c(2)]
+    out[, -c(1)]
   )
 }
 

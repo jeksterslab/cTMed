@@ -60,6 +60,13 @@ plot(traj)
 # Methods -------------------------------------------------------------------
 # Med has a number of methods including
 # print, summary, and plot
+
+traj <- Trajectory(
+  mu = c(3, 3, -3),
+  time = 25,
+  phi = phi,
+  med = "m"
+)
 print(traj)
 summary(traj)
 plot(traj)
