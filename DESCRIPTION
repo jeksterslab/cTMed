@@ -12,7 +12,7 @@ Description: Calculates standard errors and confidence intervals
 URL: https://github.com/jeksterslab/cTMed,
         https://jeksterslab.github.io/cTMed/
 BugReports: https://github.com/jeksterslab/cTMed/issues
-License: MIT + file LICENSE
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 3.5.0)
@@ -21,7 +21,7 @@ Imports: Rcpp, numDeriv, parallel, ctsem, simStateSpace,
 Suggests: knitr, rmarkdown, testthat, expm
 RoxygenNote: 7.3.1
 NeedsCompilation: yes
-Packaged: 2024-05-15 02:59:15 UTC; root
+Packaged: 2024-05-18 00:22:27 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph]
     (<https://orcid.org/0000-0003-4818-8420>)
 Maintainer: Ivan Jacob Agaloos Pesigan <r.jeksterslab@gmail.com>
