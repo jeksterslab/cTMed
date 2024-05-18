@@ -6,7 +6,7 @@
 cff-version: 1.2.0
 message: 'To cite package "cTMed" in publications use:'
 type: software
-license: MIT
+license: GPL-3.0-or-later
 title: 'cTMed: Continuous Time Mediation'
 version: 0.9.1
 abstract: Calculates standard errors and confidence intervals for effects in continuous
