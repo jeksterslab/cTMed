@@ -112,12 +112,12 @@ Number of replications.</p></dd>
 <dt>test_phi</dt>
 <dd><p>Logical.
 If <code>test_phi = TRUE</code>,
-the function runs <code><a href="TestPhi.html">TestPhi()</a></code>
-on the generated drift matrix \(\boldsymbol{\Phi}\).
-If the <code><a href="TestPhi.html">TestPhi()</a></code> returns <code>FALSE</code>,
+the function tests the stability
+of the generated drift matrix \(\boldsymbol{\Phi}\).
+If the test returns <code>FALSE</code>,
 the function generates a new drift matrix \(\boldsymbol{\Phi}\)
 and runs the test recursively
-until <code><a href="TestPhi.html">TestPhi()</a></code> returns <code>TRUE</code>.</p></dd>
+until the test returns <code>TRUE</code>.</p></dd>
 
 
 <dt>ncores</dt>
@@ -367,8 +367,6 @@ Psychometrika, 87 (1), 214–252.
 <code><a href="PosteriorMed.html">PosteriorMed</a>()</code>,
 <code><a href="PosteriorPhi.html">PosteriorPhi</a>()</code>,
 <code><a href="PosteriorTotalCentral.html">PosteriorTotalCentral</a>()</code>,
-<code><a href="TestPhi.html">TestPhi</a>()</code>,
-<code><a href="TestStable.html">TestStable</a>()</code>,
 <code><a href="Total.html">Total</a>()</code>,
 <code><a href="TotalCentral.html">TotalCentral</a>()</code>,
 <code><a href="Trajectory.html">Trajectory</a>()</code></p></div>
