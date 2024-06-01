@@ -229,8 +229,6 @@ Other Continuous Time Mediation Functions:
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},
 \code{\link{PosteriorTotalCentral}()},
-\code{\link{TestPhi}()},
-\code{\link{TestStable}()},
 \code{\link{TotalCentral}()},
 \code{\link{Trajectory}()}
 }

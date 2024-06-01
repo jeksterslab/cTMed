@@ -22,12 +22,12 @@ Number of replications.}
 
 \item{test_phi}{Logical.
 If \code{test_phi = TRUE},
-the function runs \code{\link[=TestPhi]{TestPhi()}}
-on the generated drift matrix \eqn{\boldsymbol{\Phi}}.
-If the \code{\link[=TestPhi]{TestPhi()}} returns \code{FALSE},
+the function tests the stability
+of the generated drift matrix \eqn{\boldsymbol{\Phi}}.
+If the test returns \code{FALSE},
 the function generates a new drift matrix \eqn{\boldsymbol{\Phi}}
 and runs the test recursively
-until \code{\link[=TestPhi]{TestPhi()}} returns \code{TRUE}.}
+until the test returns \code{TRUE}.}
 
 \item{ncores}{Positive integer.
 Number of cores to use.
@@ -257,8 +257,6 @@ Other Continuous Time Mediation Functions:
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorPhi}()},
 \code{\link{PosteriorTotalCentral}()},
-\code{\link{TestPhi}()},
-\code{\link{TestStable}()},
 \code{\link{Total}()},
 \code{\link{TotalCentral}()},
 \code{\link{Trajectory}()}

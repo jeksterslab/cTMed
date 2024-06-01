@@ -162,12 +162,12 @@
 #'   Number of replications.
 #' @param test_phi Logical.
 #'   If `test_phi = TRUE`,
-#'   the function runs [TestPhi()]
-#'   on the generated drift matrix \eqn{\boldsymbol{\Phi}}.
-#'   If the [TestPhi()] returns `FALSE`,
+#'   the function tests the stability
+#'   of the generated drift matrix \eqn{\boldsymbol{\Phi}}.
+#'   If the test returns `FALSE`,
 #'   the function generates a new drift matrix \eqn{\boldsymbol{\Phi}}
 #'   and runs the test recursively
-#'   until [TestPhi()] returns `TRUE`.
+#'   until the test returns `TRUE`.
 #' @param ncores Positive integer.
 #'   Number of cores to use.
 #'   If `ncores = NULL`,
