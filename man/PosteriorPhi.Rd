@@ -34,8 +34,6 @@ Other Continuous Time Mediation Functions:
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
 \code{\link{PosteriorTotalCentral}()},
-\code{\link{TestPhi}()},
-\code{\link{TestStable}()},
 \code{\link{Total}()},
 \code{\link{TotalCentral}()},
 \code{\link{Trajectory}()}
