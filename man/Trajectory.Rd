@@ -50,7 +50,7 @@ phi <- matrix(
 colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 
 traj <- Trajectory(
-  mu = c(3, 3, -3),
+  mu0 = c(3, 3, -3),
   time = 150,
   phi = phi,
   med = "m"
@@ -62,7 +62,7 @@ plot(traj)
 # print, summary, and plot
 
 traj <- Trajectory(
-  mu = c(3, 3, -3),
+  mu0 = c(3, 3, -3),
   time = 25,
   phi = phi,
   med = "m"

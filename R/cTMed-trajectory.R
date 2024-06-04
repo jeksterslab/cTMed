@@ -33,7 +33,7 @@
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
 #' traj <- Trajectory(
-#'   mu = c(3, 3, -3),
+#'   mu0 = c(3, 3, -3),
 #'   time = 150,
 #'   phi = phi,
 #'   med = "m"
@@ -45,7 +45,7 @@
 #' # print, summary, and plot
 #'
 #' traj <- Trajectory(
-#'   mu = c(3, 3, -3),
+#'   mu0 = c(3, 3, -3),
 #'   time = 25,
 #'   phi = phi,
 #'   med = "m"
@@ -85,6 +85,8 @@ Trajectory <- function(mu0,
   phi_direct[, med] <- 0
   phi_direct[med, ] <- 0
   diag(phi_direct) <- diag(phi)
+  phi_indirect <- phi - phi_direct
+  diag(phi_indirect) <- diag(phi)
   # generate data
   iden_mat <- diag(p)
   null_vec <- rep(x = 0, times = p)
@@ -119,9 +121,23 @@ Trajectory <- function(mu0,
     lambda = iden_mat,
     theta_l = null_mat
   )
+  indirect <- simStateSpace::SimSSMOUFixed(
+    n = 1,
+    time = time,
+    delta_t = 0.10,
+    mu0 = mu0,
+    sigma0_l = null_mat,
+    mu = null_vec,
+    phi = phi_indirect,
+    sigma_l = null_mat,
+    nu = null_vec,
+    lambda = iden_mat,
+    theta_l = null_mat
+  )
   output <- list(
     total = total,
-    direct = direct
+    direct = direct,
+    indirect = indirect
   )
   out <- list(
     call = match.call(),
