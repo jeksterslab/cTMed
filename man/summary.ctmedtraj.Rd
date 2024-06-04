@@ -29,7 +29,7 @@ phi <- matrix(
 colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 
 traj <- Trajectory(
-  mu = c(3, 3, -3),
+  mu0 = c(3, 3, -3),
   time = 150,
   phi = phi,
   med = "m"

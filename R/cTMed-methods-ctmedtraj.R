@@ -17,7 +17,7 @@
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
 #' traj <- Trajectory(
-#'   mu = c(3, 3, -3),
+#'   mu0 = c(3, 3, -3),
 #'   time = 150,
 #'   phi = phi,
 #'   med = "m"
@@ -33,17 +33,22 @@ print.ctmedtraj <- function(x,
   total <- simStateSpace:::as.data.frame.simstatespace(
     x$total
   )
-  total$total <- TRUE
+  total$effect <- "total"
   direct <- simStateSpace:::as.data.frame.simstatespace(
     x$direct
   )
-  direct$total <- FALSE
+  direct$effect <- "direct"
+  indirect <- simStateSpace:::as.data.frame.simstatespace(
+    x$indirect
+  )
+  indirect$effect <- "indirect"
   out <- rbind(
     total,
-    direct
+    direct,
+    indirect
   )
   return(
-    out[, -c(2)]
+    out[, -c(1)]
   )
 }
 
@@ -68,7 +73,7 @@ print.ctmedtraj <- function(x,
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
 #' traj <- Trajectory(
-#'   mu = c(3, 3, -3),
+#'   mu0 = c(3, 3, -3),
 #'   time = 150,
 #'   phi = phi,
 #'   med = "m"
@@ -84,14 +89,19 @@ summary.ctmedtraj <- function(object,
   total <- simStateSpace:::as.data.frame.simstatespace(
     x$total
   )
-  total$total <- TRUE
+  total$effect <- "total"
   direct <- simStateSpace:::as.data.frame.simstatespace(
     x$direct
   )
-  direct$total <- FALSE
+  direct$effect <- "direct"
+  indirect <- simStateSpace:::as.data.frame.simstatespace(
+    x$indirect
+  )
+  indirect$effect <- "indirect"
   out <- rbind(
     total,
-    direct
+    direct,
+    indirect
   )
   return(
     out[, -c(1)]
@@ -120,7 +130,7 @@ summary.ctmedtraj <- function(object,
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 #'
 #' traj <- Trajectory(
-#'   mu = c(3, 3, -3),
+#'   mu0 = c(3, 3, -3),
 #'   time = 150,
 #'   phi = phi,
 #'   med = "m"
