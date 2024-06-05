@@ -116,6 +116,9 @@ summary.ctmedtraj <- function(object,
 #' @param legend_pos Character vector.
 #'   Optional argument.
 #'   Legend position.
+#' @param total Logical.
+#'   If `total = TRUE`, include the total effect trajectory.
+#'   If `total = FALSE`, exclude the total effect trajectory.
 #' @param ... Additional arguments.
 #'
 #' @examples
@@ -142,11 +145,13 @@ summary.ctmedtraj <- function(object,
 #' @export
 plot.ctmedtraj <- function(x,
                            legend_pos = "topright",
+                           total = TRUE,
                            ...) {
   return(
     .PlotTrajectory(
       object = x,
-      legend_pos = legend_pos
+      legend_pos = legend_pos,
+      total = total
     )
   )
 }

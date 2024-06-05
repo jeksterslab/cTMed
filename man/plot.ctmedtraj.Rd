@@ -4,7 +4,7 @@
 \alias{plot.ctmedtraj}
 \title{Plot Method for an Object of Class \code{ctmedtraj}}
 \usage{
-\method{plot}{ctmedtraj}(x, legend_pos = "topright", ...)
+\method{plot}{ctmedtraj}(x, legend_pos = "topright", total = TRUE, ...)
 }
 \arguments{
 \item{x}{Object of class \code{ctmedtraj}.}
@@ -12,6 +12,10 @@
 \item{legend_pos}{Character vector.
 Optional argument.
 Legend position.}
+
+\item{total}{Logical.
+If \code{total = TRUE}, include the total effect trajectory.
+If \code{total = FALSE}, exclude the total effect trajectory.}
 
 \item{...}{Additional arguments.}
 }
