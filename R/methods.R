@@ -949,6 +949,9 @@
 #' @param legend_pos Character vector.
 #'   Optional argument.
 #'   Legend position.
+#' @param total Logical.
+#'   If `total = TRUE`, include the total effect trajectory.
+#'   If `total = FALSE`, exclude the total effect trajectory.
 #'
 #' @examples
 #' phi <- matrix(
@@ -974,7 +977,8 @@
 #' @keywords cTMed plot
 #' @noRd
 .PlotTrajectory <- function(object,
-                            legend_pos = "topright") {
+                            legend_pos = "topright",
+                            total) {
   idx <- rownames(object$args$phi)
   p <- length(idx)
   ylab <- idx
@@ -1015,14 +1019,16 @@
     graphics::abline(
       h = 0
     )
-    graphics::lines(
-      x = time,
-      y = phi[, i],
-      type = "l",
-      col = col_total,
-      lty = 3,
-      lwd = 2
-    )
+    if (total) {
+      graphics::lines(
+        x = time,
+        y = phi[, i],
+        type = "l",
+        col = col_total,
+        lty = 3,
+        lwd = 2
+      )
+    }
     graphics::lines(
       x = time,
       y = phi_direct[, i],
@@ -1039,13 +1045,24 @@
       lty = 1,
       lwd = 2
     )
-    graphics::legend(
-      x = legend_pos,
-      legend = c("Indirect", "Direct", "Total"),
-      lty = 1:3,
-      col = c(col_indirect, col_direct, col_total),
-      cex = 0.8,
-      lwd = 2
-    )
+    if (total) {
+      graphics::legend(
+        x = legend_pos,
+        legend = c("Indirect", "Direct", "Total"),
+        lty = 1:3,
+        col = c(col_indirect, col_direct, col_total),
+        cex = 0.8,
+        lwd = 2
+      )
+    } else {
+      graphics::legend(
+        x = legend_pos,
+        legend = c("Indirect", "Direct"),
+        lty = 1:2,
+        col = c(col_indirect, col_direct),
+        cex = 0.8,
+        lwd = 2
+      )
+    }
   }
 }
