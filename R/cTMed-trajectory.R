@@ -78,7 +78,6 @@ Trajectory <- function(mu0,
     phi = phi,
     med = med
   )
-
   # zero on paths from and to med
   # except autoeffects
   phi_direct <- phi
