@@ -36,6 +36,33 @@ lapply(
         )
       }
     )
+    testthat::test_that(
+      paste(text, "TotalCentrals"),
+      {
+        testthat::expect_true(
+          all(
+            (
+              answer - c(
+                as.vector(
+                  cTMed:::.TotalCentrals(
+                    phi = phi,
+                    delta_t = delta_t
+                  )
+                ),
+                delta_t
+              )
+            ) <= tol
+          )
+        )
+      }
+    )
+    total_central <- TotalCentral(
+      phi = phi,
+      delta_t = 1:5
+    )
+    print(total_central)
+    summary(total_central)
+    plot(total_central)
   },
   text = "test-total-central",
   tol = 0.00001
