@@ -1,18 +1,10 @@
-## ---- test-mc-med
+## ---- test-delta-beta
 lapply(
   X = 1,
   FUN = function(i,
                  text,
                  tol) {
     message(text)
-    total <- 0.0799008
-    direct <- -0.3209035
-    indirect <- 0.4008043
-    answer <- c(
-      total,
-      direct,
-      indirect
-    )
     phi <- matrix(
       data = c(
         -0.357, 0.771, -0.450,
@@ -54,43 +46,37 @@ lapply(
       ),
       nrow = 9
     )
-    mc <- MCMed(
+    delta_t <- 2
+    answer <- as.vector(
+      expm::expm(delta_t * phi)
+    )
+    delta <- DeltaBeta(
       phi = phi,
       vcov_phi_vec = vcov_phi_vec,
-      delta_t = 2,
-      from = "x",
-      to = "y",
-      med = "m",
-      R = 1000,
-      seed = 42
+      delta_t = delta_t
     )
     testthat::test_that(
-      paste(text, "MCMed"),
+      paste(text, "DeltaBeta"),
       {
         testthat::expect_true(
           all(
             (
-              answer - summary(mc)$est
+              answer - summary(delta)$est
             ) <= tol
           )
         )
       }
     )
-    mc <- MCMed(
+    delta <- DeltaBeta(
       phi = phi,
       vcov_phi_vec = vcov_phi_vec,
-      delta_t = 1:5,
-      from = "x",
-      to = "y",
-      med = "m",
-      R = 1000,
-      seed = NULL
+      delta_t = 1:5
     )
-    print(mc)
-    summary(mc)
-    confint(mc, level = 0.95)
-    plot(mc)
+    print(delta)
+    summary(delta)
+    confint(delta, level = 0.95)
+    plot(delta)
   },
-  text = "test-mc-med",
+  text = "test-delta-beta",
   tol = 0.00001
 )

@@ -55,7 +55,8 @@ lapply(
       phi = phi,
       vcov_phi_vec = vcov_phi_vec,
       delta_t = 2,
-      R = 1000
+      R = 1000,
+      seed = 42
     )
     testthat::test_that(
       paste(text, "MCTotalCentral"),
@@ -73,7 +74,8 @@ lapply(
       phi = phi,
       vcov_phi_vec = vcov_phi_vec,
       delta_t = 1:5,
-      R = 1000
+      R = 1000,
+      seed = NULL
     )
     print(mc)
     summary(mc)
