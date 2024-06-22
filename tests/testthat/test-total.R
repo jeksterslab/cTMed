@@ -30,6 +30,44 @@ lapply(
       }
     )
     testthat::test_that(
+      paste(text, "TotalVec"),
+      {
+        testthat::expect_true(
+          all(
+            (
+              as.vector(
+                expm::expm(delta_t * phi)
+              ) - as.vector(
+                cTMed:::.TotalVec(
+                  phi_vec = as.vector(phi),
+                  delta_t = delta_t
+                )
+              )
+            ) <= tol
+          )
+        )
+      }
+    )
+    testthat::test_that(
+      paste(text, "TotalDeltaT"),
+      {
+        testthat::expect_true(
+          all(
+            (
+              as.vector(
+                expm::expm(delta_t * phi)
+              ) - as.vector(
+                cTMed:::.TotalDeltaT(
+                  phi = phi,
+                  delta_t = delta_t
+                )
+              )[seq_len(3 * 3)]
+            ) <= tol
+          )
+        )
+      }
+    )
+    testthat::test_that(
       paste(text, "Med"),
       {
         testthat::expect_true(
