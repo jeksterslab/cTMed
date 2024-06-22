@@ -75,7 +75,8 @@ lapply(
       vcov_phi_vec = vcov_phi_vec,
       delta_t = 1:5,
       R = 1000,
-      seed = NULL
+      seed = NULL,
+      test_phi = FALSE
     )
     print(mc)
     summary(mc)
