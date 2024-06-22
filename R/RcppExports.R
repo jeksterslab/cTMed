@@ -25,10 +25,6 @@
     .Call(`_cTMed_Indirect`, phi, delta_t, from, to, med)
 }
 
-.MCMed <- function(phi, vcov_phi_vec_l, delta_t, from, to, med, R, test_phi = TRUE) {
-    .Call(`_cTMed_MCMed`, phi, vcov_phi_vec_l, delta_t, from, to, med, R, test_phi)
-}
-
 .MCPhiI <- function(phi, vcov_phi_vec_l, test_phi = TRUE) {
     .Call(`_cTMed_MCPhiI`, phi, vcov_phi_vec_l, test_phi)
 }
