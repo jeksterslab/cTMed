@@ -84,7 +84,8 @@ lapply(
       to = "y",
       med = "m",
       R = 1000,
-      seed = NULL
+      seed = NULL,
+      test_phi = FALSE
     )
     print(mc)
     summary(mc)

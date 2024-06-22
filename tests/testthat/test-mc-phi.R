@@ -66,6 +66,13 @@ lapply(
         )
       }
     )
+    MCPhi(
+      phi = phi,
+      vcov_phi_vec = vcov_phi_vec,
+      R = R,
+      test_phi = FALSE,
+      seed = 42
+    )
   },
   text = "test-mc-phi",
   tol = 0.01
