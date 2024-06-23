@@ -330,6 +330,7 @@ DeltaIndirectCentral <- function(phi,
       no = delta_t
     )
   )
+  # nocov start
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
@@ -350,6 +351,7 @@ DeltaIndirectCentral <- function(phi,
       vcov_phi_vec = vcov_phi_vec,
       total = total
     )
+    # nocov end
   } else {
     output <- lapply(
       X = delta_t,

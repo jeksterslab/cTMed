@@ -12,7 +12,7 @@
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed uncertainty
 #' @export
-PosteriorPhi <- function(object) {
+PosteriorPhi <- function(object) { # nocov start
   stopifnot(
     inherits(
       object,
@@ -34,4 +34,4 @@ PosteriorPhi <- function(object) {
     class(out)
   )
   return(out)
-}
+} # nocov end

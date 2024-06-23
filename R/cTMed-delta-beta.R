@@ -333,6 +333,7 @@ DeltaBeta <- function(phi,
       no = delta_t
     )
   )
+  # nocov start
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
@@ -352,6 +353,7 @@ DeltaBeta <- function(phi,
       phi = phi,
       vcov_phi_vec = vcov_phi_vec
     )
+    # nocov end
   } else {
     output <- lapply(
       X = delta_t,

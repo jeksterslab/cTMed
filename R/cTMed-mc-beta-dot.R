@@ -5,13 +5,6 @@
                     test_phi = TRUE,
                     ncores = NULL,
                     seed = NULL) {
-  par <- FALSE
-  if (!is.null(ncores)) {
-    ncores <- as.integer(ncores)
-    if (ncores > 1) {
-      par <- TRUE
-    }
-  }
   varnames <- colnames(phi)
   x <- expand.grid(
     to = varnames,
@@ -26,6 +19,14 @@
     ),
     "interval"
   )
+  # nocov start
+  par <- FALSE
+  if (!is.null(ncores)) {
+    ncores <- as.integer(ncores)
+    if (ncores > 1) {
+      par <- TRUE
+    }
+  }
   if (par) {
     # generate phi
     cl <- parallel::makeCluster(ncores)
@@ -78,6 +79,7 @@
         return(out)
       }
     )
+    # nocov end
   } else {
     # generate phi
     if (!is.null(seed)) {

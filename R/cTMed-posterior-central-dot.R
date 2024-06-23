@@ -7,6 +7,7 @@
   } else {
     Fun <- .IndirectCentral
   }
+  # nocov start
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
@@ -55,6 +56,7 @@
         )
       }
     )
+    # nocov end
   } else {
     output <- lapply(
       X = delta_t,

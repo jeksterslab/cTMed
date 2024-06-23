@@ -11,6 +11,7 @@
   } else {
     Fun <- .IndirectCentral
   }
+  # nocov start
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
@@ -80,6 +81,7 @@
         return(out)
       }
     )
+    # nocov end
   } else {
     # generate phi
     if (!is.null(seed)) {
