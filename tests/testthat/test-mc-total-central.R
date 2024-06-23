@@ -82,6 +82,25 @@ lapply(
     summary(mc)
     confint(mc, level = 0.95)
     plot(mc)
+    mc <- MCTotalCentral(
+      phi = phi,
+      vcov_phi_vec = vcov_phi_vec,
+      delta_t = 1,
+      R = 1000,
+      seed = NULL,
+      test_phi = FALSE
+    )
+    print(mc)
+    summary(mc)
+    confint(mc, level = 0.95)
+    testthat::test_that(
+      paste(text, "plot error"),
+      {
+        testthat::expect_error(
+          plot(mc)
+        )
+      }
+    )
   },
   text = "test-mc-total-central",
   tol = 0.00001

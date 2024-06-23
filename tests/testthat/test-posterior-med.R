@@ -1,14 +1,17 @@
-## ---- test-delta-total-central
+## ---- test-posterior-med
 lapply(
   X = 1,
   FUN = function(i,
                  text,
                  tol) {
     message(text)
+    total <- 0.0799008
+    direct <- -0.3209035
+    indirect <- 0.4008043
     answer <- c(
-      0.7297791,
-      0.4398068,
-      0.0000000
+      total,
+      direct,
+      indirect
     )
     phi <- matrix(
       data = c(
@@ -51,49 +54,61 @@ lapply(
       ),
       nrow = 9
     )
-    delta <- DeltaTotalCentral(
+    phi <- MCPhi(
       phi = phi,
       vcov_phi_vec = vcov_phi_vec,
-      delta_t = 2
+      R = 1000L,
+      seed = 42
+    )$output
+    posterior <- PosteriorMed(
+      phi = phi,
+      delta_t = 2,
+      from = "x",
+      to = "y",
+      med = "m"
     )
     testthat::test_that(
-      paste(text, "DeltaTotalCentral"),
+      paste(text, "PosteriorMed"),
       {
         testthat::expect_true(
           all(
             (
-              answer - summary(delta)$est
+              answer - summary(posterior)$est
             ) <= tol
           )
         )
       }
     )
-    delta <- DeltaTotalCentral(
+    posterior <- PosteriorMed(
       phi = phi,
-      vcov_phi_vec = vcov_phi_vec,
-      delta_t = 1:5
+      delta_t = 1:5,
+      from = "x",
+      to = "y",
+      med = "m"
     )
-    print(delta)
-    summary(delta)
-    confint(delta, level = 0.95)
-    plot(delta)
-    delta <- DeltaTotalCentral(
+    print(posterior)
+    summary(posterior)
+    confint(posterior, level = 0.95)
+    plot(posterior)
+    posterior <- PosteriorMed(
       phi = phi,
-      vcov_phi_vec = vcov_phi_vec,
-      delta_t = 1
+      delta_t = 1,
+      from = "x",
+      to = "y",
+      med = "m"
     )
-    print(delta)
-    summary(delta)
-    confint(delta, level = 0.95)
+    print(posterior)
+    summary(posterior)
+    confint(posterior, level = 0.95)
     testthat::test_that(
       paste(text, "plot error"),
       {
         testthat::expect_error(
-          plot(delta)
+          plot(posterior)
         )
       }
     )
   },
-  text = "test-delta-total-central",
-  tol = 0.00001
+  text = "test-posterior-med",
+  tol = 0.01
 )
