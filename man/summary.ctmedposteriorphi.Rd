@@ -18,25 +18,6 @@ Returns a list of the posterior means
 \description{
 Summary Method for Object of Class \code{ctmedposteriorphi}
 }
-\examples{
-set.seed(42)
-phi <- matrix(
-  data = c(
-    -0.357, 0.771, -0.450,
-    0.0, -0.511, 0.729,
-    0, 0, -0.693
-  ),
-  nrow = 3
-)
-colnames(phi) <- rownames(phi) <- c("x", "m", "y")
-mc <- MCPhi(
-  phi = phi,
-  vcov_phi_vec = 0.1 * diag(9),
-  R = 100L # use a large value for R in actual research
-)$output
-summary(mc)
-
-}
 \author{
 Ivan Jacob Agaloos Pesigan
 }
