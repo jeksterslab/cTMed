@@ -21,9 +21,6 @@ reference:
 - title: Measure of Uncertainty
   contents:
   - has_keyword("uncertainty")
-- title: Tests
-  contents:
-  - has_keyword("test")
 - title: Methods
   contents:
   - has_keyword("methods")

@@ -76,6 +76,22 @@ lapply(
     summary(delta)
     confint(delta, level = 0.95)
     plot(delta)
+    delta <- DeltaBeta(
+      phi = phi,
+      vcov_phi_vec = vcov_phi_vec,
+      delta_t = 1
+    )
+    print(delta)
+    summary(delta)
+    confint(delta, level = 0.95)
+    testthat::test_that(
+      paste(text, "plot error"),
+      {
+        testthat::expect_error(
+          plot(delta)
+        )
+      }
+    )
   },
   text = "test-delta-beta",
   tol = 0.00001
