@@ -219,23 +219,28 @@ summary.ctmeddelta <- function(object,
   if (object$args$network) {
     if (object$args$total) {
       if (interactive()) {
+        # nocov start
         cat(
           paste0(
             "\nTotal Effect Centrality\n\n"
           )
         )
+        # nocov end
       }
     } else {
       if (interactive()) {
+        # nocov start
         cat(
           paste0(
             "\nIndirect Effect Centrality\n\n"
           )
         )
+        # nocov end
       }
     }
   } else {
     if (interactive()) {
+      # nocov start
       if (object$fun == "DeltaMed") {
         cat(
           paste0(
@@ -249,6 +254,7 @@ summary.ctmeddelta <- function(object,
           )
         )
       }
+      # nocov end
     }
   }
   ci <- .DeltaCI(

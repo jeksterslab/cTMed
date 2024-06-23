@@ -211,28 +211,34 @@ summary.ctmedmc <- function(object,
   if (object$args$network) {
     if (object$args$total) {
       if (interactive()) {
+        # nocov start
         cat(
           paste0(
             "\nTotal Effect Centrality\n\n"
           )
         )
+        # nocov end
       }
     } else {
       if (interactive()) {
+        # nocov start
         cat(
           paste0(
             "\nIndirect Effect Centrality\n\n"
           )
         )
+        # nocov end
       }
     }
   } else {
     if (interactive()) {
+      # nocov start
       cat(
         paste0(
           "\nTotal, Direct, and Indirect Effects\n\n"
         )
       )
+      # nocov end
     }
   }
   ci <- .MCCI(

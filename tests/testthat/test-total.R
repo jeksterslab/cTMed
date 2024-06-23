@@ -94,6 +94,23 @@ lapply(
     summary(med)
     plot(med)
     plot(med, col = 1:3)
+    med <- Med(
+      phi = phi,
+      delta_t = 1,
+      from = "x",
+      to = "y",
+      med = "m"
+    )
+    print(med)
+    summary(med)
+    testthat::test_that(
+      paste(text, "plot error"),
+      {
+        testthat::expect_error(
+          plot(med)
+        )
+      }
+    )
     total <- Total(
       phi = phi,
       delta_t = delta_t

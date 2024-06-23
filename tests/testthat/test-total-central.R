@@ -63,6 +63,20 @@ lapply(
     print(total_central)
     summary(total_central)
     plot(total_central)
+    total_central <- TotalCentral(
+      phi = phi,
+      delta_t = 1
+    )
+    print(total_central)
+    summary(total_central)
+    testthat::test_that(
+      paste(text, "plot error"),
+      {
+        testthat::expect_error(
+          plot(total_central)
+        )
+      }
+    )
   },
   text = "test-total-central",
   tol = 0.00001
