@@ -63,6 +63,20 @@ lapply(
     print(indirect_central)
     summary(indirect_central)
     plot(indirect_central)
+    indirect_central <- IndirectCentral(
+      phi = phi,
+      delta_t = 1
+    )
+    print(indirect_central)
+    summary(indirect_central)
+    testthat::test_that(
+      paste(text, "plot error"),
+      {
+        testthat::expect_error(
+          plot(indirect_central)
+        )
+      }
+    )
   },
   text = "test-indirect-central",
   tol = 0.00001
