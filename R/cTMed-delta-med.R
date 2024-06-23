@@ -371,6 +371,7 @@ DeltaMed <- function(phi,
     },
     idx = idx
   )
+  # nocov start
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
@@ -393,6 +394,7 @@ DeltaMed <- function(phi,
       to = to,
       med = med
     )
+    # nocov end
   } else {
     output <- lapply(
       X = delta_t,

@@ -1,13 +1,6 @@
 .PosteriorBeta <- function(phi,
                            delta_t,
                            ncores = NULL) {
-  par <- FALSE
-  if (!is.null(ncores)) {
-    ncores <- as.integer(ncores)
-    if (ncores > 1) {
-      par <- TRUE
-    }
-  }
   varnames <- colnames(phi[[1]])
   p <- dim(phi[[1]])[1]
   x <- do.call(
@@ -39,6 +32,14 @@
     ),
     "interval"
   )
+  # nocov start
+  par <- FALSE
+  if (!is.null(ncores)) {
+    ncores <- as.integer(ncores)
+    if (ncores > 1) {
+      par <- TRUE
+    }
+  }
   if (par) {
     cl <- parallel::makeCluster(ncores)
     on.exit(
@@ -71,6 +72,7 @@
         return(out)
       }
     )
+    # nocov end
   } else {
     output <- lapply(
       X = delta_t,

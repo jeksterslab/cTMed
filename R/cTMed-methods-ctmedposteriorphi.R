@@ -8,7 +8,7 @@
 #'
 #' @keywords methods
 #' @export
-summary.ctmedposteriorphi <- function(object,
+summary.ctmedposteriorphi <- function(object, # nocov start
                                       ...) {
   varnames <- colnames(object[[1]])
   p <- dim(object[[1]])[1]
@@ -35,4 +35,4 @@ summary.ctmedposteriorphi <- function(object,
       vcov_phi_vec = vcov_phi_vec
     )
   )
-}
+} # nocov end

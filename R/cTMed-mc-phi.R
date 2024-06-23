@@ -241,6 +241,7 @@ MCPhi <- function(phi,
     seed = seed,
     method = "mc"
   )
+  # nocov start
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
@@ -272,6 +273,7 @@ MCPhi <- function(phi,
         )
       }
     )
+    # nocov end
   } else {
     if (!is.null(seed)) {
       set.seed(seed)
