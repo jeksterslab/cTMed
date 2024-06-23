@@ -1,4 +1,4 @@
-#' Plot Centrality Confidence Intervals
+#' Plot Beta Confidence Intervals
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'

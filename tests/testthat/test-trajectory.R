@@ -28,7 +28,7 @@ lapply(
     )
     print(traj)
     summary(traj)
-    plot(traj)
+    plot(traj, total = FALSE)
   },
   text = "test-trajectory"
 )

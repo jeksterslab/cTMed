@@ -93,6 +93,12 @@ lapply(
     print(med)
     summary(med)
     plot(med)
+    plot(med, col = 1:3)
+    total <- Total(
+      phi = phi,
+      delta_t = delta_t
+    )
+    print(total)
   },
   text = "test-total",
   tol = 0.00001

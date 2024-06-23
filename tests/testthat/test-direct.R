@@ -74,6 +74,15 @@ lapply(
     print(med)
     summary(med)
     plot(med)
+    plot(med, col = 1:3)
+    direct <- Direct(
+      phi = phi,
+      delta_t = delta_t,
+      from = "x",
+      to = "y",
+      med = "m"
+    )
+    print(direct)
   },
   text = "test-direct",
   tol = 0.00001

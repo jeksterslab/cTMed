@@ -58,6 +58,15 @@ lapply(
     print(med)
     summary(med)
     plot(med)
+    plot(med, col = 1:3)
+    indirect <- Indirect(
+      phi = phi,
+      delta_t = delta_t,
+      from = "x",
+      to = "y",
+      med = "m"
+    )
+    print(indirect)
   },
   text = "test-indirect",
   tol = 0.00001
