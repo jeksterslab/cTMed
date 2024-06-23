@@ -1,15 +1,10 @@
-## ---- test-delta-total-central
+## ---- test-posterior-beta
 lapply(
   X = 1,
   FUN = function(i,
                  text,
                  tol) {
     message(text)
-    answer <- c(
-      0.7297791,
-      0.4398068,
-      0.0000000
-    )
     phi <- matrix(
       data = c(
         -0.357, 0.771, -0.450,
@@ -51,49 +46,56 @@ lapply(
       ),
       nrow = 9
     )
-    delta <- DeltaTotalCentral(
+    delta_t <- 2
+    answer <- as.vector(
+      expm::expm(delta_t * phi)
+    )
+    phi <- MCPhi(
       phi = phi,
       vcov_phi_vec = vcov_phi_vec,
-      delta_t = 2
+      R = 1000L,
+      seed = 42
+    )$output
+    posterior <- PosteriorBeta(
+      phi = phi,
+      delta_t = delta_t
     )
     testthat::test_that(
-      paste(text, "DeltaTotalCentral"),
+      paste(text, "PosteriorBeta"),
       {
         testthat::expect_true(
           all(
             (
-              answer - summary(delta)$est
+              answer - summary(posterior)$est
             ) <= tol
           )
         )
       }
     )
-    delta <- DeltaTotalCentral(
+    posterior <- PosteriorBeta(
       phi = phi,
-      vcov_phi_vec = vcov_phi_vec,
       delta_t = 1:5
     )
-    print(delta)
-    summary(delta)
-    confint(delta, level = 0.95)
-    plot(delta)
-    delta <- DeltaTotalCentral(
+    print(posterior)
+    summary(posterior)
+    confint(posterior, level = 0.95)
+    plot(posterior)
+    posterior <- PosteriorBeta(
       phi = phi,
-      vcov_phi_vec = vcov_phi_vec,
       delta_t = 1
     )
-    print(delta)
-    summary(delta)
-    confint(delta, level = 0.95)
+    print(posterior)
+    summary(posterior)
+    confint(posterior, level = 0.95)
     testthat::test_that(
       paste(text, "plot error"),
       {
         testthat::expect_error(
-          plot(delta)
+          plot(posterior)
         )
       }
     )
   },
-  text = "test-delta-total-central",
-  tol = 0.00001
+  text = "test-posterior-beta",
+  tol = 0.01
 )
