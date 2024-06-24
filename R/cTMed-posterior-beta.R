@@ -119,7 +119,7 @@ PosteriorBeta <- function(phi,
     phi = phi,
     delta_t = delta_t,
     ncores = ncores,
-    method = "mc",
+    method = "posterior",
     network = FALSE
   )
   delta_t <- sort(
