@@ -1,1 +1,3 @@
-# cTMed 0.9.1 (simulation version)
+# cTMed 1.0.0
+
+* Initial release.
