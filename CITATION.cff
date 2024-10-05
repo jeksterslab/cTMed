@@ -8,9 +8,12 @@ message: 'To cite package "cTMed" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'cTMed: Continuous Time Mediation'
-version: 0.9.1
-abstract: Calculates standard errors and confidence intervals for effects in continuous
-  time mediation models.
+version: 1.0.0
+abstract: Calculates standard errors and confidence intervals for effects in continuous-time
+  mediation models. It extends the work of Deboeck and Preacher (2015) <https://doi.org/10.1080/10705511.2014.973960>
+  and Ryan and Hamaker (2021) <https://doi.org/10.1007/s11336-021-09767-0> by providing
+  methods to generate standard errors and confidence intervals for the total, direct,
+  and indirect effects in these models.
 authors:
 - family-names: Pesigan
   given-names: Ivan Jacob Agaloos
@@ -25,7 +28,7 @@ preferred-citation:
     email: r.jeksterslab@gmail.com
     orcid: https://orcid.org/0000-0003-4818-8420
   year: '2024'
-  notes: R package version 0.9.1
+  notes: R package version 1.0.0
 repository-code: https://github.com/jeksterslab/cTMed
 url: https://jeksterslab.github.io/cTMed/
 contact:
