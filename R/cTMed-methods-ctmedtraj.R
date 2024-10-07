@@ -3,7 +3,7 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param x an object of class `ctmedtraj`.
 #' @param ... further arguments.
-#' @return Returns a data frame of simulated data.
+#' @return Prints a data frame of simulated data.
 #'
 #' @examples
 #' phi <- matrix(

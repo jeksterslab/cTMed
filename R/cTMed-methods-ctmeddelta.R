@@ -6,7 +6,7 @@
 #'   Significance level \eqn{\alpha}.
 #' @param digits Integer indicating the number of decimal places to display.
 #' @param ... further arguments.
-#' @return Returns a matrix of
+#' @return Prints a matrix of
 #'   time interval,
 #'   estimates,
 #'   standard errors,
@@ -421,7 +421,7 @@ confint.ctmeddelta <- function(object,
 #'   Optional argument.
 #'   Character vector of colors.
 #' @param ... Additional arguments.
-#' @return Displays plots of the point estimates and confidence intervals.
+#' @return Displays plots of point estimates and confidence intervals.
 #'
 #' @examples
 #' phi <- matrix(

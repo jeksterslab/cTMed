@@ -12,7 +12,7 @@
 \item{...}{further arguments.}
 }
 \value{
-Returns a data frame of simulated data.
+Prints a data frame of simulated data.
 }
 \description{
 Print Method for Object of Class \code{ctmedtraj}
