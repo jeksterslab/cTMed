@@ -408,6 +408,7 @@ confint.ctmedmc <- function(object,
 #'   Optional argument.
 #'   Character vector of colors.
 #' @param ... Additional arguments.
+#' @return Displays plots of the point estimates and confidence intervals.
 #'
 #' @examples
 #' set.seed(42)

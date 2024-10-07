@@ -5,6 +5,7 @@
 #' @param digits Integer indicating the number of decimal places to display.
 #' @param ... further arguments.
 #' @return Returns the effects.
+#' @return Displays plots of the point estimates and confidence intervals.
 #'
 #' @examples
 #' phi <- matrix(

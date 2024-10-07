@@ -16,6 +16,16 @@ pertaining to the variables in the system.}
 Time interval
 (\eqn{\Delta t}).}
 }
+\value{
+Returns an object
+of class \code{ctmedmed} which is a list with the following elements:
+\describe{
+\item{call}{Function call.}
+\item{args}{Function arguments.}
+\item{fun}{Function used ("IndirectCentral").}
+\item{output}{A matrix of indirect effect centrality.}
+}
+}
 \description{
 Indirect Effect Centrality
 }
@@ -62,6 +72,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{DeltaMed}()},
 \code{\link{DeltaTotalCentral}()},
 \code{\link{Direct}()},
+\code{\link{EffectSizeMed}()},
 \code{\link{Indirect}()},
 \code{\link{MCBeta}()},
 \code{\link{MCIndirectCentral}()},

@@ -340,6 +340,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{DeltaMed}()},
 \code{\link{DeltaTotalCentral}()},
 \code{\link{Direct}()},
+\code{\link{EffectSizeMed}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{MCIndirectCentral}()},
