@@ -4,7 +4,7 @@
 #' @param x an object of class `ctmedmed`.
 #' @param digits Integer indicating the number of decimal places to display.
 #' @param ... further arguments.
-#' @return Returns a matrix of effects.
+#' @return Prints a matrix of effects.
 #'
 #' @examples
 #' phi <- matrix(
@@ -171,7 +171,7 @@ summary.ctmedmed <- function(object,
 #'   Optional argument.
 #'   Legend position.
 #' @param ... Additional arguments.
-#' @return Displays plots of the point estimates and confidence intervals.
+#' @return Displays plots of point estimates and confidence intervals.
 #'
 #' @examples
 #' phi <- matrix(

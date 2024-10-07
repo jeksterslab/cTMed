@@ -10,7 +10,7 @@
 #'   Output of the [ctsem::ctStanFit()] function.
 #'
 #' @return Returns an object
-#'   of class `ctmedposteriorphi` which is a list drift matices
+#'   of class `ctmedposteriorphi` which is a list drift matrices
 #'   sampled from the posterior distribution.
 #'
 #' @family Continuous Time Mediation Functions

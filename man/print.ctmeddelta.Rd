@@ -17,7 +17,7 @@ Significance level \eqn{\alpha}.}
 \item{...}{further arguments.}
 }
 \value{
-Returns a matrix of
+Prints a matrix of
 time interval,
 estimates,
 standard errors,

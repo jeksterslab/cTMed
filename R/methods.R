@@ -385,26 +385,6 @@
                   col,
                   ci) {
     ci <- ci[which(ci$effect == effect), ]
-    # if (object$fun == "DeltaBeta") {
-    #   main <- paste0(
-    #     (1 - alpha) * 100,
-    #     "% CI for",
-    #     effect,
-    #     " (",
-    #     method,
-    #     ")"
-    #   )
-    # } else {
-    #   main <- paste0(
-    #     (1 - alpha) * 100,
-    #     "% CI for the",
-    #     centrality,
-    #     effect,
-    #     " (",
-    #     method,
-    #     ")"
-    #   )
-    # }
     main <- paste0(
       (1 - alpha) * 100,
       "% CI for the",

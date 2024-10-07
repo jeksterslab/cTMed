@@ -12,7 +12,7 @@ Output of the \code{\link[ctsem:ctStanFit]{ctsem::ctStanFit()}} function.}
 }
 \value{
 Returns an object
-of class \code{ctmedposteriorphi} which is a list drift matices
+of class \code{ctmedposteriorphi} which is a list drift matrices
 sampled from the posterior distribution.
 }
 \description{

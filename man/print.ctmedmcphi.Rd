@@ -14,7 +14,7 @@
 \item{...}{further arguments.}
 }
 \value{
-Returns the structure of the output.
+Prints a list of drift matrices.
 }
 \description{
 Print Method for Object of Class \code{ctmedmcphi}

@@ -14,7 +14,7 @@
 \item{...}{further arguments.}
 }
 \value{
-Returns a matrix of effects.
+Prints a matrix of effects.
 }
 \description{
 Print Method for Object of Class \code{ctmedmed}
