@@ -19,6 +19,9 @@ If \code{total = FALSE}, exclude the total effect trajectory.}
 
 \item{...}{Additional arguments.}
 }
+\value{
+Displays trajectory plots of the effects.
+}
 \description{
 Plot Method for an Object of Class \code{ctmedtraj}
 }

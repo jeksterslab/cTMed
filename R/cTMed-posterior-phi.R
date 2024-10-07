@@ -9,14 +9,18 @@
 #' @param object Object of class `ctStanFit`.
 #'   Output of the [ctsem::ctStanFit()] function.
 #'
+#' @return Returns an object
+#'   of class `ctmedposteriorphi` which is a list drift matices
+#'   sampled from the posterior distribution.
+#'
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed uncertainty
 #' @export
 PosteriorPhi <- function(object) { # nocov start
   stopifnot(
     inherits(
-      object,
-      "ctStanFit"
+      x = object,
+      what = "ctStanFit"
     )
   )
   varnames <- object$ctstanmodelbase$latentNames

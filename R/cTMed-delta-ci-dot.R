@@ -1,8 +1,5 @@
 .DeltaCI <- function(object,
                      alpha = c(0.05, 0.01, 0.001)) {
-  stopifnot(
-    all(alpha > 0 & alpha < 1)
-  )
   return(
     lapply(
       X = object$output,
@@ -48,6 +45,18 @@
               FUN = function(i) {
                 paste0("from ", x[i, 2], " to ", x[i, 1])
               }
+            )
+          }
+          if (object$fun == "DeltaProp") {
+            rownames(ci) <- c(
+              "Direct/(Direct+Total)",
+              "Indirect/(Indirect+Total)"
+            )
+          }
+          if (object$fun == "DeltaRatio") {
+            rownames(ci) <- c(
+              "Direct/Total",
+              "Indirect/Total"
             )
           }
         }

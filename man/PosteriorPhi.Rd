@@ -10,6 +10,11 @@ PosteriorPhi(object)
 \item{object}{Object of class \code{ctStanFit}.
 Output of the \code{\link[ctsem:ctStanFit]{ctsem::ctStanFit()}} function.}
 }
+\value{
+Returns an object
+of class \code{ctmedposteriorphi} which is a list drift matices
+sampled from the posterior distribution.
+}
 \description{
 The function extracts the posterior samples
 of the drift matrix from a fitted model

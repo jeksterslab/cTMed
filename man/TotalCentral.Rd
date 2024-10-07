@@ -16,6 +16,16 @@ pertaining to the variables in the system.}
 Time interval
 (\eqn{\Delta t}).}
 }
+\value{
+Returns an object
+of class \code{ctmedmed} which is a list with the following elements:
+\describe{
+\item{call}{Function call.}
+\item{args}{Function arguments.}
+\item{fun}{Function used ("TotalCentral").}
+\item{output}{A matrix of total effect centrality.}
+}
+}
 \description{
 Total Effect Centrality
 }

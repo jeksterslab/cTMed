@@ -1,8 +1,5 @@
 .MCCI <- function(object,
                   alpha = c(0.05, 0.01, 0.001)) {
-  stopifnot(
-    all(alpha > 0 & alpha < 1)
-  )
   return(
     lapply(
       X = object$output,

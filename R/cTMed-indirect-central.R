@@ -4,6 +4,15 @@
 #'
 #' @inheritParams Med
 #'
+#' @return Returns an object
+#'   of class `ctmedmed` which is a list with the following elements:
+#'   \describe{
+#'     \item{call}{Function call.}
+#'     \item{args}{Function arguments.}
+#'     \item{fun}{Function used ("IndirectCentral").}
+#'     \item{output}{A matrix of indirect effect centrality.}
+#'   }
+#'
 #' @examples
 #' phi <- matrix(
 #'   data = c(

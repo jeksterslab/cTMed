@@ -19,6 +19,9 @@ Legend position.}
 
 \item{...}{Additional arguments.}
 }
+\value{
+Displays plots of the point estimates and confidence intervals.
+}
 \description{
 Plot Method for an Object of Class \code{ctmedmed}
 }

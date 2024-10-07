@@ -120,6 +120,7 @@ summary.ctmedtraj <- function(object,
 #'   If `total = TRUE`, include the total effect trajectory.
 #'   If `total = FALSE`, exclude the total effect trajectory.
 #' @param ... Additional arguments.
+#' @return Displays trajectory plots of the effects.
 #'
 #' @examples
 #' phi <- matrix(

@@ -15,6 +15,8 @@
 }
 \value{
 Returns the effects.
+
+Displays plots of the point estimates and confidence intervals.
 }
 \description{
 Print Method for Object of Class \code{ctmedeffect}
