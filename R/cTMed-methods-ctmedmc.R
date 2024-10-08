@@ -332,7 +332,7 @@ summary.ctmedmc <- function(object,
 #'   med = "m",
 #'   R = 100L # use a large value for R in actual research
 #' )
-#' confint(mc)
+#' confint(mc, level = 0.95)
 #'
 #' # Range of time intervals ---------------------------------------------------
 #' mc <- MCMed(
@@ -344,7 +344,7 @@ summary.ctmedmc <- function(object,
 #'   med = "m",
 #'   R = 100L # use a large value for R in actual research
 #' )
-#' confint(mc)
+#' confint(mc, level = 0.95)
 #'
 #' @keywords methods
 #' @export

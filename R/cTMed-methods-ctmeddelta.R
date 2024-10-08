@@ -346,7 +346,7 @@ summary.ctmeddelta <- function(object,
 #'   to = "y",
 #'   med = "m"
 #' )
-#' confint(delta)
+#' confint(delta, level = 0.95)
 #'
 #' # Range of time intervals ---------------------------------------------------
 #' delta <- DeltaMed(
@@ -357,7 +357,7 @@ summary.ctmeddelta <- function(object,
 #'   to = "y",
 #'   med = "m"
 #' )
-#' confint(delta)
+#' confint(delta, level = 0.95)
 #'
 #' @keywords methods
 #' @export

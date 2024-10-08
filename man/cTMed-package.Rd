@@ -6,7 +6,7 @@
 \alias{cTMed-package}
 \title{cTMed: Continuous Time Mediation}
 \description{
-Calculates standard errors and confidence intervals for effects in continuous-time mediation models. It extends the work of Deboeck and Preacher (2015) \doi{10.1080/10705511.2014.973960} and Ryan and Hamaker (2021) \doi{10.1007/s11336-021-09767-0} by providing methods to generate standard errors and confidence intervals for the total, direct, and indirect effects in these models.
+Calculates standard errors and confidence intervals for effects in continuous-time mediation models. This package extends the work of Deboeck and Preacher (2015) \doi{10.1080/10705511.2014.973960} and Ryan and Hamaker (2021) \doi{10.1007/s11336-021-09767-0} by providing methods to generate standard errors and confidence intervals for the total, direct, and indirect effects in these models.
 }
 \seealso{
 Useful links:
