@@ -76,7 +76,7 @@ delta <- DeltaMed(
   to = "y",
   med = "m"
 )
-confint(delta)
+confint(delta, level = 0.95)
 
 # Range of time intervals ---------------------------------------------------
 delta <- DeltaMed(
@@ -87,7 +87,7 @@ delta <- DeltaMed(
   to = "y",
   med = "m"
 )
-confint(delta)
+confint(delta, level = 0.95)
 
 }
 \author{

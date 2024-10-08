@@ -78,7 +78,7 @@ mc <- MCMed(
   med = "m",
   R = 100L # use a large value for R in actual research
 )
-confint(mc)
+confint(mc, level = 0.95)
 
 # Range of time intervals ---------------------------------------------------
 mc <- MCMed(
@@ -90,7 +90,7 @@ mc <- MCMed(
   med = "m",
   R = 100L # use a large value for R in actual research
 )
-confint(mc)
+confint(mc, level = 0.95)
 
 }
 \author{
