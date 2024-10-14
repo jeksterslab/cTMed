@@ -164,6 +164,36 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// PropVec
+Rcpp::NumericVector PropVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med);
+RcppExport SEXP _cTMed_PropVec(SEXP phi_vecSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
+    rcpp_result_gen = Rcpp::wrap(PropVec(phi_vec, delta_t, from, to, med));
+    return rcpp_result_gen;
+END_RCPP
+}
+// RatioVec
+Rcpp::NumericVector RatioVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med);
+RcppExport SEXP _cTMed_RatioVec(SEXP phi_vecSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
+    rcpp_result_gen = Rcpp::wrap(RatioVec(phi_vec, delta_t, from, to, med));
+    return rcpp_result_gen;
+END_RCPP
+}
 // TestPhi
 bool TestPhi(const arma::mat& phi);
 RcppExport SEXP _cTMed_TestPhi(SEXP phiSEXP) {
@@ -271,6 +301,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_Meds", (DL_FUNC) &_cTMed_Meds, 5},
     {"_cTMed_MedVec", (DL_FUNC) &_cTMed_MedVec, 5},
     {"_cTMed_Med", (DL_FUNC) &_cTMed_Med, 5},
+    {"_cTMed_PropVec", (DL_FUNC) &_cTMed_PropVec, 5},
+    {"_cTMed_RatioVec", (DL_FUNC) &_cTMed_RatioVec, 5},
     {"_cTMed_TestPhi", (DL_FUNC) &_cTMed_TestPhi, 1},
     {"_cTMed_TestStable", (DL_FUNC) &_cTMed_TestStable, 1},
     {"_cTMed_TotalCentrals", (DL_FUNC) &_cTMed_TotalCentrals, 2},

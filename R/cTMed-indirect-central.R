@@ -1,8 +1,14 @@
 #' Indirect Effect Centrality
 #'
+#' @details Indirect effect centrality
+#' is the sum of all possible indirect effects
+#' between different pairs of variables
+#' in which a specific variable serves as the only mediator.
+#'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @inheritParams Med
+#' @inherit Indirect references
 #'
 #' @return Returns an object
 #'   of class `ctmedmed` which is a list with the following elements:
@@ -49,7 +55,7 @@
 #' plot(indirect_central)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed network
+#' @keywords cTMed network effects
 #' @export
 IndirectCentral <- function(phi,
                             delta_t) {

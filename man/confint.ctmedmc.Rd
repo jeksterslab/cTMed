@@ -19,7 +19,7 @@ If missing, all parameters are considered.}
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of confidence intervals.
+Returns a data frame of confidence intervals.
 }
 \description{
 Monte Carlo Method Confidence Intervals

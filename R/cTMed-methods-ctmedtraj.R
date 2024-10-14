@@ -3,6 +3,7 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param x an object of class `ctmedtraj`.
 #' @param ... further arguments.
+#'
 #' @return Prints a data frame of simulated data.
 #'
 #' @examples
@@ -59,6 +60,7 @@ print.ctmedtraj <- function(x,
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param object an object of class `ctmedtraj`.
 #' @param ... further arguments.
+#'
 #' @return Returns a data frame of simulated data.
 #'
 #' @examples
@@ -120,6 +122,7 @@ summary.ctmedtraj <- function(object,
 #'   If `total = TRUE`, include the total effect trajectory.
 #'   If `total = FALSE`, exclude the total effect trajectory.
 #' @param ... Additional arguments.
+#'
 #' @return Displays trajectory plots of the effects.
 #'
 #' @examples

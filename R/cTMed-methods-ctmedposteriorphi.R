@@ -3,6 +3,7 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param object an object of class `ctmedposteriorphi`.
 #' @param ... further arguments.
+#'
 #' @return Returns a list of the posterior means
 #'   (in matrix form) and covariance matrix.
 #'

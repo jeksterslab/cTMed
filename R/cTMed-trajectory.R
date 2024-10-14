@@ -3,7 +3,7 @@
 #' This function simulates trajectories of variables
 #' without measurement error or process noise.
 #' `Total` corresponds to the total effect
-#' and `Direct` correponds to the portion of the total effect
+#' and `Direct` corresponds to the portion of the total effect
 #' where the indirect effect is removed.
 #'
 #' @inheritParams Indirect
@@ -41,7 +41,7 @@
 #' plot(traj)
 #'
 #' # Methods -------------------------------------------------------------------
-#' # Med has a number of methods including
+#' # Trajectory has a number of methods including
 #' # print, summary, and plot
 #'
 #' traj <- Trajectory(

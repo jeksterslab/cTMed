@@ -1,8 +1,13 @@
 #' Total Effect Centrality
 #'
+#' @details The total effect centrality of a variable
+#' is the sum of the total effects of a variable on all other variables
+#' at a particular time interval.
+#'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @inheritParams Med
+#' @inherit Indirect references
 #'
 #' @return Returns an object
 #'   of class `ctmedmed` which is a list with the following elements:
@@ -38,7 +43,7 @@
 #' plot(total_central)
 #'
 #' # Methods -------------------------------------------------------------------
-#' # IndirectCentral has a number of methods including
+#' # TotalCentral has a number of methods including
 #' # print, summary, and plot
 #' total_central <- TotalCentral(
 #'   phi = phi,
@@ -49,7 +54,7 @@
 #' plot(total_central)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed network
+#' @keywords cTMed network effects
 #' @export
 TotalCentral <- function(phi,
                          delta_t) {

@@ -6,8 +6,9 @@
 #'   Significance level \eqn{\alpha}.
 #' @param digits Integer indicating the number of decimal places to display.
 #' @param ... further arguments.
-#' @return Prints a matrix of
-#'   time interval,
+#'
+#' @return Prints a list of matrices of
+#'   time intervals,
 #'   estimates,
 #'   standard errors,
 #'   test statistics,
@@ -131,9 +132,9 @@ print.ctmeddelta <- function(x,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a matrix of
+#' @return Returns a data frame of
 #'   effects,
-#'   time interval,
+#'   time intervals,
 #'   estimates,
 #'   standard errors,
 #'   test statistics,
@@ -292,7 +293,8 @@ summary.ctmeddelta <- function(object,
 #'   either a vector of numbers or a vector of names.
 #'   If missing, all parameters are considered.
 #' @param level the confidence level required.
-#' @return Returns a matrix of confidence intervals.
+#'
+#' @return Returns a data frame of confidence intervals.
 #'
 #' @examples
 #' phi <- matrix(
@@ -421,6 +423,7 @@ confint.ctmeddelta <- function(object,
 #'   Optional argument.
 #'   Character vector of colors.
 #' @param ... Additional arguments.
+#'
 #' @return Displays plots of point estimates and confidence intervals.
 #'
 #' @examples

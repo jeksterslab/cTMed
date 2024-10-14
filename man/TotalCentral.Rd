@@ -29,6 +29,11 @@ of class \code{ctmedmed} which is a list with the following elements:
 \description{
 Total Effect Centrality
 }
+\details{
+The total effect centrality of a variable
+is the sum of the total effects of a variable on all other variables
+at a particular time interval.
+}
 \examples{
 phi <- matrix(
   data = c(
@@ -54,7 +59,7 @@ total_central <- TotalCentral(
 plot(total_central)
 
 # Methods -------------------------------------------------------------------
-# IndirectCentral has a number of methods including
+# TotalCentral has a number of methods including
 # print, summary, and plot
 total_central <- TotalCentral(
   phi = phi,
@@ -64,6 +69,24 @@ print(total_central)
 summary(total_central)
 plot(total_central)
 
+}
+\references{
+Bollen, K. A. (1987).
+Total, direct, and indirect effects in structural equation models.
+Sociological Methodology, 17, 37.
+\doi{10.2307/271028}
+
+Deboeck, P. R., & Preacher, K. J. (2015).
+No need to be discrete:
+A method for continuous time mediation analysis.
+Structural Equation Modeling: A Multidisciplinary Journal, 23 (1), 61–75.
+\doi{10.1080/10705511.2014.973960}
+
+Ryan, O., & Hamaker, E. L. (2021).
+Time to intervene:
+A continuous-time approach to network analysis and centrality.
+Psychometrika, 87 (1), 214–252.
+\doi{10.1007/s11336-021-09767-0}
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
@@ -93,4 +116,5 @@ Ivan Jacob Agaloos Pesigan
 }
 \concept{Continuous Time Mediation Functions}
 \keyword{cTMed}
+\keyword{effects}
 \keyword{network}

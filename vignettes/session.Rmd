@@ -47,7 +47,7 @@ sessionInfo()
 #> 
 #> loaded via a namespace (and not attached):
 #> [1] compiler_4.4.1  tools_4.4.1     Rcpp_1.0.13     rProject_0.0.14
-#> [5] knitr_1.48      xfun_0.48       evaluate_1.0.0
+#> [5] knitr_1.48      xfun_0.48       evaluate_1.0.1
 ```
 
 # Packages
@@ -63,7 +63,7 @@ installed.packages()[, c("Package", "Version")]
 #> cTMed             "cTMed"             "1.0.1"      
 #> curl              "curl"              "5.2.3"      
 #> devtools          "devtools"          "2.4.5.9000" 
-#> evaluate          "evaluate"          "1.0.0"      
+#> evaluate          "evaluate"          "1.0.1"      
 #> gert              "gert"              "2.1.2"      
 #> glue              "glue"              "1.8.0"      
 #> httr2             "httr2"             "1.0.5"      
@@ -74,8 +74,8 @@ installed.packages()[, c("Package", "Version")]
 #> ps                "ps"                "1.8.0"      
 #> rProject          "rProject"          "0.0.14"     
 #> sys               "sys"               "3.4.3"      
-#> tinytex           "tinytex"           "0.53.1"     
-#> V8                "V8"                "5.0.1"      
+#> tinytex           "tinytex"           "0.53.3"     
+#> V8                "V8"                "6.0.0"      
 #> xfun              "xfun"              "0.48"       
 #> abind             "abind"             "1.4-5"      
 #> arm               "arm"               "1.14-4"     
@@ -511,7 +511,7 @@ installed.packages()[, c("Package", "Version")]
 
 ```
 #>                total        used        free      shared  buff/cache   available
-#> Mem:            23Gi       6.7Gi       2.4Gi       796Mi        13Gi        15Gi
-#> Swap:           11Gi       0.0Ki        11Gi
-#> Total:          34Gi       6.7Gi        14Gi
+#> Mem:            23Gi       5.1Gi        10Gi       1.1Gi       6.9Gi        16Gi
+#> Swap:           11Gi          0B        11Gi
+#> Total:          34Gi       5.1Gi        22Gi
 ```

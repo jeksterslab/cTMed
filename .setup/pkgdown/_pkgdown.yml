@@ -14,6 +14,15 @@ template:
     code_font: {google: "JetBrains Mono"}
 
 reference:
+- title: Monte Carlo Method
+  contents:
+  - has_keyword("mc")
+- title: Delta Method
+  contents:
+  - has_keyword("delta")
+- title: Posterior
+  contents:
+  - has_keyword("posterior")
 - title: Mediation
   contents:
   - has_keyword("path")
@@ -23,9 +32,6 @@ reference:
 - title: Effects
   contents:
   - has_keyword("effects")
-- title: Measure of Uncertainty
-  contents:
-  - has_keyword("uncertainty")
 - title: Methods
   contents:
   - has_keyword("methods")

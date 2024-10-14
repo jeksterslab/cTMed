@@ -35,7 +35,7 @@ of class \code{ctmedtraj} which is a list with the following elements:
 This function simulates trajectories of variables
 without measurement error or process noise.
 \code{Total} corresponds to the total effect
-and \code{Direct} correponds to the portion of the total effect
+and \code{Direct} corresponds to the portion of the total effect
 where the indirect effect is removed.
 }
 \examples{
@@ -58,7 +58,7 @@ traj <- Trajectory(
 plot(traj)
 
 # Methods -------------------------------------------------------------------
-# Med has a number of methods including
+# Trajectory has a number of methods including
 # print, summary, and plot
 
 traj <- Trajectory(

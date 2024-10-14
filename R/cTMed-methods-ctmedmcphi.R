@@ -4,6 +4,7 @@
 #' @param x an object of class `ctmedmcphi`.
 #' @param digits Integer indicating the number of decimal places to display.
 #' @param ... further arguments.
+#'
 #' @return Prints a list of drift matrices.
 #'
 #' @examples
