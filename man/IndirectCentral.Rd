@@ -29,6 +29,12 @@ of class \code{ctmedmed} which is a list with the following elements:
 \description{
 Indirect Effect Centrality
 }
+\details{
+Indirect effect centrality
+is the sum of all possible indirect effects
+between different pairs of variables
+in which a specific variable serves as the only mediator.
+}
 \examples{
 phi <- matrix(
   data = c(
@@ -65,6 +71,24 @@ summary(indirect_central)
 plot(indirect_central)
 
 }
+\references{
+Bollen, K. A. (1987).
+Total, direct, and indirect effects in structural equation models.
+Sociological Methodology, 17, 37.
+\doi{10.2307/271028}
+
+Deboeck, P. R., & Preacher, K. J. (2015).
+No need to be discrete:
+A method for continuous time mediation analysis.
+Structural Equation Modeling: A Multidisciplinary Journal, 23 (1), 61–75.
+\doi{10.1080/10705511.2014.973960}
+
+Ryan, O., & Hamaker, E. L. (2021).
+Time to intervene:
+A continuous-time approach to network analysis and centrality.
+Psychometrika, 87 (1), 214–252.
+\doi{10.1007/s11336-021-09767-0}
+}
 \seealso{
 Other Continuous Time Mediation Functions: 
 \code{\link{DeltaBeta}()},
@@ -93,4 +117,5 @@ Ivan Jacob Agaloos Pesigan
 }
 \concept{Continuous Time Mediation Functions}
 \keyword{cTMed}
+\keyword{effects}
 \keyword{network}

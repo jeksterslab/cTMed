@@ -6,8 +6,14 @@
 #'   Significance level \eqn{\alpha}.
 #' @param digits Integer indicating the number of decimal places to display.
 #' @param ... further arguments.
-#' @return Prints a matrix of estimates, standard errors,
-#'   number of Monte Carlo replications, and confidence intervals.
+#'
+#' @return Prints a list of matrices of
+#'   time intervals,
+#'   estimates,
+#'   standard errors,
+#'   number of Monte Carlo replications,
+#'   and
+#'   confidence intervals.
 #'
 #' @examples
 #' set.seed(42)
@@ -120,20 +126,19 @@ print.ctmedmc <- function(x,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @return Returns a matrix of
-#'   effects,
-#'   time interval,
-#'   estimates,
-#'   standard errors,
-#'   test statistics,
-#'   p-values,
-#'   and
-#'   confidence intervals.
-#'
 #' @param object Object of class `ctmedmc`.
 #' @param ... additional arguments.
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
+#'
+#' @return Returns a data frame of
+#'   effects,
+#'   time intervals,
+#'   estimates,
+#'   standard errors,
+#'   number of Monte Carlo replications,
+#'   and
+#'   confidence intervals.
 #'
 #' @examples
 #' set.seed(42)
@@ -276,7 +281,8 @@ summary.ctmedmc <- function(object,
 #'   either a vector of numbers or a vector of names.
 #'   If missing, all parameters are considered.
 #' @param level the confidence level required.
-#' @return Returns a matrix of confidence intervals.
+#'
+#' @return Returns a data frame of confidence intervals.
 #'
 #' @examples
 #' set.seed(42)
@@ -408,6 +414,7 @@ confint.ctmedmc <- function(object,
 #'   Optional argument.
 #'   Character vector of colors.
 #' @param ... Additional arguments.
+#'
 #' @return Displays plots of point estimates and confidence intervals.
 #'
 #' @examples

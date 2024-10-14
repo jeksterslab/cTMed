@@ -45,6 +45,14 @@
     .Call(`_cTMed_Med`, phi, delta_t, from, to, med)
 }
 
+.PropVec <- function(phi_vec, delta_t, from, to, med) {
+    .Call(`_cTMed_PropVec`, phi_vec, delta_t, from, to, med)
+}
+
+.RatioVec <- function(phi_vec, delta_t, from, to, med) {
+    .Call(`_cTMed_RatioVec`, phi_vec, delta_t, from, to, med)
+}
+
 .TestPhi <- function(phi) {
     .Call(`_cTMed_TestPhi`, phi)
 }

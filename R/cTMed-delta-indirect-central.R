@@ -101,116 +101,6 @@
 #'   	\right) .
 #'   }
 #'
-#'   ## Linear Stochastic Differential Equation Model
-#'
-#'   The measurement model is given by
-#'   \deqn{
-#'     \mathbf{y}_{i, t}
-#'     =
-#'     \boldsymbol{\nu}
-#'     +
-#'     \boldsymbol{\Lambda}
-#'     \boldsymbol{\eta}_{i, t}
-#'     +
-#'     \boldsymbol{\varepsilon}_{i, t},
-#'     \quad
-#'     \mathrm{with}
-#'     \quad
-#'     \boldsymbol{\varepsilon}_{i, t}
-#'     \sim
-#'     \mathcal{N}
-#'     \left(
-#'     \mathbf{0},
-#'     \boldsymbol{\Theta}
-#'     \right)
-#'   }
-#'   where
-#'   \eqn{\mathbf{y}_{i, t}},
-#'   \eqn{\boldsymbol{\eta}_{i, t}},
-#'   and
-#'   \eqn{\boldsymbol{\varepsilon}_{i, t}}
-#'   are random variables
-#'   and
-#'   \eqn{\boldsymbol{\nu}},
-#'   \eqn{\boldsymbol{\Lambda}},
-#'   and
-#'   \eqn{\boldsymbol{\Theta}}
-#'   are model parameters.
-#'   \eqn{\mathbf{y}_{i, t}}
-#'   represents a vector of observed random variables,
-#'   \eqn{\boldsymbol{\eta}_{i, t}}
-#'   a vector of latent random variables,
-#'   and
-#'   \eqn{\boldsymbol{\varepsilon}_{i, t}}
-#'   a vector of random measurement errors,
-#'   at time \eqn{t} and individual \eqn{i}.
-#'   \eqn{\boldsymbol{\nu}}
-#'   denotes a vector of intercepts,
-#'   \eqn{\boldsymbol{\Lambda}}
-#'   a matrix of factor loadings,
-#'   and
-#'   \eqn{\boldsymbol{\Theta}}
-#'   the covariance matrix of
-#'   \eqn{\boldsymbol{\varepsilon}}.
-#'
-#'   An alternative representation of the measurement error
-#'   is given by
-#'   \deqn{
-#'     \boldsymbol{\varepsilon}_{i, t}
-#'     =
-#'     \boldsymbol{\Theta}^{\frac{1}{2}}
-#'     \mathbf{z}_{i, t},
-#'     \quad
-#'     \mathrm{with}
-#'     \quad
-#'     \mathbf{z}_{i, t}
-#'     \sim
-#'     \mathcal{N}
-#'     \left(
-#'     \mathbf{0},
-#'     \mathbf{I}
-#'     \right)
-#'   }
-#'   where
-#'   \eqn{\mathbf{z}_{i, t}} is a vector of
-#'   independent standard normal random variables and
-#'   \eqn{
-#'     \left( \boldsymbol{\Theta}^{\frac{1}{2}} \right)
-#'     \left( \boldsymbol{\Theta}^{\frac{1}{2}} \right)^{\prime}
-#'     =
-#'     \boldsymbol{\Theta} .
-#'   }
-#'
-#'   The dynamic structure is given by
-#'   \deqn{
-#'     \mathrm{d} \boldsymbol{\eta}_{i, t}
-#'     =
-#'     \left(
-#'     \boldsymbol{\iota}
-#'     +
-#'     \boldsymbol{\Phi}
-#'     \boldsymbol{\eta}_{i, t}
-#'     \right)
-#'     \mathrm{d}t
-#'     +
-#'     \boldsymbol{\Sigma}^{\frac{1}{2}}
-#'     \mathrm{d}
-#'     \mathbf{W}_{i, t}
-#'   }
-#'   where
-#'   \eqn{\boldsymbol{\iota}}
-#'   is a term which is unobserved and constant over time,
-#'   \eqn{\boldsymbol{\Phi}}
-#'   is the drift matrix
-#'   which represents the rate of change of the solution
-#'   in the absence of any random fluctuations,
-#'   \eqn{\boldsymbol{\Sigma}}
-#'   is the matrix of volatility
-#'   or randomness in the process, and
-#'   \eqn{\mathrm{d}\boldsymbol{W}}
-#'   is a Wiener process or Brownian motion,
-#'   which represents random fluctuations.
-#'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param ncores Positive integer.
@@ -235,9 +125,9 @@
 #'   \describe{
 #'     \item{delta_t}{Time interval.}
 #'     \item{jacobian}{Jacobian matrix.}
-#'     \item{est}{Estimated total, direct, and indirect effects.}
-#'     \item{vcov}{Sampling variance-covariance matrix of the
-#'     estimated total, direct, and indirect effects.}
+#'     \item{est}{Estimated indirect effect centrality.}
+#'     \item{vcov}{Sampling variance-covariance matrix of
+#'         estimated indirect effect centrality.}
 #'   }
 #'
 #' @examples
@@ -307,7 +197,7 @@
 #' plot(delta)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed uncertainty network
+#' @keywords cTMed network delta
 #' @export
 DeltaIndirectCentral <- function(phi,
                                  vcov_phi_vec,

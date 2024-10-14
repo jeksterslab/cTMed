@@ -14,7 +14,7 @@
 #'   sampled from the posterior distribution.
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed uncertainty
+#' @keywords cTMed posterior
 #' @export
 PosteriorPhi <- function(object) { # nocov start
   stopifnot(

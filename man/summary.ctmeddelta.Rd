@@ -15,9 +15,9 @@ Significance level \eqn{\alpha}.}
 \item{...}{additional arguments.}
 }
 \value{
-Returns a matrix of
+Returns a data frame of
 effects,
-time interval,
+time intervals,
 estimates,
 standard errors,
 test statistics,

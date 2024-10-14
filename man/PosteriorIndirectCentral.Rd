@@ -176,4 +176,4 @@ Ivan Jacob Agaloos Pesigan
 \concept{Continuous Time Mediation Functions}
 \keyword{cTMed}
 \keyword{network}
-\keyword{uncertainty}
+\keyword{posterior}

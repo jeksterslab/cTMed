@@ -17,8 +17,13 @@ Significance level \eqn{\alpha}.}
 \item{...}{further arguments.}
 }
 \value{
-Prints a matrix of estimates, standard errors,
-number of Monte Carlo replications, and confidence intervals.
+Prints a list of matrices of
+time intervals,
+estimates,
+standard errors,
+number of Monte Carlo replications,
+and
+confidence intervals.
 }
 \description{
 Print Method for Object of Class \code{ctmedmc}

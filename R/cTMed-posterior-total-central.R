@@ -112,7 +112,7 @@
 #' plot(posterior)
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed uncertainty network
+#' @keywords cTMed network posterior
 #' @export
 PosteriorTotalCentral <- function(phi,
                                   delta_t,
