@@ -117,11 +117,11 @@ of class <code>ctmeddelta</code> which is a list with the following elements:</p
 <dd><p>Jacobian matrix.</p></dd>
 
 <dt>est</dt>
-<dd><p>Estimated total, direct, and indirect effects.</p></dd>
+<dd><p>Estimated indirect effect centrality.</p></dd>
 
 <dt>vcov</dt>
-<dd><p>Sampling variance-covariance matrix of the
-estimated total, direct, and indirect effects.</p></dd>
+<dd><p>Sampling variance-covariance matrix of
+estimated indirect effect centrality.</p></dd>
 
 
 </dl></div>
@@ -211,117 +211,6 @@ is given by</p>
   	\mathbf{J}^{\prime}
   	\right) .
   $$</p>
-</div>
-
-<div class="section">
-<h3 id="linear-stochastic-differential-equation-model">Linear Stochastic Differential Equation Model<a class="anchor" aria-label="anchor" href="#linear-stochastic-differential-equation-model"></a></h3>
-
-
-<p>The measurement model is given by
-$$
-    \mathbf{y}_{i, t}
-    =
-    \boldsymbol{\nu}
-    +
-    \boldsymbol{\Lambda}
-    \boldsymbol{\eta}_{i, t}
-    +
-    \boldsymbol{\varepsilon}_{i, t},
-    \quad
-    \mathrm{with}
-    \quad
-    \boldsymbol{\varepsilon}_{i, t}
-    \sim
-    \mathcal{N}
-    \left(
-    \mathbf{0},
-    \boldsymbol{\Theta}
-    \right)
-  $$
-where
-\(\mathbf{y}_{i, t}\),
-\(\boldsymbol{\eta}_{i, t}\),
-and
-\(\boldsymbol{\varepsilon}_{i, t}\)
-are random variables
-and
-\(\boldsymbol{\nu}\),
-\(\boldsymbol{\Lambda}\),
-and
-\(\boldsymbol{\Theta}\)
-are model parameters.
-\(\mathbf{y}_{i, t}\)
-represents a vector of observed random variables,
-\(\boldsymbol{\eta}_{i, t}\)
-a vector of latent random variables,
-and
-\(\boldsymbol{\varepsilon}_{i, t}\)
-a vector of random measurement errors,
-at time \(t\) and individual \(i\).
-\(\boldsymbol{\nu}\)
-denotes a vector of intercepts,
-\(\boldsymbol{\Lambda}\)
-a matrix of factor loadings,
-and
-\(\boldsymbol{\Theta}\)
-the covariance matrix of
-\(\boldsymbol{\varepsilon}\).</p>
-<p>An alternative representation of the measurement error
-is given by
-$$
-    \boldsymbol{\varepsilon}_{i, t}
-    =
-    \boldsymbol{\Theta}^{\frac{1}{2}}
-    \mathbf{z}_{i, t},
-    \quad
-    \mathrm{with}
-    \quad
-    \mathbf{z}_{i, t}
-    \sim
-    \mathcal{N}
-    \left(
-    \mathbf{0},
-    \mathbf{I}
-    \right)
-  $$
-where
-\(\mathbf{z}_{i, t}\) is a vector of
-independent standard normal random variables and
-\(
-    \left( \boldsymbol{\Theta}^{\frac{1}{2}} \right)
-    \left( \boldsymbol{\Theta}^{\frac{1}{2}} \right)^{\prime}
-    =
-    \boldsymbol{\Theta} .
-  \)</p>
-<p>The dynamic structure is given by
-$$
-    \mathrm{d} \boldsymbol{\eta}_{i, t}
-    =
-    \left(
-    \boldsymbol{\iota}
-    +
-    \boldsymbol{\Phi}
-    \boldsymbol{\eta}_{i, t}
-    \right)
-    \mathrm{d}t
-    +
-    \boldsymbol{\Sigma}^{\frac{1}{2}}
-    \mathrm{d}
-    \mathbf{W}_{i, t}
-  $$
-where
-\(\boldsymbol{\iota}\)
-is a term which is unobserved and constant over time,
-\(\boldsymbol{\Phi}\)
-is the drift matrix
-which represents the rate of change of the solution
-in the absence of any random fluctuations,
-\(\boldsymbol{\Sigma}\)
-is the matrix of volatility
-or randomness in the process, and
-\(\mathrm{d}\boldsymbol{W}\)
-is a Wiener process or Brownian motion,
-which represents random fluctuations.</p>
 </div>
 
     </div>
