@@ -37,7 +37,7 @@ of class \code{ctmeddelta} which is a list with the following elements:
 \item{call}{Function call.}
 \item{args}{Function arguments.}
 \item{fun}{Function used ("DeltaIndirectCentral").}
-\item{output}{A list with length of \code{length(delta_t)}.}
+\item{output}{A list the length of which is equal to the length of \code{delta_t}.}
 }
 Each element in the \code{output} list has the following elements:
 \describe{
