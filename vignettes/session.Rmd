@@ -64,7 +64,7 @@ installed.packages()[, c("Package", "Version")]
 #> curl              "curl"              "5.2.3"      
 #> devtools          "devtools"          "2.4.5.9000" 
 #> evaluate          "evaluate"          "1.0.1"      
-#> gert              "gert"              "2.1.2"      
+#> gert              "gert"              "2.1.4"      
 #> glue              "glue"              "1.8.0"      
 #> httr2             "httr2"             "1.0.5"      
 #> jsonlite          "jsonlite"          "1.8.9"      
@@ -73,6 +73,7 @@ installed.packages()[, c("Package", "Version")]
 #> profvis           "profvis"           "0.4.0"      
 #> ps                "ps"                "1.8.0"      
 #> rProject          "rProject"          "0.0.14"     
+#> rstudioapi        "rstudioapi"        "0.17.0"     
 #> sys               "sys"               "3.4.3"      
 #> tinytex           "tinytex"           "0.53.3"     
 #> V8                "V8"                "6.0.0"      
@@ -511,7 +512,7 @@ installed.packages()[, c("Package", "Version")]
 
 ```
 #>                total        used        free      shared  buff/cache   available
-#> Mem:            23Gi       5.1Gi        10Gi       1.1Gi       6.9Gi        16Gi
+#> Mem:            23Gi       4.1Gi        14Gi       789Mi       4.9Gi        17Gi
 #> Swap:           11Gi          0B        11Gi
-#> Total:          34Gi       5.1Gi        22Gi
+#> Total:          34Gi       4.1Gi        25Gi
 ```
