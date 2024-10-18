@@ -119,7 +119,8 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("DeltaIndirectCentral").}
-#'     \item{output}{A list the length of which is equal to the length of `delta_t`.}
+#'     \item{output}{A list the length of which is equal to
+#'         the length of `delta_t`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
