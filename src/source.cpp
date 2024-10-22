@@ -49,6 +49,48 @@ double Direct(const arma::mat& phi, const double& delta_t, const int& from,
   return direct(to - 1, from - 1);
 }
 // -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-e-s-vec.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.MedVec)]]
+Rcpp::NumericVector ESVec(const arma::vec& phi_vec, const double& delta_t,
+                          const int& from, const int& to,
+                          const arma::vec& med) {
+  // combine phi_vec and sigma_vech into a single vector
+
+  int ms = med.n_elem;
+  int p = std::sqrt(phi_vec.n_elem);
+  arma::mat phi = arma::reshape(phi_vec, p, p);
+  arma::mat total = arma::expmat(delta_t * phi);
+  double total_dbl = total(to - 1, from - 1);
+  arma::mat d = arma::eye(p, p);
+  for (int m = 0; m < ms; m++) {
+    d(med[m] - 1, med[m] - 1) = 0;
+  }
+  arma::mat direct = arma::expmat(delta_t * d * phi * d);
+  double direct_dbl = direct(to - 1, from - 1);
+  double indirect_dbl = total_dbl - direct_dbl;
+
+  arma::mat cov_total =
+      arma::inv(arma::kron(I - total, total))* sigma_vec arma::mat cov_direct =
+          arma::inv(arma::kron(I - direct,
+                               direct))* sigma_vec arma::mat cov_indirect =
+              arma::inv(arma::kron(I - indirect, indirect))* sigma_vec
+
+      double var_total_dbl = cov_total(to - 1, from - 1);
+  double var_direct_dbl = cov_direct(to - 1, from - 1);
+  double var_indirect_dbl = cov_indirect(to - 1, from - 1);
+
+  Rcpp::NumericVector output(2);
+  output(0) = var_direct_dbl / (var_direct_dbl + var_total_dbl);
+  output(1) = var_indirect_dbl / (var_indirect_dbl + var_total_dbl);
+
+  return output;
+}
+// -----------------------------------------------------------------------------
 // edit .setup/cpp/cTMed-indirect-central-s.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------
@@ -153,6 +195,45 @@ double Indirect(const arma::mat& phi, const double& delta_t, const int& from,
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
   double direct_dbl = direct(to - 1, from - 1);
   return total_dbl - direct_dbl;
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-r-sq.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+
+arma::mat.LinSDE2Cov(const double delta_t, const arma::vec& iota,
+                     const arma::mat& phi, const arma::mat& sigma_l) {
+  int p = iota.n_elem;
+  arma::mat I = arma::eye(p, p);
+  arma::mat beta = arma::expmat(phi * delta_t);
+  arma::vec alpha = arma::vec(p);
+  if (iota.is_zero()) {
+    alpha = iota;
+  } else {
+    alpha = arma::inv(phi) * (beta - I) * iota;
+  }
+  arma::mat psi_l = arma::mat(p, p);
+  if (sigma_l.is_zero()) {
+    arma::mat cov_eta =
+        arma::reshape(arma::inv(arma::kron(I - beta, beta)), p, p);
+    psi_l = sigma_l;
+  } else {
+    arma::mat J = arma::eye(p * p, p * p);
+    arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
+    arma::vec sigma_vec = arma::vectorise(sigma_l * sigma_l.t());
+    arma::vec psi_vec = arma::inv(phi_hashtag) *
+                        (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec;
+    psi_l = arma::chol(arma::reshape(psi_vec, p, p), "lower");
+    arma::mat cov_eta =
+        arma::reshape(arma::inv(arma::kron(I - beta, beta)) * psi_vec, p, p);
+  }
+  // output
+  return Rcpp::List::create(
+      Rcpp::Named("alpha") = alpha, Rcpp::Named("beta") = beta,
+      Rcpp::Named("psi_l") = psi_l, Rcpp::Named("cov_eta") = cov_eta);
 }
 // -----------------------------------------------------------------------------
 // edit .setup/cpp/cTMed-mc-phi-i.cpp
@@ -339,6 +420,48 @@ Rcpp::NumericVector PropVec(const arma::vec& phi_vec, const double& delta_t,
   Rcpp::NumericVector output(2);
   output(0) = direct_dbl / (direct_dbl + total_dbl);
   output(1) = indirect_dbl / (indirect_dbl + total_dbl);
+  return output;
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-med-s.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.Meds)]]
+arma::mat Meds(const arma::mat& phi, const arma::mat& sigma_l,
+               const arma::vec& delta_t, const int& from, const int& to,
+               const arma::vec& med) {
+  int ts = delta_t.n_rows;
+  int ms = med.n_elem;
+  int p = phi.n_rows;
+  arma::mat output = arma::mat(ts, 4);
+  arma::mat total = arma::mat(p, p);
+  arma::mat direct = arma::mat(p, p);
+  arma::mat d = arma::eye(p, p);
+  double total_dbl;
+  double direct_dbl;
+  double indirect_dbl;
+  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
+  arma::vec sigma_vec = arma::vectorise(sigma_l * sigma_l.t());
+  for (int m = 0; m < ms; m++) {
+    d(med[m] - 1, med[m] - 1) = 0;
+  }
+  for (int t = 0; t < ts; t++) {
+    total = arma::expmat(delta_t[t] * phi);
+    total_dbl = total(to - 1, from - 1);
+    direct = arma::expmat(delta_t[t] * d * phi * d);
+    direct_dbl = direct(to - 1, from - 1);
+    indirect_dbl = total_dbl - direct_dbl;
+    arma::vec psi_vec = arma::inv(phi_hashtag) *
+                        (arma::expmat(phi_hashtag * delta_t[t]) - J) *
+                        sigma_vec;
+    output(t, 0) = total_dbl;
+    output(t, 1) = direct_dbl;
+    output(t, 2) = indirect_dbl;
+    output(t, 3) = delta_t[t];
+  }
   return output;
 }
 // -----------------------------------------------------------------------------

@@ -41,6 +41,21 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// ESVec
+Rcpp::NumericVector ESVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med);
+RcppExport SEXP _cTMed_ESVec(SEXP phi_vecSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
+    rcpp_result_gen = Rcpp::wrap(ESVec(phi_vec, delta_t, from, to, med));
+    return rcpp_result_gen;
+END_RCPP
+}
 // IndirectCentrals
 arma::mat IndirectCentrals(const arma::mat& phi, const arma::vec& delta_t);
 RcppExport SEXP _cTMed_IndirectCentrals(SEXP phiSEXP, SEXP delta_tSEXP) {
@@ -179,6 +194,22 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// Meds
+arma::mat Meds(const arma::mat& phi, const arma::mat& sigma_l, const arma::vec& delta_t, const int& from, const int& to, const arma::vec& med);
+RcppExport SEXP _cTMed_Meds(SEXP phiSEXP, SEXP sigma_lSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma_l(sigma_lSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type delta_t(delta_tSEXP);
+    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
+    rcpp_result_gen = Rcpp::wrap(Meds(phi, sigma_l, delta_t, from, to, med));
+    return rcpp_result_gen;
+END_RCPP
+}
 // RatioVec
 Rcpp::NumericVector RatioVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med);
 RcppExport SEXP _cTMed_RatioVec(SEXP phi_vecSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
@@ -292,6 +323,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_DirectVec", (DL_FUNC) &_cTMed_DirectVec, 5},
     {"_cTMed_Direct", (DL_FUNC) &_cTMed_Direct, 5},
+    {"_cTMed_ESVec", (DL_FUNC) &_cTMed_ESVec, 5},
     {"_cTMed_IndirectCentrals", (DL_FUNC) &_cTMed_IndirectCentrals, 2},
     {"_cTMed_IndirectCentralVec", (DL_FUNC) &_cTMed_IndirectCentralVec, 2},
     {"_cTMed_IndirectCentral", (DL_FUNC) &_cTMed_IndirectCentral, 2},
@@ -302,6 +334,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_MedVec", (DL_FUNC) &_cTMed_MedVec, 5},
     {"_cTMed_Med", (DL_FUNC) &_cTMed_Med, 5},
     {"_cTMed_PropVec", (DL_FUNC) &_cTMed_PropVec, 5},
+    {"_cTMed_Meds", (DL_FUNC) &_cTMed_Meds, 6},
     {"_cTMed_RatioVec", (DL_FUNC) &_cTMed_RatioVec, 5},
     {"_cTMed_TestPhi", (DL_FUNC) &_cTMed_TestPhi, 1},
     {"_cTMed_TestStable", (DL_FUNC) &_cTMed_TestStable, 1},
