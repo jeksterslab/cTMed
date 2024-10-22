@@ -49,10 +49,6 @@
     .Call('_cTMed_PropVec', PACKAGE = 'cTMed', phi_vec, delta_t, from, to, med)
 }
 
-.Meds <- function(phi, sigma_l, delta_t, from, to, med) {
-    .Call('_cTMed_Meds', PACKAGE = 'cTMed', phi, sigma_l, delta_t, from, to, med)
-}
-
 .RatioVec <- function(phi_vec, delta_t, from, to, med) {
     .Call('_cTMed_RatioVec', PACKAGE = 'cTMed', phi_vec, delta_t, from, to, med)
 }
