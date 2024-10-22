@@ -2,86 +2,86 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 .DirectVec <- function(phi_vec, delta_t, from, to, med) {
-    .Call('_cTMed_DirectVec', PACKAGE = 'cTMed', phi_vec, delta_t, from, to, med)
+    .Call(`_cTMed_DirectVec`, phi_vec, delta_t, from, to, med)
 }
 
 .Direct <- function(phi, delta_t, from, to, med) {
-    .Call('_cTMed_Direct', PACKAGE = 'cTMed', phi, delta_t, from, to, med)
+    .Call(`_cTMed_Direct`, phi, delta_t, from, to, med)
 }
 
 .IndirectCentrals <- function(phi, delta_t) {
-    .Call('_cTMed_IndirectCentrals', PACKAGE = 'cTMed', phi, delta_t)
+    .Call(`_cTMed_IndirectCentrals`, phi, delta_t)
 }
 
 .IndirectCentralVec <- function(phi_vec, delta_t) {
-    .Call('_cTMed_IndirectCentralVec', PACKAGE = 'cTMed', phi_vec, delta_t)
+    .Call(`_cTMed_IndirectCentralVec`, phi_vec, delta_t)
 }
 
 .IndirectCentral <- function(phi, delta_t) {
-    .Call('_cTMed_IndirectCentral', PACKAGE = 'cTMed', phi, delta_t)
+    .Call(`_cTMed_IndirectCentral`, phi, delta_t)
 }
 
 .Indirect <- function(phi, delta_t, from, to, med) {
-    .Call('_cTMed_Indirect', PACKAGE = 'cTMed', phi, delta_t, from, to, med)
+    .Call(`_cTMed_Indirect`, phi, delta_t, from, to, med)
 }
 
 .MCPhiI <- function(phi, vcov_phi_vec_l, test_phi = TRUE) {
-    .Call('_cTMed_MCPhiI', PACKAGE = 'cTMed', phi, vcov_phi_vec_l, test_phi)
+    .Call(`_cTMed_MCPhiI`, phi, vcov_phi_vec_l, test_phi)
 }
 
 .MCPhi <- function(phi, vcov_phi_vec_l, R, test_phi = TRUE) {
-    .Call('_cTMed_MCPhi', PACKAGE = 'cTMed', phi, vcov_phi_vec_l, R, test_phi)
+    .Call(`_cTMed_MCPhi`, phi, vcov_phi_vec_l, R, test_phi)
 }
 
 .Meds <- function(phi, delta_t, from, to, med) {
-    .Call('_cTMed_Meds', PACKAGE = 'cTMed', phi, delta_t, from, to, med)
+    .Call(`_cTMed_Meds`, phi, delta_t, from, to, med)
 }
 
 .MedVec <- function(phi_vec, delta_t, from, to, med) {
-    .Call('_cTMed_MedVec', PACKAGE = 'cTMed', phi_vec, delta_t, from, to, med)
+    .Call(`_cTMed_MedVec`, phi_vec, delta_t, from, to, med)
 }
 
 .Med <- function(phi, delta_t, from, to, med) {
-    .Call('_cTMed_Med', PACKAGE = 'cTMed', phi, delta_t, from, to, med)
+    .Call(`_cTMed_Med`, phi, delta_t, from, to, med)
 }
 
 .PropVec <- function(phi_vec, delta_t, from, to, med) {
-    .Call('_cTMed_PropVec', PACKAGE = 'cTMed', phi_vec, delta_t, from, to, med)
+    .Call(`_cTMed_PropVec`, phi_vec, delta_t, from, to, med)
 }
 
 .RatioVec <- function(phi_vec, delta_t, from, to, med) {
-    .Call('_cTMed_RatioVec', PACKAGE = 'cTMed', phi_vec, delta_t, from, to, med)
+    .Call(`_cTMed_RatioVec`, phi_vec, delta_t, from, to, med)
 }
 
 .TestPhi <- function(phi) {
-    .Call('_cTMed_TestPhi', PACKAGE = 'cTMed', phi)
+    .Call(`_cTMed_TestPhi`, phi)
 }
 
 .TestStable <- function(x) {
-    .Call('_cTMed_TestStable', PACKAGE = 'cTMed', x)
+    .Call(`_cTMed_TestStable`, x)
 }
 
 .TotalCentrals <- function(phi, delta_t) {
-    .Call('_cTMed_TotalCentrals', PACKAGE = 'cTMed', phi, delta_t)
+    .Call(`_cTMed_TotalCentrals`, phi, delta_t)
 }
 
 .TotalCentralVec <- function(phi_vec, delta_t) {
-    .Call('_cTMed_TotalCentralVec', PACKAGE = 'cTMed', phi_vec, delta_t)
+    .Call(`_cTMed_TotalCentralVec`, phi_vec, delta_t)
 }
 
 .TotalCentral <- function(phi, delta_t) {
-    .Call('_cTMed_TotalCentral', PACKAGE = 'cTMed', phi, delta_t)
+    .Call(`_cTMed_TotalCentral`, phi, delta_t)
 }
 
 .TotalDeltaT <- function(phi, delta_t) {
-    .Call('_cTMed_TotalDeltaT', PACKAGE = 'cTMed', phi, delta_t)
+    .Call(`_cTMed_TotalDeltaT`, phi, delta_t)
 }
 
 .TotalVec <- function(phi_vec, delta_t) {
-    .Call('_cTMed_TotalVec', PACKAGE = 'cTMed', phi_vec, delta_t)
+    .Call(`_cTMed_TotalVec`, phi_vec, delta_t)
 }
 
 .Total <- function(phi, delta_t) {
-    .Call('_cTMed_Total', PACKAGE = 'cTMed', phi, delta_t)
+    .Call(`_cTMed_Total`, phi, delta_t)
 }
 
