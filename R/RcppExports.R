@@ -9,10 +9,6 @@
     .Call('_cTMed_Direct', PACKAGE = 'cTMed', phi, delta_t, from, to, med)
 }
 
-.MedVec <- function(phi_vec, delta_t, from, to, med) {
-    .Call('_cTMed_ESVec', PACKAGE = 'cTMed', phi_vec, delta_t, from, to, med)
-}
-
 .IndirectCentrals <- function(phi, delta_t) {
     .Call('_cTMed_IndirectCentrals', PACKAGE = 'cTMed', phi, delta_t)
 }
