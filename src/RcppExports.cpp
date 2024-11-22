@@ -11,31 +11,32 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// DirectVec
-double DirectVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med);
-RcppExport SEXP _cTMed_DirectVec(SEXP phi_vecSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+// DirectStd
+double DirectStd(const arma::mat& phi, const arma::mat& sigma, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
+RcppExport SEXP _cTMed_DirectStd(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
     Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
-    rcpp_result_gen = Rcpp::wrap(DirectVec(phi_vec, delta_t, from, to, med));
+    rcpp_result_gen = Rcpp::wrap(DirectStd(phi, sigma, delta_t, from, to, med));
     return rcpp_result_gen;
 END_RCPP
 }
 // Direct
-double Direct(const arma::mat& phi, const double& delta_t, const int& from, const int& to, const arma::vec& med);
+double Direct(const arma::mat& phi, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
 RcppExport SEXP _cTMed_Direct(SEXP phiSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
     Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
     rcpp_result_gen = Rcpp::wrap(Direct(phi, delta_t, from, to, med));
     return rcpp_result_gen;
@@ -77,16 +78,32 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// IndirectStd
+double IndirectStd(const arma::mat& phi, const arma::mat& sigma, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
+RcppExport SEXP _cTMed_IndirectStd(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
+    rcpp_result_gen = Rcpp::wrap(IndirectStd(phi, sigma, delta_t, from, to, med));
+    return rcpp_result_gen;
+END_RCPP
+}
 // Indirect
-double Indirect(const arma::mat& phi, const double& delta_t, const int& from, const int& to, const arma::vec& med);
+double Indirect(const arma::mat& phi, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
 RcppExport SEXP _cTMed_Indirect(SEXP phiSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
     Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
     rcpp_result_gen = Rcpp::wrap(Indirect(phi, delta_t, from, to, med));
     return rcpp_result_gen;
@@ -105,92 +122,151 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// MCPhiSigmaI
+Rcpp::List MCPhiSigmaI(const arma::mat& phi, const arma::mat& vcov_phi_vec, const arma::mat& sigma, const arma::mat& vcov_sigma_vech, bool test_phi);
+RcppExport SEXP _cTMed_MCPhiSigmaI(SEXP phiSEXP, SEXP vcov_phi_vecSEXP, SEXP sigmaSEXP, SEXP vcov_sigma_vechSEXP, SEXP test_phiSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type vcov_phi_vec(vcov_phi_vecSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type vcov_sigma_vech(vcov_sigma_vechSEXP);
+    Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
+    rcpp_result_gen = Rcpp::wrap(MCPhiSigmaI(phi, vcov_phi_vec, sigma, vcov_sigma_vech, test_phi));
+    return rcpp_result_gen;
+END_RCPP
+}
+// MCPhiVecI
+Rcpp::NumericVector MCPhiVecI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, bool test_phi);
+RcppExport SEXP _cTMed_MCPhiVecI(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP test_phiSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type vcov_phi_vec_l(vcov_phi_vec_lSEXP);
+    Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
+    rcpp_result_gen = Rcpp::wrap(MCPhiVecI(phi, vcov_phi_vec_l, test_phi));
+    return rcpp_result_gen;
+END_RCPP
+}
+// MCPhiVec
+Rcpp::List MCPhiVec(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const arma::uword& R, bool test_phi);
+RcppExport SEXP _cTMed_MCPhiVec(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP RSEXP, SEXP test_phiSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type vcov_phi_vec_l(vcov_phi_vec_lSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type R(RSEXP);
+    Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
+    rcpp_result_gen = Rcpp::wrap(MCPhiVec(phi, vcov_phi_vec_l, R, test_phi));
+    return rcpp_result_gen;
+END_RCPP
+}
 // MCPhi
-Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const int& R, bool test_phi);
+Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const arma::uword& R, bool test_phi);
 RcppExport SEXP _cTMed_MCPhi(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP RSEXP, SEXP test_phiSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
     Rcpp::traits::input_parameter< const arma::mat& >::type vcov_phi_vec_l(vcov_phi_vec_lSEXP);
-    Rcpp::traits::input_parameter< const int& >::type R(RSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type R(RSEXP);
     Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
     rcpp_result_gen = Rcpp::wrap(MCPhi(phi, vcov_phi_vec_l, R, test_phi));
     return rcpp_result_gen;
 END_RCPP
 }
 // Meds
-arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t, const int& from, const int& to, const arma::vec& med);
+arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
 RcppExport SEXP _cTMed_Meds(SEXP phiSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type delta_t(delta_tSEXP);
-    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
     rcpp_result_gen = Rcpp::wrap(Meds(phi, delta_t, from, to, med));
     return rcpp_result_gen;
 END_RCPP
 }
+// MedStds
+arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma, const arma::vec& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
+RcppExport SEXP _cTMed_MedStds(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type delta_t(delta_tSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
+    rcpp_result_gen = Rcpp::wrap(MedStds(phi, sigma, delta_t, from, to, med));
+    return rcpp_result_gen;
+END_RCPP
+}
+// MedStdVec
+Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
+RcppExport SEXP _cTMed_MedStdVec(SEXP vSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type v(vSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
+    rcpp_result_gen = Rcpp::wrap(MedStdVec(v, delta_t, from, to, med));
+    return rcpp_result_gen;
+END_RCPP
+}
+// MedStd
+Rcpp::NumericVector MedStd(const arma::mat& phi, const arma::mat& sigma, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
+RcppExport SEXP _cTMed_MedStd(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
+    rcpp_result_gen = Rcpp::wrap(MedStd(phi, sigma, delta_t, from, to, med));
+    return rcpp_result_gen;
+END_RCPP
+}
 // MedVec
-Rcpp::NumericVector MedVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med);
+Rcpp::NumericVector MedVec(const arma::vec& phi_vec, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
 RcppExport SEXP _cTMed_MedVec(SEXP phi_vecSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
     Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
     rcpp_result_gen = Rcpp::wrap(MedVec(phi_vec, delta_t, from, to, med));
     return rcpp_result_gen;
 END_RCPP
 }
 // Med
-Rcpp::NumericVector Med(const arma::mat& phi, const double& delta_t, const int& from, const int& to, const arma::vec& med);
+Rcpp::NumericVector Med(const arma::mat& phi, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
 RcppExport SEXP _cTMed_Med(SEXP phiSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
     Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
     rcpp_result_gen = Rcpp::wrap(Med(phi, delta_t, from, to, med));
-    return rcpp_result_gen;
-END_RCPP
-}
-// PropVec
-Rcpp::NumericVector PropVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med);
-RcppExport SEXP _cTMed_PropVec(SEXP phi_vecSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
-    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
-    rcpp_result_gen = Rcpp::wrap(PropVec(phi_vec, delta_t, from, to, med));
-    return rcpp_result_gen;
-END_RCPP
-}
-// RatioVec
-Rcpp::NumericVector RatioVec(const arma::vec& phi_vec, const double& delta_t, const int& from, const int& to, const arma::vec& med);
-RcppExport SEXP _cTMed_RatioVec(SEXP phi_vecSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
-    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    Rcpp::traits::input_parameter< const int& >::type from(fromSEXP);
-    Rcpp::traits::input_parameter< const int& >::type to(toSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
-    rcpp_result_gen = Rcpp::wrap(RatioVec(phi_vec, delta_t, from, to, med));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -252,6 +328,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// TotalCov
+arma::mat TotalCov(const arma::mat& phi, const arma::mat& sigma, const double& delta_t);
+RcppExport SEXP _cTMed_TotalCov(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(TotalCov(phi, sigma, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
 // TotalDeltaT
 Rcpp::NumericVector TotalDeltaT(const arma::mat& phi, const double& delta_t);
 RcppExport SEXP _cTMed_TotalDeltaT(SEXP phiSEXP, SEXP delta_tSEXP) {
@@ -261,6 +350,44 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
     Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
     rcpp_result_gen = Rcpp::wrap(TotalDeltaT(phi, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// TotalStdDeltaT
+Rcpp::NumericVector TotalStdDeltaT(const arma::mat& phi, const arma::mat& sigma, const double& delta_t);
+RcppExport SEXP _cTMed_TotalStdDeltaT(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(TotalStdDeltaT(phi, sigma, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// TotalStdVec
+arma::vec TotalStdVec(const arma::vec& v, const double& delta_t);
+RcppExport SEXP _cTMed_TotalStdVec(SEXP vSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type v(vSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(TotalStdVec(v, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// TotalStd
+arma::mat TotalStd(const arma::mat& phi, const arma::mat& sigma, const double& delta_t);
+RcppExport SEXP _cTMed_TotalStd(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(TotalStd(phi, sigma, delta_t));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -290,25 +417,34 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_cTMed_DirectVec", (DL_FUNC) &_cTMed_DirectVec, 5},
+    {"_cTMed_DirectStd", (DL_FUNC) &_cTMed_DirectStd, 6},
     {"_cTMed_Direct", (DL_FUNC) &_cTMed_Direct, 5},
     {"_cTMed_IndirectCentrals", (DL_FUNC) &_cTMed_IndirectCentrals, 2},
     {"_cTMed_IndirectCentralVec", (DL_FUNC) &_cTMed_IndirectCentralVec, 2},
     {"_cTMed_IndirectCentral", (DL_FUNC) &_cTMed_IndirectCentral, 2},
+    {"_cTMed_IndirectStd", (DL_FUNC) &_cTMed_IndirectStd, 6},
     {"_cTMed_Indirect", (DL_FUNC) &_cTMed_Indirect, 5},
     {"_cTMed_MCPhiI", (DL_FUNC) &_cTMed_MCPhiI, 3},
+    {"_cTMed_MCPhiSigmaI", (DL_FUNC) &_cTMed_MCPhiSigmaI, 5},
+    {"_cTMed_MCPhiVecI", (DL_FUNC) &_cTMed_MCPhiVecI, 3},
+    {"_cTMed_MCPhiVec", (DL_FUNC) &_cTMed_MCPhiVec, 4},
     {"_cTMed_MCPhi", (DL_FUNC) &_cTMed_MCPhi, 4},
     {"_cTMed_Meds", (DL_FUNC) &_cTMed_Meds, 5},
+    {"_cTMed_MedStds", (DL_FUNC) &_cTMed_MedStds, 6},
+    {"_cTMed_MedStdVec", (DL_FUNC) &_cTMed_MedStdVec, 5},
+    {"_cTMed_MedStd", (DL_FUNC) &_cTMed_MedStd, 6},
     {"_cTMed_MedVec", (DL_FUNC) &_cTMed_MedVec, 5},
     {"_cTMed_Med", (DL_FUNC) &_cTMed_Med, 5},
-    {"_cTMed_PropVec", (DL_FUNC) &_cTMed_PropVec, 5},
-    {"_cTMed_RatioVec", (DL_FUNC) &_cTMed_RatioVec, 5},
     {"_cTMed_TestPhi", (DL_FUNC) &_cTMed_TestPhi, 1},
     {"_cTMed_TestStable", (DL_FUNC) &_cTMed_TestStable, 1},
     {"_cTMed_TotalCentrals", (DL_FUNC) &_cTMed_TotalCentrals, 2},
     {"_cTMed_TotalCentralVec", (DL_FUNC) &_cTMed_TotalCentralVec, 2},
     {"_cTMed_TotalCentral", (DL_FUNC) &_cTMed_TotalCentral, 2},
+    {"_cTMed_TotalCov", (DL_FUNC) &_cTMed_TotalCov, 3},
     {"_cTMed_TotalDeltaT", (DL_FUNC) &_cTMed_TotalDeltaT, 2},
+    {"_cTMed_TotalStdDeltaT", (DL_FUNC) &_cTMed_TotalStdDeltaT, 3},
+    {"_cTMed_TotalStdVec", (DL_FUNC) &_cTMed_TotalStdVec, 2},
+    {"_cTMed_TotalStd", (DL_FUNC) &_cTMed_TotalStd, 3},
     {"_cTMed_TotalVec", (DL_FUNC) &_cTMed_TotalVec, 2},
     {"_cTMed_Total", (DL_FUNC) &_cTMed_Total, 2},
     {NULL, NULL, 0}
