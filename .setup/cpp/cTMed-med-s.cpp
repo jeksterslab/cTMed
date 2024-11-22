@@ -6,22 +6,20 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Meds)]]
-arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t, const int& from,
-               const int& to, const arma::vec& med) {
-  int ts = delta_t.n_rows;
-  int ms = med.n_elem;
-  int p = phi.n_rows;
-  arma::mat output = arma::mat(ts, 4);
-  arma::mat total = arma::mat(p, p);
-  arma::mat direct = arma::mat(p, p);
-  arma::mat d = arma::eye(p, p);
+arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t,
+               const arma::uword& from, const arma::uword& to,
+               const arma::vec& med) {
+  arma::mat output(delta_t.n_rows, 4, arma::fill::none);
+  arma::mat total(phi.n_rows, phi.n_rows, arma::fill::none);
+  arma::mat direct(phi.n_rows, phi.n_rows, arma::fill::none);
+  arma::mat d = arma::eye(phi.n_rows, phi.n_rows);
   double total_dbl;
   double direct_dbl;
   double indirect_dbl;
-  for (int m = 0; m < ms; m++) {
-    d(med[m] - 1, med[m] - 1) = 0;
+  for (arma::uword i = 0; i < med.n_elem; ++i) {
+    d(med[i] - 1, med[i] - 1) = 0;
   }
-  for (int t = 0; t < ts; t++) {
+  for (arma::uword t = 0; t < delta_t.n_rows; t++) {
     total = arma::expmat(delta_t[t] * phi);
     total_dbl = total(to - 1, from - 1);
     direct = arma::expmat(delta_t[t] * d * phi * d);

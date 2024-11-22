@@ -8,7 +8,7 @@
 // [[Rcpp::export(.TotalCentralVec)]]
 Rcpp::NumericVector TotalCentralVec(const arma::vec& phi_vec,
                                     const double& delta_t) {
-  int p = std::sqrt(phi_vec.n_elem);
+  arma::uword p = std::sqrt(phi_vec.n_elem);
   arma::mat phi = arma::reshape(phi_vec, p, p);
   arma::mat total = arma::expmat(delta_t * phi);
   arma::vec total_central =

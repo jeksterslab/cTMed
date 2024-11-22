@@ -240,17 +240,24 @@ Psychometrika, 87 (1), 214–252.
 \seealso{
 Other Continuous Time Mediation Functions: 
 \code{\link{DeltaBeta}()},
+\code{\link{DeltaBetaStd}()},
 \code{\link{DeltaIndirectCentral}()},
 \code{\link{DeltaMed}()},
+\code{\link{DeltaMedStd}()},
 \code{\link{DeltaTotalCentral}()},
+\code{\link{DirectStd}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
+\code{\link{IndirectStd}()},
 \code{\link{MCBeta}()},
+\code{\link{MCBetaStd}()},
 \code{\link{MCIndirectCentral}()},
 \code{\link{MCMed}()},
+\code{\link{MCMedStd}()},
 \code{\link{MCPhi}()},
 \code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
+\code{\link{MedStd}()},
 \code{\link{PosteriorBeta}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
@@ -258,6 +265,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{PosteriorTotalCentral}()},
 \code{\link{Total}()},
 \code{\link{TotalCentral}()},
+\code{\link{TotalStd}()},
 \code{\link{Trajectory}()}
 }
 \author{

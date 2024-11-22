@@ -1,6 +1,7 @@
 # cTMed 1.0.1.9000
 
 * Latest development version.
+* Added standardized effects.
 
 # cTMed 1.0.1
 

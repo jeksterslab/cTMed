@@ -7,17 +7,18 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.MCPhi)]]
 Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
-                 const int& R, bool test_phi = true) {
+                 const arma::uword& R, bool test_phi = true) {
   Rcpp::List output(R);
-  int p = phi.n_rows;
-  int q = p * p;
+  arma::mat phi_i(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::vec phi_vec = arma::vectorise(phi);
-  for (int i = 0; i < R; i++) {
+  arma::vec phi_vec_i(phi.n_rows * phi.n_cols, arma::fill::none);
+  for (arma::uword i = 0; i < R; i++) {
     bool run = true;
     while (run) {
       // generate data
-      arma::vec phi_vec_i = phi_vec + (vcov_phi_vec_l * arma::randn(q));
-      arma::mat phi_i = arma::reshape(phi_vec_i, p, p);
+      phi_vec_i =
+          phi_vec + (vcov_phi_vec_l * arma::randn(phi.n_rows * phi.n_cols));
+      phi_i = arma::reshape(phi_vec_i, phi.n_rows, phi.n_cols);
       // test phi
       if (test_phi) {
         if (TestPhi(phi_i)) {

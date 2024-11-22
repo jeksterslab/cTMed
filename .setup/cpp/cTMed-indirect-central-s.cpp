@@ -7,17 +7,18 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.IndirectCentrals)]]
 arma::mat IndirectCentrals(const arma::mat& phi, const arma::vec& delta_t) {
-  int ts = delta_t.n_rows;
-  int p = phi.n_rows;
-  arma::mat output = arma::mat(p, ts);
-  for (int t = 0; t < ts; t++) {
-    arma::mat total = arma::expmat(delta_t[t] * phi);
-    for (int m = 0; m < p; m++) {
-      arma::mat d = arma::eye(p, p);
+  arma::mat output(phi.n_rows, delta_t.n_rows, arma::fill::none);
+  arma::mat total(phi.n_rows, phi.n_cols, arma::fill::none);
+  arma::mat direct(phi.n_rows, phi.n_cols, arma::fill::none);
+  arma::mat d = arma::eye(phi.n_rows, phi.n_cols);
+  for (arma::uword t = 0; t < delta_t.n_rows; t++) {
+    total = arma::expmat(delta_t[t] * phi);
+    for (arma::uword m = 0; m < phi.n_rows; m++) {
+      d = arma::eye(phi.n_rows, phi.n_cols);
       d(m, m) = 0;
-      arma::mat direct = arma::expmat(delta_t[t] * d * phi * d);
-      for (int i = 0; i < p; i++) {
-        for (int j = 0; j < p; j++) {
+      direct = arma::expmat(delta_t[t] * d * phi * d);
+      for (arma::uword j = 0; j < phi.n_rows; j++) {
+        for (arma::uword i = 0; i < phi.n_rows; i++) {
           if (!(m == i || m == j || i == j)) {
             output(m, t) += total(i, j) - direct(i, j);
           }

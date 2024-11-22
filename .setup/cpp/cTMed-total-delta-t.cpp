@@ -8,11 +8,7 @@
 // [[Rcpp::export(.TotalDeltaT)]]
 Rcpp::NumericVector TotalDeltaT(const arma::mat& phi, const double& delta_t) {
   arma::mat total = arma::expmat(delta_t * phi);
-  int q = total.n_elem;
-  Rcpp::NumericVector total_vec(q);
-  for (int i = 0; i < q; ++i) {
-    total_vec[i] = total(i);
-  }
+  Rcpp::NumericVector total_vec(total.memptr(), total.memptr() + total.n_elem);
   total_vec.push_back(delta_t);
   return total_vec;
 }

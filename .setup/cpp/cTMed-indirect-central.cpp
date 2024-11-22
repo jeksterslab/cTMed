@@ -8,15 +8,17 @@
 // [[Rcpp::export(.IndirectCentral)]]
 Rcpp::NumericVector IndirectCentral(const arma::mat& phi,
                                     const double& delta_t) {
-  int p = phi.n_rows;
+  arma::uword p = phi.n_rows;
   arma::mat total = arma::expmat(delta_t * phi);
+  arma::mat direct(p, p, arma::fill::none);
+  arma::mat d = arma::eye(p, p);
   Rcpp::NumericVector output(p);
-  for (int m = 0; m < p; m++) {
-    arma::mat d = arma::eye(p, p);
+  for (arma::uword m = 0; m < p; m++) {
+    d = arma::eye(p, p);
     d(m, m) = 0;
-    arma::mat direct = arma::expmat(delta_t * d * phi * d);
-    for (int i = 0; i < p; i++) {
-      for (int j = 0; j < p; j++) {
+    direct = arma::expmat(delta_t * d * phi * d);
+    for (arma::uword j = 0; j < p; j++) {
+      for (arma::uword i = 0; i < p; i++) {
         if (!(m == i || m == j || i == j)) {
           output(m) += total(i, j) - direct(i, j);
         }
