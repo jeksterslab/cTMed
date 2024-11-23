@@ -37,7 +37,8 @@ double DirectStd(const arma::mat& phi, const arma::mat& sigma,
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  // arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  arma::mat direct_std = sd_row * direct * sd_col_inv;
   return direct_std(to - 1, from - 1);
 }
 // -----------------------------------------------------------------------------
@@ -177,7 +178,8 @@ double IndirectStd(const arma::mat& phi, const arma::mat& sigma,
   arma::mat total_std = sd_row * total * sd_col_inv;
   double total_dbl = total_std(to - 1, from - 1);
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  // arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  arma::mat direct_std = sd_row * direct * sd_col_inv;
   double direct_dbl = direct_std(to - 1, from - 1);
   return total_dbl - direct_dbl;
 }
@@ -288,74 +290,6 @@ Rcpp::List MCPhiSigmaI(const arma::mat& phi, const arma::mat& vcov_phi_vec,
   sigma_i = eigvec * arma::diagmat(eigval) * eigvec.t();
   output[0] = phi_i;
   output[1] = sigma_i;
-  return output;
-}
-// -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-mc-phi-vec-i.cpp
-// Ivan Jacob Agaloos Pesigan
-// -----------------------------------------------------------------------------
-
-#include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::export(.MCPhiVecI)]]
-Rcpp::NumericVector MCPhiVecI(const arma::mat& phi,
-                              const arma::mat& vcov_phi_vec_l,
-                              bool test_phi = true) {
-  arma::mat phi_i(phi.n_rows, phi.n_cols, arma::fill::none);
-  arma::vec phi_vec = arma::vectorise(phi);
-  arma::vec phi_vec_i(phi.n_rows * phi.n_cols, arma::fill::none);
-  bool run = true;
-  while (run) {
-    // generate data
-    phi_vec_i =
-        phi_vec + (vcov_phi_vec_l * arma::randn(phi.n_rows * phi.n_cols));
-    phi_i = arma::reshape(phi_vec_i, phi.n_rows, phi.n_cols);
-    // test phi
-    if (test_phi) {
-      if (TestPhi(phi_i)) {
-        run = false;
-      }
-    } else {
-      run = false;
-    }
-  }
-  return Rcpp::NumericVector(phi_vec_i.begin(), phi_vec_i.end());
-}
-// -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-mc-phi-vec.cpp
-// Ivan Jacob Agaloos Pesigan
-// -----------------------------------------------------------------------------
-
-#include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::export(.MCPhiVec)]]
-Rcpp::List MCPhiVec(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
-                    const arma::uword& R, bool test_phi = true) {
-  Rcpp::List output(R);
-  arma::mat phi_i(phi.n_rows, phi.n_cols, arma::fill::none);
-  arma::vec phi_vec = arma::vectorise(phi);
-  arma::vec phi_vec_i(phi.n_rows * phi.n_cols, arma::fill::none);
-  for (arma::uword i = 0; i < R; i++) {
-    bool run = true;
-    while (run) {
-      // generate data
-      phi_vec_i =
-          phi_vec + (vcov_phi_vec_l * arma::randn(phi.n_rows * phi.n_cols));
-      phi_i = arma::reshape(phi_vec_i, phi.n_rows, phi.n_cols);
-      // test phi
-      if (test_phi) {
-        if (TestPhi(phi_i)) {
-          run = false;
-        }
-      } else {
-        run = false;
-      }
-      // output
-      if (!run) {
-        output[i] = Rcpp::NumericVector(phi_vec_i.begin(), phi_vec_i.end());
-      }
-    }
-  }
   return output;
 }
 // -----------------------------------------------------------------------------
@@ -471,7 +405,8 @@ arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
     total_std = sd_row * total * sd_col_inv;
     total_dbl = total_std(to - 1, from - 1);
     direct = arma::expmat(delta_t[t] * d * phi * d);
-    direct_std = d * (sd_row * direct * sd_col_inv) * d;
+    // direct_std = d * (sd_row * direct * sd_col_inv) * d;
+    direct_std = sd_row * direct * sd_col_inv;
     direct_dbl = direct_std(to - 1, from - 1);
     indirect_dbl = total_dbl - direct_dbl;
     output(t, 0) = total_dbl;
@@ -525,7 +460,8 @@ Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t,
   arma::mat total_std = sd_row * total * sd_col_inv;
   double total_dbl = total_std(to - 1, from - 1);
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  // arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  arma::mat direct_std = sd_row * direct * sd_col_inv;
   double direct_dbl = direct_std(to - 1, from - 1);
   double indirect_dbl = total_dbl - direct_dbl;
   Rcpp::NumericVector output(3);
@@ -564,7 +500,8 @@ Rcpp::NumericVector MedStd(const arma::mat& phi, const arma::mat& sigma,
   arma::mat total_std = sd_row * total * sd_col_inv;
   double total_dbl = total_std(to - 1, from - 1);
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  // arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  arma::mat direct_std = sd_row * direct * sd_col_inv;
   double direct_dbl = direct_std(to - 1, from - 1);
   double indirect_dbl = total_dbl - direct_dbl;
   Rcpp::NumericVector output(4);

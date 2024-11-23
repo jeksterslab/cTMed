@@ -16,7 +16,7 @@
 #'   relative to some mediator variables \eqn{\mathbf{m}}
 #'   is given by
 #'   \deqn{
-#'     \mathrm{Direct}^{\ast}_{{\Delta t}_{i, j, \mathrm{\mathbf{m}}}}
+#'     \mathrm{Direct}^{\ast}_{{\Delta t}_{i, j}}
 #'     =
 #'     \mathbf{S}
 #'     \left(

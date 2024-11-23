@@ -73,7 +73,7 @@ lapply(
     )
     delta_t <- 2
     total <- expm::expm(delta_t * phi)
-    total_cov <- cTMed:::.TotalCov(
+    total_cov <- ExpCov(
       phi = phi,
       sigma = sigma,
       delta_t = delta_t

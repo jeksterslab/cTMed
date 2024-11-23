@@ -1,7 +1,7 @@
 #' Standardized Total Effect Matrix
 #' Over a Specific Time Interval
 #'
-#' This function computes the total effects matrix
+#' This function computes the standardized total effects matrix
 #' over a specific time interval \eqn{\Delta t}
 #' using the first-order stochastic differential equation model's
 #' drift matrix \eqn{\boldsymbol{\Phi}}

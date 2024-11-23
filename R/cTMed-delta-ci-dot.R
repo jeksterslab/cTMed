@@ -47,18 +47,6 @@
               }
             )
           }
-          if (object$fun == "DeltaProp") {
-            rownames(ci) <- c(
-              "Direct/(Direct+Total)",
-              "Indirect/(Indirect+Total)"
-            )
-          }
-          if (object$fun == "DeltaRatio") {
-            rownames(ci) <- c(
-              "Direct/Total",
-              "Indirect/Total"
-            )
-          }
         }
         return(ci)
       }

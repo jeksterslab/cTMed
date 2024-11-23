@@ -37,14 +37,6 @@
     .Call(`_cTMed_MCPhiSigmaI`, phi, vcov_phi_vec, sigma, vcov_sigma_vech, test_phi)
 }
 
-.MCPhiVecI <- function(phi, vcov_phi_vec_l, test_phi = TRUE) {
-    .Call(`_cTMed_MCPhiVecI`, phi, vcov_phi_vec_l, test_phi)
-}
-
-.MCPhiVec <- function(phi, vcov_phi_vec_l, R, test_phi = TRUE) {
-    .Call(`_cTMed_MCPhiVec`, phi, vcov_phi_vec_l, R, test_phi)
-}
-
 .MCPhi <- function(phi, vcov_phi_vec_l, R, test_phi = TRUE) {
     .Call(`_cTMed_MCPhi`, phi, vcov_phi_vec_l, R, test_phi)
 }
