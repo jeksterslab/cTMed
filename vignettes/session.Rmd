@@ -57,9 +57,6 @@ sessionInfo()
 installed.packages()[, c("Package", "Version")]
 #>                   Package             Version      
 #> cTMed             "cTMed"             "1.0.1.9000" 
-#> curl              "curl"              "6.0.1"      
-#> fontawesome       "fontawesome"       "0.5.3"      
-#> rProject          "rProject"          "0.0.14"     
 #> abind             "abind"             "1.4-8"      
 #> arm               "arm"               "1.14-4"     
 #> arrow             "arrow"             "17.0.0.1"   
@@ -111,7 +108,7 @@ installed.packages()[, c("Package", "Version")]
 #> crosstalk         "crosstalk"         "1.2.1"      
 #> cTMed             "cTMed"             "1.0.1.9000" 
 #> ctsem             "ctsem"             "3.10.1"     
-#> curl              "curl"              "6.0.0"      
+#> curl              "curl"              "6.0.1"      
 #> cyclocomp         "cyclocomp"         "1.1.1"      
 #> data.table        "data.table"        "1.16.2"     
 #> DBI               "DBI"               "1.2.3"      
@@ -152,7 +149,7 @@ installed.packages()[, c("Package", "Version")]
 #> fitCTVARMx        "fitCTVARMx"        "0.0.0.9000" 
 #> fitDTVARMx        "fitDTVARMx"        "0.0.0.9000" 
 #> FNN               "FNN"               "1.1.4.1"    
-#> fontawesome       "fontawesome"       "0.5.2"      
+#> fontawesome       "fontawesome"       "0.5.3"      
 #> forcats           "forcats"           "1.0.0"      
 #> foreach           "foreach"           "1.5.2"      
 #> Formula           "Formula"           "1.2-5"      
@@ -314,13 +311,13 @@ installed.packages()[, c("Package", "Version")]
 #> rcmdcheck         "rcmdcheck"         "1.4.0"      
 #> RColorBrewer      "RColorBrewer"      "1.1-3"      
 #> Rcpp              "Rcpp"              "1.0.13-1"   
-#> RcppArmadillo     "RcppArmadillo"     "14.0.2-1"   
+#> RcppArmadillo     "RcppArmadillo"     "14.2.0-1"   
 #> RcppEigen         "RcppEigen"         "0.3.4.0.2"  
 #> RcppGSL           "RcppGSL"           "0.3.13"     
 #> RcppParallel      "RcppParallel"      "5.1.9"      
 #> RcppTOML          "RcppTOML"          "0.2.2"      
 #> RCurl             "RCurl"             "1.98-1.16"  
-#> Rdpack            "Rdpack"            "2.6.1"      
+#> Rdpack            "Rdpack"            "2.6.2"      
 #> readr             "readr"             "2.1.5"      
 #> readxl            "readxl"            "1.4.3"      
 #> recipes           "recipes"           "1.1.0"      
@@ -330,7 +327,7 @@ installed.packages()[, c("Package", "Version")]
 #> remotes           "remotes"           "2.5.0"      
 #> reprex            "reprex"            "2.1.1"      
 #> reshape2          "reshape2"          "1.4.4"      
-#> reticulate        "reticulate"        "1.39.0"     
+#> reticulate        "reticulate"        "1.40.0"     
 #> rex               "rex"               "1.2.1"      
 #> rhub              "rhub"              "2.0.0"      
 #> rjags             "rjags"             "4-16"       
@@ -495,7 +492,7 @@ installed.packages()[, c("Package", "Version")]
 
 ```
 #>                total        used        free      shared  buff/cache   available
-#> Mem:            23Gi       4.1Gi        12Gi       903Mi       6.7Gi        17Gi
-#> Swap:           11Gi          0B        11Gi
-#> Total:          34Gi       4.1Gi        23Gi
+#> Mem:            23Gi       4.4Gi       6.9Gi       1.1Gi        11Gi        17Gi
+#> Swap:           11Gi       7.0Mi        11Gi
+#> Total:          34Gi       4.4Gi        18Gi
 ```

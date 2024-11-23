@@ -28,7 +28,8 @@ Rcpp::NumericVector MedStd(const arma::mat& phi, const arma::mat& sigma,
   arma::mat total_std = sd_row * total * sd_col_inv;
   double total_dbl = total_std(to - 1, from - 1);
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  // arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  arma::mat direct_std = sd_row * direct * sd_col_inv;
   double direct_dbl = direct_std(to - 1, from - 1);
   double indirect_dbl = total_dbl - direct_dbl;
   Rcpp::NumericVector output(4);

@@ -16,7 +16,7 @@
 #'   over a specific time interval \eqn{\Delta t}
 #'   is given by
 #'   \deqn{
-#'     \mathrm{Indirect}_{\Delta t}
+#'     \mathrm{Indirect}_{{\Delta t}_{i, j}}
 #'     =
 #'     \exp
 #'     \left(

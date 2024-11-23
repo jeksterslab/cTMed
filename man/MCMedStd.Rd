@@ -122,7 +122,7 @@ the unique elements of the \eqn{\boldsymbol{\Sigma}} matrix
 in vector form sorted column-wise.
 Let \eqn{\hat{\boldsymbol{\theta}}} be
 a vector that combines
-\eqn{\{\mathrm{vec} \left( \hat{\boldsymbol{\Phi}} \right)} and
+\eqn{\mathrm{vec} \left( \hat{\boldsymbol{\Phi}} \right)} and
 \eqn{\mathrm{vech} \left( \hat{\boldsymbol{\Sigma}} \right)}.
 Based on the asymptotic properties of maximum likelihood estimators,
 we can assume that estimators are normally distributed
@@ -299,6 +299,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{DeltaTotalCentral}()},
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
+\code{\link{ExpCov}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},

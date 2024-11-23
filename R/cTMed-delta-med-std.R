@@ -33,7 +33,7 @@
 #'   in vector form sorted column-wise.
 #'   Let \eqn{\hat{\boldsymbol{\theta}}} be
 #'   a vector that combines
-#'   \eqn{\{\mathrm{vec} \left( \hat{\boldsymbol{\Phi}} \right)} and
+#'   \eqn{\mathrm{vec} \left( \hat{\boldsymbol{\Phi}} \right)} and
 #'   \eqn{\mathrm{vech} \left( \hat{\boldsymbol{\Sigma}} \right)}.
 #'   By the multivariate central limit theory,
 #'   the function \eqn{\mathbf{g}}

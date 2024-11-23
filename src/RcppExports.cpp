@@ -137,33 +137,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// MCPhiVecI
-Rcpp::NumericVector MCPhiVecI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, bool test_phi);
-RcppExport SEXP _cTMed_MCPhiVecI(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP test_phiSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type vcov_phi_vec_l(vcov_phi_vec_lSEXP);
-    Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCPhiVecI(phi, vcov_phi_vec_l, test_phi));
-    return rcpp_result_gen;
-END_RCPP
-}
-// MCPhiVec
-Rcpp::List MCPhiVec(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const arma::uword& R, bool test_phi);
-RcppExport SEXP _cTMed_MCPhiVec(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP RSEXP, SEXP test_phiSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type vcov_phi_vec_l(vcov_phi_vec_lSEXP);
-    Rcpp::traits::input_parameter< const arma::uword& >::type R(RSEXP);
-    Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCPhiVec(phi, vcov_phi_vec_l, R, test_phi));
-    return rcpp_result_gen;
-END_RCPP
-}
 // MCPhi
 Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l, const arma::uword& R, bool test_phi);
 RcppExport SEXP _cTMed_MCPhi(SEXP phiSEXP, SEXP vcov_phi_vec_lSEXP, SEXP RSEXP, SEXP test_phiSEXP) {
@@ -426,8 +399,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_Indirect", (DL_FUNC) &_cTMed_Indirect, 5},
     {"_cTMed_MCPhiI", (DL_FUNC) &_cTMed_MCPhiI, 3},
     {"_cTMed_MCPhiSigmaI", (DL_FUNC) &_cTMed_MCPhiSigmaI, 5},
-    {"_cTMed_MCPhiVecI", (DL_FUNC) &_cTMed_MCPhiVecI, 3},
-    {"_cTMed_MCPhiVec", (DL_FUNC) &_cTMed_MCPhiVec, 4},
     {"_cTMed_MCPhi", (DL_FUNC) &_cTMed_MCPhi, 4},
     {"_cTMed_Meds", (DL_FUNC) &_cTMed_Meds, 5},
     {"_cTMed_MedStds", (DL_FUNC) &_cTMed_MedStds, 6},

@@ -26,6 +26,7 @@ double DirectStd(const arma::mat& phi, const arma::mat& sigma,
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  // arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
+  arma::mat direct_std = sd_row * direct * sd_col_inv;
   return direct_std(to - 1, from - 1);
 }

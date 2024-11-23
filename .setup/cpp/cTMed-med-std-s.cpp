@@ -40,7 +40,8 @@ arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
     total_std = sd_row * total * sd_col_inv;
     total_dbl = total_std(to - 1, from - 1);
     direct = arma::expmat(delta_t[t] * d * phi * d);
-    direct_std = d * (sd_row * direct * sd_col_inv) * d;
+    // direct_std = d * (sd_row * direct * sd_col_inv) * d;
+    direct_std = sd_row * direct * sd_col_inv;
     direct_dbl = direct_std(to - 1, from - 1);
     indirect_dbl = total_dbl - direct_dbl;
     output(t, 0) = total_dbl;

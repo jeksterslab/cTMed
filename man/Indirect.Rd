@@ -53,7 +53,7 @@ relative to some mediator variables \eqn{\mathbf{m}}
 over a specific time interval \eqn{\Delta t}
 is given by
 \deqn{
-    \mathrm{Indirect}_{\Delta t}
+    \mathrm{Indirect}_{{\Delta t}_{i, j}}
     =
     \exp
     \left(
@@ -254,6 +254,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{DeltaTotalCentral}()},
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
+\code{\link{ExpCov}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},
 \code{\link{MCBeta}()},

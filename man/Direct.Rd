@@ -52,7 +52,7 @@ on the dependent variable \eqn{Y}
 relative to some mediator variables \eqn{\mathbf{m}}
 is given by
 \deqn{
-    \mathrm{Direct}_{{\Delta t}_{i, j, \mathrm{\mathbf{m}}}}
+    \mathrm{Direct}_{{\Delta t}_{i, j}}
     =
     \exp
     \left(
@@ -246,6 +246,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{DeltaMedStd}()},
 \code{\link{DeltaTotalCentral}()},
 \code{\link{DirectStd}()},
+\code{\link{ExpCov}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},

@@ -31,7 +31,7 @@ of class \code{ctmedeffect} which is a list with the following elements:
 }
 }
 \description{
-This function computes the total effects matrix
+This function computes the standardized total effects matrix
 over a specific time interval \eqn{\Delta t}
 using the first-order stochastic differential equation model's
 drift matrix \eqn{\boldsymbol{\Phi}}
@@ -114,6 +114,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{DeltaTotalCentral}()},
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
+\code{\link{ExpCov}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},
