@@ -31,10 +31,15 @@ arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
   arma::mat direct_std(phi.n_rows, phi.n_cols, arma::fill::none);
   for (arma::uword t = 0; t < delta_t.n_rows; t++) {
     total = arma::expmat(delta_t[t] * phi);
-    psi_vec = arma::inv(phi_hashtag) *
-              (arma::expmat(phi_hashtag * delta_t[t]) - J) * sigma_vec;
-    total_cov = arma::reshape(arma::inv(J - arma::kron(total, total)) * psi_vec,
-                              phi.n_rows, phi.n_cols);
+    // psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
+    // delta_t[t]) - J) * sigma_vec;
+    psi_vec = arma::solve(
+        phi_hashtag, (arma::expmat(phi_hashtag * delta_t[t]) - J) * sigma_vec);
+    // total_cov = arma::reshape(arma::inv(J - arma::kron(total, total)) *
+    // psi_vec, phi.n_rows, phi.n_cols);
+    total_cov =
+        arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
+                      phi.n_rows, phi.n_cols);
     sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
     sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
     total_std = sd_row * total * sd_col_inv;

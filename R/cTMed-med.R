@@ -133,6 +133,8 @@
 #' @param delta_t Vector of positive numbers.
 #'   Time interval
 #'   (\eqn{\Delta t}).
+#' @param tol Numeric.
+#'   Smallest possible time interval to allow.
 #'
 #' @return Returns an object
 #'   of class `ctmedmed` which is a list with the following elements:
@@ -194,7 +196,8 @@ Med <- function(phi,
                 delta_t,
                 from,
                 to,
-                med) {
+                med,
+                tol = 0.01) {
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi),
@@ -209,8 +212,8 @@ Med <- function(phi,
     )
   }
   delta_t <- ifelse(
-    test = delta_t <= 0,
-    yes = .Machine$double.xmin,
+    test = delta_t < tol,
+    yes = tol, # .Machine$double.xmin
     no = delta_t
   )
   args <- list(

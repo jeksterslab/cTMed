@@ -204,7 +204,8 @@
 DeltaBeta <- function(phi,
                       vcov_phi_vec,
                       delta_t,
-                      ncores = NULL) {
+                      ncores = NULL,
+                      tol = 0.01) {
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi)
@@ -219,8 +220,8 @@ DeltaBeta <- function(phi,
   )
   delta_t <- sort(
     ifelse(
-      test = delta_t <= 0,
-      yes = .Machine$double.xmin,
+      test = delta_t < tol,
+      yes = tol, # .Machine$double.xmin
       no = delta_t
     )
   )

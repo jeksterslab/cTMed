@@ -1,12 +1,15 @@
 .MCBetaStd <- function(phi,
-                       vcov_phi_vec,
                        sigma,
-                       vcov_sigma_vech,
+                       vcov_theta,
                        delta_t,
                        R,
                        test_phi = TRUE,
                        ncores = NULL,
                        seed = NULL) {
+  theta <- c(
+    .Vec(phi),
+    .Vech(sigma)
+  )
   varnames <- colnames(phi)
   x <- expand.grid(
     to = varnames,
@@ -47,10 +50,8 @@
       fun = function(i) {
         return(
           .MCPhiSigmaI(
-            phi = phi,
-            vcov_phi_vec = vcov_phi_vec,
-            sigma = sigma,
-            vcov_sigma_vech = vcov_sigma_vech,
+            theta = theta,
+            vcov_theta = vcov_theta,
             test_phi = test_phi
           )
         )
@@ -104,10 +105,8 @@
       FUN = function(i) {
         return(
           .MCPhiSigmaI(
-            phi = phi,
-            vcov_phi_vec = vcov_phi_vec,
-            sigma = sigma,
-            vcov_sigma_vech = vcov_sigma_vech,
+            theta = theta,
+            vcov_theta = vcov_theta,
             test_phi = test_phi
           )
         )

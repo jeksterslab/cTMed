@@ -1,9 +1,12 @@
-# cTMed 1.0.1.9000
+# cTMed 1.0.2
 
-* Latest development version.
-* Added standardized effects.
+## Patch
+
+* Added standardized total, direct, and indirect effects.
 
 # cTMed 1.0.1
+
+## Patch
 
 * Minor edits to documentation.
 

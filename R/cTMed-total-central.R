@@ -57,10 +57,11 @@
 #' @keywords cTMed network effects
 #' @export
 TotalCentral <- function(phi,
-                         delta_t) {
+                         delta_t,
+                         tol = 0.01) {
   delta_t <- ifelse(
-    test = delta_t <= 0,
-    yes = .Machine$double.xmin,
+    test = delta_t < tol,
+    yes = tol, # .Machine$double.xmin
     no = delta_t
   )
   args <- list(

@@ -1,0 +1,540 @@
+---
+title: "Fit the Continuous-Time Vector Autoregressive Model Using the OpenMx Package"
+author: Ivan Jacob Agaloos Pesigan
+date: "`r Sys.Date()`"
+bibliography: "vignettes.bib"
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
+nocite: |
+  @RCoreTeam-2024
+  @Neale-Hunter-Pritikin-etal-2015
+  @Hunter-2017
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Fit the Continuous-Time Vector Autoregressive Model Using the OpenMx Package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+#| include = FALSE
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.path = "fig-vignettes-fit-ct-var-mx-",
+  fig.cap = "",
+  fig.width = 11,
+  fig.height = 8,
+  fig.retina = 2,
+  dpi = 300,
+  comment = "#>"
+)
+```
+
+```{r}
+#| echo = FALSE
+set.seed(42)
+n <- 50
+time <- 100
+delta_t <- 0.10
+k <- p <- 3
+iden <- diag(k)
+null_vec <- rep(x = 0, times = k)
+null_mat <- matrix(
+  data = 0,
+  nrow = p,
+  ncol = p
+)
+mu0 <- null_vec
+sigma0 <- matrix(
+  data = c(
+    1.0,
+    0.2,
+    0.2,
+    0.2,
+    1.0,
+    0.2,
+    0.2,
+    0.2,
+    1.0
+  ),
+  nrow = 3
+)
+sigma0_l <- t(chol(sigma0))
+mu <- null_vec
+phi <- matrix(
+  data = c(
+    -0.357,
+    0.771,
+    -0.450,
+    0.0,
+    -0.511,
+    0.729,
+    0,
+    0,
+    -0.693
+  ),
+  nrow = k
+)
+beta_var1 <- expm::expm(
+  phi
+)
+sigma <- matrix(
+  data = c(
+    0.24455556,
+    0.02201587,
+    -0.05004762,
+    0.02201587,
+    0.07067800,
+    0.01539456,
+    -0.05004762,
+    0.01539456,
+    0.07553061
+  ),
+  nrow = p
+)
+sigma_l <- t(chol(sigma))
+nu <- null_vec
+lambda <- iden
+theta <- 0.2 * iden
+theta_l <- t(chol(theta))
+```
+
+## Data Generation Using the `SimSSMOUFixed` Function from the `simStateSpace` Package
+
+```{r}
+n
+time
+delta_t
+mu0
+sigma0
+sigma0_l
+mu
+phi
+sigma
+sigma_l
+nu
+lambda
+theta
+theta_l
+```
+
+```{r}
+library(simStateSpace)
+sim <- SimSSMOUFixed(
+  n = n,
+  time = time,
+  delta_t = delta_t,
+  mu0 = mu0,
+  sigma0_l = sigma0_l,
+  mu = mu,
+  phi = phi,
+  sigma_l = sigma_l,
+  nu = nu,
+  lambda = lambda,
+  theta_l = theta_l,
+  type = 0
+)
+data <- as.data.frame(sim)
+colnames(data) <- c("id", "time", "x", "m", "y")
+head(data)
+```
+
+## Model Fitting
+
+We use the `OpenMx` package to fit the continuous-time vector autoregressive model.
+
+```{r}
+#| include = FALSE
+library(OpenMx)
+```
+
+```{r}
+library(OpenMx)
+```
+
+### Prepare the Initial Condition
+
+```{r}
+mu0 <- mxMatrix(
+  type = "Full",
+  nrow = 3,
+  ncol = 1,
+  free = TRUE,
+  values = matrix(
+    data = c(
+      0, 0, 0
+    ),
+    nrow = 3,
+    ncol = 1
+  ),
+  labels = matrix(
+    data = c(
+      "mu0_1", "mu0_2", "mu0_3"
+    ),
+    nrow = 3,
+    ncol = 1
+  ),
+  lbound = NA,
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("eta_x", "eta_m", "eta_y"),
+    "mu0"
+  ),
+  name = "mu0"
+)
+sigma0 <- mxMatrix(
+  type = "Symm",
+  nrow = 3,
+  ncol = 3,
+  free = TRUE,
+  values = matrix(
+    data = c(
+      1.0, 0.2, 0.2,
+      0.2, 1.0, 0.2,
+      0.2, 0.2, 1.0
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  labels = matrix(
+    data = c(
+      "sigma0_11", "sigma0_12", "sigma0_13",
+      "sigma0_12", "sigma0_22", "sigma0_23",
+      "sigma0_13", "sigma0_23", "sigma0_33"
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  lbound = matrix(
+    data = c(
+      0, NA, NA,
+      NA, 0, NA,
+      NA, NA, 0
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("eta_x", "eta_m", "eta_y"),
+    c("eta_x", "eta_m", "eta_y")
+  ),
+  name = "sigma0"
+)
+```
+
+### Prepare the Measurement Model
+
+```{r}
+lambda <- mxMatrix(
+  type = "Diag",
+  nrow = 3,
+  ncol = 3,
+  free = FALSE,
+  values = 1,
+  labels = NA,
+  lbound = NA,
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("x", "m", "y"),
+    c("eta_x", "eta_m", "eta_y")
+  ),
+  name = "lambda"
+)
+```
+
+### Prepare the Dynamic Model
+
+```{r}
+phi <- mxMatrix(
+  type = "Full",
+  nrow = 3,
+  ncol = 3,
+  free = TRUE,
+  values = matrix(
+    data = c(
+      -0.2, 0.0, 0.0,
+      0.0, -0.2, 0.0,
+      0.0, 0.0, -0.2
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  labels = matrix(
+    data = c(
+      "phi_11", "phi_21", "phi_31",
+      "phi_12", "phi_22", "phi_32",
+      "phi_13", "phi_23", "phi_33"
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  lbound = -1.5,
+  ubound = 1.5,
+  byrow = FALSE,
+  dimnames = list(
+    c("eta_x", "eta_m", "eta_y"),
+    c("eta_x", "eta_m", "eta_y")
+  ),
+  name = "phi"
+)
+```
+
+### Prepare the Noise Matrices
+
+```{r}
+sigma <- mxMatrix(
+  type = "Symm",
+  nrow = 3,
+  ncol = 3,
+  free = TRUE,
+  values = 0.2 * diag(3),
+  labels = matrix(
+    data = c(
+      "sigma_11", "sigma_12", "sigma_13",
+      "sigma_12", "sigma_22", "sigma_23",
+      "sigma_13", "sigma_23", "sigma_33"
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  lbound = matrix(
+    data = c(
+      0, NA, NA,
+      NA, 0, NA,
+      NA, NA, 0
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("eta_x", "eta_m", "eta_y"),
+    c("eta_x", "eta_m", "eta_y")
+  ),
+  name = "sigma"
+)
+theta <- mxMatrix(
+  type = "Diag",
+  nrow = 3,
+  ncol = 3,
+  free = TRUE,
+  values = 0.2 * diag(3),
+  labels = matrix(
+    data = c(
+      "theta_11", "fixed", "fixed",
+      "fixed", "theta_22", "fixed",
+      "fixed", "fixed", "theta_33"
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  lbound = matrix(
+    data = c(
+      0, NA, NA,
+      NA, 0, NA,
+      NA, NA, 0
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("x", "m", "y"),
+    c("x", "m", "y")
+  ),
+  name = "theta"
+)
+```
+
+### Prepare Miscellaneous Matrices
+
+```{r}
+time <- mxMatrix(
+  type = "Full",
+  nrow = 1,
+  ncol = 1,
+  free = FALSE,
+  labels = "data.time",
+  name = "time"
+)
+gamma <- mxMatrix(
+  type = "Zero",
+  nrow = 3,
+  ncol = 1,
+  name = "gamma"
+)
+kappa <- mxMatrix(
+  type = "Zero",
+  nrow = 3,
+  ncol = 1,
+  name = "kappa"
+)
+covariate <- mxMatrix(
+  type = "Zero",
+  nrow = 1,
+  ncol = 1,
+  name = "covariate"
+)
+```
+
+### Prepare the Model
+
+In this parameterization, we fit the same model to all individuals (`id`) using a multi-group framework, assuming that the parameters remain fixed across individuals.
+
+```{r}
+model <- mxModel(
+  model = "CTVAR",
+  phi,
+  gamma,
+  lambda,
+  kappa,
+  sigma,
+  theta,
+  mu0,
+  sigma0,
+  covariate,
+  time,
+  mxExpectationStateSpaceContinuousTime(
+    A = "phi",
+    B = "gamma",
+    C = "lambda",
+    D = "kappa",
+    Q = "sigma",
+    R = "theta",
+    x0 = "mu0",
+    P0 = "sigma0",
+    u = "covariate",
+    t = "time",
+    dimnames = c("x", "m", "y")
+  ),
+  mxFitFunctionML(),
+  mxData(
+    observed = data,
+    type = "raw"
+  )
+)
+ids <- sort(
+  unique(data[, "id"])
+)
+model_id <- lapply(
+  X = ids,
+  FUN = function(i,
+                 data,
+                 model) {
+    return(
+      mxModel(
+        name = paste0("CTVAR", "_", i),
+        model = model,
+        mxData(
+          observed = data[
+            which(
+              data[, "id"] == i
+            ), ,
+            drop = FALSE
+          ],
+          type = "raw"
+        )
+      )
+    )
+  },
+  data = data,
+  model = model
+)
+```
+
+### Fit the Model
+
+```{r}
+fit <- mxTryHardctsem(
+  model = mxModel(
+    name = "CTVAR",
+    model_id,
+    mxFitFunctionMultigroup(
+      paste0(
+        "CTVAR",
+        "_",
+        ids
+      )
+    )
+  ),
+  extraTries = 1000
+)
+summary(fit)
+coefs <- coef(fit)
+vcovs <- vcov(fit)
+```
+
+### Extract Matrices from the Fitted Model to use in cTMed
+
+```{r}
+phi_names <- c(
+  "phi_11", "phi_21", "phi_31",
+  "phi_12", "phi_22", "phi_32",
+  "phi_13", "phi_23", "phi_33"
+)
+sigma_names <- c(
+  "sigma_11", "sigma_12", "sigma_13",
+  "sigma_12", "sigma_22", "sigma_23",
+  "sigma_13", "sigma_23", "sigma_33"
+)
+sigma_vech_names <- c(
+  "sigma_11", "sigma_12", "sigma_13",
+  "sigma_22", "sigma_23",
+  "sigma_33"
+)
+theta_names <- c(
+  "phi_11", "phi_21", "phi_31",
+  "phi_12", "phi_22", "phi_32",
+  "phi_13", "phi_23", "phi_33",
+  "sigma_11", "sigma_12", "sigma_13",
+  "sigma_22", "sigma_23",
+  "sigma_33"
+)
+phi <- matrix(
+  data = coefs[phi_names],
+  nrow = 3,
+  ncol = 3
+)
+sigma <- matrix(
+  data = coefs[sigma_names],
+  nrow = 3,
+  ncol = 3
+)
+theta <- coefs[theta_names]
+vcov_phi_vec <- vcovs[phi_names, phi_names]
+vcov_sigma_vech <- vcovs[sigma_vech_names, sigma_vech_names]
+vcov_theta <- vcovs[theta_names, theta_names]
+```
+
+#### Estimated Drift Matrix with Corresponding Sampling Covariance Matrix
+
+```{r}
+phi
+vcov_phi_vec
+```
+
+#### Process Noise Covariance Matrix with Corresponding Sampling Covariance Matrix
+
+```{r}
+sigma
+vcov_sigma_vech
+```
+
+#### Estimated Drift Matrix and Process Noise Covariance Matrix with Corresponding Sampling Covariance Matrix
+
+```{r}
+theta
+vcov_theta
+```
+
+## References
+
+```{r}
+#| include = FALSE
+rm(list = ls())
+```

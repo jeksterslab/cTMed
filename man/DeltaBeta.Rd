@@ -7,7 +7,7 @@ for the Elements of the Matrix of Lagged Coefficients
 Over a Specific Time Interval
 or a Range of Time Intervals}
 \usage{
-DeltaBeta(phi, vcov_phi_vec, delta_t, ncores = NULL)
+DeltaBeta(phi, vcov_phi_vec, delta_t, ncores = NULL, tol = 0.01)
 }
 \arguments{
 \item{phi}{Numeric matrix.
@@ -29,6 +29,9 @@ If \code{ncores = NULL},
 use a single core.
 Consider using multiple cores
 when the length of \code{delta_t} is long.}
+
+\item{tol}{Numeric.
+Smallest possible time interval to allow.}
 }
 \value{
 Returns an object
@@ -246,6 +249,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
 \code{\link{ExpCov}()},
+\code{\link{ExpMean}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},

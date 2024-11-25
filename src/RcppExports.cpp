@@ -42,6 +42,32 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// ExpCov
+arma::mat ExpCov(const arma::mat& phi, const arma::mat& sigma, const double& delta_t);
+RcppExport SEXP _cTMed_ExpCov(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(ExpCov(phi, sigma, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// ExpMean
+Rcpp::NumericVector ExpMean(const arma::mat& phi, const arma::vec& iota, const double& delta_t);
+RcppExport SEXP _cTMed_ExpMean(SEXP phiSEXP, SEXP iotaSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type iota(iotaSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(ExpMean(phi, iota, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
 // IndirectCentrals
 arma::mat IndirectCentrals(const arma::mat& phi, const arma::vec& delta_t);
 RcppExport SEXP _cTMed_IndirectCentrals(SEXP phiSEXP, SEXP delta_tSEXP) {
@@ -123,17 +149,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // MCPhiSigmaI
-Rcpp::List MCPhiSigmaI(const arma::mat& phi, const arma::mat& vcov_phi_vec, const arma::mat& sigma, const arma::mat& vcov_sigma_vech, bool test_phi);
-RcppExport SEXP _cTMed_MCPhiSigmaI(SEXP phiSEXP, SEXP vcov_phi_vecSEXP, SEXP sigmaSEXP, SEXP vcov_sigma_vechSEXP, SEXP test_phiSEXP) {
+Rcpp::List MCPhiSigmaI(const arma::vec& theta, const arma::mat& vcov_theta, bool test_phi);
+RcppExport SEXP _cTMed_MCPhiSigmaI(SEXP thetaSEXP, SEXP vcov_thetaSEXP, SEXP test_phiSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type vcov_phi_vec(vcov_phi_vecSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type vcov_sigma_vech(vcov_sigma_vechSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< const arma::mat& >::type vcov_theta(vcov_thetaSEXP);
     Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCPhiSigmaI(phi, vcov_phi_vec, sigma, vcov_sigma_vech, test_phi));
+    rcpp_result_gen = Rcpp::wrap(MCPhiSigmaI(theta, vcov_theta, test_phi));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -301,19 +325,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// TotalCov
-arma::mat TotalCov(const arma::mat& phi, const arma::mat& sigma, const double& delta_t);
-RcppExport SEXP _cTMed_TotalCov(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
-    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    rcpp_result_gen = Rcpp::wrap(TotalCov(phi, sigma, delta_t));
-    return rcpp_result_gen;
-END_RCPP
-}
 // TotalDeltaT
 Rcpp::NumericVector TotalDeltaT(const arma::mat& phi, const double& delta_t);
 RcppExport SEXP _cTMed_TotalDeltaT(SEXP phiSEXP, SEXP delta_tSEXP) {
@@ -392,13 +403,15 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_DirectStd", (DL_FUNC) &_cTMed_DirectStd, 6},
     {"_cTMed_Direct", (DL_FUNC) &_cTMed_Direct, 5},
+    {"_cTMed_ExpCov", (DL_FUNC) &_cTMed_ExpCov, 3},
+    {"_cTMed_ExpMean", (DL_FUNC) &_cTMed_ExpMean, 3},
     {"_cTMed_IndirectCentrals", (DL_FUNC) &_cTMed_IndirectCentrals, 2},
     {"_cTMed_IndirectCentralVec", (DL_FUNC) &_cTMed_IndirectCentralVec, 2},
     {"_cTMed_IndirectCentral", (DL_FUNC) &_cTMed_IndirectCentral, 2},
     {"_cTMed_IndirectStd", (DL_FUNC) &_cTMed_IndirectStd, 6},
     {"_cTMed_Indirect", (DL_FUNC) &_cTMed_Indirect, 5},
     {"_cTMed_MCPhiI", (DL_FUNC) &_cTMed_MCPhiI, 3},
-    {"_cTMed_MCPhiSigmaI", (DL_FUNC) &_cTMed_MCPhiSigmaI, 5},
+    {"_cTMed_MCPhiSigmaI", (DL_FUNC) &_cTMed_MCPhiSigmaI, 3},
     {"_cTMed_MCPhi", (DL_FUNC) &_cTMed_MCPhi, 4},
     {"_cTMed_Meds", (DL_FUNC) &_cTMed_Meds, 5},
     {"_cTMed_MedStds", (DL_FUNC) &_cTMed_MedStds, 6},
@@ -411,7 +424,6 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_TotalCentrals", (DL_FUNC) &_cTMed_TotalCentrals, 2},
     {"_cTMed_TotalCentralVec", (DL_FUNC) &_cTMed_TotalCentralVec, 2},
     {"_cTMed_TotalCentral", (DL_FUNC) &_cTMed_TotalCentral, 2},
-    {"_cTMed_TotalCov", (DL_FUNC) &_cTMed_TotalCov, 3},
     {"_cTMed_TotalDeltaT", (DL_FUNC) &_cTMed_TotalDeltaT, 2},
     {"_cTMed_TotalStdDeltaT", (DL_FUNC) &_cTMed_TotalStdDeltaT, 3},
     {"_cTMed_TotalStdVec", (DL_FUNC) &_cTMed_TotalStdVec, 2},

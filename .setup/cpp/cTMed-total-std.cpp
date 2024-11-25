@@ -13,10 +13,14 @@ arma::mat TotalStd(const arma::mat& phi, const arma::mat& sigma,
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
   arma::vec sigma_vec = arma::vectorise(sigma);
-  arma::vec psi_vec = arma::inv(phi_hashtag) *
-                      (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec;
+  // arma::vec psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
+  // delta_t) - J) * sigma_vec;
+  arma::vec psi_vec = arma::solve(
+      phi_hashtag, (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec);
+  // arma::mat total_cov = arma::reshape(arma::inv(J - arma::kron(total, total))
+  // * psi_vec, phi.n_rows, phi.n_cols);
   arma::mat total_cov =
-      arma::reshape(arma::inv(J - arma::kron(total, total)) * psi_vec,
+      arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
                     phi.n_rows, phi.n_cols);
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));

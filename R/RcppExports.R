@@ -9,6 +9,14 @@
     .Call(`_cTMed_Direct`, phi, delta_t, from, to, med)
 }
 
+.ExpCov <- function(phi, sigma, delta_t) {
+    .Call(`_cTMed_ExpCov`, phi, sigma, delta_t)
+}
+
+.ExpMean <- function(phi, iota, delta_t) {
+    .Call(`_cTMed_ExpMean`, phi, iota, delta_t)
+}
+
 .IndirectCentrals <- function(phi, delta_t) {
     .Call(`_cTMed_IndirectCentrals`, phi, delta_t)
 }
@@ -33,8 +41,8 @@
     .Call(`_cTMed_MCPhiI`, phi, vcov_phi_vec_l, test_phi)
 }
 
-.MCPhiSigmaI <- function(phi, vcov_phi_vec, sigma, vcov_sigma_vech, test_phi = TRUE) {
-    .Call(`_cTMed_MCPhiSigmaI`, phi, vcov_phi_vec, sigma, vcov_sigma_vech, test_phi)
+.MCPhiSigmaI <- function(theta, vcov_theta, test_phi = TRUE) {
+    .Call(`_cTMed_MCPhiSigmaI`, theta, vcov_theta, test_phi)
 }
 
 .MCPhi <- function(phi, vcov_phi_vec_l, R, test_phi = TRUE) {
@@ -83,10 +91,6 @@
 
 .TotalCentral <- function(phi, delta_t) {
     .Call(`_cTMed_TotalCentral`, phi, delta_t)
-}
-
-.TotalCov <- function(phi, sigma, delta_t) {
-    .Call(`_cTMed_TotalCov`, phi, sigma, delta_t)
 }
 
 .TotalDeltaT <- function(phi, delta_t) {

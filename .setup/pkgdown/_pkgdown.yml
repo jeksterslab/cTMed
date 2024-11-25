@@ -40,6 +40,14 @@ reference:
   - has_keyword("methods")
 
 articles:
+- title: Fitting Continuous-Time Vector Autoregressive Models
+  contents:
+  - fit-ct-var-dynr
+  - fit-ct-var-mx
+- title: Confidence Intervals for Continuous-Time Mediation Models
+  contents:
+  - med
+  - med-std
 - title: Session Information
   contents:
   - session

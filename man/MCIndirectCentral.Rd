@@ -14,7 +14,8 @@ MCIndirectCentral(
   R,
   test_phi = TRUE,
   ncores = NULL,
-  seed = NULL
+  seed = NULL,
+  tol = 0.01
 )
 }
 \arguments{
@@ -52,6 +53,9 @@ when number of replications \code{R}
 is a large value.}
 
 \item{seed}{Random seed.}
+
+\item{tol}{Numeric.
+Smallest possible time interval to allow.}
 }
 \value{
 Returns an object
@@ -232,6 +236,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
 \code{\link{ExpCov}()},
+\code{\link{ExpMean}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},

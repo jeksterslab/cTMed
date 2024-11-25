@@ -4,7 +4,7 @@
 \alias{IndirectCentral}
 \title{Indirect Effect Centrality}
 \usage{
-IndirectCentral(phi, delta_t)
+IndirectCentral(phi, delta_t, tol = 0.01)
 }
 \arguments{
 \item{phi}{Numeric matrix.
@@ -15,6 +15,9 @@ pertaining to the variables in the system.}
 \item{delta_t}{Vector of positive numbers.
 Time interval
 (\eqn{\Delta t}).}
+
+\item{tol}{Numeric.
+Smallest possible time interval to allow.}
 }
 \value{
 Returns an object
@@ -100,6 +103,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
 \code{\link{ExpCov}()},
+\code{\link{ExpMean}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectStd}()},
 \code{\link{MCBeta}()},
