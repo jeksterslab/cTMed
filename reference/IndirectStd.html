@@ -21,7 +21,7 @@ and process noise covariance matrix \(\boldsymbol{\Sigma}\)."><link rel="stylesh
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -168,6 +168,7 @@ Psychometrika, 87 (1), 214–252.
 <code><a href="Direct.html">Direct</a>()</code>,
 <code><a href="DirectStd.html">DirectStd</a>()</code>,
 <code><a href="ExpCov.html">ExpCov</a>()</code>,
+<code><a href="ExpMean.html">ExpMean</a>()</code>,
 <code><a href="Indirect.html">Indirect</a>()</code>,
 <code><a href="IndirectCentral.html">IndirectCentral</a>()</code>,
 <code><a href="MCBeta.html">MCBeta</a>()</code>,
@@ -207,9 +208,9 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">phi</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">phi</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"m"</span>, <span class="st">"y"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="fl">0.24</span>, <span class="fl">0.02</span>, <span class="op">-</span><span class="fl">0.05</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">0.02</span>, <span class="fl">0.07</span>, <span class="fl">0.02</span>,</span></span>
-<span class="r-in"><span>    <span class="op">-</span><span class="fl">0.05</span>, <span class="fl">0.02</span>, <span class="fl">0.08</span></span></span>
+<span class="r-in"><span>    <span class="fl">0.24455556</span>, <span class="fl">0.02201587</span>, <span class="op">-</span><span class="fl">0.05004762</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.02201587</span>, <span class="fl">0.07067800</span>, <span class="fl">0.01539456</span>,</span></span>
+<span class="r-in"><span>    <span class="op">-</span><span class="fl">0.05004762</span>, <span class="fl">0.01539456</span>, <span class="fl">0.07553061</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span>,</span></span>
 <span class="r-in"><span>  nrow <span class="op">=</span> <span class="fl">3</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
@@ -222,7 +223,7 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  to <span class="op">=</span> <span class="st">"y"</span>,</span></span>
 <span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1587</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1567</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

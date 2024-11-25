@@ -25,7 +25,7 @@ drift matrix \(\boldsymbol{\Phi}\)."><link rel="stylesheet" href="https://cdn.js
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@ drift matrix \(\boldsymbol{\Phi}\).</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">DeltaMed</span><span class="op">(</span><span class="va">phi</span>, <span class="va">vcov_phi_vec</span>, <span class="va">delta_t</span>, <span class="va">from</span>, <span class="va">to</span>, <span class="va">med</span>, ncores <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">DeltaMed</span><span class="op">(</span><span class="va">phi</span>, <span class="va">vcov_phi_vec</span>, <span class="va">delta_t</span>, <span class="va">from</span>, <span class="va">to</span>, <span class="va">med</span>, ncores <span class="op">=</span> <span class="cn">NULL</span>, tol <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -116,6 +116,11 @@ If <code>ncores = NULL</code>,
 use a single core.
 Consider using multiple cores
 when the length of <code>delta_t</code> is long.</p></dd>
+
+
+<dt id="arg-tol">tol<a class="anchor" aria-label="anchor" href="#arg-tol"></a></dt>
+<dd><p>Numeric.
+Smallest possible time interval to allow.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -269,6 +274,7 @@ Psychometrika, 87 (1), 214–252.
 <code><a href="Direct.html">Direct</a>()</code>,
 <code><a href="DirectStd.html">DirectStd</a>()</code>,
 <code><a href="ExpCov.html">ExpCov</a>()</code>,
+<code><a href="ExpMean.html">ExpMean</a>()</code>,
 <code><a href="Indirect.html">Indirect</a>()</code>,
 <code><a href="IndirectCentral.html">IndirectCentral</a>()</code>,
 <code><a href="IndirectStd.html">IndirectStd</a>()</code>,

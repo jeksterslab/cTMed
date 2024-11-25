@@ -3,7 +3,7 @@
 for a particular time interval \(\Delta t\)
 given by
 $$
-  \mathrm{vec} \left( \mathrm{Cov}_{\boldsymbol{\eta}} \right)
+  \mathrm{vec} \left( \mathrm{Cov} \left( \boldsymbol{\eta} \right) \right)
   =
   \left(
     \mathbf{J} -
@@ -40,7 +40,7 @@ Note that \(\mathbf{I}\) and \(\mathbf{J}\) are identity matrices."><meta proper
 for a particular time interval \(\Delta t\)
 given by
 $$
-  \mathrm{vec} \left( \mathrm{Cov}_{\boldsymbol{\eta}} \right)
+  \mathrm{vec} \left( \mathrm{Cov} \left( \boldsymbol{\eta} \right) \right)
   =
   \left(
     \mathbf{J} -
@@ -81,7 +81,7 @@ Note that \(\mathbf{I}\) and \(\mathbf{J}\) are identity matrices."><link rel="s
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,7 +114,7 @@ Note that \(\mathbf{I}\) and \(\mathbf{J}\) are identity matrices."><link rel="s
 for a particular time interval \(\Delta t\)
 given by
 $$
-  \mathrm{vec} \left( \mathrm{Cov}_{\boldsymbol{\eta}} \right)
+  \mathrm{vec} \left( \mathrm{Cov} \left( \boldsymbol{\eta} \right) \right)
   =
   \left(
     \mathbf{J} -
@@ -182,6 +182,121 @@ Time interval
     <p>Returns a numeric matrix.</p>
     </div>
     <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+
+<div class="section">
+<h3 id="linear-stochastic-differential-equation-model">Linear Stochastic Differential Equation Model<a class="anchor" aria-label="anchor" href="#linear-stochastic-differential-equation-model"></a></h3>
+
+
+<p>The measurement model is given by
+$$
+    \mathbf{y}_{i, t}
+    =
+    \boldsymbol{\nu}
+    +
+    \boldsymbol{\Lambda}
+    \boldsymbol{\eta}_{i, t}
+    +
+    \boldsymbol{\varepsilon}_{i, t},
+    \quad
+    \mathrm{with}
+    \quad
+    \boldsymbol{\varepsilon}_{i, t}
+    \sim
+    \mathcal{N}
+    \left(
+    \mathbf{0},
+    \boldsymbol{\Theta}
+    \right)
+  $$
+where
+\(\mathbf{y}_{i, t}\),
+\(\boldsymbol{\eta}_{i, t}\),
+and
+\(\boldsymbol{\varepsilon}_{i, t}\)
+are random variables
+and
+\(\boldsymbol{\nu}\),
+\(\boldsymbol{\Lambda}\),
+and
+\(\boldsymbol{\Theta}\)
+are model parameters.
+\(\mathbf{y}_{i, t}\)
+represents a vector of observed random variables,
+\(\boldsymbol{\eta}_{i, t}\)
+a vector of latent random variables,
+and
+\(\boldsymbol{\varepsilon}_{i, t}\)
+a vector of random measurement errors,
+at time \(t\) and individual \(i\).
+\(\boldsymbol{\nu}\)
+denotes a vector of intercepts,
+\(\boldsymbol{\Lambda}\)
+a matrix of factor loadings,
+and
+\(\boldsymbol{\Theta}\)
+the covariance matrix of
+\(\boldsymbol{\varepsilon}\).</p>
+<p>An alternative representation of the measurement error
+is given by
+$$
+    \boldsymbol{\varepsilon}_{i, t}
+    =
+    \boldsymbol{\Theta}^{\frac{1}{2}}
+    \mathbf{z}_{i, t},
+    \quad
+    \mathrm{with}
+    \quad
+    \mathbf{z}_{i, t}
+    \sim
+    \mathcal{N}
+    \left(
+    \mathbf{0},
+    \mathbf{I}
+    \right)
+  $$
+where
+\(\mathbf{z}_{i, t}\) is a vector of
+independent standard normal random variables and
+\(
+    \left( \boldsymbol{\Theta}^{\frac{1}{2}} \right)
+    \left( \boldsymbol{\Theta}^{\frac{1}{2}} \right)^{\prime}
+    =
+    \boldsymbol{\Theta} .
+  \)</p>
+<p>The dynamic structure is given by
+$$
+    \mathrm{d} \boldsymbol{\eta}_{i, t}
+    =
+    \left(
+    \boldsymbol{\iota}
+    +
+    \boldsymbol{\Phi}
+    \boldsymbol{\eta}_{i, t}
+    \right)
+    \mathrm{d}t
+    +
+    \boldsymbol{\Sigma}^{\frac{1}{2}}
+    \mathrm{d}
+    \mathbf{W}_{i, t}
+  $$
+where
+\(\boldsymbol{\iota}\)
+is a term which is unobserved and constant over time,
+\(\boldsymbol{\Phi}\)
+is the drift matrix
+which represents the rate of change of the solution
+in the absence of any random fluctuations,
+\(\boldsymbol{\Sigma}\)
+is the matrix of volatility
+or randomness in the process, and
+\(\mathrm{d}\boldsymbol{W}\)
+is a Wiener process or Brownian motion,
+which represents random fluctuations.</p>
+</div>
+
+    </div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other Continuous Time Mediation Functions:
 <code><a href="DeltaBeta.html">DeltaBeta</a>()</code>,
@@ -192,6 +307,7 @@ Time interval
 <code><a href="DeltaTotalCentral.html">DeltaTotalCentral</a>()</code>,
 <code><a href="Direct.html">Direct</a>()</code>,
 <code><a href="DirectStd.html">DirectStd</a>()</code>,
+<code><a href="ExpMean.html">ExpMean</a>()</code>,
 <code><a href="Indirect.html">Indirect</a>()</code>,
 <code><a href="IndirectCentral.html">IndirectCentral</a>()</code>,
 <code><a href="IndirectStd.html">IndirectStd</a>()</code>,

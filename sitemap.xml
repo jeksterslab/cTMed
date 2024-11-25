@@ -2,7 +2,11 @@
 <url><loc>https://github.com/jeksterslab/cTMed/404.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/LICENSE.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/articles/cTMed.html</loc></url>
+<url><loc>https://github.com/jeksterslab/cTMed/articles/fit-ct-var-dynr.html</loc></url>
+<url><loc>https://github.com/jeksterslab/cTMed/articles/fit-ct-var-mx.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/articles/index.html</loc></url>
+<url><loc>https://github.com/jeksterslab/cTMed/articles/med-std.html</loc></url>
+<url><loc>https://github.com/jeksterslab/cTMed/articles/med.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/articles/session.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/authors.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/index.html</loc></url>
@@ -16,6 +20,7 @@
 <url><loc>https://github.com/jeksterslab/cTMed/reference/Direct.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/reference/DirectStd.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/reference/ExpCov.html</loc></url>
+<url><loc>https://github.com/jeksterslab/cTMed/reference/ExpMean.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/reference/Indirect.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/reference/IndirectCentral.html</loc></url>
 <url><loc>https://github.com/jeksterslab/cTMed/reference/IndirectStd.html</loc></url>
