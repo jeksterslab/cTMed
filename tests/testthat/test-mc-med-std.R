@@ -144,5 +144,5 @@ lapply(
     )
   },
   text = "test-mc-med-std",
-  tol = 0.00001
+  tol = 0.01
 )

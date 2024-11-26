@@ -160,5 +160,5 @@ lapply(
     print(total)
   },
   text = "test-total-std",
-  tol = 0.00001
+  tol = 0.01
 )

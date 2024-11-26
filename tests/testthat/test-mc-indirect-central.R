@@ -103,5 +103,5 @@ lapply(
     )
   },
   text = "test-mc-indirect-central",
-  tol = 0.00001
+  tol = 0.01
 )

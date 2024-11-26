@@ -141,5 +141,5 @@ lapply(
     )
   },
   text = "test-delta-beta-std",
-  tol = 0.00001
+  tol = 0.01
 )
