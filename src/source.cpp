@@ -112,11 +112,11 @@ Rcpp::NumericVector ExpMean(const arma::mat& phi, const arma::vec& iota,
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.IndirectCentrals)]]
 arma::mat IndirectCentrals(const arma::mat& phi, const arma::vec& delta_t) {
-  arma::mat output(phi.n_rows, delta_t.n_rows, arma::fill::none);
+  arma::mat output(phi.n_rows, delta_t.n_elem, arma::fill::none);
   arma::mat total(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat d = arma::eye(phi.n_rows, phi.n_cols);
-  for (arma::uword t = 0; t < delta_t.n_rows; t++) {
+  for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);
     for (arma::uword m = 0; m < phi.n_rows; m++) {
       d = arma::eye(phi.n_rows, phi.n_cols);
@@ -386,7 +386,7 @@ Rcpp::List MCPhi(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
 arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t,
                const arma::uword& from, const arma::uword& to,
                const arma::vec& med) {
-  arma::mat output(delta_t.n_rows, 4, arma::fill::none);
+  arma::mat output(delta_t.n_elem, 4, arma::fill::none);
   arma::mat total(phi.n_rows, phi.n_rows, arma::fill::none);
   arma::mat direct(phi.n_rows, phi.n_rows, arma::fill::none);
   arma::mat d = arma::eye(phi.n_rows, phi.n_rows);
@@ -396,7 +396,7 @@ arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t,
   for (arma::uword i = 0; i < med.n_elem; ++i) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
-  for (arma::uword t = 0; t < delta_t.n_rows; t++) {
+  for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);
     total_dbl = total(to - 1, from - 1);
     direct = arma::expmat(delta_t[t] * d * phi * d);
@@ -420,7 +420,7 @@ arma::mat Meds(const arma::mat& phi, const arma::vec& delta_t,
 arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
                   const arma::vec& delta_t, const arma::uword& from,
                   const arma::uword& to, const arma::vec& med) {
-  arma::mat output(delta_t.n_rows, 4, arma::fill::none);
+  arma::mat output(delta_t.n_elem, 4, arma::fill::none);
   arma::mat total(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat d = arma::eye(phi.n_rows, phi.n_cols);
@@ -440,7 +440,7 @@ arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
   arma::mat sd_col_inv(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat total_std(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct_std(phi.n_rows, phi.n_cols, arma::fill::none);
-  for (arma::uword t = 0; t < delta_t.n_rows; t++) {
+  for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);
     // psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
     // delta_t[t]) - J) * sigma_vec;
@@ -660,9 +660,9 @@ bool TestStable(const arma::mat& x) {
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.TotalCentrals)]]
 arma::mat TotalCentrals(const arma::mat& phi, const arma::vec& delta_t) {
-  arma::mat output = arma::mat(phi.n_rows, delta_t.n_rows);
+  arma::mat output = arma::mat(phi.n_rows, delta_t.n_elem);
   arma::mat total(phi.n_rows, phi.n_cols, arma::fill::none);
-  for (arma::uword t = 0; t < delta_t.n_rows; t++) {
+  for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);
     output.col(t) = arma::vectorise(arma::sum(total, 0) - total.diag().t());
   }

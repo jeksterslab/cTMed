@@ -7,11 +7,11 @@
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.IndirectCentrals)]]
 arma::mat IndirectCentrals(const arma::mat& phi, const arma::vec& delta_t) {
-  arma::mat output(phi.n_rows, delta_t.n_rows, arma::fill::none);
+  arma::mat output(phi.n_rows, delta_t.n_elem, arma::fill::none);
   arma::mat total(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat d = arma::eye(phi.n_rows, phi.n_cols);
-  for (arma::uword t = 0; t < delta_t.n_rows; t++) {
+  for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);
     for (arma::uword m = 0; m < phi.n_rows; m++) {
       d = arma::eye(phi.n_rows, phi.n_cols);

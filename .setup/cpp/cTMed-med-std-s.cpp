@@ -9,7 +9,7 @@
 arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
                   const arma::vec& delta_t, const arma::uword& from,
                   const arma::uword& to, const arma::vec& med) {
-  arma::mat output(delta_t.n_rows, 4, arma::fill::none);
+  arma::mat output(delta_t.n_elem, 4, arma::fill::none);
   arma::mat total(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat d = arma::eye(phi.n_rows, phi.n_cols);
@@ -29,7 +29,7 @@ arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
   arma::mat sd_col_inv(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat total_std(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct_std(phi.n_rows, phi.n_cols, arma::fill::none);
-  for (arma::uword t = 0; t < delta_t.n_rows; t++) {
+  for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);
     // psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
     // delta_t[t]) - J) * sigma_vec;
