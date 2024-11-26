@@ -40,13 +40,13 @@ lapply(
     print(
       c(
         as.vector(
-                  cTMed:::.IndirectCentrals(
-                    phi = phi,
-                    delta_t = delta_t
-                  )
-                ),
-                delta_t
-        )
+          cTMed:::.IndirectCentrals(
+            phi = phi,
+            delta_t = delta_t
+          )
+        ),
+        delta_t
+      )
     )
     testthat::test_that(
       paste(text, "IndirectCentrals"),
