@@ -36,18 +36,6 @@ lapply(
         )
       }
     )
-    print(answer)
-    print(
-      c(
-        as.vector(
-          cTMed:::.IndirectCentrals(
-            phi = phi,
-            delta_t = delta_t
-          )
-        ),
-        delta_t
-      )
-    )
     testthat::test_that(
       paste(text, "IndirectCentrals"),
       {
@@ -55,7 +43,7 @@ lapply(
           all(
             (
               answer - c(
-                as.vector(
+                c(
                   cTMed:::.IndirectCentrals(
                     phi = phi,
                     delta_t = delta_t
