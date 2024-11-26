@@ -72,9 +72,9 @@ phi <- matrix(
 colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 sigma <- matrix(
   data = c(
-    0.24, 0.02, -0.05,
-    0.02, 0.07, 0.02,
-    -0.05, 0.02, 0.08
+    0.24455556, 0.02201587, -0.05004762,
+    0.02201587, 0.07067800, 0.01539456,
+    -0.05004762, 0.01539456, 0.07553061
   ),
   nrow = 3
 )
@@ -115,6 +115,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
 \code{\link{ExpCov}()},
+\code{\link{ExpMean}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},

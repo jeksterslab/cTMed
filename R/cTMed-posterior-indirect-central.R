@@ -117,7 +117,8 @@
 #' @export
 PosteriorIndirectCentral <- function(phi,
                                      delta_t,
-                                     ncores = NULL) {
+                                     ncores = NULL,
+                                     tol = 0.01) {
   stopifnot(
     is.list(phi),
     is.matrix(phi[[1]])
@@ -133,8 +134,8 @@ PosteriorIndirectCentral <- function(phi,
   )
   delta_t <- sort(
     ifelse(
-      test = delta_t <= 0,
-      yes = .Machine$double.xmin,
+      test = delta_t < tol,
+      yes = tol, # .Machine$double.xmin
       no = delta_t
     )
   )

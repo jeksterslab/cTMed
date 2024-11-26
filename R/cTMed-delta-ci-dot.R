@@ -25,14 +25,14 @@
             object$args$phi
           )
         } else {
-          if (object$fun == "DeltaMed") {
+          if (object$fun == "DeltaMed" || object$fun == "DeltaMedStd") {
             rownames(ci) <- c(
               "total",
               "direct",
               "indirect"
             )
           }
-          if (object$fun == "DeltaBeta") {
+          if (object$fun == "DeltaBeta" || object$fun == "DeltaBetaStd") {
             varnames <- colnames(
               object$args$phi
             )

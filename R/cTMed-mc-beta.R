@@ -69,6 +69,7 @@
 #'
 #' @inheritParams Indirect
 #' @inheritParams MCPhi
+#' @inheritParams MCMed
 #' @inherit Indirect references
 #'
 #' @return Returns an object
@@ -165,7 +166,8 @@ MCBeta <- function(phi,
                    R,
                    test_phi = TRUE,
                    ncores = NULL,
-                   seed = NULL) {
+                   seed = NULL,
+                   tol = 0.01) {
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi)
@@ -183,8 +185,8 @@ MCBeta <- function(phi,
   )
   delta_t <- sort(
     ifelse(
-      test = delta_t <= 0,
-      yes = .Machine$double.xmin,
+      test = delta_t < tol,
+      yes = tol, # .Machine$double.xmin
       no = delta_t
     )
   )

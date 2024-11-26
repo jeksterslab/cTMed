@@ -1,16 +1,15 @@
-#' Model-Implied State Covariance Matrix
+#' Model-Implied State Mean Vector
 #'
-#' The function returns the model-implied state covariance matrix
+#' The function returns the model-implied state mean vector
 #' for a particular time interval \eqn{\Delta t}
 #' given by
 #' \deqn{
-#'   \mathrm{vec} \left( \mathrm{Cov} \left( \boldsymbol{\eta} \right) \right)
+#'   \mathrm{Mean} \left( \boldsymbol{\eta} \right)
 #'   =
 #'   \left(
-#'     \mathbf{J} -
-#'     \boldsymbol{\beta}_{\Delta t} \otimes \boldsymbol{\beta}_{\Delta t}
+#'     \mathbf{I} - \boldsymbol{\beta}_{\Delta t}
 #'   \right)^{-1}
-#'   \mathrm{vec} \left( \boldsymbol{\Psi}_{\Delta t} \right)
+#'   \boldsymbol{\alpha}_{\Delta t}
 #' }
 #' where
 #' \deqn{
@@ -19,25 +18,15 @@
 #'   \exp \left( \Delta t \boldsymbol{\Phi} \right) ,
 #' }
 #' \deqn{
-#'   \boldsymbol{\Psi}_{\Delta t}
+#'   \boldsymbol{\alpha}_{\Delta t}
 #'   =
-#'   \boldsymbol{\Phi}^{\#}
+#'   \boldsymbol{\Phi}^{-1}
 #'   \left(
-#'     \exp \left( \Delta t \boldsymbol{\Phi} \right) - \mathbf{J}
+#'     \boldsymbol{\beta}_{\Delta t} - \mathbf{I}
 #'   \right)
-#' \mathrm{vec} \left( \boldsymbol{\Sigma} \right) , \quad \mathrm{and}
+#'   \boldsymbol{\iota} .
 #' }
-#' \deqn{
-#'   \boldsymbol{\Phi}^{\#}
-#'   =
-#'   \left(
-#'     \boldsymbol{\Phi} \otimes \mathbf{I}
-#'   \right) +
-#'   \left(
-#'     \mathbf{I} \otimes \boldsymbol{\Phi}
-#'   \right).
-#' }
-#' Note that \eqn{\mathbf{I}} and \eqn{\mathbf{J}} are identity matrices.
+#' Note that \eqn{\mathbf{I}} is an identity matrix.
 #'
 #' @details
 #'   ## Linear Stochastic Differential Equation Model
@@ -153,6 +142,9 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @inheritParams IndirectStd
+#' @param iota Numeric vector.
+#'   An unobserved term that is constant over time
+#'   (\eqn{\boldsymbol{\iota}}).
 #'
 #' @return Returns a numeric matrix.
 #'
@@ -166,33 +158,25 @@
 #'   nrow = 3
 #' )
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
-#' sigma <- matrix(
-#'   data = c(
-#'     0.24, 0.02, -0.05,
-#'     0.02, 0.07, 0.02,
-#'     -0.05, 0.02, 0.08
-#'   ),
-#'   nrow = 3
-#' )
+#' iota <- c(.5, .3, .4)
 #' delta_t <- 1
-#' ExpCov(
+#' ExpMean(
 #'   phi = phi,
-#'   sigma = sigma,
+#'   iota = iota,
 #'   delta_t = delta_t
 #' )
 #'
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed expectations
 #' @export
-ExpCov <- function(phi,
-                   sigma,
-                   delta_t) {
-  output <- .ExpCov(
+ExpMean <- function(phi,
+                    iota,
+                    delta_t) {
+  output <- .ExpMean(
     phi = phi,
-    sigma = sigma,
+    iota = iota,
     delta_t = delta_t
   )
-  colnames(output) <- colnames(phi)
-  rownames(output) <- rownames(phi)
+  names(output) <- colnames(phi)
   return(output)
 }

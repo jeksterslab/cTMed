@@ -7,7 +7,7 @@ Through M
 Over a Specific Time Interval
 or a Range of Time Intervals}
 \usage{
-MedStd(phi, sigma, delta_t, from, to, med)
+MedStd(phi, sigma, delta_t, from, to, med, tol = 0.01)
 }
 \arguments{
 \item{phi}{Numeric matrix.
@@ -18,7 +18,7 @@ pertaining to the variables in the system.}
 \item{sigma}{Numeric matrix.
 The process noise covariance matrix (\eqn{\boldsymbol{\Sigma}}).}
 
-\item{delta_t}{Vector of positive numbers.
+\item{delta_t}{Numeric.
 Time interval
 (\eqn{\Delta t}).}
 
@@ -30,6 +30,9 @@ Name of the dependent variable \eqn{Y} in \code{phi}.}
 
 \item{med}{Character vector.
 Name/s of the mediator variable/s in \code{phi}.}
+
+\item{tol}{Numeric.
+Smallest possible time interval to allow.}
 }
 \value{
 Returns an object
@@ -69,9 +72,9 @@ phi <- matrix(
 colnames(phi) <- rownames(phi) <- c("x", "m", "y")
 sigma <- matrix(
   data = c(
-    0.24, 0.02, -0.05,
-    0.02, 0.07, 0.02,
-    -0.05, 0.02, 0.08
+    0.24455556, 0.02201587, -0.05004762,
+    0.02201587, 0.07067800, 0.01539456,
+    -0.05004762, 0.01539456, 0.07553061
   ),
   nrow = 3
 )
@@ -142,6 +145,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
 \code{\link{ExpCov}()},
+\code{\link{ExpMean}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},

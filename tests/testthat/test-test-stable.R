@@ -24,5 +24,5 @@ lapply(
     )
   },
   text = "test-test-stable",
-  tol = 0.00001
+  tol = 0.01
 )

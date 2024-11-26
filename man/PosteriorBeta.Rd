@@ -7,7 +7,7 @@ for the Elements of the Matrix of Lagged Coefficients
 Over a Specific Time Interval
 or a Range of Time Intervals}
 \usage{
-PosteriorBeta(phi, delta_t, ncores = NULL)
+PosteriorBeta(phi, delta_t, ncores = NULL, tol = 0.01)
 }
 \arguments{
 \item{phi}{Numeric matrix.
@@ -26,6 +26,9 @@ use a single core.
 Consider using multiple cores
 when number of replications \code{R}
 is a large value.}
+
+\item{tol}{Numeric.
+Smallest possible time interval to allow.}
 }
 \value{
 Returns an object
@@ -157,6 +160,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
 \code{\link{ExpCov}()},
+\code{\link{ExpMean}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},

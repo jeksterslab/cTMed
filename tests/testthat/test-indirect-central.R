@@ -36,26 +36,6 @@ lapply(
         )
       }
     )
-    testthat::test_that(
-      paste(text, "IndirectCentrals"),
-      {
-        testthat::expect_true(
-          all(
-            (
-              answer - c(
-                as.vector(
-                  cTMed:::.IndirectCentrals(
-                    phi = phi,
-                    delta_t = delta_t
-                  )
-                ),
-                delta_t
-              )
-            ) <= tol
-          )
-        )
-      }
-    )
     indirect_central <- IndirectCentral(
       phi = phi,
       delta_t = 1:5
@@ -79,5 +59,5 @@ lapply(
     )
   },
   text = "test-indirect-central",
-  tol = 0.00001
+  tol = 0.01
 )

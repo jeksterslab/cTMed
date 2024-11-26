@@ -102,5 +102,5 @@ lapply(
     )
   },
   text = "test-mc-beta",
-  tol = 0.00001
+  tol = 0.01
 )

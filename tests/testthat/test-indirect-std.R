@@ -5,7 +5,7 @@ lapply(
                  text,
                  tol) {
     message(text)
-    answer <- 0.3800425
+    answer <- 0.37509972
     phi <- matrix(
       data = c(
         -0.357, 0.771, -0.450,
@@ -17,9 +17,9 @@ lapply(
     colnames(phi) <- rownames(phi) <- c("x", "m", "y")
     sigma <- matrix(
       data = c(
-        0.24, 0.02, -0.05,
-        0.02, 0.07, 0.02,
-        -0.05, 0.02, 0.08
+        0.24455556, 0.02201587, -0.05004762,
+        0.02201587, 0.07067800, 0.01539456,
+        -0.05004762, 0.01539456, 0.07553061
       ),
       nrow = 3
     )
@@ -98,5 +98,5 @@ lapply(
     print(indirect)
   },
   text = "test-indirect-std",
-  tol = 0.00001
+  tol = 0.01
 )

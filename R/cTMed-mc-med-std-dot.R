@@ -1,7 +1,6 @@
 .MCMedStd <- function(phi,
-                      vcov_phi_vec,
                       sigma,
-                      vcov_sigma_vech,
+                      vcov_theta,
                       delta_t,
                       from,
                       to,
@@ -10,6 +9,10 @@
                       test_phi = TRUE,
                       ncores = NULL,
                       seed = NULL) {
+  theta <- c(
+    .Vec(phi),
+    .Vech(sigma)
+  )
   # nocov start
   par <- FALSE
   if (!is.null(ncores)) {
@@ -36,10 +39,8 @@
       fun = function(i) {
         return(
           .MCPhiSigmaI(
-            phi = phi,
-            vcov_phi_vec = vcov_phi_vec,
-            sigma = sigma,
-            vcov_sigma_vech = vcov_sigma_vech,
+            theta = theta,
+            vcov_theta = vcov_theta,
             test_phi = test_phi
           )
         )
@@ -114,10 +115,8 @@
       FUN = function(i) {
         return(
           .MCPhiSigmaI(
-            phi = phi,
-            vcov_phi_vec = vcov_phi_vec,
-            sigma = sigma,
-            vcov_sigma_vech = vcov_sigma_vech,
+            theta = theta,
+            vcov_theta = vcov_theta,
             test_phi = test_phi
           )
         )

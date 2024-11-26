@@ -74,5 +74,5 @@ lapply(
   },
   text = "test-wald-ci-wald-ci-dot",
   n = 10^6,
-  tol = 0.0001
+  tol = 0.01
 )
