@@ -25,11 +25,11 @@ Imports:
     Rcpp,
     numDeriv,
     parallel,
-    ctsem,
     simStateSpace
 Suggests:
     knitr,
     rmarkdown,
     testthat,
-    expm
+    expm,
+    ctsem
 RoxygenNote: 7.3.2
