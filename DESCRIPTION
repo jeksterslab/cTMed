@@ -17,7 +17,7 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-Depends: R (>= 3.5.0)
+Depends: R (>= 4.2.0)
 LinkingTo: 
     Rcpp,
     RcppArmadillo
@@ -25,11 +25,11 @@ Imports:
     Rcpp,
     numDeriv,
     parallel,
-    simStateSpace
+    simStateSpace,
+    ctsem
 Suggests:
     knitr,
     rmarkdown,
     testthat,
-    expm,
-    ctsem
+    expm
 RoxygenNote: 7.3.2
