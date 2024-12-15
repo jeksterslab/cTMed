@@ -1,6 +1,6 @@
 Package: cTMed
 Title: Continuous Time Mediation
-Version: 1.0.2
+Version: 1.0.2.9000
 Authors@R: 
     person(given = "Ivan Jacob Agaloos",
            family = "Pesigan",
@@ -25,8 +25,8 @@ Imports:
     Rcpp,
     numDeriv,
     parallel,
-    simStateSpace,
-    ctsem
+    ctsem,
+    simStateSpace
 Suggests:
     knitr,
     rmarkdown,
