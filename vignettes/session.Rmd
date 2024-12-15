@@ -43,7 +43,7 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] cTMed_1.0.2.9000    OpenMx_2.21.13      dynr_0.1.16-109    
+#> [1] cTMed_1.0.3         OpenMx_2.21.13      dynr_0.1.16-109    
 #> [4] ggplot2_3.5.1       simStateSpace_1.2.3
 #> 
 #> loaded via a namespace (and not attached):
@@ -83,7 +83,7 @@ sessionInfo()
 ``` r
 installed.packages()[, c("Package", "Version")]
 #>                   Package             Version      
-#> cTMed             "cTMed"             "1.0.2.9000" 
+#> cTMed             "cTMed"             "1.0.3"      
 #> abind             "abind"             "1.4-8"      
 #> arm               "arm"               "1.14-4"     
 #> arrow             "arrow"             "17.0.0.1"   
@@ -519,7 +519,7 @@ installed.packages()[, c("Package", "Version")]
 
 ```
 #>                total        used        free      shared  buff/cache   available
-#> Mem:            23Gi       3.4Gi        16Gi       523Mi       2.8Gi        18Gi
+#> Mem:            23Gi       4.4Gi        15Gi       755Mi       3.1Gi        17Gi
 #> Swap:           11Gi          0B        11Gi
-#> Total:          34Gi       3.4Gi        28Gi
+#> Total:          34Gi       4.4Gi        27Gi
 ```
