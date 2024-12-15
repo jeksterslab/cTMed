@@ -297,8 +297,8 @@ fit <- dynr.cook(
 #> 
 #> Doing end processing
 #> Successful trial
-#> Total Time: 4.620703 
-#> Backend Time: 4.610918
+#> Total Time: 4.676568 
+#> Backend Time: 4.666937
 summary(fit)
 #> Coefficients:
 #>            Estimate Std. Error t value  ci.lower  ci.upper Pr(>|t|)    
