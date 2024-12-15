@@ -1,6 +1,6 @@
-# cTMed 1.0.2.9000
+# cTMed 1.0.3
 
-* Latest development version.
+* Depends: R (>= 4.2.0)
 
 # cTMed 1.0.2
 
