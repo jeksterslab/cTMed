@@ -22,8 +22,7 @@ pkg_cran <- c(
   "RcppArmadillo",
   "numDeriv",
   "expm",
-  "simStateSpace",
-  "ctsem"
+  "simStateSpace"
 )
 
 pkg_github <- c(

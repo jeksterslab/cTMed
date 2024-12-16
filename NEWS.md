@@ -1,6 +1,8 @@
 # cTMed 1.0.3
 
-* Depends: R (>= 4.2.0)
+## Patch
+
+* Fixed CRAN issues.
 
 # cTMed 1.0.2
 

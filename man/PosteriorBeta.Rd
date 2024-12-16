@@ -175,7 +175,6 @@ Other Continuous Time Mediation Functions:
 \code{\link{MedStd}()},
 \code{\link{PosteriorIndirectCentral}()},
 \code{\link{PosteriorMed}()},
-\code{\link{PosteriorPhi}()},
 \code{\link{PosteriorTotalCentral}()},
 \code{\link{Total}()},
 \code{\link{TotalCentral}()},
