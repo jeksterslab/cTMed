@@ -488,7 +488,7 @@ plot.ctmedmc <- function(x,
       )
     )
   } else {
-    if (x$fun == "MCMed" || x$fun == "MCMedStd" || x$fun == "PosteriorMed") {
+    if (x$fun == "MCMed" || x$fun == "MCMedStd" || x$fun == "PosteriorMed" || x$fun == "BootMed") {
       return(
         .PlotMedCI(
           object = x,

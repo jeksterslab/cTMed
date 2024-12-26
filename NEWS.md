@@ -1,3 +1,8 @@
+# cTMed 1.0.3.9000
+
+* Latest development version.
+* Added the `BootMed()` function.
+
 # cTMed 1.0.3
 
 ## Patch

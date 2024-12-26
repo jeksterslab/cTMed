@@ -1,0 +1,1401 @@
+---
+title: "Total, Direct, and Indirect Effects in Continuous-Time Mediation Model (Bootstrap)"
+author: Ivan Jacob Agaloos Pesigan
+date: "`r Sys.Date()`"
+bibliography: "vignettes.bib"
+csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
+nocite: |
+  @RCoreTeam-2024
+  @Deboeck-Preacher-2015
+  @Ryan-Hamaker-2021
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Total, Direct, and Indirect Effects in Continuous-Time Mediation Model (Bootstrap)}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+#| include = FALSE
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  fig.path = "fig-vignettes-med-boot-",
+  fig.cap = "",
+  fig.width = 11,
+  fig.height = 8,
+  fig.retina = 2,
+  dpi = 300,
+  comment = "#>"
+)
+```
+
+The `cTMed` package provides a bootstrap approach, in addition to the delta and Monte Carlo methods, for estimating and quantifying uncertainty in total, direct, and indirect effects within continuous-time mediation models across different time intervals.
+
+```{r}
+#| include = FALSE
+set.seed(42)
+n <- 50
+time <- 100
+delta_t <- 0.10
+k <- p <- 3
+iden <- diag(k)
+null_vec <- rep(x = 0, times = k)
+null_mat <- matrix(
+  data = 0,
+  nrow = p,
+  ncol = p
+)
+mu0 <- null_vec
+sigma0 <- matrix(
+  data = c(
+    1.0,
+    0.2,
+    0.2,
+    0.2,
+    1.0,
+    0.2,
+    0.2,
+    0.2,
+    1.0
+  ),
+  nrow = 3
+)
+sigma0_l <- t(chol(sigma0))
+mu <- null_vec
+phi <- matrix(
+  data = c(
+    -0.357,
+    0.771,
+    -0.450,
+    0.0,
+    -0.511,
+    0.729,
+    0,
+    0,
+    -0.693
+  ),
+  nrow = k
+)
+beta_var1 <- expm::expm(
+  phi
+)
+sigma <- matrix(
+  data = c(
+    0.24455556,
+    0.02201587,
+    -0.05004762,
+    0.02201587,
+    0.07067800,
+    0.01539456,
+    -0.05004762,
+    0.01539456,
+    0.07553061
+  ),
+  nrow = p
+)
+sigma_l <- t(chol(sigma))
+nu <- null_vec
+lambda <- iden
+theta <- 0.2 * iden
+theta_l <- t(chol(theta))
+```
+
+```{r}
+#| include = FALSE
+library(simStateSpace)
+sim <- SimSSMOUFixed(
+  n = n,
+  time = time,
+  delta_t = delta_t,
+  mu0 = mu0,
+  sigma0_l = sigma0_l,
+  mu = mu,
+  phi = phi,
+  sigma_l = sigma_l,
+  nu = nu,
+  lambda = lambda,
+  theta_l = theta_l,
+  type = 0
+)
+data <- as.data.frame(sim)
+colnames(data) <- c("id", "time", "x", "m", "y")
+```
+
+```{r}
+#| include = FALSE
+library(OpenMx)
+```
+
+```{r}
+#| include = FALSE
+mu0 <- mxMatrix(
+  type = "Full",
+  nrow = 3,
+  ncol = 1,
+  free = TRUE,
+  values = matrix(
+    data = c(
+      0, 0, 0
+    ),
+    nrow = 3,
+    ncol = 1
+  ),
+  labels = matrix(
+    data = c(
+      "mu0_1", "mu0_2", "mu0_3"
+    ),
+    nrow = 3,
+    ncol = 1
+  ),
+  lbound = NA,
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("eta_x", "eta_m", "eta_y"),
+    "mu0"
+  ),
+  name = "mu0"
+)
+sigma0 <- mxMatrix(
+  type = "Symm",
+  nrow = 3,
+  ncol = 3,
+  free = TRUE,
+  values = matrix(
+    data = c(
+      1.0, 0.2, 0.2,
+      0.2, 1.0, 0.2,
+      0.2, 0.2, 1.0
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  labels = matrix(
+    data = c(
+      "sigma0_11", "sigma0_12", "sigma0_13",
+      "sigma0_12", "sigma0_22", "sigma0_23",
+      "sigma0_13", "sigma0_23", "sigma0_33"
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  lbound = matrix(
+    data = c(
+      0, NA, NA,
+      NA, 0, NA,
+      NA, NA, 0
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("eta_x", "eta_m", "eta_y"),
+    c("eta_x", "eta_m", "eta_y")
+  ),
+  name = "sigma0"
+)
+```
+
+```{r}
+#| include = FALSE
+lambda <- mxMatrix(
+  type = "Diag",
+  nrow = 3,
+  ncol = 3,
+  free = FALSE,
+  values = 1,
+  labels = NA,
+  lbound = NA,
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("x", "m", "y"),
+    c("eta_x", "eta_m", "eta_y")
+  ),
+  name = "lambda"
+)
+```
+
+```{r}
+#| include = FALSE
+phi <- mxMatrix(
+  type = "Full",
+  nrow = 3,
+  ncol = 3,
+  free = TRUE,
+  values = matrix(
+    data = c(
+      -0.2, 0.0, 0.0,
+      0.0, -0.2, 0.0,
+      0.0, 0.0, -0.2
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  labels = matrix(
+    data = c(
+      "phi_11", "phi_21", "phi_31",
+      "phi_12", "phi_22", "phi_32",
+      "phi_13", "phi_23", "phi_33"
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  lbound = -1.5,
+  ubound = 1.5,
+  byrow = FALSE,
+  dimnames = list(
+    c("eta_x", "eta_m", "eta_y"),
+    c("eta_x", "eta_m", "eta_y")
+  ),
+  name = "phi"
+)
+```
+
+```{r}
+#| include = FALSE
+sigma <- mxMatrix(
+  type = "Symm",
+  nrow = 3,
+  ncol = 3,
+  free = TRUE,
+  values = 0.2 * diag(3),
+  labels = matrix(
+    data = c(
+      "sigma_11", "sigma_12", "sigma_13",
+      "sigma_12", "sigma_22", "sigma_23",
+      "sigma_13", "sigma_23", "sigma_33"
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  lbound = matrix(
+    data = c(
+      0, NA, NA,
+      NA, 0, NA,
+      NA, NA, 0
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("eta_x", "eta_m", "eta_y"),
+    c("eta_x", "eta_m", "eta_y")
+  ),
+  name = "sigma"
+)
+theta <- mxMatrix(
+  type = "Diag",
+  nrow = 3,
+  ncol = 3,
+  free = TRUE,
+  values = 0.2 * diag(3),
+  labels = matrix(
+    data = c(
+      "theta_11", "fixed", "fixed",
+      "fixed", "theta_22", "fixed",
+      "fixed", "fixed", "theta_33"
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  lbound = matrix(
+    data = c(
+      0, NA, NA,
+      NA, 0, NA,
+      NA, NA, 0
+    ),
+    nrow = 3,
+    ncol = 3
+  ),
+  ubound = NA,
+  byrow = FALSE,
+  dimnames = list(
+    c("x", "m", "y"),
+    c("x", "m", "y")
+  ),
+  name = "theta"
+)
+```
+
+```{r}
+#| include = FALSE
+time <- mxMatrix(
+  type = "Full",
+  nrow = 1,
+  ncol = 1,
+  free = FALSE,
+  labels = "data.time",
+  name = "time"
+)
+gamma <- mxMatrix(
+  type = "Zero",
+  nrow = 3,
+  ncol = 1,
+  name = "gamma"
+)
+kappa <- mxMatrix(
+  type = "Zero",
+  nrow = 3,
+  ncol = 1,
+  name = "kappa"
+)
+covariate <- mxMatrix(
+  type = "Zero",
+  nrow = 1,
+  ncol = 1,
+  name = "covariate"
+)
+```
+
+```{r}
+#| include = FALSE
+model <- mxModel(
+  model = "CTVAR",
+  phi,
+  gamma,
+  lambda,
+  kappa,
+  sigma,
+  theta,
+  mu0,
+  sigma0,
+  covariate,
+  time,
+  mxExpectationStateSpaceContinuousTime(
+    A = "phi",
+    B = "gamma",
+    C = "lambda",
+    D = "kappa",
+    Q = "sigma",
+    R = "theta",
+    x0 = "mu0",
+    P0 = "sigma0",
+    u = "covariate",
+    t = "time",
+    dimnames = c("x", "m", "y")
+  ),
+  mxFitFunctionML(),
+  mxData(
+    observed = data,
+    type = "raw"
+  )
+)
+ids <- sort(
+  unique(data[, "id"])
+)
+model_id <- lapply(
+  X = ids,
+  FUN = function(i,
+                 data,
+                 model) {
+    return(
+      mxModel(
+        name = paste0("CTVAR", "_", i),
+        model = model,
+        mxData(
+          observed = data[
+            which(
+              data[, "id"] == i
+            ), ,
+            drop = FALSE
+          ],
+          type = "raw"
+        )
+      )
+    )
+  },
+  data = data,
+  model = model
+)
+```
+
+```{r}
+#| include = FALSE
+fit <- mxTryHardctsem(
+  model = mxModel(
+    name = "CTVAR",
+    model_id,
+    mxFitFunctionMultigroup(
+      paste0(
+        "CTVAR",
+        "_",
+        ids
+      )
+    )
+  ),
+  extraTries = 1000
+)
+coefs <- coef(fit)
+vcovs <- vcov(fit)
+```
+
+In this example, we will use the fitted model from [Fit the Continuous-Time Vector Autoregressive Model Using the OpenMx Package](https://jeksterslab.github.io/cTMed/articles/fit-ct-var-mx.html). The object `fit` represents a fitted CT-VAR model created using the `OpenMx` package.
+
+```{r}
+summary(fit)
+```
+
+We need to extract the estimated parameters from the fitted object, which will be used to generate new data.
+
+```{r}
+est <- coef(fit)
+n <- 50
+n
+time <- 100
+time
+mu0 <- est[
+  c(
+    "mu0_1",
+    "mu0_2",
+    "mu0_3"
+  )
+]
+mu0
+sigma0 <- matrix(
+  data = est[
+    c(
+      "sigma0_11",
+      "sigma0_12",
+      "sigma0_13",
+      "sigma0_12",
+      "sigma0_22",
+      "sigma0_23",
+      "sigma0_13",
+      "sigma0_23",
+      "sigma0_33"
+    )
+  ],
+  nrow = 3,
+  ncol = 3
+)
+sigma0
+sigma0_l <- t(chol(sigma0))
+phi <- matrix(
+  data = est[
+    c(
+      "phi_11",
+      "phi_21",
+      "phi_31",
+      "phi_12",
+      "phi_22",
+      "phi_32",
+      "phi_13",
+      "phi_23",
+      "phi_33"
+    )
+  ],
+  nrow = 3,
+  ncol = 3
+)
+phi
+sigma <- matrix(
+  data = est[
+    c(
+      "sigma_11", "sigma_12", "sigma_13",
+      "sigma_12", "sigma_22", "sigma_23",
+      "sigma_13", "sigma_23", "sigma_33"
+    )
+  ],
+  nrow = 3,
+  ncol = 3
+)
+sigma
+sigma_l <- t(chol(sigma))
+theta <- diag(3)
+diag(theta) <- est[
+  c(
+    "theta_11",
+    "theta_22",
+    "theta_33"
+  )
+]
+theta
+theta_l <- t(chol(theta))
+```
+
+```{r}
+#| include = FALSE
+library(simStateSpace)
+library(OpenMx)
+BootPara <- function(B = 1000L,
+                     n,
+                     time,
+                     mu0,
+                     sigma0_l,
+                     phi,
+                     sigma_l,
+                     lambda,
+                     theta_l,
+                     ncores,
+                     seed = 42) {
+  mxOption(
+    key = "Number of Threads",
+    value = 1
+  )
+  GenDataCTVAR <- function(n,
+                           time,
+                           mu0,
+                           sigma0_l,
+                           phi,
+                           sigma_l,
+                           theta_l) {
+    sim <- SimSSMOUFixed(
+      n = n,
+      time = time,
+      delta_t = 0.1,
+      mu0 = mu0,
+      sigma0_l = sigma0_l,
+      mu = c(0, 0, 0),
+      phi = phi,
+      sigma_l = sigma_l,
+      nu = c(0, 0, 0),
+      lambda = diag(3),
+      theta_l = theta_l,
+      type = 0
+    )
+    data <- as.data.frame(sim)
+    colnames(data) <- c("id", "time", "x", "m", "y")
+    return(data)
+  }
+  FitCTVAR <- function(data) {
+    mu0 <- mxMatrix(
+      type = "Full",
+      nrow = 3,
+      ncol = 1,
+      free = TRUE,
+      values = matrix(
+        data = c(
+          0, 0, 0
+        ),
+        nrow = 3,
+        ncol = 1
+      ),
+      labels = matrix(
+        data = c(
+          "mu0_1", "mu0_2", "mu0_3"
+        ),
+        nrow = 3,
+        ncol = 1
+      ),
+      lbound = NA,
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("eta_x", "eta_m", "eta_y"),
+        "mu0"
+      ),
+      name = "mu0"
+    )
+    sigma0 <- mxMatrix(
+      type = "Symm",
+      nrow = 3,
+      ncol = 3,
+      free = TRUE,
+      values = matrix(
+        data = c(
+          1.0, 0.2, 0.2,
+          0.2, 1.0, 0.2,
+          0.2, 0.2, 1.0
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      labels = matrix(
+        data = c(
+          "sigma0_11", "sigma0_12", "sigma0_13",
+          "sigma0_12", "sigma0_22", "sigma0_23",
+          "sigma0_13", "sigma0_23", "sigma0_33"
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      lbound = matrix(
+        data = c(
+          0, NA, NA,
+          NA, 0, NA,
+          NA, NA, 0
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("eta_x", "eta_m", "eta_y"),
+        c("eta_x", "eta_m", "eta_y")
+      ),
+      name = "sigma0"
+    )
+    lambda <- mxMatrix(
+      type = "Diag",
+      nrow = 3,
+      ncol = 3,
+      free = FALSE,
+      values = 1,
+      labels = NA,
+      lbound = NA,
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("x", "m", "y"),
+        c("eta_x", "eta_m", "eta_y")
+      ),
+      name = "lambda"
+    )
+    phi <- mxMatrix(
+      type = "Full",
+      nrow = 3,
+      ncol = 3,
+      free = TRUE,
+      values = matrix(
+        data = c(
+          -0.2, 0.0, 0.0,
+          0.0, -0.2, 0.0,
+          0.0, 0.0, -0.2
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      labels = matrix(
+        data = c(
+          "phi_11", "phi_21", "phi_31",
+          "phi_12", "phi_22", "phi_32",
+          "phi_13", "phi_23", "phi_33"
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      lbound = -1.5,
+      ubound = 1.5,
+      byrow = FALSE,
+      dimnames = list(
+        c("eta_x", "eta_m", "eta_y"),
+        c("eta_x", "eta_m", "eta_y")
+      ),
+      name = "phi"
+    )
+    sigma <- mxMatrix(
+      type = "Symm",
+      nrow = 3,
+      ncol = 3,
+      free = TRUE,
+      values = 0.2 * diag(3),
+      labels = matrix(
+        data = c(
+          "sigma_11", "sigma_12", "sigma_13",
+          "sigma_12", "sigma_22", "sigma_23",
+          "sigma_13", "sigma_23", "sigma_33"
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      lbound = matrix(
+        data = c(
+          0, NA, NA,
+          NA, 0, NA,
+          NA, NA, 0
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("eta_x", "eta_m", "eta_y"),
+        c("eta_x", "eta_m", "eta_y")
+      ),
+      name = "sigma"
+    )
+    theta <- mxMatrix(
+      type = "Diag",
+      nrow = 3,
+      ncol = 3,
+      free = TRUE,
+      values = 0.2 * diag(3),
+      labels = matrix(
+        data = c(
+          "theta_11", "fixed", "fixed",
+          "fixed", "theta_22", "fixed",
+          "fixed", "fixed", "theta_33"
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      lbound = matrix(
+        data = c(
+          0, NA, NA,
+          NA, 0, NA,
+          NA, NA, 0
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("x", "m", "y"),
+        c("x", "m", "y")
+      ),
+      name = "theta"
+    )
+    time <- mxMatrix(
+      type = "Full",
+      nrow = 1,
+      ncol = 1,
+      free = FALSE,
+      labels = "data.time",
+      name = "time"
+    )
+    gamma <- mxMatrix(
+      type = "Zero",
+      nrow = 3,
+      ncol = 1,
+      name = "gamma"
+    )
+    kappa <- mxMatrix(
+      type = "Zero",
+      nrow = 3,
+      ncol = 1,
+      name = "kappa"
+    )
+    covariate <- mxMatrix(
+      type = "Zero",
+      nrow = 1,
+      ncol = 1,
+      name = "covariate"
+    )
+    model <- mxModel(
+      model = "CTVAR",
+      phi,
+      gamma,
+      lambda,
+      kappa,
+      sigma,
+      theta,
+      mu0,
+      sigma0,
+      covariate,
+      time,
+      mxExpectationStateSpaceContinuousTime(
+        A = "phi",
+        B = "gamma",
+        C = "lambda",
+        D = "kappa",
+        Q = "sigma",
+        R = "theta",
+        x0 = "mu0",
+        P0 = "sigma0",
+        u = "covariate",
+        t = "time",
+        dimnames = c("x", "m", "y")
+      ),
+      mxFitFunctionML(),
+      mxData(
+        observed = data,
+        type = "raw"
+      )
+    )
+    ids <- sort(
+      unique(data[, "id"])
+    )
+    model_id <- lapply(
+      X = ids,
+      FUN = function(i,
+                     data,
+                     model) {
+        return(
+          mxModel(
+            name = paste0("CTVAR", "_", i),
+            model = model,
+            mxData(
+              observed = data[
+                which(
+                  data[, "id"] == i
+                ), ,
+                drop = FALSE
+              ],
+              type = "raw"
+            )
+          )
+        )
+      },
+      data = data,
+      model = model
+    )
+    fit <- mxTryHardctsem(
+      model = mxModel(
+        name = "CTVAR",
+        model_id,
+        mxFitFunctionMultigroup(
+          paste0(
+            "CTVAR",
+            "_",
+            ids
+          )
+        )
+      ),
+      extraTries = 1000
+    )
+    parnames <- c(
+      "phi_11",
+      "phi_21",
+      "phi_31",
+      "phi_12",
+      "phi_22",
+      "phi_32",
+      "phi_13",
+      "phi_23",
+      "phi_33"
+    )
+    output <- matrix(
+      data = coef(fit)[parnames],
+      nrow = 3
+    )
+    colnames(output) <- rownames(output) <- c("x", "m", "y")
+    return(output)
+  }
+  cl <- parallel::makeCluster(ncores)
+  parallel::clusterEvalQ(
+    cl,
+    library("simStateSpace")
+  )
+  parallel::clusterEvalQ(
+    cl,
+    library("OpenMx")
+  )
+  parallel::clusterExport(
+    cl = cl,
+    varlist = c(
+      "GenDataCTVAR",
+      "FitCTVAR"
+    )
+  )
+  on.exit(
+    parallel::stopCluster(cl = cl)
+  )
+  parallel::clusterSetRNGStream(
+    cl = cl,
+    iseed = seed
+  )
+  return(
+    parallel::parLapply(
+      cl = cl,
+      X = seq_len(B),
+      fun = function(i,
+                     n,
+                     time,
+                     mu0,
+                     sigma0_l,
+                     phi,
+                     sigma_l,
+                     theta_l) {
+        return(
+          FitCTVAR(
+            data = GenDataCTVAR(
+              n = n,
+              time = time,
+              mu0 = mu0,
+              sigma0_l = sigma0_l,
+              phi = phi,
+              sigma_l = sigma_l,
+              theta_l = theta_l
+            )
+          )
+        )
+      },
+      n = n,
+      time = time,
+      mu0 = mu0,
+      sigma0_l = sigma0_l,
+      phi = phi,
+      sigma_l = sigma_l,
+      theta_l = theta_l
+    )
+  )
+}
+```
+
+The estimated parameters are then passed as arguments to the `BootPara` function, which generates a bootstrap sampling distribution of drift matrices. The resulting object, `phi`, is a list containing the drift matrices. Refer to the code below for details on the `BootPara` function.
+
+> **_NOTE:_**  Fitting the CT-VAR model multiple times is computationally intensive. 
+
+```{r}
+phi <- BootPara(
+  B = 1000L,
+  n = n,
+  time = time,
+  mu0 = mu0,
+  sigma0_l = sigma0_l,
+  phi = phi,
+  sigma_l = sigma_l,
+  lambda = lambda,
+  theta_l = theta_l,
+  ncores = parallel::detectCores(), # use multiple cores
+  seed = 42
+)
+```
+
+In this example, we aim to calculate the total, direct, and indirect effects of `x` on `y`, mediated through `m`, over time intervals ranging from 0 to 10.
+
+```{r}
+# time intervals
+delta_t <- seq(from = 0, to = 10, length.out = 1000)
+```
+
+We also need the estimated drift matrix from the original sample.
+
+```{r}
+# estimated drift matrix
+phi_hat <- matrix(
+  data = est[
+    c(
+      "phi_11",
+      "phi_21",
+      "phi_31",
+      "phi_12",
+      "phi_22",
+      "phi_32",
+      "phi_13",
+      "phi_23",
+      "phi_33"
+    )
+  ],
+  nrow = 3,
+  ncol = 3
+)
+colnames(phi_hat) <- rownames(phi_hat) <- c("x", "m", "y")
+```
+
+## Bootstrap Method
+
+```{r boot}
+library(cTMed)
+boot <- BootMed(
+  phi = phi,
+  phi_hat = phi_hat,
+  delta_t = delta_t,
+  from = "x",
+  to = "y",
+  med = "m",
+  ncores = parallel::detectCores() # use multiple cores
+)
+plot(boot)
+```
+
+<details>
+<summary>
+Code to generate data and fit the model B number of times.
+</summary>
+```r
+library(simStateSpace)
+library(OpenMx)
+BootPara <- function(B = 1000L,
+                     n,
+                     time,
+                     mu0,
+                     sigma0_l,
+                     phi,
+                     sigma_l,
+                     lambda,
+                     theta_l,
+                     ncores,
+                     seed = 42) {
+  mxOption(
+    key = "Number of Threads",
+    value = 1
+  )
+  GenDataCTVAR <- function(n,
+                           time,
+                           mu0,
+                           sigma0_l,
+                           phi,
+                           sigma_l,
+                           theta_l) {
+    sim <- SimSSMOUFixed(
+      n = n,
+      time = time,
+      delta_t = 0.1,
+      mu0 = mu0,
+      sigma0_l = sigma0_l,
+      mu = c(0, 0, 0),
+      phi = phi,
+      sigma_l = sigma_l,
+      nu = c(0, 0, 0),
+      lambda = diag(3),
+      theta_l = theta_l,
+      type = 0
+    )
+    data <- as.data.frame(sim)
+    colnames(data) <- c("id", "time", "x", "m", "y")
+    return(data)
+  }
+  FitCTVAR <- function(data) {
+    mu0 <- mxMatrix(
+      type = "Full",
+      nrow = 3,
+      ncol = 1,
+      free = TRUE,
+      values = matrix(
+        data = c(
+          0, 0, 0
+        ),
+        nrow = 3,
+        ncol = 1
+      ),
+      labels = matrix(
+        data = c(
+          "mu0_1", "mu0_2", "mu0_3"
+        ),
+        nrow = 3,
+        ncol = 1
+      ),
+      lbound = NA,
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("eta_x", "eta_m", "eta_y"),
+        "mu0"
+      ),
+      name = "mu0"
+    )
+    sigma0 <- mxMatrix(
+      type = "Symm",
+      nrow = 3,
+      ncol = 3,
+      free = TRUE,
+      values = matrix(
+        data = c(
+          1.0, 0.2, 0.2,
+          0.2, 1.0, 0.2,
+          0.2, 0.2, 1.0
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      labels = matrix(
+        data = c(
+          "sigma0_11", "sigma0_12", "sigma0_13",
+          "sigma0_12", "sigma0_22", "sigma0_23",
+          "sigma0_13", "sigma0_23", "sigma0_33"
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      lbound = matrix(
+        data = c(
+          0, NA, NA,
+          NA, 0, NA,
+          NA, NA, 0
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("eta_x", "eta_m", "eta_y"),
+        c("eta_x", "eta_m", "eta_y")
+      ),
+      name = "sigma0"
+    )
+    lambda <- mxMatrix(
+      type = "Diag",
+      nrow = 3,
+      ncol = 3,
+      free = FALSE,
+      values = 1,
+      labels = NA,
+      lbound = NA,
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("x", "m", "y"),
+        c("eta_x", "eta_m", "eta_y")
+      ),
+      name = "lambda"
+    )
+    phi <- mxMatrix(
+      type = "Full",
+      nrow = 3,
+      ncol = 3,
+      free = TRUE,
+      values = matrix(
+        data = c(
+          -0.2, 0.0, 0.0,
+          0.0, -0.2, 0.0,
+          0.0, 0.0, -0.2
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      labels = matrix(
+        data = c(
+          "phi_11", "phi_21", "phi_31",
+          "phi_12", "phi_22", "phi_32",
+          "phi_13", "phi_23", "phi_33"
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      lbound = -1.5,
+      ubound = 1.5,
+      byrow = FALSE,
+      dimnames = list(
+        c("eta_x", "eta_m", "eta_y"),
+        c("eta_x", "eta_m", "eta_y")
+      ),
+      name = "phi"
+    )
+    sigma <- mxMatrix(
+      type = "Symm",
+      nrow = 3,
+      ncol = 3,
+      free = TRUE,
+      values = 0.2 * diag(3),
+      labels = matrix(
+        data = c(
+          "sigma_11", "sigma_12", "sigma_13",
+          "sigma_12", "sigma_22", "sigma_23",
+          "sigma_13", "sigma_23", "sigma_33"
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      lbound = matrix(
+        data = c(
+          0, NA, NA,
+          NA, 0, NA,
+          NA, NA, 0
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("eta_x", "eta_m", "eta_y"),
+        c("eta_x", "eta_m", "eta_y")
+      ),
+      name = "sigma"
+    )
+    theta <- mxMatrix(
+      type = "Diag",
+      nrow = 3,
+      ncol = 3,
+      free = TRUE,
+      values = 0.2 * diag(3),
+      labels = matrix(
+        data = c(
+          "theta_11", "fixed", "fixed",
+          "fixed", "theta_22", "fixed",
+          "fixed", "fixed", "theta_33"
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      lbound = matrix(
+        data = c(
+          0, NA, NA,
+          NA, 0, NA,
+          NA, NA, 0
+        ),
+        nrow = 3,
+        ncol = 3
+      ),
+      ubound = NA,
+      byrow = FALSE,
+      dimnames = list(
+        c("x", "m", "y"),
+        c("x", "m", "y")
+      ),
+      name = "theta"
+    )
+    time <- mxMatrix(
+      type = "Full",
+      nrow = 1,
+      ncol = 1,
+      free = FALSE,
+      labels = "data.time",
+      name = "time"
+    )
+    gamma <- mxMatrix(
+      type = "Zero",
+      nrow = 3,
+      ncol = 1,
+      name = "gamma"
+    )
+    kappa <- mxMatrix(
+      type = "Zero",
+      nrow = 3,
+      ncol = 1,
+      name = "kappa"
+    )
+    covariate <- mxMatrix(
+      type = "Zero",
+      nrow = 1,
+      ncol = 1,
+      name = "covariate"
+    )
+    model <- mxModel(
+      model = "CTVAR",
+      phi,
+      gamma,
+      lambda,
+      kappa,
+      sigma,
+      theta,
+      mu0,
+      sigma0,
+      covariate,
+      time,
+      mxExpectationStateSpaceContinuousTime(
+        A = "phi",
+        B = "gamma",
+        C = "lambda",
+        D = "kappa",
+        Q = "sigma",
+        R = "theta",
+        x0 = "mu0",
+        P0 = "sigma0",
+        u = "covariate",
+        t = "time",
+        dimnames = c("x", "m", "y")
+      ),
+      mxFitFunctionML(),
+      mxData(
+        observed = data,
+        type = "raw"
+      )
+    )
+    ids <- sort(
+      unique(data[, "id"])
+    )
+    model_id <- lapply(
+      X = ids,
+      FUN = function(i,
+                     data,
+                     model) {
+        return(
+          mxModel(
+            name = paste0("CTVAR", "_", i),
+            model = model,
+            mxData(
+              observed = data[
+                which(
+                  data[, "id"] == i
+                ), ,
+                drop = FALSE
+              ],
+              type = "raw"
+            )
+          )
+        )
+      },
+      data = data,
+      model = model
+    )
+    fit <- mxTryHardctsem(
+      model = mxModel(
+        name = "CTVAR",
+        model_id,
+        mxFitFunctionMultigroup(
+          paste0(
+            "CTVAR",
+            "_",
+            ids
+          )
+        )
+      ),
+      extraTries = 1000
+    )
+    parnames <- c(
+      "phi_11",
+      "phi_21",
+      "phi_31",
+      "phi_12",
+      "phi_22",
+      "phi_32",
+      "phi_13",
+      "phi_23",
+      "phi_33"
+    )
+    output <- matrix(
+      data = coef(fit)[parnames],
+      nrow = 3
+    )
+    colnames(output) <- rownames(output) <- c("x", "m", "y")
+    return(output)
+  }
+  cl <- parallel::makeCluster(ncores)
+  parallel::clusterEvalQ(
+    cl,
+    library("simStateSpace")
+  )
+  parallel::clusterEvalQ(
+    cl,
+    library("OpenMx")
+  )
+  parallel::clusterExport(
+    cl = cl,
+    varlist = c(
+      "GenDataCTVAR",
+      "FitCTVAR"
+    )
+  )
+  on.exit(
+    parallel::stopCluster(cl = cl)
+  )
+  parallel::clusterSetRNGStream(
+    cl = cl,
+    iseed = seed
+  )
+  return(
+    parallel::parLapply(
+      cl = cl,
+      X = seq_len(B),
+      fun = function(i,
+                     n,
+                     time,
+                     mu0,
+                     sigma0_l,
+                     phi,
+                     sigma_l,
+                     theta_l) {
+        return(
+          FitCTVAR(
+            data = GenDataCTVAR(
+              n = n,
+              time = time,
+              mu0 = mu0,
+              sigma0_l = sigma0_l,
+              phi = phi,
+              sigma_l = sigma_l,
+              theta_l = theta_l
+            )
+          )
+        )
+      },
+      n = n,
+      time = time,
+      mu0 = mu0,
+      sigma0_l = sigma0_l,
+      phi = phi,
+      sigma_l = sigma_l,
+      theta_l = theta_l
+    )
+  )
+}
+```
+</details>
+
+## References
+
+```{r}
+#| include = FALSE
+rm(list = ls())
+```

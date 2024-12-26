@@ -658,6 +658,11 @@
   stopifnot(
     alpha > 0 && alpha < 1
   )
+  if (object$args$method == "boot") {
+    mc <- TRUE
+    ylab <- "Estimate"
+    method <- "Bootstrap Method"
+  }
   if (object$args$method == "mc") {
     mc <- TRUE
     ylab <- "Estimate"

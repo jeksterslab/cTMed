@@ -23,6 +23,9 @@ reference:
 - title: Posterior
   contents:
   - has_keyword("posterior")
+- title: Bootstrap
+  contents:
+  - has_keyword("boot")
 - title: Mediation
   contents:
   - has_keyword("path")
@@ -48,6 +51,9 @@ articles:
   contents:
   - med
   - med-std
+- title: Confidence Intervals for Continuous-Time Mediation Models (Parametric Bootstrap)
+  contents:
+  - med-boot
 - title: Session Information
   contents:
   - session
