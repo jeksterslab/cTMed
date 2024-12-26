@@ -185,6 +185,7 @@ ExpMean(
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{BootMed}()},
 \code{\link{DeltaBeta}()},
 \code{\link{DeltaBetaStd}()},
 \code{\link{DeltaIndirectCentral}()},
