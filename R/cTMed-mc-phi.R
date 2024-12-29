@@ -135,34 +135,64 @@ MCPhi <- function(phi,
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
+    if (ncores > R) {
+      ncores <- R
+    }
     if (ncores > 1) {
       par <- TRUE
     }
   }
   if (par) {
-    cl <- parallel::makeCluster(ncores)
-    on.exit(
-      parallel::stopCluster(cl = cl)
-    )
-    if (!is.null(seed)) {
-      parallel::clusterSetRNGStream(
-        cl = cl,
-        iseed = seed
-      )
+    os_type <- Sys.info()["sysname"]
+    if (os_type == "Darwin") {
+      fork <- TRUE
+    } else if (os_type == "Linux") {
+      fork <- TRUE
+    } else {
+      fork <- FALSE
     }
-    output <- parallel::parLapply(
-      cl = cl,
-      X = 1:R,
-      fun = function(i) {
-        return(
-          .MCPhiI(
-            phi = phi,
-            vcov_phi_vec_l = t(chol(vcov_phi_vec)),
-            test_phi = test_phi
+    if (fork) {
+      if (!is.null(seed)) {
+        set.seed(seed)
+      }
+      output <- parallel::mclapply(
+        X = seq_len(R),
+        FUN = function(i) {
+          return(
+            .MCPhiI(
+              phi = phi,
+              vcov_phi_vec_l = t(chol(vcov_phi_vec)),
+              test_phi = test_phi
+            )
           )
+        },
+        mc.cores = ncores
+      )
+    } else {
+      cl <- parallel::makeCluster(ncores)
+      on.exit(
+        parallel::stopCluster(cl = cl)
+      )
+      if (!is.null(seed)) {
+        parallel::clusterSetRNGStream(
+          cl = cl,
+          iseed = seed
         )
       }
-    )
+      output <- parallel::parLapply(
+        cl = cl,
+        X = seq_len(R),
+        fun = function(i) {
+          return(
+            .MCPhiI(
+              phi = phi,
+              vcov_phi_vec_l = t(chol(vcov_phi_vec)),
+              test_phi = test_phi
+            )
+          )
+        }
+      )
+    }
     # nocov end
   } else {
     if (!is.null(seed)) {

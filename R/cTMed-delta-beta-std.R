@@ -260,6 +260,10 @@ DeltaBetaStd <- function(phi,
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
+    R <- length(delta_t)
+    if (ncores > R) {
+      ncores <- R
+    }
     if (ncores > 1) {
       par <- TRUE
     }
