@@ -168,7 +168,7 @@ mu0 <- mxMatrix(
   ),
   labels = matrix(
     data = c(
-      "mu0_1", "mu0_2", "mu0_3"
+      "mu0_1_1", "mu0_2_1", "mu0_3_1"
     ),
     nrow = 3,
     ncol = 1
@@ -198,9 +198,9 @@ sigma0 <- mxMatrix(
   ),
   labels = matrix(
     data = c(
-      "sigma0_11", "sigma0_12", "sigma0_13",
-      "sigma0_12", "sigma0_22", "sigma0_23",
-      "sigma0_13", "sigma0_23", "sigma0_33"
+      "sigma0_1_1", "sigma0_2_1", "sigma0_3_1",
+      "sigma0_2_1", "sigma0_2_2", "sigma0_3_2",
+      "sigma0_3_1", "sigma0_3_2", "sigma0_3_3"
     ),
     nrow = 3,
     ncol = 3
@@ -264,9 +264,9 @@ phi <- mxMatrix(
   ),
   labels = matrix(
     data = c(
-      "phi_11", "phi_21", "phi_31",
-      "phi_12", "phi_22", "phi_32",
-      "phi_13", "phi_23", "phi_33"
+      "phi_1_1", "phi_2_1", "phi_3_1",
+      "phi_1_2", "phi_2_2", "phi_3_2",
+      "phi_1_3", "phi_2_3", "phi_3_3"
     ),
     nrow = 3,
     ncol = 3
@@ -293,9 +293,9 @@ sigma <- mxMatrix(
   values = 0.2 * diag(3),
   labels = matrix(
     data = c(
-      "sigma_11", "sigma_12", "sigma_13",
-      "sigma_12", "sigma_22", "sigma_23",
-      "sigma_13", "sigma_23", "sigma_33"
+      "sigma_1_1", "sigma_2_1", "sigma_3_1",
+      "sigma_2_1", "sigma_2_2", "sigma_3_2",
+      "sigma_3_1", "sigma_3_2", "sigma_3_3"
     ),
     nrow = 3,
     ncol = 3
@@ -325,9 +325,9 @@ theta <- mxMatrix(
   values = 0.2 * diag(3),
   labels = matrix(
     data = c(
-      "theta_11", "fixed", "fixed",
-      "fixed", "theta_22", "fixed",
-      "fixed", "fixed", "theta_33"
+      "theta_1_1", "fixed", "fixed",
+      "fixed", "theta_2_2", "fixed",
+      "fixed", "fixed", "theta_3_3"
     ),
     nrow = 3,
     ncol = 3
@@ -473,27 +473,27 @@ vcovs <- vcov(fit)
 
 ```{r}
 phi_names <- c(
-  "phi_11", "phi_21", "phi_31",
-  "phi_12", "phi_22", "phi_32",
-  "phi_13", "phi_23", "phi_33"
+  "phi_1_1", "phi_2_1", "phi_3_1",
+  "phi_1_2", "phi_2_2", "phi_3_2",
+  "phi_1_3", "phi_2_3", "phi_3_3"
 )
 sigma_names <- c(
-  "sigma_11", "sigma_12", "sigma_13",
-  "sigma_12", "sigma_22", "sigma_23",
-  "sigma_13", "sigma_23", "sigma_33"
+  "sigma_1_1", "sigma_2_1", "sigma_3_1",
+  "sigma_2_1", "sigma_2_2", "sigma_3_2",
+  "sigma_3_1", "sigma_3_2", "sigma_3_3"
 )
 sigma_vech_names <- c(
-  "sigma_11", "sigma_12", "sigma_13",
-  "sigma_22", "sigma_23",
-  "sigma_33"
+  "sigma_1_1", "sigma_2_1", "sigma_3_1",
+  "sigma_2_2", "sigma_3_2",
+  "sigma_3_3"
 )
 theta_names <- c(
-  "phi_11", "phi_21", "phi_31",
-  "phi_12", "phi_22", "phi_32",
-  "phi_13", "phi_23", "phi_33",
-  "sigma_11", "sigma_12", "sigma_13",
-  "sigma_22", "sigma_23",
-  "sigma_33"
+  "phi_1_1", "phi_2_1", "phi_3_1",
+  "phi_1_2", "phi_2_2", "phi_3_2",
+  "phi_1_3", "phi_2_3", "phi_3_3",
+  "sigma_1_1", "sigma_2_1", "sigma_3_1",
+  "sigma_2_2", "sigma_3_2",
+  "sigma_3_3"
 )
 phi <- matrix(
   data = coefs[phi_names],
