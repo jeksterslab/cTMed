@@ -226,23 +226,46 @@ DeltaTotalCentral <- function(phi,
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
+    R <- length(delta_t)
+    if (ncores > R) {
+      ncores <- R
+    }
     if (ncores > 1) {
       par <- TRUE
     }
   }
   if (par) {
-    cl <- parallel::makeCluster(ncores)
-    on.exit(
-      parallel::stopCluster(cl = cl)
-    )
-    output <- parallel::parLapply(
-      cl = cl,
-      X = delta_t,
-      fun = .DeltaCentral,
-      phi = phi,
-      vcov_phi_vec = vcov_phi_vec,
-      total = total
-    )
+    os_type <- Sys.info()["sysname"]
+    if (os_type == "Darwin") {
+      fork <- TRUE
+    } else if (os_type == "Linux") {
+      fork <- TRUE
+    } else {
+      fork <- FALSE
+    }
+    if (fork) {
+      output <- parallel::mclapply(
+        X = delta_t,
+        FUN = .DeltaCentral,
+        phi = phi,
+        vcov_phi_vec = vcov_phi_vec,
+        total = total,
+        mc.cores = ncores
+      )
+    } else {
+      cl <- parallel::makeCluster(ncores)
+      on.exit(
+        parallel::stopCluster(cl = cl)
+      )
+      output <- parallel::parLapply(
+        cl = cl,
+        X = delta_t,
+        fun = .DeltaCentral,
+        phi = phi,
+        vcov_phi_vec = vcov_phi_vec,
+        total = total
+      )
+    }
     # nocov end
   } else {
     output <- lapply(

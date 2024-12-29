@@ -298,26 +298,52 @@ DeltaMedStd <- function(phi,
   par <- FALSE
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
+    R <- length(delta_t)
+    if (ncores > R) {
+      ncores <- R
+    }
     if (ncores > 1) {
       par <- TRUE
     }
   }
   if (par) {
-    cl <- parallel::makeCluster(ncores)
-    on.exit(
-      parallel::stopCluster(cl = cl)
-    )
-    output <- parallel::parLapply(
-      cl = cl,
-      X = delta_t,
-      fun = .DeltaMedStd,
-      phi = phi,
-      sigma = sigma,
-      vcov_theta = vcov_theta,
-      from = from,
-      to = to,
-      med = med
-    )
+    os_type <- Sys.info()["sysname"]
+    if (os_type == "Darwin") {
+      fork <- TRUE
+    } else if (os_type == "Linux") {
+      fork <- TRUE
+    } else {
+      fork <- FALSE
+    }
+    if (fork) {
+      output <- parallel::mclapply(
+        X = delta_t,
+        FUN = .DeltaMedStd,
+        phi = phi,
+        sigma = sigma,
+        vcov_theta = vcov_theta,
+        from = from,
+        to = to,
+        med = med,
+        mc.cores = ncores
+      )
+    } else {
+      cl <- parallel::makeCluster(ncores)
+      on.exit(
+        parallel::stopCluster(cl = cl)
+      )
+      output <- parallel::parLapply(
+        cl = cl,
+        X = delta_t,
+        fun = .DeltaMedStd,
+        phi = phi,
+        sigma = sigma,
+        vcov_theta = vcov_theta,
+        from = from,
+        to = to,
+        med = med
+      )
+    }
     # nocov end
   } else {
     output <- lapply(
