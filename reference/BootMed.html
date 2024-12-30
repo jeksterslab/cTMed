@@ -78,9 +78,7 @@ drift matrix \(\boldsymbol{\Phi}\).</p>
 <dl><dt id="arg-phi">phi<a class="anchor" aria-label="anchor" href="#arg-phi"></a></dt>
 <dd><p>List of numeric matrices.
 Each element of the list is a bootstrap estimate
-of the drift matrix (\(\boldsymbol{\Phi}\)).
-Each matrix should have row and column names
-pertaining to the variables in the system.</p></dd>
+of the drift matrix (\(\boldsymbol{\Phi}\)).</p></dd>
 
 
 <dt id="arg-phi-hat">phi_hat<a class="anchor" aria-label="anchor" href="#arg-phi-hat"></a></dt>
@@ -130,7 +128,7 @@ Smallest possible time interval to allow.</p></dd>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>Returns an object
-of class <code>ctmedmc</code> which is a list with the following elements:</p><dl><dt>call</dt>
+of class <code>ctmedboot</code> which is a list with the following elements:</p><dl><dt>call</dt>
 <dd><p>Function call.</p></dd>
 
 <dt>args</dt>
@@ -178,6 +176,9 @@ Psychometrika, 87 (1), 214–252.
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other Continuous Time Mediation Functions:
+<code><a href="BootBeta.html">BootBeta</a>()</code>,
+<code><a href="BootBetaStd.html">BootBetaStd</a>()</code>,
+<code><a href="BootMedStd.html">BootMedStd</a>()</code>,
 <code><a href="DeltaBeta.html">DeltaBeta</a>()</code>,
 <code><a href="DeltaBetaStd.html">DeltaBetaStd</a>()</code>,
 <code><a href="DeltaIndirectCentral.html">DeltaIndirectCentral</a>()</code>,
@@ -214,6 +215,128 @@ Psychometrika, 87 (1), 214–252.
     <p>Ivan Jacob Agaloos Pesigan</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/simStateSpace" class="external-link">simStateSpace</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># prepare parameters</span></span></span>
+<span class="r-in"><span><span class="co">## number of individuals</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span></span>
+<span class="r-in"><span><span class="co">## time points</span></span></span>
+<span class="r-in"><span><span class="va">time</span> <span class="op">&lt;-</span> <span class="fl">100</span></span></span>
+<span class="r-in"><span><span class="va">delta_t</span> <span class="op">&lt;-</span> <span class="fl">0.10</span></span></span>
+<span class="r-in"><span><span class="co">## dynamic structure</span></span></span>
+<span class="r-in"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fl">3</span></span></span>
+<span class="r-in"><span><span class="va">mu0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, times <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sigma0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fl">1.0</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.2</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.2</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.2</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">1.0</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.2</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.2</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.2</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">1.0</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  nrow <span class="op">=</span> <span class="va">p</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sigma0_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">sigma0</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">mu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, times <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="op">-</span><span class="fl">0.357</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.771</span>,</span></span>
+<span class="r-in"><span>    <span class="op">-</span><span class="fl">0.450</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.0</span>,</span></span>
+<span class="r-in"><span>    <span class="op">-</span><span class="fl">0.511</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.729</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0</span>,</span></span>
+<span class="r-in"><span>    <span class="op">-</span><span class="fl">0.693</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  nrow <span class="op">=</span> <span class="va">p</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fl">0.24455556</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.02201587</span>,</span></span>
+<span class="r-in"><span>    <span class="op">-</span><span class="fl">0.05004762</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.02201587</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.07067800</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.01539456</span>,</span></span>
+<span class="r-in"><span>    <span class="op">-</span><span class="fl">0.05004762</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.01539456</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">0.07553061</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span>,</span></span>
+<span class="r-in"><span>  nrow <span class="op">=</span> <span class="va">p</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sigma_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">sigma</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co">## measurement model</span></span></span>
+<span class="r-in"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">3</span></span></span>
+<span class="r-in"><span><span class="va">nu</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, times <span class="op">=</span> <span class="va">k</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">lambda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fl">0.2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">theta_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/PBSSMOUFixed.html" class="external-link">PBSSMOUFixed</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  R <span class="op">=</span> <span class="fl">1000L</span>,</span></span>
+<span class="r-in"><span>  path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  prefix <span class="op">=</span> <span class="st">"ou"</span>,</span></span>
+<span class="r-in"><span>  n <span class="op">=</span> <span class="va">n</span>,</span></span>
+<span class="r-in"><span>  time <span class="op">=</span> <span class="va">time</span>,</span></span>
+<span class="r-in"><span>  delta_t <span class="op">=</span> <span class="va">delta_t</span>,</span></span>
+<span class="r-in"><span>  mu0 <span class="op">=</span> <span class="va">mu0</span>,</span></span>
+<span class="r-in"><span>  sigma0_l <span class="op">=</span> <span class="va">sigma0_l</span>,</span></span>
+<span class="r-in"><span>  mu <span class="op">=</span> <span class="va">mu</span>,</span></span>
+<span class="r-in"><span>  phi <span class="op">=</span> <span class="va">phi</span>,</span></span>
+<span class="r-in"><span>  sigma_l <span class="op">=</span> <span class="va">sigma_l</span>,</span></span>
+<span class="r-in"><span>  nu <span class="op">=</span> <span class="va">nu</span>,</span></span>
+<span class="r-in"><span>  lambda <span class="op">=</span> <span class="va">lambda</span>,</span></span>
+<span class="r-in"><span>  theta_l <span class="op">=</span> <span class="va">theta_l</span>,</span></span>
+<span class="r-in"><span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>  seed <span class="op">=</span> <span class="fl">42</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">phi_hat</span> <span class="op">&lt;-</span> <span class="va">phi</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">phi_hat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">phi_hat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"m"</span>, <span class="st">"y"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/extract.html" class="external-link">extract</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">boot</span>, what <span class="op">=</span> <span class="st">"phi"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Specific time interval ----------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="fu">BootMed</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  phi <span class="op">=</span> <span class="va">phi</span>,</span></span>
+<span class="r-in"><span>  phi_hat <span class="op">=</span> <span class="va">phi_hat</span>,</span></span>
+<span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>  from <span class="op">=</span> <span class="st">"x"</span>,</span></span>
+<span class="r-in"><span>  to <span class="op">=</span> <span class="st">"y"</span>,</span></span>
+<span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Range of time intervals ---------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu">BootMed</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  phi <span class="op">=</span> <span class="va">phi</span>,</span></span>
+<span class="r-in"><span>  phi_hat <span class="op">=</span> <span class="va">phi_hat</span>,</span></span>
+<span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,</span></span>
+<span class="r-in"><span>  from <span class="op">=</span> <span class="st">"x"</span>,</span></span>
+<span class="r-in"><span>  to <span class="op">=</span> <span class="st">"y"</span>,</span></span>
+<span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span> <span class="co"># bias-corrected</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Methods -------------------------------------------------------------------</span></span></span>
+<span class="r-in"><span><span class="co"># BootMed has a number of methods including</span></span></span>
+<span class="r-in"><span><span class="co"># print, summary, confint, and plot</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">boot</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span> <span class="co"># bias-corrected</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">boot</span>, level <span class="op">=</span> <span class="fl">0.95</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

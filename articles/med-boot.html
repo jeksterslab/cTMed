@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2024-12-29</h4>
+            <h4 data-toc-skip class="date">2024-12-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/main/vignettes/med-boot.Rmd"><code>vignettes/med-boot.Rmd</code></a></small>
       <div class="d-none name"><code>med-boot.Rmd</code></div>
@@ -257,18 +257,22 @@ times is computationally intensive.</p>
 <span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in PBSSMOUFixed(R = R, path = path, prefix = prefix, n = n, time = time, : unused arguments (path = path, prefix = prefix)</span></span></code></pre></div>
 <p>The <code>extract</code> function from the <code>simStateSpace</code>
-package is used to extract the bootstrap phi matrices.</p>
+package is used to extract the bootstrap phi matrices as well as the
+sigma matrices.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/extract.html" class="external-link">extract</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">boot</span>, what <span class="op">=</span> <span class="st">"phi"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error in extract(object = boot, what = "phi"): could not find function "extract"</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/extract.html" class="external-link">extract</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">boot</span>, what <span class="op">=</span> <span class="st">"sigma"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error in extract(object = boot, what = "sigma"): could not find function "extract"</span></span></code></pre></div>
 <p>In this example, we aim to calculate the total, direct, and indirect
 effects of <code>x</code> on <code>y</code>, mediated through
 <code>m</code>, over time intervals ranging from 0 to 10.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># time intervals</span></span>
 <span><span class="va">delta_t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
 <p>We also need the estimated drift matrix from the original sample.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># estimated drift matrix</span></span>
 <span><span class="va">phi_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
@@ -288,10 +292,25 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">phi_hat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">phi_hat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"m"</span>, <span class="st">"y"</span><span class="op">)</span></span></code></pre></div>
+<p>For the standardized effects, the estimated process noise covariance
+matrix from the original sample is also needed.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># estimated process noise covariance matrix</span></span>
+<span><span class="va">sigma_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"sigma_1_1"</span>, <span class="st">"sigma_2_1"</span>, <span class="st">"sigma_3_1"</span>,</span>
+<span>      <span class="st">"sigma_2_1"</span>, <span class="st">"sigma_2_2"</span>, <span class="st">"sigma_3_2"</span>,</span>
+<span>      <span class="st">"sigma_3_1"</span>, <span class="st">"sigma_3_2"</span>, <span class="st">"sigma_3_3"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">]</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="bootstrap-method">Bootstrap Method<a class="anchor" aria-label="anchor" href="#bootstrap-method"></a>
 </h2>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/cTMed">cTMed</a></span><span class="op">)</span></span>
 <span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BootMed.html">BootMed</a></span><span class="op">(</span></span>
 <span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
@@ -306,6 +325,29 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span><span class="co">#&gt; all scheduled cores encountered errors in user code</span></span>
 <span><span class="co">#&gt; Error in dimnames(x) &lt;- dn: length of 'dimnames' [2] not equal to array extent</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: object 'boot' not found</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: object 'boot' not found</span></span></code></pre></div>
+<p>The following generates bootstrap confidence intervals for the
+standardized effects.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BootMedStd.html">BootMedStd</a></span><span class="op">(</span></span>
+<span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
+<span>  sigma <span class="op">=</span> <span class="va">sigma</span>,</span>
+<span>  phi_hat <span class="op">=</span> <span class="va">phi_hat</span>,</span>
+<span>  sigma_hat <span class="op">=</span> <span class="va">sigma_hat</span>,</span>
+<span>  delta_t <span class="op">=</span> <span class="va">delta_t</span>,</span>
+<span>  from <span class="op">=</span> <span class="st">"x"</span>,</span>
+<span>  to <span class="op">=</span> <span class="st">"y"</span>,</span>
+<span>  med <span class="op">=</span> <span class="st">"m"</span>,</span>
+<span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># use multiple cores</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in parallel::mclapply(X = phis, FUN = function(x, delta_t, from, : all</span></span>
+<span><span class="co">#&gt; scheduled cores encountered errors in user code</span></span>
+<span><span class="co">#&gt; Error in dimnames(x) &lt;- dn: length of 'dimnames' [2] not equal to array extent</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: object 'boot' not found</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Error: object 'boot' not found</span></span></code></pre></div>
 </div>
 <div class="section level2 unnumbered">
