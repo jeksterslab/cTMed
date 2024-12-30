@@ -1,12 +1,12 @@
 #' Bootstrap Sampling Distribution
-#' of Total, Direct, and Indirect Effects
+#' of Standardized Total, Direct, and Indirect Effects
 #' of X on Y Through M
 #' Over a Specific Time Interval
 #' or a Range of Time Intervals
 #'
 #' This function generates a bootstrap method
 #' sampling distribution
-#' of the total, direct and indirect effects
+#' of the standardized total, direct and indirect effects
 #' of the independent variable \eqn{X}
 #' on the dependent variable \eqn{Y}
 #' through mediator variables \eqn{\mathbf{m}}
@@ -15,38 +15,36 @@
 #' using the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
-#' @details See [Total()],
-#'   [Direct()], and
-#'   [Indirect()] for more details.
+#' @details See [TotalStd()],
+#'   [DirectStd()], and
+#'   [IndirectStd()] for more details.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param phi List of numeric matrices.
+#' @param sigma List of numeric matrices.
 #'   Each element of the list is a bootstrap estimate
-#'   of the drift matrix (\eqn{\boldsymbol{\Phi}}).
-#' @param phi_hat Numeric matrix.
-#'   The estimated drift matrix (\eqn{\hat{\boldsymbol{\Phi}}})
+#'   of the process noise covariance matrix
+#'   (\eqn{\boldsymbol{\Sigma}}).
+#' @param sigma_hat Numeric matrix.
+#'   The estimated process noise covariance matrix
+#'   (\eqn{\hat{\boldsymbol{\Sigma}}})
 #'   from the original data set.
-#'   `phi_hat` should have row and column names
-#'   pertaining to the variables in the system.
-#' @inheritParams Indirect
-#' @inheritParams MCPhi
-#' @inheritParams Med
-#' @inherit Indirect references
+#' @inheritParams BootMed
+#' @inherit BootMed references
 #'
 #' @return Returns an object
 #'   of class `ctmedboot` which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
-#'     \item{fun}{Function used ("BootMed").}
+#'     \item{fun}{Function used ("BootMedStd").}
 #'     \item{output}{A list with length of `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
-#'     \item{est}{A vector of total, direct, and indirect effects.}
+#'     \item{est}{A vector of standardized total, direct, and indirect effects.}
 #'     \item{thetahatstar}{A matrix of bootstrap
-#'     total, direct, and indirect effects.}
+#'     standardized total, direct, and indirect effects.}
 #'   }
 #'
 #' @examples
@@ -133,12 +131,16 @@
 #' )
 #' phi_hat <- phi
 #' colnames(phi_hat) <- rownames(phi_hat) <- c("x", "m", "y")
+#' sigma_hat <- sigma
 #' phi <- extract(object = boot, what = "phi")
+#' sigma <- extract(object = boot, what = "sigma")
 #'
 #' # Specific time interval ----------------------------------------------------
-#' BootMed(
+#' BootMedStd(
 #'   phi = phi,
+#'   sigma = sigma,
 #'   phi_hat = phi_hat,
+#'   sigma_hat = sigma_hat,
 #'   delta_t = 1,
 #'   from = "x",
 #'   to = "y",
@@ -146,9 +148,11 @@
 #' )
 #'
 #' # Range of time intervals ---------------------------------------------------
-#' boot <- BootMed(
+#' boot <- BootMedStd(
 #'   phi = phi,
+#'   sigma = sigma,
 #'   phi_hat = phi_hat,
+#'   sigma_hat = sigma_hat,
 #'   delta_t = 1:5,
 #'   from = "x",
 #'   to = "y",
@@ -158,7 +162,7 @@
 #' plot(boot, type = "bc") # bias-corrected
 #'
 #' # Methods -------------------------------------------------------------------
-#' # BootMed has a number of methods including
+#' # BootMedStd has a number of methods including
 #' # print, summary, confint, and plot
 #' print(boot)
 #' summary(boot)
@@ -171,14 +175,16 @@
 #' @family Continuous Time Mediation Functions
 #' @keywords cTMed path boot
 #' @export
-BootMed <- function(phi,
-                    phi_hat,
-                    delta_t,
-                    from,
-                    to,
-                    med,
-                    ncores = NULL,
-                    tol = 0.01) {
+BootMedStd <- function(phi,
+                       sigma,
+                       phi_hat,
+                       sigma_hat,
+                       delta_t,
+                       from,
+                       to,
+                       med,
+                       ncores = NULL,
+                       tol = 0.01) {
   idx <- rownames(phi_hat)
   stopifnot(
     idx == colnames(phi_hat),
@@ -194,7 +200,9 @@ BootMed <- function(phi,
   }
   args <- list(
     phi = phi,
+    sigma = sigma,
     phi_hat = phi_hat,
+    sigma_hat = sigma_hat,
     delta_t = delta_t,
     from = from,
     to = to,
@@ -222,9 +230,11 @@ BootMed <- function(phi,
     },
     idx = idx
   )
-  output <- .BootMed(
+  output <- .BootMedStd(
     phi = phi,
+    sigma = sigma,
     phi_hat = phi_hat,
+    sigma_hat = sigma_hat,
     delta_t = delta_t,
     from = from,
     to = to,
@@ -235,7 +245,7 @@ BootMed <- function(phi,
   out <- list(
     call = match.call(),
     args = args,
-    fun = "BootMed",
+    fun = "BootMedStd",
     output = output
   )
   class(out) <- c(

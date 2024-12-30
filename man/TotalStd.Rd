@@ -27,7 +27,7 @@ of class \code{ctmedeffect} which is a list with the following elements:
 \item{call}{Function call.}
 \item{args}{Function arguments.}
 \item{fun}{Function used ("TotalStd").}
-\item{output}{The matrix of total effects.}
+\item{output}{The standardized matrix of total effects.}
 }
 }
 \description{
@@ -106,7 +106,10 @@ Psychometrika, 87 (1), 214–252.
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{BootBeta}()},
+\code{\link{BootBetaStd}()},
 \code{\link{BootMed}()},
+\code{\link{BootMedStd}()},
 \code{\link{DeltaBeta}()},
 \code{\link{DeltaBetaStd}()},
 \code{\link{DeltaIndirectCentral}()},

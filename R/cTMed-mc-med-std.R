@@ -98,9 +98,9 @@
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
-#'     \item{est}{A vector of total, direct, and indirect effects.}
+#'     \item{est}{A vector of standardized total, direct, and indirect effects.}
 #'     \item{thetahatstar}{A matrix of Monte Carlo
-#'     total, direct, and indirect effects.}
+#'     standardized total, direct, and indirect effects.}
 #'   }
 #'
 #' @examples

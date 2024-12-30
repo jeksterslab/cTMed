@@ -1,20 +1,15 @@
-.MCMedStd <- function(phi,
-                      sigma,
-                      vcov_theta,
-                      delta_t,
-                      from,
-                      to,
-                      med,
-                      R,
-                      test_phi = TRUE,
-                      ncores = NULL,
-                      seed = NULL) {
-  theta <- c(
-    .Vec(phi),
-    .Vech(sigma)
-  )
+.BootMedStd <- function(phi,
+                        sigma,
+                        phi_hat,
+                        sigma_hat,
+                        delta_t,
+                        from,
+                        to,
+                        med,
+                        ncores = NULL) {
   # nocov start
   par <- FALSE
+  R <- length(phi)
   if (!is.null(ncores)) {
     ncores <- as.integer(ncores)
     if (ncores > R) {
@@ -34,19 +29,12 @@
       fork <- FALSE
     }
     if (fork) {
-      # generate phi
-      if (!is.null(seed)) {
-        set.seed(seed)
-      }
       phis <- parallel::mclapply(
         X = seq_len(R),
         FUN = function(i) {
-          return(
-            .MCPhiSigmaI(
-              theta = theta,
-              vcov_theta = vcov_theta,
-              test_phi = test_phi
-            )
+          list(
+            phi[[i]],
+            sigma[[i]]
           )
         },
         mc.cores = ncores
@@ -89,8 +77,8 @@
             "interval"
           )
           est <- .MedStd(
-            phi = phi,
-            sigma = sigma,
+            phi = phi_hat,
+            sigma = sigma_hat,
             delta_t = i,
             from = from,
             to = to,
@@ -111,27 +99,17 @@
         }
       )
     } else {
-      # generate phi
       cl <- parallel::makeCluster(ncores)
       on.exit(
         parallel::stopCluster(cl = cl)
       )
-      if (!is.null(seed)) {
-        parallel::clusterSetRNGStream(
-          cl = cl,
-          iseed = seed
-        )
-      }
       phis <- parallel::parLapply(
         cl = cl,
         X = seq_len(R),
         fun = function(i) {
-          return(
-            .MCPhiSigmaI(
-              theta = theta,
-              vcov_theta = vcov_theta,
-              test_phi = test_phi
-            )
+          list(
+            phi[[i]],
+            sigma[[i]]
           )
         }
       )
@@ -173,8 +151,8 @@
             "interval"
           )
           est <- .MedStd(
-            phi = phi,
-            sigma = sigma,
+            phi = phi_hat,
+            sigma = sigma_hat,
             delta_t = i,
             from = from,
             to = to,
@@ -197,19 +175,12 @@
     }
     # nocov end
   } else {
-    # generate phi
-    if (!is.null(seed)) {
-      set.seed(seed)
-    }
     phis <- lapply(
       X = seq_len(R),
       FUN = function(i) {
-        return(
-          .MCPhiSigmaI(
-            theta = theta,
-            vcov_theta = vcov_theta,
-            test_phi = test_phi
-          )
+        list(
+          phi[[i]],
+          sigma[[i]]
         )
       }
     )
@@ -250,8 +221,8 @@
           "interval"
         )
         est <- .MedStd(
-          phi = phi,
-          sigma = sigma,
+          phi = phi_hat,
+          sigma = sigma_hat,
           delta_t = i,
           from = from,
           to = to,

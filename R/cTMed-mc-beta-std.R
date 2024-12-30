@@ -89,9 +89,10 @@
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
-#'     \item{est}{A vector of total, direct, and indirect effects.}
+#'     \item{est}{Estimated elements of the standardized matrix
+#'       of lagged coefficients.}
 #'     \item{thetahatstar}{A matrix of Monte Carlo
-#'     total, direct, and indirect effects.}
+#'       elements of the standardized matrix of lagged coefficients.}
 #'   }
 #'
 #' @examples

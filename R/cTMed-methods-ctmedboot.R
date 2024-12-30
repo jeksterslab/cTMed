@@ -1,10 +1,14 @@
-#' Print Method for Object of Class `ctmedmc`
+#' Print Method for Object of Class `ctmedboot`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
-#' @param x an object of class `ctmedmc`.
+#' @param x an object of class `ctmedboot`.
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
 #' @param digits Integer indicating the number of decimal places to display.
+#' @param type Charater string.
+#'   Confidence interval type, that is,
+#'   `type = "pc"` for percentile;
+#'   `type = "bc"` for bias corrected.
 #' @param ... further arguments.
 #'
 #' @return Prints a list of matrices of
@@ -85,10 +89,11 @@
 #'
 #' @keywords methods
 #' @export
-print.ctmedmc <- function(x,
-                          alpha = 0.05,
-                          digits = 4,
-                          ...) {
+print.ctmedboot <- function(x,
+                            alpha = 0.05,
+                            digits = 4,
+                            type = "pc",
+                            ...) {
   if (x$args$network) {
     if (x$args$total) {
       cat(
@@ -112,9 +117,10 @@ print.ctmedmc <- function(x,
   }
   base::print(
     lapply(
-      X = .MCCI(
+      X = .BootCI(
         object = x,
-        alpha = alpha
+        alpha = alpha,
+        type = type
       ),
       FUN = round,
       digits = digits
@@ -122,14 +128,18 @@ print.ctmedmc <- function(x,
   )
 }
 
-#' Summary Method for an Object of Class `ctmedmc`
+#' Summary Method for an Object of Class `ctmedboot`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `ctmedmc`.
+#' @param object Object of class `ctmedboot`.
 #' @param ... additional arguments.
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
+#' @param type Charater string.
+#'   Confidence interval type, that is,
+#'   `type = "pc"` for percentile;
+#'   `type = "bc"` for bias corrected.
 #'
 #' @return Returns a data frame of
 #'   effects,
@@ -210,9 +220,10 @@ print.ctmedmc <- function(x,
 #'
 #' @keywords methods
 #' @export
-summary.ctmedmc <- function(object,
-                            alpha = 0.05,
-                            ...) {
+summary.ctmedboot <- function(object,
+                              alpha = 0.05,
+                              type = "pc",
+                              ...) {
   if (object$args$network) {
     if (object$args$total) {
       if (interactive()) {
@@ -246,9 +257,10 @@ summary.ctmedmc <- function(object,
       # nocov end
     }
   }
-  ci <- .MCCI(
+  ci <- .BootCI(
     object = object,
-    alpha = alpha
+    alpha = alpha,
+    type = type
   )
   ci <- do.call(
     what = "rbind",
@@ -274,13 +286,17 @@ summary.ctmedmc <- function(object,
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param object Object of class `ctmedmc`.
+#' @param object Object of class `ctmedboot`.
 #' @param ... additional arguments.
 #' @param parm a specification of which parameters
 #'   are to be given confidence intervals,
 #'   either a vector of numbers or a vector of names.
 #'   If missing, all parameters are considered.
 #' @param level the confidence level required.
+#' @param type Charater string.
+#'   Confidence interval type, that is,
+#'   `type = "pc"` for percentile;
+#'   `type = "bc"` for bias corrected.
 #'
 #' @return Returns a data frame of confidence intervals.
 #'
@@ -354,18 +370,20 @@ summary.ctmedmc <- function(object,
 #'
 #' @keywords methods
 #' @export
-confint.ctmedmc <- function(object,
-                            parm = NULL,
-                            level = 0.95,
-                            ...) {
+confint.ctmedboot <- function(object,
+                              parm = NULL,
+                              level = 0.95,
+                              type = "pc",
+                              ...) {
   if (is.null(parm)) {
     parm <- seq_len(
       length(object$output[[1]]$est[1:3])
     )
   }
-  ci <- .MCCI(
+  ci <- .BootCI(
     object = object,
-    alpha = 1 - level[1]
+    alpha = 1 - level[1],
+    type = type
   )
   ci <- lapply(
     X = ci,
@@ -403,16 +421,20 @@ confint.ctmedmc <- function(object,
   return(ci[, varnames])
 }
 
-#' Plot Method for an Object of Class `ctmedmc`
+#' Plot Method for an Object of Class `ctmedboot`
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param x Object of class `ctmedmc`.
+#' @param x Object of class `ctmedboot`.
 #' @param alpha Numeric.
 #'   Significance level
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
+#' @param type Charater string.
+#'   Confidence interval type, that is,
+#'   `type = "pc"` for percentile;
+#'   `type = "bc"` for bias corrected.
 #' @param ... Additional arguments.
 #'
 #' @return Displays plots of point estimates and confidence intervals.
@@ -475,10 +497,11 @@ confint.ctmedmc <- function(object,
 #'
 #' @keywords methods
 #' @export
-plot.ctmedmc <- function(x,
-                         alpha = 0.05,
-                         col = NULL,
-                         ...) {
+plot.ctmedboot <- function(x,
+                           alpha = 0.05,
+                           col = NULL,
+                           type = "pc",
+                           ...) {
   if (x$args$network) {
     return(
       .PlotCentralCI(
@@ -488,21 +511,23 @@ plot.ctmedmc <- function(x,
       )
     )
   } else {
-    if (x$fun %in% c("MCMed", "MCMedStd", "PosteriorMed", "BootMed")) {
+    if (x$fun == "BootMed" || x$fun == "BootMedStd") {
       return(
         .PlotMedCI(
           object = x,
           alpha = alpha,
-          col = col
+          col = col,
+          type = type
         )
       )
     }
-    if (x$fun %in% c("MCBeta", "MCBetaStd", "PosteriorBeta")) {
+    if (x$fun == "BootBeta" || x$fun == "BootBetaStd") {
       return(
         .PlotBetaCI(
           object = x,
           alpha = alpha,
-          col = col
+          col = col,
+          type = type
         )
       )
     }

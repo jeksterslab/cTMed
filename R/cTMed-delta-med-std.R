@@ -133,9 +133,9 @@
 #'   \describe{
 #'     \item{delta_t}{Time interval.}
 #'     \item{jacobian}{Jacobian matrix.}
-#'     \item{est}{Estimated total, direct, and indirect effects.}
+#'     \item{est}{Estimated standardized total, direct, and indirect effects.}
 #'     \item{vcov}{Sampling variance-covariance matrix of the
-#'     estimated total, direct, and indirect effects.}
+#'     estimated standardized total, direct, and indirect effects.}
 #'   }
 #'
 #' @examples

@@ -53,7 +53,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("DirectStd").}
-#'     \item{output}{The direct effect.}
+#'     \item{output}{The standardized direct effect.}
 #'   }
 #'
 #' @examples
