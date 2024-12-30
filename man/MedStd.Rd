@@ -41,7 +41,8 @@ of class \code{ctmedmed} which is a list with the following elements:
 \item{call}{Function call.}
 \item{args}{Function arguments.}
 \item{fun}{Function used ("MedStd").}
-\item{output}{A standardized matrix of total, direct, and indirect effects.}
+\item{output}{A standardized matrix of
+total, direct, and indirect effects.}
 }
 }
 \description{
