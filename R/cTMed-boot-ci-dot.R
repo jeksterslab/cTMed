@@ -1,5 +1,6 @@
 .BootCI <- function(object,
-                    alpha = c(0.05, 0.01, 0.001)) {
+                    alpha = c(0.05, 0.01, 0.001),
+                    type = "pc") {
   return(
     lapply(
       X = object$output,
@@ -13,11 +14,27 @@
           length = length(idx)
         )
         for (i in idx) {
-          ci[[i]] <- .PCCI(
-            thetahatstar = thetahatstar[, i],
-            thetahat = thetahat[i],
-            probs = probs
-          )
+          if (type == "pc") {
+            ci[[i]] <- .PCCI(
+              thetahatstar = thetahatstar[, i],
+              thetahat = thetahat[i],
+              probs = probs
+            )
+          }
+          if (type == "bc") {
+            ci[[i]] <- .BCCI(
+              thetahatstar = thetahatstar[, i],
+              thetahat = thetahat[i],
+              probs = probs,
+              z0 = .Z0(
+                thetahatstar = thetahatstar[, i],
+                thetahat = thetahat[i]
+              ),
+              z1 = .Z1(
+                probs = probs
+              )
+            )
+          }
         }
         ci <- do.call(
           what = "rbind",

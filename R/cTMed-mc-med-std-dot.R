@@ -88,8 +88,9 @@
             "indirect",
             "interval"
           )
-          est <- .Med(
+          est <- .MedStd(
             phi = phi,
+            sigma = sigma,
             delta_t = i,
             from = from,
             to = to,
@@ -171,8 +172,9 @@
             "indirect",
             "interval"
           )
-          est <- .Med(
+          est <- .MedStd(
             phi = phi,
+            sigma = sigma,
             delta_t = i,
             from = from,
             to = to,

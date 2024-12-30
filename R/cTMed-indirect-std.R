@@ -41,7 +41,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("IndirectStd").}
-#'     \item{output}{The indirect effect.}
+#'     \item{output}{The standardized indirect effect.}
 #'   }
 #'
 #' @examples

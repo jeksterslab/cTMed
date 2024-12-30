@@ -13,9 +13,7 @@ BootMed(phi, phi_hat, delta_t, from, to, med, ncores = NULL, tol = 0.01)
 \arguments{
 \item{phi}{List of numeric matrices.
 Each element of the list is a bootstrap estimate
-of the drift matrix (\eqn{\boldsymbol{\Phi}}).
-Each matrix should have row and column names
-pertaining to the variables in the system.}
+of the drift matrix (\eqn{\boldsymbol{\Phi}}).}
 
 \item{phi_hat}{Numeric matrix.
 The estimated drift matrix (\eqn{\hat{\boldsymbol{\Phi}}})
@@ -49,7 +47,7 @@ Smallest possible time interval to allow.}
 }
 \value{
 Returns an object
-of class \code{ctmedmc} which is a list with the following elements:
+of class \code{ctmedboot} which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
 \item{args}{Function arguments.}
@@ -80,6 +78,126 @@ See \code{\link[=Total]{Total()}},
 \code{\link[=Direct]{Direct()}}, and
 \code{\link[=Indirect]{Indirect()}} for more details.
 }
+\examples{
+\dontrun{
+library(simStateSpace)
+# prepare parameters
+## number of individuals
+n <- 50
+## time points
+time <- 100
+delta_t <- 0.10
+## dynamic structure
+p <- 3
+mu0 <- rep(x = 0, times = p)
+sigma0 <- matrix(
+  data = c(
+    1.0,
+    0.2,
+    0.2,
+    0.2,
+    1.0,
+    0.2,
+    0.2,
+    0.2,
+    1.0
+  ),
+  nrow = p
+)
+sigma0_l <- t(chol(sigma0))
+mu <- rep(x = 0, times = p)
+phi <- matrix(
+  data = c(
+    -0.357,
+    0.771,
+    -0.450,
+    0.0,
+    -0.511,
+    0.729,
+    0,
+    0,
+    -0.693
+  ),
+  nrow = p
+)
+sigma <- matrix(
+  data = c(
+    0.24455556,
+    0.02201587,
+    -0.05004762,
+    0.02201587,
+    0.07067800,
+    0.01539456,
+    -0.05004762,
+    0.01539456,
+    0.07553061
+  ),
+  nrow = p
+)
+sigma_l <- t(chol(sigma))
+## measurement model
+k <- 3
+nu <- rep(x = 0, times = k)
+lambda <- diag(k)
+theta <- 0.2 * diag(k)
+theta_l <- t(chol(theta))
+
+boot <- PBSSMOUFixed(
+  R = 1000L,
+  path = getwd(),
+  prefix = "ou",
+  n = n,
+  time = time,
+  delta_t = delta_t,
+  mu0 = mu0,
+  sigma0_l = sigma0_l,
+  mu = mu,
+  phi = phi,
+  sigma_l = sigma_l,
+  nu = nu,
+  lambda = lambda,
+  theta_l = theta_l,
+  ncores = parallel::detectCores() - 1,
+  seed = 42
+)
+phi_hat <- phi
+colnames(phi_hat) <- rownames(phi_hat) <- c("x", "m", "y")
+phi <- extract(object = boot, what = "phi")
+
+# Specific time interval ----------------------------------------------------
+BootMed(
+  phi = phi,
+  phi_hat = phi_hat,
+  delta_t = 1,
+  from = "x",
+  to = "y",
+  med = "m"
+)
+
+# Range of time intervals ---------------------------------------------------
+boot <- BootMed(
+  phi = phi,
+  phi_hat = phi_hat,
+  delta_t = 1:5,
+  from = "x",
+  to = "y",
+  med = "m"
+)
+plot(boot)
+plot(boot, type = "bc") # bias-corrected
+
+# Methods -------------------------------------------------------------------
+# BootMed has a number of methods including
+# print, summary, confint, and plot
+print(boot)
+summary(boot)
+confint(boot, level = 0.95)
+print(boot, type = "bc") # bias-corrected
+summary(boot, type = "bc")
+confint(boot, level = 0.95, type = "bc")
+}
+
+}
 \references{
 Bollen, K. A. (1987).
 Total, direct, and indirect effects in structural equation models.
@@ -100,6 +218,9 @@ Psychometrika, 87 (1), 214–252.
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{BootBeta}()},
+\code{\link{BootBetaStd}()},
+\code{\link{BootMedStd}()},
 \code{\link{DeltaBeta}()},
 \code{\link{DeltaBetaStd}()},
 \code{\link{DeltaIndirectCentral}()},

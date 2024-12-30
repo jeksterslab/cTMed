@@ -41,7 +41,7 @@ of class \code{ctmedmed} which is a list with the following elements:
 \item{call}{Function call.}
 \item{args}{Function arguments.}
 \item{fun}{Function used ("MedStd").}
-\item{output}{A matrix of total, direct, and indirect effects.}
+\item{output}{A standardized matrix of total, direct, and indirect effects.}
 }
 }
 \description{
@@ -136,7 +136,10 @@ Psychometrika, 87 (1), 214–252.
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{BootBeta}()},
+\code{\link{BootBetaStd}()},
 \code{\link{BootMed}()},
+\code{\link{BootMedStd}()},
 \code{\link{DeltaBeta}()},
 \code{\link{DeltaBetaStd}()},
 \code{\link{DeltaIndirectCentral}()},

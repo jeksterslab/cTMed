@@ -71,7 +71,7 @@ phi <- matrix(
     0,
     -0.693
   ),
-  nrow = k
+  nrow = p
 )
 beta_var1 <- expm::expm(
   phi

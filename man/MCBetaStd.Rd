@@ -74,9 +74,10 @@ the length of \code{delta_t}.}
 }
 Each element in the \code{output} list has the following elements:
 \describe{
-\item{est}{A vector of total, direct, and indirect effects.}
+\item{est}{Estimated elements of the standardized matrix
+of lagged coefficients.}
 \item{thetahatstar}{A matrix of Monte Carlo
-total, direct, and indirect effects.}
+elements of the standardized matrix of lagged coefficients.}
 }
 }
 \description{
@@ -269,7 +270,10 @@ Psychometrika, 87 (1), 214–252.
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{BootBeta}()},
+\code{\link{BootBetaStd}()},
 \code{\link{BootMed}()},
+\code{\link{BootMedStd}()},
 \code{\link{DeltaBeta}()},
 \code{\link{DeltaBetaStd}()},
 \code{\link{DeltaIndirectCentral}()},

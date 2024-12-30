@@ -29,7 +29,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("MedStd").}
-#'     \item{output}{A matrix of total, direct, and indirect effects.}
+#'     \item{output}{A standardized matrix of total, direct, and indirect effects.}
 #'   }
 #'
 #' @examples

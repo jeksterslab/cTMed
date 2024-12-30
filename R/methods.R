@@ -12,6 +12,10 @@
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
+#' @param type Charater string.
+#'   Confidence interval type, that is,
+#'   `type = "pc"` for percentile;
+#'   `type = "bc"` for bias corrected.
 #'
 #' @examples
 #' phi <- matrix(
@@ -69,7 +73,11 @@
 #' @noRd
 .PlotBetaCI <- function(object,
                         alpha = 0.05,
-                        col = NULL) {
+                        col = NULL,
+                        type = "pc") {
+  stopifnot(
+    type %in% c("pc", "bc")
+  )
   if (length(object$output) == 1) {
     stop(
       paste0(
@@ -85,21 +93,27 @@
     alpha > 0 && alpha < 1
   )
   if (object$args$method == "mc") {
-    mc <- TRUE
     ylab <- "Estimate"
     method <- "Monte Carlo Method"
   }
   if (object$args$method == "posterior") {
-    mc <- TRUE
     ylab <- "Posterior"
     method <- "Posterior"
   }
   if (object$args$method == "delta") {
-    mc <- FALSE
     ylab <- "Estimate"
     method <- "Delta Method"
   }
-  if (mc) {
+  if (object$args$method == "boot") {
+    ylab <- "Estimate"
+    if (type == "pc") {
+      method <- "Percentile Bootstrap Method"
+    }
+    if (type == "bc") {
+      method <- "Bias-Corrected Bootstrap Method"
+    }
+  }
+  if (object$args$method %in% c("mc", "posterior")) {
     ci <- .MCCI(
       object = object,
       alpha = alpha
@@ -116,7 +130,27 @@
       "ll",
       "ul"
     )
-  } else {
+  }
+  if (object$args$method == "boot") {
+    ci <- .BootCI(
+      object = object,
+      alpha = alpha,
+      type = type
+    )
+    ci <- do.call(
+      what = "rbind",
+      args = ci
+    )
+    colnames(ci) <- c(
+      "interval",
+      "est",
+      "se",
+      "R",
+      "ll",
+      "ul"
+    )
+  }
+  if (object$args$method == "delta") {
     ci <- .DeltaCI(
       object = object,
       alpha = alpha
@@ -235,6 +269,10 @@
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
+#' @param type Charater string.
+#'   Confidence interval type, that is,
+#'   `type = "pc"` for percentile;
+#'   `type = "bc"` for bias corrected.
 #'
 #' @examples
 #' phi <- matrix(
@@ -298,7 +336,11 @@
 #' @noRd
 .PlotCentralCI <- function(object,
                            alpha = 0.05,
-                           col = NULL) {
+                           col = NULL,
+                           type = "pc") {
+  stopifnot(
+    type %in% c("pc", "bc")
+  )
   if (length(object$output) == 1) {
     stop(
       paste0(
@@ -314,21 +356,27 @@
     alpha > 0 && alpha < 1
   )
   if (object$args$method == "mc") {
-    mc <- TRUE
     ylab <- "Estimate"
     method <- "Monte Carlo Method"
   }
   if (object$args$method == "posterior") {
-    mc <- TRUE
     ylab <- "Posterior"
     method <- "Posterior"
   }
   if (object$args$method == "delta") {
-    mc <- FALSE
     ylab <- "Estimate"
     method <- "Delta Method"
   }
-  if (mc) {
+  if (object$args$method == "boot") {
+    ylab <- "Estimate"
+    if (type == "pc") {
+      method <- "Percentile Bootstrap Method"
+    }
+    if (type == "bc") {
+      method <- "Bias-Corrected Bootstrap Method"
+    }
+  }
+  if (object$args$method %in% c("mc", "posterior")) {
     ci <- .MCCI(
       object = object,
       alpha = alpha
@@ -345,7 +393,27 @@
       "ll",
       "ul"
     )
-  } else {
+  }
+  if (object$args$method == "boot") {
+    ci <- .BootCI(
+      object = object,
+      alpha = alpha,
+      type = type
+    )
+    ci <- do.call(
+      what = "rbind",
+      args = ci
+    )
+    colnames(ci) <- c(
+      "interval",
+      "est",
+      "se",
+      "R",
+      "ll",
+      "ul"
+    )
+  }
+  if (object$args$method == "delta") {
     ci <- .DeltaCI(
       object = object,
       alpha = alpha
@@ -571,6 +639,10 @@
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
+#' @param type Charater string.
+#'   Confidence interval type, that is,
+#'   `type = "pc"` for percentile;
+#'   `type = "bc"` for bias corrected.
 #'
 #' @examples
 #' set.seed(42)
@@ -643,7 +715,11 @@
 #' @noRd
 .PlotMedCI <- function(object,
                        alpha = 0.05,
-                       col = NULL) {
+                       col = NULL,
+                       type = "pc") {
+  stopifnot(
+    type %in% c("pc", "bc")
+  )
   if (length(object$output) == 1) {
     stop(
       paste0(
@@ -658,27 +734,28 @@
   stopifnot(
     alpha > 0 && alpha < 1
   )
-  if (object$args$method == "boot") {
-    mc <- TRUE
-    ylab <- "Estimate"
-    method <- "Bootstrap Method"
-  }
   if (object$args$method == "mc") {
-    mc <- TRUE
     ylab <- "Estimate"
     method <- "Monte Carlo Method"
   }
   if (object$args$method == "posterior") {
-    mc <- TRUE
     ylab <- "Posterior"
     method <- "Posterior"
   }
   if (object$args$method == "delta") {
-    mc <- FALSE
     ylab <- "Estimate"
     method <- "Delta Method"
   }
-  if (mc) {
+  if (object$args$method == "boot") {
+    ylab <- "Estimate"
+    if (type == "pc") {
+      method <- "Percentile Bootstrap Method"
+    }
+    if (type == "bc") {
+      method <- "Bias-Corrected Bootstrap Method"
+    }
+  }
+  if (object$args$method %in% c("mc", "posterior")) {
     ci <- .MCCI(
       object = object,
       alpha = alpha
@@ -695,7 +772,27 @@
       "ll",
       "ul"
     )
-  } else {
+  }
+  if (object$args$method == "boot") {
+    ci <- .BootCI(
+      object = object,
+      alpha = alpha,
+      type = type
+    )
+    ci <- do.call(
+      what = "rbind",
+      args = ci
+    )
+    colnames(ci) <- c(
+      "interval",
+      "est",
+      "se",
+      "R",
+      "ll",
+      "ul"
+    )
+  }
+  if (object$args$method == "delta") {
     ci <- .DeltaCI(
       object = object,
       alpha = alpha

@@ -488,7 +488,7 @@ plot.ctmedmc <- function(x,
       )
     )
   } else {
-    if (x$fun == "MCMed" || x$fun == "MCMedStd" || x$fun == "PosteriorMed" || x$fun == "BootMed") {
+    if (x$fun %in% c("MCMed", "MCMedStd", "PosteriorMed", "BootMed")) {
       return(
         .PlotMedCI(
           object = x,
@@ -497,7 +497,7 @@ plot.ctmedmc <- function(x,
         )
       )
     }
-    if (x$fun == "MCBeta" || x$fun == "MCBetaStd" || x$fun == "PosteriorBeta") {
+    if (x$fun %in% c("MCBeta", "MCBetaStd", "PosteriorBeta")) {
       return(
         .PlotBetaCI(
           object = x,

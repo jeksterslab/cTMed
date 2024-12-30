@@ -389,10 +389,14 @@ boot <- PBSSMOUFixed(
 )
 ```
 
-The `extract` function from the `simStateSpace` package is used to extract the bootstrap phi matrices.
+The `extract` function from the `simStateSpace` package is used to extract the bootstrap phi matrices as well as the sigma matrices.
 
 ```{r}
 phi <- extract(object = boot, what = "phi")
+```
+
+```{r}
+sigma <- extract(object = boot, what = "sigma")
 ```
 
 In this example, we aim to calculate the total, direct, and indirect effects of `x` on `y`, mediated through `m`, over time intervals ranging from 0 to 10.
@@ -426,6 +430,23 @@ phi_hat <- matrix(
 colnames(phi_hat) <- rownames(phi_hat) <- c("x", "m", "y")
 ```
 
+For the standardized effects, the estimated process noise covariance matrix from the original sample is also needed.
+
+```{r}
+# estimated process noise covariance matrix
+sigma_hat <- matrix(
+  data = est[
+    c(
+      "sigma_1_1", "sigma_2_1", "sigma_3_1",
+      "sigma_2_1", "sigma_2_2", "sigma_3_2",
+      "sigma_3_1", "sigma_3_2", "sigma_3_3"
+    )
+  ],
+  nrow = 3,
+  ncol = 3
+)
+```
+
 ## Bootstrap Method
 
 ```{r boot}
@@ -440,6 +461,25 @@ boot <- BootMed(
   ncores = parallel::detectCores() # use multiple cores
 )
 plot(boot)
+plot(boot, type = "bc")
+```
+
+The following generates bootstrap confidence intervals for the standardized effects.
+
+```{r boot-std}
+boot <- BootMedStd(
+  phi = phi,
+  sigma = sigma,
+  phi_hat = phi_hat,
+  sigma_hat = sigma_hat,
+  delta_t = delta_t,
+  from = "x",
+  to = "y",
+  med = "m",
+  ncores = parallel::detectCores() # use multiple cores
+)
+plot(boot)
+plot(boot, type = "bc")
 ```
 
 ## References

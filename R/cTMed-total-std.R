@@ -40,7 +40,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("TotalStd").}
-#'     \item{output}{The matrix of total effects.}
+#'     \item{output}{The standardized matrix of total effects.}
 #'   }
 #'
 #' @examples

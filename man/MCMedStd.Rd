@@ -86,9 +86,9 @@ of class \code{ctmedmc} which is a list with the following elements:
 }
 Each element in the \code{output} list has the following elements:
 \describe{
-\item{est}{A vector of total, direct, and indirect effects.}
+\item{est}{A vector of standardized total, direct, and indirect effects.}
 \item{thetahatstar}{A matrix of Monte Carlo
-total, direct, and indirect effects.}
+standardized total, direct, and indirect effects.}
 }
 }
 \description{
@@ -290,7 +290,10 @@ Psychometrika, 87 (1), 214–252.
 }
 \seealso{
 Other Continuous Time Mediation Functions: 
+\code{\link{BootBeta}()},
+\code{\link{BootBetaStd}()},
 \code{\link{BootMed}()},
+\code{\link{BootMedStd}()},
 \code{\link{DeltaBeta}()},
 \code{\link{DeltaBetaStd}()},
 \code{\link{DeltaIndirectCentral}()},
