@@ -1,7 +1,7 @@
 ---
 title: "Total, Direct, and Indirect Effects in Continuous-Time Mediation Model (Bootstrap)"
 author: Ivan Jacob Agaloos Pesigan
-date: "2024-12-30"
+date: "2024-12-31"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -222,7 +222,6 @@ boot <- PBSSMOUFixed(
   ncores = parallel::detectCores(),
   seed = 42
 )
-#> Error in PBSSMOUFixed(R = R, path = path, prefix = prefix, n = n, time = time, : unused arguments (path = path, prefix = prefix)
 ```
 
 The `extract` function from the `simStateSpace` package is used to extract the bootstrap phi matrices as well as the sigma matrices.
@@ -230,13 +229,11 @@ The `extract` function from the `simStateSpace` package is used to extract the b
 
 ``` r
 phi <- extract(object = boot, what = "phi")
-#> Error in extract(object = boot, what = "phi"): could not find function "extract"
 ```
 
 
 ``` r
 sigma <- extract(object = boot, what = "sigma")
-#> Error in extract(object = boot, what = "sigma"): could not find function "extract"
 ```
 
 In this example, we aim to calculate the total, direct, and indirect effects of `x` on `y`, mediated through `m`, over time intervals ranging from 0 to 10.
@@ -304,14 +301,16 @@ boot <- BootMed(
   med = "m",
   ncores = parallel::detectCores() # use multiple cores
 )
-#> Warning in parallel::mclapply(X = phi, FUN = .Med, delta_t = i, from = from, :
-#> all scheduled cores encountered errors in user code
-#> Error in dimnames(x) <- dn: length of 'dimnames' [2] not equal to array extent
 plot(boot)
-#> Error: object 'boot' not found
-plot(boot, type = "bc")
-#> Error: object 'boot' not found
 ```
+
+<img src="fig-vignettes-med-boot-boot-1.png" width="3300" /><img src="fig-vignettes-med-boot-boot-2.png" width="3300" /><img src="fig-vignettes-med-boot-boot-3.png" width="3300" />
+
+``` r
+plot(boot, type = "bc")
+```
+
+<img src="fig-vignettes-med-boot-boot-4.png" width="3300" /><img src="fig-vignettes-med-boot-boot-5.png" width="3300" /><img src="fig-vignettes-med-boot-boot-6.png" width="3300" />
 
 The following generates bootstrap confidence intervals for the standardized effects.
 
@@ -328,14 +327,16 @@ boot <- BootMedStd(
   med = "m",
   ncores = parallel::detectCores() # use multiple cores
 )
-#> Warning in parallel::mclapply(X = phis, FUN = function(x, delta_t, from, : all
-#> scheduled cores encountered errors in user code
-#> Error in dimnames(x) <- dn: length of 'dimnames' [2] not equal to array extent
 plot(boot)
-#> Error: object 'boot' not found
-plot(boot, type = "bc")
-#> Error: object 'boot' not found
 ```
+
+<img src="fig-vignettes-med-boot-boot-std-1.png" width="3300" /><img src="fig-vignettes-med-boot-boot-std-2.png" width="3300" /><img src="fig-vignettes-med-boot-boot-std-3.png" width="3300" />
+
+``` r
+plot(boot, type = "bc")
+```
+
+<img src="fig-vignettes-med-boot-boot-std-4.png" width="3300" /><img src="fig-vignettes-med-boot-boot-std-5.png" width="3300" /><img src="fig-vignettes-med-boot-boot-std-6.png" width="3300" />
 
 ## References
 

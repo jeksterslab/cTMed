@@ -30,7 +30,7 @@
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("MedStd").}
 #'     \item{output}{A standardized matrix of
-#'       total, direct, and indirect effects.}
+#'         total, direct, and indirect effects.}
 #'   }
 #'
 #' @examples
