@@ -362,7 +362,7 @@ path <- getwd()
 prefix <- "ou"
 ```
 
-The estimated parameters are then passed as arguments to the `PBSSMLinSDEFixed` function from the `simStateSpace` package, which generates a parametric bootstrap sampling distribution of the parameter estimates. The argument `R` specifies the number of bootstrap replications.
+The estimated parameters are then passed as arguments to the `PBSSMOUFixed` function from the `simStateSpace` package, which generates a parametric bootstrap sampling distribution of the parameter estimates. The argument `R` specifies the number of bootstrap replications.
 The generated data and model estimates are be stored in `path` using the specified `prefix` for the file names.
 The `ncores = parallel::detectCores()` argument instructs the function to use all available CPU cores in the system.
 

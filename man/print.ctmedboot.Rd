@@ -26,7 +26,7 @@ Prints a list of matrices of
 time intervals,
 estimates,
 standard errors,
-number of Monte Carlo replications,
+number of bootstrap replications,
 and
 confidence intervals.
 }
@@ -34,72 +34,115 @@ confidence intervals.
 Print Method for Object of Class \code{ctmedboot}
 }
 \examples{
-set.seed(42)
+\dontrun{
+library(simStateSpace)
+# prepare parameters
+## number of individuals
+n <- 50
+## time points
+time <- 100
+delta_t <- 0.10
+## dynamic structure
+p <- 3
+mu0 <- rep(x = 0, times = p)
+sigma0 <- matrix(
+  data = c(
+    1.0,
+    0.2,
+    0.2,
+    0.2,
+    1.0,
+    0.2,
+    0.2,
+    0.2,
+    1.0
+  ),
+  nrow = p
+)
+sigma0_l <- t(chol(sigma0))
+mu <- rep(x = 0, times = p)
 phi <- matrix(
   data = c(
-    -0.357, 0.771, -0.450,
-    0.0, -0.511, 0.729,
-    0, 0, -0.693
+    -0.357,
+    0.771,
+    -0.450,
+    0.0,
+    -0.511,
+    0.729,
+    0,
+    0,
+    -0.693
   ),
-  nrow = 3
+  nrow = p
 )
-colnames(phi) <- rownames(phi) <- c("x", "m", "y")
-vcov_phi_vec <- matrix(
+sigma <- matrix(
   data = c(
-    0.00843, 0.00040, -0.00151,
-    -0.00600, -0.00033, 0.00110,
-    0.00324, 0.00020, -0.00061,
-    0.00040, 0.00374, 0.00016,
-    -0.00022, -0.00273, -0.00016,
-    0.00009, 0.00150, 0.00012,
-    -0.00151, 0.00016, 0.00389,
-    0.00103, -0.00007, -0.00283,
-    -0.00050, 0.00000, 0.00156,
-    -0.00600, -0.00022, 0.00103,
-    0.00644, 0.00031, -0.00119,
-    -0.00374, -0.00021, 0.00070,
-    -0.00033, -0.00273, -0.00007,
-    0.00031, 0.00287, 0.00013,
-    -0.00014, -0.00170, -0.00012,
-    0.00110, -0.00016, -0.00283,
-    -0.00119, 0.00013, 0.00297,
-    0.00063, -0.00004, -0.00177,
-    0.00324, 0.00009, -0.00050,
-    -0.00374, -0.00014, 0.00063,
-    0.00495, 0.00024, -0.00093,
-    0.00020, 0.00150, 0.00000,
-    -0.00021, -0.00170, -0.00004,
-    0.00024, 0.00214, 0.00012,
-    -0.00061, 0.00012, 0.00156,
-    0.00070, -0.00012, -0.00177,
-    -0.00093, 0.00012, 0.00223
+    0.24455556,
+    0.02201587,
+    -0.05004762,
+    0.02201587,
+    0.07067800,
+    0.01539456,
+    -0.05004762,
+    0.01539456,
+    0.07553061
   ),
-  nrow = 9
+  nrow = p
 )
+sigma_l <- t(chol(sigma))
+## measurement model
+k <- 3
+nu <- rep(x = 0, times = k)
+lambda <- diag(k)
+theta <- 0.2 * diag(k)
+theta_l <- t(chol(theta))
+
+boot <- PBSSMOUFixed(
+  R = 1000L,
+  path = getwd(),
+  prefix = "ou",
+  n = n,
+  time = time,
+  delta_t = delta_t,
+  mu0 = mu0,
+  sigma0_l = sigma0_l,
+  mu = mu,
+  phi = phi,
+  sigma_l = sigma_l,
+  nu = nu,
+  lambda = lambda,
+  theta_l = theta_l,
+  ncores = parallel::detectCores() - 1,
+  seed = 42
+)
+phi_hat <- phi
+colnames(phi_hat) <- rownames(phi_hat) <- c("x", "m", "y")
+phi <- extract(object = boot, what = "phi")
 
 # Specific time interval ----------------------------------------------------
-mc <- MCMed(
+boot <- BootMed(
   phi = phi,
-  vcov_phi_vec = vcov_phi_vec,
+  phi_hat = phi_hat,
   delta_t = 1,
   from = "x",
   to = "y",
-  med = "m",
-  R = 100L # use a large value for R in actual research
+  med = "m"
 )
-print(mc)
+print(boot)
+print(boot, type = "bc") # bias-corrected
 
 # Range of time intervals ---------------------------------------------------
-mc <- MCMed(
+boot <- BootMed(
   phi = phi,
-  vcov_phi_vec = vcov_phi_vec,
+  phi_hat = phi_hat,
   delta_t = 1:5,
   from = "x",
   to = "y",
-  med = "m",
-  R = 100L # use a large value for R in actual research
+  med = "m"
 )
-print(mc)
+print(boot)
+print(boot, type = "bc") # bias-corrected
+}
 
 }
 \author{
