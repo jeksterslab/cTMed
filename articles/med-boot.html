@@ -224,12 +224,12 @@ which will be used to generate bootstrap samples.</p>
 <span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">prefix</span> <span class="op">&lt;-</span> <span class="st">"ou"</span></span></code></pre></div>
 <p>The estimated parameters are then passed as arguments to the
-<code>PBSSMLinSDEFixed</code> function from the
-<code>simStateSpace</code> package, which generates a parametric
-bootstrap sampling distribution of the parameter estimates. The argument
-<code>R</code> specifies the number of bootstrap replications. The
-generated data and model estimates are be stored in <code>path</code>
-using the specified <code>prefix</code> for the file names. The
+<code>PBSSMOUFixed</code> function from the <code>simStateSpace</code>
+package, which generates a parametric bootstrap sampling distribution of
+the parameter estimates. The argument <code>R</code> specifies the
+number of bootstrap replications. The generated data and model estimates
+are be stored in <code>path</code> using the specified
+<code>prefix</code> for the file names. The
 <code>ncores = parallel::detectCores()</code> argument instructs the
 function to use all available CPU cores in the system.</p>
 <blockquote>
