@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2024-12-30</h4>
+            <h4 data-toc-skip class="date">2024-12-31</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/main/vignettes/med-boot.Rmd"><code>vignettes/med-boot.Rmd</code></a></small>
       <div class="d-none name"><code>med-boot.Rmd</code></div>
@@ -254,17 +254,14 @@ times is computationally intensive.</p>
 <span>  theta_l <span class="op">=</span> <span class="va">theta_l</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  seed <span class="op">=</span> <span class="fl">42</span></span>
-<span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in PBSSMOUFixed(R = R, path = path, prefix = prefix, n = n, time = time, : unused arguments (path = path, prefix = prefix)</span></span></code></pre></div>
+<span><span class="op">)</span></span></code></pre></div>
 <p>The <code>extract</code> function from the <code>simStateSpace</code>
 package is used to extract the bootstrap phi matrices as well as the
 sigma matrices.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/extract.html" class="external-link">extract</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">boot</span>, what <span class="op">=</span> <span class="st">"phi"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in extract(object = boot, what = "phi"): could not find function "extract"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/extract.html" class="external-link">extract</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">boot</span>, what <span class="op">=</span> <span class="st">"phi"</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/extract.html" class="external-link">extract</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">boot</span>, what <span class="op">=</span> <span class="st">"sigma"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error in extract(object = boot, what = "sigma"): could not find function "extract"</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/extract.html" class="external-link">extract</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">boot</span>, what <span class="op">=</span> <span class="st">"sigma"</span><span class="op">)</span></span></code></pre></div>
 <p>In this example, we aim to calculate the total, direct, and indirect
 effects of <code>x</code> on <code>y</code>, mediated through
 <code>m</code>, over time intervals ranging from 0 to 10.</p>
@@ -321,16 +318,14 @@ matrix from the original sample is also needed.</p>
 <span>  med <span class="op">=</span> <span class="st">"m"</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># use multiple cores</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in parallel::mclapply(X = phi, FUN = .Med, delta_t = i, from = from, :</span></span>
-<span><span class="co">#&gt; all scheduled cores encountered errors in user code</span></span>
-<span><span class="co">#&gt; Error in dimnames(x) &lt;- dn: length of 'dimnames' [2] not equal to array extent</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: object 'boot' not found</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: object 'boot' not found</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></code></pre></div>
+<p><img src="fig-vignettes-med-boot-boot-1.png" width="3300"><img src="fig-vignettes-med-boot-boot-2.png" width="3300"><img src="fig-vignettes-med-boot-boot-3.png" width="3300"></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="fig-vignettes-med-boot-boot-4.png" width="3300"><img src="fig-vignettes-med-boot-boot-5.png" width="3300"><img src="fig-vignettes-med-boot-boot-6.png" width="3300"></p>
 <p>The following generates bootstrap confidence intervals for the
 standardized effects.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BootMedStd.html">BootMedStd</a></span><span class="op">(</span></span>
 <span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
 <span>  sigma <span class="op">=</span> <span class="va">sigma</span>,</span>
@@ -342,13 +337,11 @@ standardized effects.</p>
 <span>  med <span class="op">=</span> <span class="st">"m"</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># use multiple cores</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in parallel::mclapply(X = phis, FUN = function(x, delta_t, from, : all</span></span>
-<span><span class="co">#&gt; scheduled cores encountered errors in user code</span></span>
-<span><span class="co">#&gt; Error in dimnames(x) &lt;- dn: length of 'dimnames' [2] not equal to array extent</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: object 'boot' not found</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: object 'boot' not found</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></code></pre></div>
+<p><img src="fig-vignettes-med-boot-boot-std-1.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-2.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-3.png" width="3300"></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="fig-vignettes-med-boot-boot-std-4.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-5.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-6.png" width="3300"></p>
 </div>
 <div class="section level2 unnumbered">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
