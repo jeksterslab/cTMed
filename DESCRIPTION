@@ -25,7 +25,7 @@ Imports:
     Rcpp,
     numDeriv,
     parallel,
-    simStateSpace
+    simStateSpace (>= 1.2.7)
 Suggests:
     knitr,
     rmarkdown,

@@ -107,10 +107,10 @@
   if (object$args$method == "boot") {
     ylab <- "Estimate"
     if (type == "pc") {
-      method <- "Percentile Bootstrap Method"
+      method <- "PC Bootstrap Method"
     }
     if (type == "bc") {
-      method <- "Bias-Corrected Bootstrap Method"
+      method <- "BC Bootstrap Method"
     }
   }
   if (object$args$method %in% c("mc", "posterior")) {
