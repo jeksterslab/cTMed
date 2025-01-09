@@ -106,15 +106,15 @@ time
 delta_t
 mu0
 sigma0
-sigma0_l
+sigma0_l # sigma0_l <- t(chol(sigma0))
 mu
 phi
 sigma
-sigma_l
+sigma_l # sigma_l <- t(chol(sigma))
 nu
 lambda
 theta
-theta_l
+theta_l # theta_l <- t(chol(theta))
 ```
 
 ```{r}
