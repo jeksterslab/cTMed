@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.4.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2025-01-01</h4>
+            <h4 data-toc-skip class="date">2025-01-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/main/vignettes/fit-ct-var-mx.Rmd"><code>vignettes/fit-ct-var-mx.Rmd</code></a></small>
       <div class="d-none name"><code>fit-ct-var-mx.Rmd</code></div>
@@ -87,7 +87,7 @@ the <code>simStateSpace</code> Package<a class="anchor" aria-label="anchor" href
 <span><span class="co">#&gt; [1,]  1.0  0.2  0.2</span></span>
 <span><span class="co">#&gt; [2,]  0.2  1.0  0.2</span></span>
 <span><span class="co">#&gt; [3,]  0.2  0.2  1.0</span></span>
-<span><span class="va">sigma0_l</span></span>
+<span><span class="va">sigma0_l</span> <span class="co"># sigma0_l &lt;- t(chol(sigma0))</span></span>
 <span><span class="co">#&gt;      [,1]      [,2]      [,3]</span></span>
 <span><span class="co">#&gt; [1,]  1.0 0.0000000 0.0000000</span></span>
 <span><span class="co">#&gt; [2,]  0.2 0.9797959 0.0000000</span></span>
@@ -104,7 +104,7 @@ the <code>simStateSpace</code> Package<a class="anchor" aria-label="anchor" href
 <span><span class="co">#&gt; [1,]  0.24455556 0.02201587 -0.05004762</span></span>
 <span><span class="co">#&gt; [2,]  0.02201587 0.07067800  0.01539456</span></span>
 <span><span class="co">#&gt; [3,] -0.05004762 0.01539456  0.07553061</span></span>
-<span><span class="va">sigma_l</span></span>
+<span><span class="va">sigma_l</span> <span class="co"># sigma_l &lt;- t(chol(sigma))</span></span>
 <span><span class="co">#&gt;             [,1]      [,2]     [,3]</span></span>
 <span><span class="co">#&gt; [1,]  0.49452559 0.0000000 0.000000</span></span>
 <span><span class="co">#&gt; [2,]  0.04451917 0.2620993 0.000000</span></span>
@@ -121,7 +121,7 @@ the <code>simStateSpace</code> Package<a class="anchor" aria-label="anchor" href
 <span><span class="co">#&gt; [1,]  0.2  0.0  0.0</span></span>
 <span><span class="co">#&gt; [2,]  0.0  0.2  0.0</span></span>
 <span><span class="co">#&gt; [3,]  0.0  0.0  0.2</span></span>
-<span><span class="va">theta_l</span></span>
+<span><span class="va">theta_l</span> <span class="co"># theta_l &lt;- t(chol(theta))</span></span>
 <span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
 <span><span class="co">#&gt; [1,] 0.4472136 0.0000000 0.0000000</span></span>
 <span><span class="co">#&gt; [2,] 0.0000000 0.4472136 0.0000000</span></span>
@@ -564,8 +564,8 @@ parameters remain fixed across individuals.</p>
 <span><span class="co">#&gt; RMSEA:  0  [95% CI (NA, NA)]</span></span>
 <span><span class="co">#&gt; Prob(RMSEA &lt;= 0.05): NA</span></span>
 <span><span class="co">#&gt; To get additional fit indices, see help(mxRefModels)</span></span>
-<span><span class="co">#&gt; timestamp: 2025-01-01 03:55:24 </span></span>
-<span><span class="co">#&gt; Wall clock time: 208.6432 secs </span></span>
+<span><span class="co">#&gt; timestamp: 2025-01-09 06:06:17 </span></span>
+<span><span class="co">#&gt; Wall clock time: 192.3853 secs </span></span>
 <span><span class="co">#&gt; optimizer:  SLSQP </span></span>
 <span><span class="co">#&gt; OpenMx version number: 2.21.13 </span></span>
 <span><span class="co">#&gt; Need help?  See help(mxSummary)</span></span>
