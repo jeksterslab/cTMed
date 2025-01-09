@@ -1,8 +1,14 @@
+# cTMed 1.0.4.9000
+
+## Patch
+
+* Latest development version.
+
 # cTMed 1.0.4
 
 ## Patch
 
-* Added the `BootMed()` function.
+* Added the `BootMed()`, `BootMedStd()`, `BootBeta()`, and `BootBetaStd()` functions.
 
 # cTMed 1.0.3
 
