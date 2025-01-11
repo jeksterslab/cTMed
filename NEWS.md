@@ -3,6 +3,8 @@
 ## Patch
 
 * Latest development version.
+* Added the `MCPhiSigma()` function.
+* Minor edits to tests.
 
 # cTMed 1.0.4
 

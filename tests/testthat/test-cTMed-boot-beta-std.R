@@ -1,4 +1,4 @@
-## ---- test-cTMed-delta-beta-std
+## ---- test-cTMed-boot-beta-std
 lapply(
   X = 1,
   FUN = function(i,
@@ -6,7 +6,7 @@ lapply(
                  tol) {
     message(text)
     testthat::test_that(
-      paste(text, "DeltaBetaStd"),
+      paste(text, "BootBetaStd"),
       {
         testthat::skip_on_cran()
         phi <- matrix(
@@ -98,16 +98,42 @@ lapply(
         answer <- as.vector(
           total_std
         )
-        delta <- DeltaBetaStd(
+        delta_t <- 2
+        R <- 1000
+        mc <- MCPhiSigma(
           phi = phi,
           sigma = sigma,
           vcov_theta = vcov_theta,
+          R = R,
+          seed = 42
+        )$output
+        mc_phi <- lapply(
+          X = mc,
+          FUN = function(i) {
+            return(
+              i[[1]]
+            )
+          }
+        )
+        mc_sigma <- lapply(
+          X = mc,
+          FUN = function(i) {
+            return(
+              i[[2]]
+            )
+          }
+        )
+        boot <- BootBetaStd(
+          phi = mc_phi,
+          sigma = mc_sigma,
+          phi_hat = phi,
+          sigma_hat = sigma,
           delta_t = delta_t
         )
         testthat::expect_true(
           all(
             (
-              answer - summary(delta)$est
+              answer - summary(boot)$est
             ) <= tol
           )
         )
@@ -206,31 +232,65 @@ lapply(
         answer <- as.vector(
           total_std
         )
-        delta <- DeltaBetaStd(
+        delta_t <- 2
+        R <- 1000
+        mc <- MCPhiSigma(
           phi = phi,
           sigma = sigma,
           vcov_theta = vcov_theta,
+          R = R,
+          seed = 42
+        )$output
+        mc_phi <- lapply(
+          X = mc,
+          FUN = function(i) {
+            return(
+              i[[1]]
+            )
+          }
+        )
+        mc_sigma <- lapply(
+          X = mc,
+          FUN = function(i) {
+            return(
+              i[[2]]
+            )
+          }
+        )
+        boot <- BootBetaStd(
+          phi = mc_phi,
+          sigma = mc_sigma,
+          phi_hat = phi,
+          sigma_hat = sigma,
           delta_t = 1:5
         )
-        print(delta)
-        summary(delta)
-        confint(delta, level = 0.95)
-        plot(delta)
-        delta <- DeltaBetaStd(
-          phi = phi,
-          sigma = sigma,
-          vcov_theta = vcov_theta,
+        print(boot)
+        summary(boot)
+        confint(boot)
+        plot(boot)
+        print(boot, type = "bc")
+        summary(boot, type = "bc")
+        confint(boot, type = "bc")
+        plot(boot, type = "bc")
+        boot <- BootBetaStd(
+          phi = mc_phi,
+          sigma = mc_sigma,
+          phi_hat = phi,
+          sigma_hat = sigma,
           delta_t = 1
         )
-        print(delta)
-        summary(delta)
-        confint(delta, level = 0.95)
+        print(boot)
+        summary(boot)
+        confint(boot, level = 0.95)
+        print(boot, type = "bc")
+        summary(boot, type = "bc")
+        confint(boot, type = "bc", level = 0.95)
         testthat::expect_error(
-          plot(delta)
+          plot(boot)
         )
       }
     )
   },
-  text = "test-cTMed-delta-beta-std",
+  text = "test-cTMed-boot-beta-std",
   tol = 0.01
 )

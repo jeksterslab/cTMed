@@ -30,11 +30,31 @@
 print.ctmedmcphi <- function(x,
                              digits = 4,
                              ...) {
-  base::print(
-    lapply(
-      X = x$output,
-      FUN = round,
-      digits = digits
+  if (x$fun == "MCPhi") {
+    base::print(
+      lapply(
+        X = x$output,
+        FUN = round,
+        digits = digits
+      )
     )
-  )
+  }
+  if (x$fun == "MCPhiSigma") {
+    base::print(
+      lapply(
+        X = x$output,
+        FUN = function(x) {
+          x[[1]] <- round(
+            x[[1]],
+            digits = digits
+          )
+          x[[2]] <- round(
+            x[[2]],
+            digits = digits
+          )
+          return(x)
+        }
+      )
+    )
+  }
 }

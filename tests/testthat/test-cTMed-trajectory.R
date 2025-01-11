@@ -1,4 +1,4 @@
-## ---- test-trajectory
+## ---- test-cTMed-trajectory
 lapply(
   X = 1,
   FUN = function(i,
@@ -33,8 +33,11 @@ lapply(
         print(traj)
         summary(traj)
         plot(traj, total = FALSE)
+        testthat::expect_true(
+          TRUE
+        )
       }
     )
   },
-  text = "test-trajectory"
+  text = "test-cTMed-trajectory"
 )

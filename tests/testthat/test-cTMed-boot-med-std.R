@@ -1,4 +1,4 @@
-## ---- test-cTMed-delta-beta-std
+## ---- test-cTMed-boot-med-std
 lapply(
   X = 1,
   FUN = function(i,
@@ -6,9 +6,17 @@ lapply(
                  tol) {
     message(text)
     testthat::test_that(
-      paste(text, "DeltaBetaStd"),
+      paste(text, "BootMedStd"),
       {
         testthat::skip_on_cran()
+        total <- 0.07477656
+        direct <- -0.30032315
+        indirect <- 0.37509972
+        answer <- c(
+          total,
+          direct,
+          indirect
+        )
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -77,37 +85,44 @@ lapply(
           nrow = 15
         )
         delta_t <- 2
-        total <- expm::expm(delta_t * phi)
-        total_cov <- ExpCov(
-          phi = phi,
-          sigma = sigma,
-          delta_t = delta_t
-        )
-        total_std <- matrix(
-          data = 0.0,
-          nrow = 3,
-          ncol = 3
-        )
-        for (j in 1:3) {
-          for (i in 1:3) {
-            total_std[i, j] <- (
-              sqrt(total_cov[i, i]) * total[i, j]
-            ) * (1 / sqrt(total_cov[j, j]))
-          }
-        }
-        answer <- as.vector(
-          total_std
-        )
-        delta <- DeltaBetaStd(
+        R <- 1000
+        mc <- MCPhiSigma(
           phi = phi,
           sigma = sigma,
           vcov_theta = vcov_theta,
-          delta_t = delta_t
+          R = R,
+          seed = 42
+        )$output
+        mc_phi <- lapply(
+          X = mc,
+          FUN = function(i) {
+            return(
+              i[[1]]
+            )
+          }
+        )
+        mc_sigma <- lapply(
+          X = mc,
+          FUN = function(i) {
+            return(
+              i[[2]]
+            )
+          }
+        )
+        boot <- BootMedStd(
+          phi = mc_phi,
+          sigma = mc_sigma,
+          phi_hat = phi,
+          sigma_hat = sigma,
+          delta_t = delta_t,
+          from = "x",
+          to = "y",
+          med = "m"
         )
         testthat::expect_true(
           all(
             (
-              answer - summary(delta)$est
+              answer - summary(boot)$est
             ) <= tol
           )
         )
@@ -117,6 +132,14 @@ lapply(
       paste(text, "plot error"),
       {
         testthat::skip_on_cran()
+        total <- 0.07477656
+        direct <- -0.30032315
+        indirect <- 0.37509972
+        answer <- c(
+          total,
+          direct,
+          indirect
+        )
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -185,52 +208,70 @@ lapply(
           nrow = 15
         )
         delta_t <- 2
-        total <- expm::expm(delta_t * phi)
-        total_cov <- ExpCov(
+        R <- 1000
+        mc <- MCPhiSigma(
           phi = phi,
           sigma = sigma,
-          delta_t = delta_t
-        )
-        total_std <- matrix(
-          data = 0.0,
-          nrow = 3,
-          ncol = 3
-        )
-        for (j in 1:3) {
-          for (i in 1:3) {
-            total_std[i, j] <- (
-              sqrt(total_cov[i, i]) * total[i, j]
-            ) * (1 / sqrt(total_cov[j, j]))
+          vcov_theta = vcov_theta,
+          R = R,
+          seed = 42
+        )$output
+        mc_phi <- lapply(
+          X = mc,
+          FUN = function(i) {
+            return(
+              i[[1]]
+            )
           }
-        }
-        answer <- as.vector(
-          total_std
         )
-        delta <- DeltaBetaStd(
-          phi = phi,
-          sigma = sigma,
-          vcov_theta = vcov_theta,
-          delta_t = 1:5
+        mc_sigma <- lapply(
+          X = mc,
+          FUN = function(i) {
+            return(
+              i[[2]]
+            )
+          }
         )
-        print(delta)
-        summary(delta)
-        confint(delta, level = 0.95)
-        plot(delta)
-        delta <- DeltaBetaStd(
-          phi = phi,
-          sigma = sigma,
-          vcov_theta = vcov_theta,
-          delta_t = 1
+        boot <- BootMedStd(
+          phi = mc_phi,
+          sigma = mc_sigma,
+          phi_hat = phi,
+          sigma_hat = sigma,
+          delta_t = 1:5,
+          from = "x",
+          to = "y",
+          med = "m"
         )
-        print(delta)
-        summary(delta)
-        confint(delta, level = 0.95)
+        print(boot)
+        summary(boot)
+        confint(boot)
+        plot(boot)
+        print(boot, type = "bc")
+        summary(boot, type = "bc")
+        confint(boot, type = "bc")
+        plot(boot, type = "bc")
+        boot <- BootMedStd(
+          phi = mc_phi,
+          sigma = mc_sigma,
+          phi_hat = phi,
+          sigma_hat = sigma,
+          delta_t = 1,
+          from = "x",
+          to = "y",
+          med = "m"
+        )
+        print(boot)
+        summary(boot)
+        confint(boot, level = 0.95)
+        print(boot, type = "bc")
+        summary(boot, type = "bc")
+        confint(boot, type = "bc", level = 0.95)
         testthat::expect_error(
-          plot(delta)
+          plot(boot)
         )
       }
     )
   },
-  text = "test-cTMed-delta-beta-std",
+  text = "test-cTMed-boot-med-std",
   tol = 0.01
 )

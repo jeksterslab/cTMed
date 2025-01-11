@@ -1,4 +1,4 @@
-## ---- test-cTMed-delta-med
+## ---- test-cTMed-boot-beta
 lapply(
   X = 1,
   FUN = function(i,
@@ -6,17 +6,9 @@ lapply(
                  tol) {
     message(text)
     testthat::test_that(
-      paste(text, "DeltaMed"),
+      paste(text, "BootBeta"),
       {
         testthat::skip_on_cran()
-        total <- 0.0799008
-        direct <- -0.3209035
-        indirect <- 0.4008043
-        answer <- c(
-          total,
-          direct,
-          indirect
-        )
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -58,18 +50,26 @@ lapply(
           ),
           nrow = 9
         )
-        delta <- DeltaMed(
+        delta_t <- 2
+        answer <- as.vector(
+          expm::expm(delta_t * phi)
+        )
+        R <- 1000
+        mc <- MCPhi(
           phi = phi,
           vcov_phi_vec = vcov_phi_vec,
-          delta_t = 2,
-          from = "x",
-          to = "y",
-          med = "m"
+          R = R,
+          seed = 42
+        )$output
+        boot <- BootBeta(
+          phi = mc,
+          phi_hat = phi,
+          delta_t = delta_t
         )
         testthat::expect_true(
           all(
             (
-              answer - summary(delta)$est
+              answer - summary(boot)$est
             ) <= tol
           )
         )
@@ -79,14 +79,6 @@ lapply(
       paste(text, "plot error"),
       {
         testthat::skip_on_cran()
-        total <- 0.0799008
-        direct <- -0.3209035
-        indirect <- 0.4008043
-        answer <- c(
-          total,
-          direct,
-          indirect
-        )
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -128,35 +120,47 @@ lapply(
           ),
           nrow = 9
         )
-        delta <- DeltaMed(
+        delta_t <- 2
+        answer <- as.vector(
+          expm::expm(delta_t * phi)
+        )
+        R <- 1000
+        mc <- MCPhi(
           phi = phi,
           vcov_phi_vec = vcov_phi_vec,
-          delta_t = 1:5,
-          from = "x",
-          to = "y",
-          med = "m"
+          R = R,
+          seed = 42
+        )$output
+        boot <- BootBeta(
+          phi = mc,
+          phi_hat = phi,
+          delta_t = 1:5
         )
-        print(delta)
-        summary(delta)
-        confint(delta, level = 0.95)
-        plot(delta)
-        delta <- DeltaMed(
-          phi = phi,
-          vcov_phi_vec = vcov_phi_vec,
-          delta_t = 1,
-          from = "x",
-          to = "y",
-          med = "m"
+        print(boot)
+        summary(boot)
+        confint(boot)
+        plot(boot)
+        print(boot, type = "bc")
+        summary(boot, type = "bc")
+        confint(boot, type = "bc")
+        plot(boot, type = "bc")
+        boot <- BootBeta(
+          phi = mc,
+          phi_hat = phi,
+          delta_t = 1
         )
-        print(delta)
-        summary(delta)
-        confint(delta, level = 0.95)
+        print(boot)
+        summary(boot)
+        confint(boot, level = 0.95)
+        print(boot, type = "bc")
+        summary(boot, type = "bc")
+        confint(boot, type = "bc", level = 0.95)
         testthat::expect_error(
-          plot(delta)
+          plot(boot)
         )
       }
     )
   },
-  text = "test-cTMed-delta-med",
+  text = "test-cTMed-boot-beta",
   tol = 0.01
 )

@@ -80,12 +80,9 @@
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @param vcov_theta Numeric matrix.
-#'   The sampling variance-covariance matrix of
-#'   \eqn{\mathrm{vec} \left( \boldsymbol{\Phi} \right)} and
-#'   \eqn{\mathrm{vech} \left( \boldsymbol{\Sigma} \right)}
 #' @inheritParams IndirectStd
 #' @inheritParams MCMed
+#' @inheritParams MCPhiSigma
 #' @inherit IndirectStd references
 #'
 #' @return Returns an object
