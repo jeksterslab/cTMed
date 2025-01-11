@@ -1,7 +1,7 @@
 ---
 title: "Fit the Continuous-Time Vector Autoregressive Model Using the OpenMx Package"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-01-09"
+date: "2025-01-11"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -531,8 +531,8 @@ summary(fit)
 #> RMSEA:  0  [95% CI (NA, NA)]
 #> Prob(RMSEA <= 0.05): NA
 #> To get additional fit indices, see help(mxRefModels)
-#> timestamp: 2025-01-09 06:06:17 
-#> Wall clock time: 192.3853 secs 
+#> timestamp: 2025-01-11 08:49:45 
+#> Wall clock time: 212.9489 secs 
 #> optimizer:  SLSQP 
 #> OpenMx version number: 2.21.13 
 #> Need help?  See help(mxSummary)

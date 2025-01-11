@@ -1,4 +1,4 @@
-## ---- test-wald-probs-of-alpha-dot
+## ---- test-cTMed-wald-probs-of-alpha-dot
 lapply(
   X = 1,
   FUN = function(i,
@@ -19,6 +19,6 @@ lapply(
       }
     )
   },
-  text = "test-wald-probs-of-alpha-dot",
+  text = "test-cTMed-wald-probs-of-alpha-dot",
   tol = 0.01
 )

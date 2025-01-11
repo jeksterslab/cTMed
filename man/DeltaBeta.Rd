@@ -263,6 +263,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{MCMed}()},
 \code{\link{MCMedStd}()},
 \code{\link{MCPhi}()},
+\code{\link{MCPhiSigma}()},
 \code{\link{MCTotalCentral}()},
 \code{\link{Med}()},
 \code{\link{MedStd}()},

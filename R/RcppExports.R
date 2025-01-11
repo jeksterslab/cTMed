@@ -45,6 +45,10 @@
     .Call(`_cTMed_MCPhiSigmaI`, theta, vcov_theta, test_phi)
 }
 
+.MCPhiSigma <- function(theta, vcov_theta, R, test_phi = TRUE) {
+    .Call(`_cTMed_MCPhiSigma`, theta, vcov_theta, R, test_phi)
+}
+
 .MCPhi <- function(phi, vcov_phi_vec_l, R, test_phi = TRUE) {
     .Call(`_cTMed_MCPhi`, phi, vcov_phi_vec_l, R, test_phi)
 }
