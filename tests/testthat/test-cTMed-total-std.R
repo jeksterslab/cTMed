@@ -1,4 +1,5 @@
 ## ---- test-cTMed-total-std
+# nolint start: cyclocomp_linter
 lapply(
   X = 1,
   FUN = function(i,
@@ -326,3 +327,4 @@ lapply(
   text = "test-cTMed-total-std",
   tol = 0.01
 )
+# nolint end

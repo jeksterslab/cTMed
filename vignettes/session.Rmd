@@ -59,22 +59,22 @@ sessionInfo()
 #> [28] rainbow_3.8         RCurl_1.98-1.16     glmnet_4.1-8       
 #> [31] Formula_1.2-5       pracma_2.4.4        mice_3.17.0        
 #> [34] car_3.1-3           pillar_1.10.1       nloptr_2.1.1       
-#> [37] tidyr_1.3.1         MASS_7.3-61         iterators_1.0.14   
-#> [40] abind_1.4-8         rpart_4.1.23        boot_1.3-31        
-#> [43] rProject_0.0.14     mclust_6.1.1        foreach_1.5.2      
-#> [46] mitml_0.4-5         nlme_3.1-166        digest_0.6.37      
-#> [49] tidyselect_1.2.1    mvtnorm_1.3-2       stringi_1.8.4      
-#> [52] dplyr_1.1.4         reshape2_1.4.4      purrr_1.0.2        
-#> [55] splines_4.4.2       pcaPP_2.0-5         latex2exp_0.9.6    
-#> [58] grid_4.4.2          colorspace_2.1-1    expm_1.0-0         
-#> [61] cli_3.6.3.9001      magrittr_2.0.3      survival_3.7-0     
-#> [64] broom_1.0.7         withr_3.0.2         scales_1.3.0       
-#> [67] backports_1.5.0     nnet_7.3-19         lme4_1.1-35.5      
-#> [70] deSolve_1.40        evaluate_1.0.1      knitr_1.49         
-#> [73] rbibutils_2.3       rlang_1.1.4         Rcpp_1.0.13-1      
-#> [76] hdrcde_3.4          xtable_1.8-4        glue_1.8.0         
-#> [79] fda_6.2.0           minqa_1.2.8         R6_2.5.1           
-#> [82] plyr_1.8.9
+#> [37] tidyr_1.3.1         MASS_7.3-61         reformulas_0.4.0   
+#> [40] iterators_1.0.14    abind_1.4-8         rpart_4.1.23       
+#> [43] boot_1.3-31         rProject_0.0.17     mclust_6.1.1       
+#> [46] foreach_1.5.2       mitml_0.4-5         nlme_3.1-166       
+#> [49] digest_0.6.37       tidyselect_1.2.1    mvtnorm_1.3-3      
+#> [52] stringi_1.8.4       dplyr_1.1.4         reshape2_1.4.4     
+#> [55] purrr_1.0.2         splines_4.4.2       pcaPP_2.0-5        
+#> [58] latex2exp_0.9.6     grid_4.4.2          colorspace_2.1-1   
+#> [61] expm_1.0-0          cli_3.6.3.9002      magrittr_2.0.3     
+#> [64] survival_3.7-0      broom_1.0.7         withr_3.0.2        
+#> [67] scales_1.3.0        backports_1.5.0     nnet_7.3-19        
+#> [70] lme4_1.1-36         deSolve_1.40        evaluate_1.0.3     
+#> [73] knitr_1.49          rbibutils_2.3       rlang_1.1.4        
+#> [76] Rcpp_1.0.13-1       hdrcde_3.4          xtable_1.8-4       
+#> [79] glue_1.8.0          fda_6.2.0           minqa_1.2.8        
+#> [82] R6_2.5.1            plyr_1.8.9
 ```
 
 # Packages
@@ -86,17 +86,17 @@ installed.packages()[, c("Package", "Version")]
 #> cTMed             "cTMed"             "1.0.4.9000" 
 #> abind             "abind"             "1.4-8"      
 #> arm               "arm"               "1.14-4"     
-#> arrow             "arrow"             "18.1.0"     
+#> arrow             "arrow"             "18.1.0.1"   
 #> ash               "ash"               "1.0-15"     
 #> AsioHeaders       "AsioHeaders"       "1.22.1-2"   
 #> askpass           "askpass"           "1.2.1"      
 #> assertthat        "assertthat"        "0.2.1"      
 #> backports         "backports"         "1.5.0"      
 #> base64enc         "base64enc"         "0.1-3"      
-#> betaDelta         "betaDelta"         "1.0.5.9000" 
-#> betaMC            "betaMC"            "1.3.2.9000" 
-#> betaNB            "betaNB"            "1.0.5"      
-#> betaSandwich      "betaSandwich"      "1.0.7.9000" 
+#> betaDelta         "betaDelta"         "1.0.6"      
+#> betaMC            "betaMC"            "1.3.3"      
+#> betaNB            "betaNB"            "1.0.5.9000" 
+#> betaSandwich      "betaSandwich"      "1.0.8"      
 #> BH                "BH"                "1.87.0-1"   
 #> bibtex            "bibtex"            "0.5.1"      
 #> BiocManager       "BiocManager"       "1.30.25"    
@@ -116,7 +116,7 @@ installed.packages()[, c("Package", "Version")]
 #> cellranger        "cellranger"        "1.1.0"      
 #> cffr              "cffr"              "1.1.1"      
 #> checkmate         "checkmate"         "2.3.2"      
-#> cli               "cli"               "3.6.3.9001" 
+#> cli               "cli"               "3.6.3.9002" 
 #> clipr             "clipr"             "0.8.0"      
 #> clock             "clock"             "0.7.1"      
 #> clusterGeneration "clusterGeneration" "1.3.8"      
@@ -133,7 +133,7 @@ installed.packages()[, c("Package", "Version")]
 #> crayon            "crayon"            "1.5.3"      
 #> credentials       "credentials"       "2.0.2"      
 #> crosstalk         "crosstalk"         "1.2.1"      
-#> cTMed             "cTMed"             "1.0.4"      
+#> cTMed             "cTMed"             "1.0.4.9000" 
 #> ctsem             "ctsem"             "3.10.1"     
 #> curl              "curl"              "6.1.0"      
 #> cyclocomp         "cyclocomp"         "1.1.1"      
@@ -162,7 +162,7 @@ installed.packages()[, c("Package", "Version")]
 #> dynUtils          "dynUtils"          "0.9.1"      
 #> ellipse           "ellipse"           "0.5.0"      
 #> ellipsis          "ellipsis"          "0.3.2"      
-#> evaluate          "evaluate"          "1.0.1"      
+#> evaluate          "evaluate"          "1.0.3"      
 #> expm              "expm"              "1.0-0"      
 #> fansi             "fansi"             "1.0.6"      
 #> farver            "farver"            "2.1.2"      
@@ -211,7 +211,7 @@ installed.packages()[, c("Package", "Version")]
 #> hdrcde            "hdrcde"            "3.4"        
 #> here              "here"              "1.0.1"      
 #> highr             "highr"             "0.11"       
-#> Hmisc             "Hmisc"             "5.2-1"      
+#> Hmisc             "Hmisc"             "5.2-2"      
 #> hms               "hms"               "1.1.3"      
 #> htmlTable         "htmlTable"         "2.4.3"      
 #> htmltools         "htmltools"         "0.5.8.1"    
@@ -225,7 +225,7 @@ installed.packages()[, c("Package", "Version")]
 #> igraph            "igraph"            "2.1.3"      
 #> infer             "infer"             "1.0.7"      
 #> ini               "ini"               "0.3.1"      
-#> inline            "inline"            "0.3.20"     
+#> inline            "inline"            "0.3.21"     
 #> ipred             "ipred"             "0.9-15"     
 #> isoband           "isoband"           "0.2.7"      
 #> iterators         "iterators"         "1.0.14"     
@@ -250,7 +250,7 @@ installed.packages()[, c("Package", "Version")]
 #> lintr             "lintr"             "3.1.2"      
 #> listenv           "listenv"           "0.9.1"      
 #> littler           "littler"           "0.3.20"     
-#> lme4              "lme4"              "1.1-35.5"   
+#> lme4              "lme4"              "1.1-36"     
 #> locfit            "locfit"            "1.5-9.10"   
 #> longMI            "longMI"            "1.0.0"      
 #> loo               "loo"               "2.8.0"      
@@ -279,12 +279,12 @@ installed.packages()[, c("Package", "Version")]
 #> MplusAutomation   "MplusAutomation"   "1.1.1"      
 #> multicool         "multicool"         "1.0.1"      
 #> munsell           "munsell"           "0.5.1"      
-#> mvtnorm           "mvtnorm"           "1.3-2"      
+#> mvtnorm           "mvtnorm"           "1.3-3"      
 #> nloptr            "nloptr"            "2.1.1"      
 #> numDeriv          "numDeriv"          "2016.8-1.1" 
 #> nycflights13      "nycflights13"      "1.0.2"      
 #> OpenMx            "OpenMx"            "2.21.13"    
-#> openssl           "openssl"           "2.3.0"      
+#> openssl           "openssl"           "2.3.1"      
 #> ordinal           "ordinal"           "2023.12-4.1"
 #> pan               "pan"               "1.9"        
 #> pander            "pander"            "0.6.5"      
@@ -309,7 +309,7 @@ installed.packages()[, c("Package", "Version")]
 #> praise            "praise"            "1.0.0"      
 #> prettyunits       "prettyunits"       "1.2.0"      
 #> printr            "printr"            "0.3"        
-#> processx          "processx"          "3.8.4"      
+#> processx          "processx"          "3.8.5"      
 #> prodlim           "prodlim"           "2024.06.25" 
 #> profvis           "profvis"           "0.4.0"      
 #> progress          "progress"          "1.2.3"      
@@ -324,7 +324,7 @@ installed.packages()[, c("Package", "Version")]
 #> quadprog          "quadprog"          "1.5-8"      
 #> quantreg          "quantreg"          "5.99.1"     
 #> quarto            "quarto"            "1.4.4"      
-#> QuickJSR          "QuickJSR"          "1.4.0"      
+#> QuickJSR          "QuickJSR"          "1.5.1"      
 #> R.cache           "R.cache"           "0.16.0"     
 #> R.methodsS3       "R.methodsS3"       "1.8.2"      
 #> R.oo              "R.oo"              "1.27.0"     
@@ -348,6 +348,7 @@ installed.packages()[, c("Package", "Version")]
 #> readxl            "readxl"            "1.4.3"      
 #> recipes           "recipes"           "1.1.0"      
 #> RefManageR        "RefManageR"        "1.4.0"      
+#> reformulas        "reformulas"        "0.4.0"      
 #> rematch           "rematch"           "2.0.0"      
 #> rematch2          "rematch2"          "2.1.2"      
 #> remotes           "remotes"           "2.5.0"      
@@ -363,7 +364,7 @@ installed.packages()[, c("Package", "Version")]
 #> roxygen2          "roxygen2"          "7.3.2"      
 #> rpf               "rpf"               "1.0.14"     
 #> RPostgres         "RPostgres"         "1.4.7"      
-#> rProject          "rProject"          "0.0.14"     
+#> rProject          "rProject"          "0.0.17"     
 #> rprojroot         "rprojroot"         "2.0.4"      
 #> rsample           "rsample"           "1.2.1"      
 #> RSQLite           "RSQLite"           "2.3.9"      
@@ -486,7 +487,7 @@ installed.packages()[, c("Package", "Version")]
 #> Core(s) per socket:                   12
 #> Socket(s):                            2
 #> Stepping:                             1
-#> CPU(s) scaling MHz:                   66%
+#> CPU(s) scaling MHz:                   70%
 #> CPU max MHz:                          2900.0000
 #> CPU min MHz:                          1200.0000
 #> BogoMIPS:                             4389.91
@@ -519,7 +520,7 @@ installed.packages()[, c("Package", "Version")]
 
 ```
 #>                total        used        free      shared  buff/cache   available
-#> Mem:           125Gi       9.8Gi       115Gi       5.1Gi       6.3Gi       116Gi
+#> Mem:           125Gi       9.7Gi       116Gi       5.1Gi       5.8Gi       116Gi
 #> Swap:             0B          0B          0B
-#> Total:         125Gi       9.8Gi       115Gi
+#> Total:         125Gi       9.7Gi       116Gi
 ```

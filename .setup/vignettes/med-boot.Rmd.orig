@@ -357,7 +357,7 @@ theta_l <- t(chol(theta))
 ```
 
 ```{r}
-R <- 5000L
+R <- 1000L
 path <- getwd()
 prefix <- "ou"
 ```
