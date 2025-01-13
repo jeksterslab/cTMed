@@ -112,7 +112,7 @@
 #' theta_l <- t(chol(theta))
 #'
 #' boot <- PBSSMOUFixed(
-#'   R = 1000L,
+#'   R = 10L, # use at least 1000 in actual research
 #'   path = getwd(),
 #'   prefix = "ou",
 #'   n = n,
@@ -126,7 +126,7 @@
 #'   nu = nu,
 #'   lambda = lambda,
 #'   theta_l = theta_l,
-#'   ncores = parallel::detectCores() - 1,
+#'   ncores = NULL, # consider using multiple cores
 #'   seed = 42
 #' )
 #' phi_hat <- phi
