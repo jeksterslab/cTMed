@@ -15,19 +15,23 @@
         )
         for (i in idx) {
           if (type == "pc") {
+            thetahatstar_i <- as.vector(thetahatstar[, i])
+            thetahatstar_i <- thetahatstar[stats::complete.cases(thetahatstar_i)]
             ci[[i]] <- .PCCI(
-              thetahatstar = thetahatstar[, i],
+              thetahatstar = thetahatstar_i,
               thetahat = thetahat[i],
               probs = probs
             )
           }
           if (type == "bc") {
+            thetahatstar_i <- as.vector(thetahatstar[, i])
+            thetahatstar_i <- thetahatstar[stats::complete.cases(thetahatstar_i)]
             ci[[i]] <- .BCCI(
-              thetahatstar = thetahatstar[, i],
+              thetahatstar = thetahatstar_i,
               thetahat = thetahat[i],
               probs = probs,
               z0 = .Z0(
-                thetahatstar = thetahatstar[, i],
+                thetahatstar = thetahatstar_i,
                 thetahat = thetahat[i]
               ),
               z1 = .Z1(

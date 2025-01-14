@@ -13,6 +13,8 @@
           length = length(idx)
         )
         for (i in idx) {
+          thetahatstar_i <- as.vector(thetahatstar[, i])
+          thetahatstar_i <- thetahatstar[stats::complete.cases(thetahatstar_i)]
           ci[[i]] <- .PCCI(
             thetahatstar = thetahatstar[, i],
             thetahat = thetahat[i],
