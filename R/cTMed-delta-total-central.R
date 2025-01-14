@@ -205,6 +205,10 @@ DeltaTotalCentral <- function(phi,
                               delta_t,
                               ncores = NULL,
                               tol = 0.01) {
+  idx <- rownames(phi)
+  stopifnot(
+    idx == colnames(phi)
+  )
   total <- TRUE
   args <- list(
     phi = phi,

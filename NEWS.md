@@ -1,10 +1,9 @@
-# cTMed 1.0.4.9000
+# cTMed 1.0.5
 
 ## Patch
 
-* Latest development version.
 * Added the `MCPhiSigma()` function.
-* Minor edits to tests.
+* Added the `BootIndirectCentral()` and `BootTotalCentral()` functions.
 
 # cTMed 1.0.4
 

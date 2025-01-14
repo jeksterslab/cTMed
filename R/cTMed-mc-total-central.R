@@ -166,6 +166,10 @@ MCTotalCentral <- function(phi,
                            ncores = NULL,
                            seed = NULL,
                            tol = 0.01) {
+  idx <- rownames(phi)
+  stopifnot(
+    idx == colnames(phi)
+  )
   total <- TRUE
   args <- list(
     phi = phi,

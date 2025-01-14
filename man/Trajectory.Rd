@@ -76,8 +76,10 @@ plot(traj)
 Other Continuous Time Mediation Functions: 
 \code{\link{BootBeta}()},
 \code{\link{BootBetaStd}()},
+\code{\link{BootIndirectCentral}()},
 \code{\link{BootMed}()},
 \code{\link{BootMedStd}()},
+\code{\link{BootTotalCentral}()},
 \code{\link{DeltaBeta}()},
 \code{\link{DeltaBetaStd}()},
 \code{\link{DeltaIndirectCentral}()},
