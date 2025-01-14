@@ -139,7 +139,7 @@ mc <- MCMedStd(
   from = "x",
   to = "y",
   med = "m",
-  R = 1000L,
+  R = 20000L,
   ncores = parallel::detectCores() # use multiple cores
 )
 plot(mc)

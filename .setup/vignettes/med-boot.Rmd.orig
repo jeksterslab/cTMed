@@ -34,7 +34,7 @@ The `cTMed` package provides a bootstrap approach, in addition to the delta and 
 ```{r}
 #| include = FALSE
 set.seed(42)
-n <- 5
+n <- 50
 time <- 100
 delta_t <- 0.10
 k <- p <- 3
