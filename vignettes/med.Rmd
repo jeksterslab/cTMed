@@ -1,7 +1,7 @@
 ---
 title: "Total, Direct, and Indirect Effects in Continuous-Time Mediation Model"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-01-13"
+date: "2025-01-14"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -91,7 +91,7 @@ mc <- MCMed(
   from = "x",
   to = "y",
   med = "m",
-  R = 20000L,
+  R = 1000L,
   ncores = parallel::detectCores() # use multiple cores
 )
 plot(mc)
