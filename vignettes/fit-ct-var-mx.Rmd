@@ -531,8 +531,8 @@ summary(fit)
 #> RMSEA:  0  [95% CI (NA, NA)]
 #> Prob(RMSEA <= 0.05): NA
 #> To get additional fit indices, see help(mxRefModels)
-#> timestamp: 2025-01-14 06:29:19 
-#> Wall clock time: 207.6954 secs 
+#> timestamp: 2025-01-14 18:28:50 
+#> Wall clock time: 208.3536 secs 
 #> optimizer:  SLSQP 
 #> OpenMx version number: 2.21.13 
 #> Need help?  See help(mxSummary)
