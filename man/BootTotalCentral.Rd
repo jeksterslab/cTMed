@@ -240,4 +240,4 @@ Ivan Jacob Agaloos Pesigan
 \concept{Continuous Time Mediation Functions}
 \keyword{boot}
 \keyword{cTMed}
-\keyword{path}
+\keyword{network}

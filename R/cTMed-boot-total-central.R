@@ -147,7 +147,7 @@
 #' }
 #'
 #' @family Continuous Time Mediation Functions
-#' @keywords cTMed path boot
+#' @keywords cTMed network boot
 #' @export
 BootTotalCentral <- function(phi,
                              phi_hat,
