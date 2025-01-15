@@ -18,7 +18,7 @@
             thetahatstar_i <- as.vector(
               thetahatstar[, i]
             )
-            thetahatstar_i <- thetahatstar[
+            thetahatstar_i <- thetahatstar_i[
               stats::complete.cases(thetahatstar_i)
             ]
             ci[[i]] <- .PCCI(
@@ -31,7 +31,7 @@
             thetahatstar_i <- as.vector(
               thetahatstar[, i]
             )
-            thetahatstar_i <- thetahatstar[
+            thetahatstar_i <- thetahatstar_i[
               stats::complete.cases(thetahatstar_i)
             ]
             ci[[i]] <- .BCCI(
