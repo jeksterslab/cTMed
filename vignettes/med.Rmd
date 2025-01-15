@@ -1,7 +1,7 @@
 ---
 title: "Total, Direct, and Indirect Effects in Continuous-Time Mediation Model"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-01-14"
+date: "2025-01-15"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -100,6 +100,5 @@ plot(mc)
 <img src="fig-vignettes-med-mc-1.png" width="3300" /><img src="fig-vignettes-med-mc-2.png" width="3300" /><img src="fig-vignettes-med-mc-3.png" width="3300" />
 
 ## References
-
 
 
