@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2025-01-14</h4>
+            <h4 data-toc-skip class="date">2025-01-15</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/main/vignettes/med-boot.Rmd"><code>vignettes/med-boot.Rmd</code></a></small>
       <div class="d-none name"><code>med-boot.Rmd</code></div>
@@ -73,6 +73,279 @@ Agaloos Pesigan</h4>
 addition to the delta and Monte Carlo methods, for estimating and
 quantifying uncertainty in total, direct, and indirect effects within
 continuous-time mediation models across different time intervals.</p>
+<p>In this example, we will use the fitted model from <a href="https://jeksterslab.github.io/cTMed/articles/fit-ct-var-dynr.html" class="external-link">Fit
+the Continuous-Time Vector Autoregressive Model Using the dynr
+Package</a>. The object <code>fit</code> represents a fitted CT-VAR
+model created using the <code>dynr</code> package.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;             Estimate Std. Error t value  ci.lower  ci.upper Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; phi_1_1    -0.293807   0.082574  -3.558 -0.455648 -0.131966   0.0002 ***</span></span>
+<span><span class="co">#&gt; phi_2_1     0.824396   0.056914  14.485  0.712846  0.935946   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_3_1    -0.454316   0.057647  -7.881 -0.567303 -0.341329   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_1_2    -0.071916   0.068787  -1.045 -0.206735  0.062904   0.1479    </span></span>
+<span><span class="co">#&gt; phi_2_2    -0.568999   0.048532 -11.724 -0.664119 -0.473878   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_3_2     0.707647   0.048636  14.550  0.612322  0.802972   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_1_3     0.025791   0.062589   0.412 -0.096882  0.148463   0.3402    </span></span>
+<span><span class="co">#&gt; phi_2_3     0.082668   0.043529   1.899 -0.002647  0.167983   0.0288 *  </span></span>
+<span><span class="co">#&gt; phi_3_3    -0.687502   0.044092 -15.593 -0.773920 -0.601084   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_1_1   0.235806   0.022759  10.361  0.191198  0.280413   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_2_1   0.018668   0.010045   1.858 -0.001020  0.038356   0.0316 *  </span></span>
+<span><span class="co">#&gt; sigma_3_1  -0.064687   0.010768  -6.007 -0.085793 -0.043582   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_2_2   0.077088   0.009447   8.160  0.058572  0.095603   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_3_2   0.008278   0.006655   1.244 -0.004765  0.021321   0.1068    </span></span>
+<span><span class="co">#&gt; sigma_3_3   0.080654   0.010196   7.910  0.060670  0.100639   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; theta_1_1   0.201033   0.005107  39.363  0.191023  0.211043   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; theta_2_2   0.191640   0.004373  43.823  0.183069  0.200211   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; theta_3_3   0.197449   0.004521  43.677  0.188588  0.206309   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; mu0_1_1    -0.068547   0.142210  -0.482 -0.347273  0.210180   0.3149    </span></span>
+<span><span class="co">#&gt; mu0_2_1     0.084573   0.176685   0.479 -0.261722  0.430869   0.3161    </span></span>
+<span><span class="co">#&gt; mu0_3_1     0.115721   0.141485   0.818 -0.161585  0.393026   0.2067    </span></span>
+<span><span class="co">#&gt; sigma0_1_1  0.942679   0.205369   4.590  0.540164  1.345195   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma0_2_1  0.161788   0.179880   0.899 -0.190769  0.514346   0.1842    </span></span>
+<span><span class="co">#&gt; sigma0_3_1  0.103257   0.143856   0.718 -0.178696  0.385209   0.2365    </span></span>
+<span><span class="co">#&gt; sigma0_2_2  1.489721   0.311204   4.787  0.879772  2.099670   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma0_3_2 -0.100464   0.178078  -0.564 -0.449491  0.248563   0.2863    </span></span>
+<span><span class="co">#&gt; sigma0_3_3  0.946144   0.204219   4.633  0.545882  1.346406   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; -2 log-likelihood value at convergence = 21626.57</span></span>
+<span><span class="co">#&gt; AIC = 21680.57</span></span>
+<span><span class="co">#&gt; BIC = 21856.53</span></span></code></pre></div>
+<p>We need to extract the estimated parameters from the fitted object,
+which will be used to generate bootstrap samples.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">est</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="va">n</span></span>
+<span><span class="co">#&gt; [1] 50</span></span>
+<span><span class="va">time</span></span>
+<span><span class="co">#&gt; [1] 100</span></span>
+<span><span class="va">delta_t</span></span>
+<span><span class="co">#&gt; [1] 0.1</span></span>
+<span><span class="va">lambda</span></span>
+<span><span class="co">#&gt;      [,1] [,2] [,3]</span></span>
+<span><span class="co">#&gt; [1,]    1    0    0</span></span>
+<span><span class="co">#&gt; [2,]    0    1    0</span></span>
+<span><span class="co">#&gt; [3,]    0    0    1</span></span>
+<span><span class="va">nu</span></span>
+<span><span class="co">#&gt; [1] 0 0 0</span></span>
+<span><span class="va">mu</span></span>
+<span><span class="co">#&gt; [1] 0 0 0</span></span>
+<span><span class="va">mu0</span> <span class="op">&lt;-</span> <span class="va">est</span><span class="op">[</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"mu0_1_1"</span>,</span>
+<span>    <span class="st">"mu0_2_1"</span>,</span>
+<span>    <span class="st">"mu0_3_1"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">]</span></span>
+<span><span class="va">mu0</span></span>
+<span><span class="co">#&gt;     mu0_1_1     mu0_2_1     mu0_3_1 </span></span>
+<span><span class="co">#&gt; -0.06854665  0.08457349  0.11572075</span></span>
+<span><span class="va">sigma0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"sigma0_1_1"</span>,</span>
+<span>      <span class="st">"sigma0_2_1"</span>,</span>
+<span>      <span class="st">"sigma0_3_1"</span>,</span>
+<span>      <span class="st">"sigma0_2_1"</span>,</span>
+<span>      <span class="st">"sigma0_2_2"</span>,</span>
+<span>      <span class="st">"sigma0_3_2"</span>,</span>
+<span>      <span class="st">"sigma0_3_1"</span>,</span>
+<span>      <span class="st">"sigma0_3_2"</span>,</span>
+<span>      <span class="st">"sigma0_3_3"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">]</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">sigma0</span></span>
+<span><span class="co">#&gt;           [,1]       [,2]       [,3]</span></span>
+<span><span class="co">#&gt; [1,] 0.9426793  0.1617881  0.1032567</span></span>
+<span><span class="co">#&gt; [2,] 0.1617881  1.4897213 -0.1004635</span></span>
+<span><span class="co">#&gt; [3,] 0.1032567 -0.1004635  0.9461439</span></span>
+<span><span class="va">sigma0_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">sigma0</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"phi_1_1"</span>,</span>
+<span>      <span class="st">"phi_2_1"</span>,</span>
+<span>      <span class="st">"phi_3_1"</span>,</span>
+<span>      <span class="st">"phi_1_2"</span>,</span>
+<span>      <span class="st">"phi_2_2"</span>,</span>
+<span>      <span class="st">"phi_3_2"</span>,</span>
+<span>      <span class="st">"phi_1_3"</span>,</span>
+<span>      <span class="st">"phi_2_3"</span>,</span>
+<span>      <span class="st">"phi_3_3"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">]</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">phi</span></span>
+<span><span class="co">#&gt;            [,1]        [,2]        [,3]</span></span>
+<span><span class="co">#&gt; [1,] -0.2938068 -0.07191554  0.02579061</span></span>
+<span><span class="co">#&gt; [2,]  0.8243958 -0.56899879  0.08266777</span></span>
+<span><span class="co">#&gt; [3,] -0.4543161  0.70764697 -0.68750180</span></span>
+<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"sigma_1_1"</span>, <span class="st">"sigma_2_1"</span>, <span class="st">"sigma_3_1"</span>,</span>
+<span>      <span class="st">"sigma_2_1"</span>, <span class="st">"sigma_2_2"</span>, <span class="st">"sigma_3_2"</span>,</span>
+<span>      <span class="st">"sigma_3_1"</span>, <span class="st">"sigma_3_2"</span>, <span class="st">"sigma_3_3"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">]</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">sigma</span></span>
+<span><span class="co">#&gt;             [,1]        [,2]         [,3]</span></span>
+<span><span class="co">#&gt; [1,]  0.23580555 0.018668186 -0.064687273</span></span>
+<span><span class="co">#&gt; [2,]  0.01866819 0.077087752  0.008277734</span></span>
+<span><span class="co">#&gt; [3,] -0.06468727 0.008277734  0.080654489</span></span>
+<span><span class="va">sigma_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">sigma</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dynr/man/diag-character-method.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/dynr/man/diag-character-method.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">est</span><span class="op">[</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"theta_1_1"</span>,</span>
+<span>    <span class="st">"theta_2_2"</span>,</span>
+<span>    <span class="st">"theta_3_3"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">]</span></span>
+<span><span class="va">theta</span></span>
+<span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
+<span><span class="co">#&gt; [1,] 0.2010327 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; [2,] 0.0000000 0.1916402 0.0000000</span></span>
+<span><span class="co">#&gt; [3,] 0.0000000 0.0000000 0.1974485</span></span>
+<span><span class="va">theta_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">R</span> <span class="op">&lt;-</span> <span class="fl">5L</span> <span class="co"># use at least 1000 in actual research</span></span>
+<span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">getwd</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">prefix</span> <span class="op">&lt;-</span> <span class="st">"ou"</span></span></code></pre></div>
+<p>The estimated parameters are then passed as arguments to the
+<code>PBSSMOUFixed</code> function from the <code>simStateSpace</code>
+package, which generates a parametric bootstrap sampling distribution of
+the parameter estimates. The argument <code>R</code> specifies the
+number of bootstrap replications. The generated data and model estimates
+are stored in <code>path</code> using the specified <code>prefix</code>
+for the file names. The <code>ncores = parallel::detectCores()</code>
+argument instructs the function to use all available CPU cores in the
+system.</p>
+<blockquote>
+<p><strong><em>NOTE:</em></strong> Fitting the CT-VAR model multiple
+times is computationally intensive.</p>
+</blockquote>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/PBSSMOUFixed.html" class="external-link">PBSSMOUFixed</a></span><span class="op">(</span></span>
+<span>  R <span class="op">=</span> <span class="va">R</span>,</span>
+<span>  path <span class="op">=</span> <span class="va">path</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="va">prefix</span>,</span>
+<span>  n <span class="op">=</span> <span class="va">n</span>,</span>
+<span>  time <span class="op">=</span> <span class="va">time</span>,</span>
+<span>  delta_t <span class="op">=</span> <span class="va">delta_t</span>,</span>
+<span>  mu0 <span class="op">=</span> <span class="va">mu0</span>,</span>
+<span>  sigma0_l <span class="op">=</span> <span class="va">sigma0_l</span>,</span>
+<span>  mu <span class="op">=</span> <span class="va">mu</span>,</span>
+<span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
+<span>  sigma_l <span class="op">=</span> <span class="va">sigma_l</span>,</span>
+<span>  nu <span class="op">=</span> <span class="va">nu</span>,</span>
+<span>  lambda <span class="op">=</span> <span class="va">lambda</span>,</span>
+<span>  theta_l <span class="op">=</span> <span class="va">theta_l</span>,</span>
+<span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  seed <span class="op">=</span> <span class="fl">42</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>The <code>extract</code> function from the <code>simStateSpace</code>
+package is used to extract the bootstrap phi matrices as well as the
+sigma matrices.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/extract.html" class="external-link">extract</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">boot</span>, what <span class="op">=</span> <span class="st">"phi"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://github.com/jeksterslab/simStateSpace/reference/extract.html" class="external-link">extract</a></span><span class="op">(</span>object <span class="op">=</span> <span class="va">boot</span>, what <span class="op">=</span> <span class="st">"sigma"</span><span class="op">)</span></span></code></pre></div>
+<p>In this example, we aim to calculate the total, direct, and indirect
+effects of <code>x</code> on <code>y</code>, mediated through
+<code>m</code>, over time intervals ranging from 0 to 10.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># time intervals</span></span>
+<span><span class="va">delta_t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
+<p>We also need the estimated drift matrix from the original sample.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># estimated drift matrix</span></span>
+<span><span class="va">phi_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"phi_1_1"</span>,</span>
+<span>      <span class="st">"phi_2_1"</span>,</span>
+<span>      <span class="st">"phi_3_1"</span>,</span>
+<span>      <span class="st">"phi_1_2"</span>,</span>
+<span>      <span class="st">"phi_2_2"</span>,</span>
+<span>      <span class="st">"phi_3_2"</span>,</span>
+<span>      <span class="st">"phi_1_3"</span>,</span>
+<span>      <span class="st">"phi_2_3"</span>,</span>
+<span>      <span class="st">"phi_3_3"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">]</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">phi_hat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">phi_hat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"m"</span>, <span class="st">"y"</span><span class="op">)</span></span></code></pre></div>
+<p>For the standardized effects, the estimated process noise covariance
+matrix from the original sample is also needed.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># estimated process noise covariance matrix</span></span>
+<span><span class="va">sigma_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"sigma_1_1"</span>, <span class="st">"sigma_2_1"</span>, <span class="st">"sigma_3_1"</span>,</span>
+<span>      <span class="st">"sigma_2_1"</span>, <span class="st">"sigma_2_2"</span>, <span class="st">"sigma_3_2"</span>,</span>
+<span>      <span class="st">"sigma_3_1"</span>, <span class="st">"sigma_3_2"</span>, <span class="st">"sigma_3_3"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">]</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="bootstrap-method">Bootstrap Method<a class="anchor" aria-label="anchor" href="#bootstrap-method"></a>
+</h2>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/cTMed">cTMed</a></span><span class="op">)</span></span>
+<span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BootMed.html">BootMed</a></span><span class="op">(</span></span>
+<span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
+<span>  phi_hat <span class="op">=</span> <span class="va">phi_hat</span>,</span>
+<span>  delta_t <span class="op">=</span> <span class="va">delta_t</span>,</span>
+<span>  from <span class="op">=</span> <span class="st">"x"</span>,</span>
+<span>  to <span class="op">=</span> <span class="st">"y"</span>,</span>
+<span>  med <span class="op">=</span> <span class="st">"m"</span>,</span>
+<span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># use multiple cores</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></code></pre></div>
+<p><img src="fig-vignettes-med-boot-boot-1.png" width="3300"><img src="fig-vignettes-med-boot-boot-2.png" width="3300"><img src="fig-vignettes-med-boot-boot-3.png" width="3300"></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="fig-vignettes-med-boot-boot-4.png" width="3300"><img src="fig-vignettes-med-boot-boot-5.png" width="3300"><img src="fig-vignettes-med-boot-boot-6.png" width="3300"></p>
+<p>The following generates bootstrap confidence intervals for the
+standardized effects.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/BootMedStd.html">BootMedStd</a></span><span class="op">(</span></span>
+<span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
+<span>  sigma <span class="op">=</span> <span class="va">sigma</span>,</span>
+<span>  phi_hat <span class="op">=</span> <span class="va">phi_hat</span>,</span>
+<span>  sigma_hat <span class="op">=</span> <span class="va">sigma_hat</span>,</span>
+<span>  delta_t <span class="op">=</span> <span class="va">delta_t</span>,</span>
+<span>  from <span class="op">=</span> <span class="st">"x"</span>,</span>
+<span>  to <span class="op">=</span> <span class="st">"y"</span>,</span>
+<span>  med <span class="op">=</span> <span class="st">"m"</span>,</span>
+<span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># use multiple cores</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></code></pre></div>
+<p><img src="fig-vignettes-med-boot-boot-std-1.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-2.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-3.png" width="3300"></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="fig-vignettes-med-boot-boot-std-4.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-5.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-6.png" width="3300"></p>
+</div>
+<div class="section level2 unnumbered">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0" line-spacing="2">
 <div id="ref-Deboeck-Preacher-2015" class="csl-entry">
 Deboeck, P. R., &amp; Preacher, K. J. (2015). No need to be discrete: A
@@ -87,6 +360,7 @@ statistical computing</em>. R Foundation for Statistical Computing. <a href="htt
 Ryan, O., &amp; Hamaker, E. L. (2021). Time to intervene: A
 continuous-time approach to network analysis and centrality.
 <em>Psychometrika</em>, <em>87</em>(1), 214–252. <a href="https://doi.org/10.1007/s11336-021-09767-0" class="external-link">https://doi.org/10.1007/s11336-021-09767-0</a>
+</div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
