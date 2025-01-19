@@ -1,7 +1,7 @@
 ---
 title: "Total, Direct, and Indirect Effects in Continuous-Time Mediation Model (Bootstrap)"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-01-15"
+date: "2025-01-19"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -196,7 +196,7 @@ path <- getwd()
 prefix <- "ou"
 ```
 
-The estimated parameters are then passed as arguments to the `PBSSMOUFixed` function from the `simStateSpace` package, which generates a parametric bootstrap sampling distribution of the parameter estimates. The argument `R` specifies the number of bootstrap replications.
+The estimated parameters are then passed as arguments to the `PBSSMOUFixed` function from the `bootStateSpace` package, which generates a parametric bootstrap sampling distribution of the parameter estimates. The argument `R` specifies the number of bootstrap replications.
 The generated data and model estimates are stored in `path` using the specified `prefix` for the file names.
 The `ncores = parallel::detectCores()` argument instructs the function to use all available CPU cores in the system.
 
@@ -204,6 +204,7 @@ The `ncores = parallel::detectCores()` argument instructs the function to use al
 
 
 ``` r
+library(bootStateSpace)
 boot <- PBSSMOUFixed(
   R = R,
   path = path,
@@ -224,7 +225,7 @@ boot <- PBSSMOUFixed(
 )
 ```
 
-The `extract` function from the `simStateSpace` package is used to extract the bootstrap phi matrices as well as the sigma matrices.
+The `extract` function from the `bootStateSpace` package is used to extract the bootstrap phi matrices as well as the sigma matrices.
 
 
 ``` r

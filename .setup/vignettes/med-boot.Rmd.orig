@@ -362,13 +362,14 @@ path <- getwd()
 prefix <- "ou"
 ```
 
-The estimated parameters are then passed as arguments to the `PBSSMOUFixed` function from the `simStateSpace` package, which generates a parametric bootstrap sampling distribution of the parameter estimates. The argument `R` specifies the number of bootstrap replications.
+The estimated parameters are then passed as arguments to the `PBSSMOUFixed` function from the `bootStateSpace` package, which generates a parametric bootstrap sampling distribution of the parameter estimates. The argument `R` specifies the number of bootstrap replications.
 The generated data and model estimates are stored in `path` using the specified `prefix` for the file names.
 The `ncores = parallel::detectCores()` argument instructs the function to use all available CPU cores in the system.
 
 > **_NOTE:_**  Fitting the CT-VAR model multiple times is computationally intensive. 
 
 ```{r}
+library(bootStateSpace)
 boot <- PBSSMOUFixed(
   R = R,
   path = path,
@@ -389,7 +390,7 @@ boot <- PBSSMOUFixed(
 )
 ```
 
-The `extract` function from the `simStateSpace` package is used to extract the bootstrap phi matrices as well as the sigma matrices.
+The `extract` function from the `bootStateSpace` package is used to extract the bootstrap phi matrices as well as the sigma matrices.
 
 ```{r}
 phi <- extract(object = boot, what = "phi")

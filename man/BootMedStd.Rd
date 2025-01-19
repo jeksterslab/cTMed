@@ -101,7 +101,7 @@ See \code{\link[=TotalStd]{TotalStd()}},
 }
 \examples{
 \dontrun{
-library(simStateSpace)
+library(bootStateSpace)
 # prepare parameters
 ## number of individuals
 n <- 50
