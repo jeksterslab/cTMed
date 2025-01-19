@@ -21,7 +21,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' library(simStateSpace)
+#' library(bootStateSpace)
 #' # prepare parameters
 #' ## number of individuals
 #' n <- 50
@@ -198,7 +198,7 @@ print.ctmedboot <- function(x,
 #'
 #' @examples
 #' \dontrun{
-#' library(simStateSpace)
+#' library(bootStateSpace)
 #' # prepare parameters
 #' ## number of individuals
 #' n <- 50
@@ -394,7 +394,7 @@ summary.ctmedboot <- function(object,
 #'
 #' @examples
 #' \dontrun{
-#' library(simStateSpace)
+#' library(bootStateSpace)
 #' # prepare parameters
 #' ## number of individuals
 #' n <- 50
@@ -576,7 +576,7 @@ confint.ctmedboot <- function(object,
 #'
 #' @examples
 #' \dontrun{
-#' library(simStateSpace)
+#' library(bootStateSpace)
 #' # prepare parameters
 #' ## number of individuals
 #' n <- 50

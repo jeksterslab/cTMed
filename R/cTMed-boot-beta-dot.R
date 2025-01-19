@@ -22,7 +22,6 @@
     ncores <- as.integer(ncores)
     R <- length(phi)
     if (ncores > R) {
-      ncores <- R
     }
     if (ncores > 1) {
       par <- TRUE

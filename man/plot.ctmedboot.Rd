@@ -31,7 +31,7 @@ Plot Method for an Object of Class \code{ctmedboot}
 }
 \examples{
 \dontrun{
-library(simStateSpace)
+library(bootStateSpace)
 # prepare parameters
 ## number of individuals
 n <- 50
