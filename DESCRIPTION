@@ -30,8 +30,4 @@ Suggests:
     knitr,
     rmarkdown,
     testthat,
-    expm,
-    bootStateSpace
-Remotes:
-    jeksterslab/bootStateSpace
-RoxygenNote: 7.3.2
+    expm
