@@ -48,7 +48,7 @@
 #'   }
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' library(bootStateSpace)
 #' # prepare parameters
 #' ## number of individuals
