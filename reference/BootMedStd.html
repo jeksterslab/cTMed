@@ -25,7 +25,7 @@ drift matrix \(\boldsymbol{\Phi}\)."><link rel="stylesheet" href="https://cdn.js
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -245,7 +245,7 @@ Psychometrika, 87 (1), 214–252.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/bootStateSpace" class="external-link">bootStateSpace</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># prepare parameters</span></span></span>
 <span class="r-in"><span><span class="co">## number of individuals</span></span></span>
@@ -343,6 +343,15 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  to <span class="op">=</span> <span class="st">"y"</span>,</span></span>
 <span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> type = pc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.0936 0.0134 10 -0.1222 -0.0825</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2503 0.0248 10 -0.2890 -0.2115</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1567 0.0150 10  0.1290  0.1726</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Range of time intervals ---------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu">BootMedStd</span><span class="op">(</span></span></span>
@@ -356,18 +365,154 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="BootMedStd-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootMedStd-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootMedStd-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span> <span class="co"># bias-corrected</span></span></span>
+<span class="r-plt img"><img src="BootMedStd-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootMedStd-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootMedStd-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Methods -------------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co"># BootMedStd has a number of methods including</span></span></span>
 <span class="r-in"><span><span class="co"># print, summary, confint, and plot</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> type = pc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.0936 0.0134 10 -0.1222 -0.0825</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2503 0.0248 10 -0.2890 -0.2115</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1567 0.0150 10  0.1290  0.1726</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           2  0.0748 0.0153 10  0.0379  0.0826</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          2 -0.3003 0.0382 10 -0.3546 -0.2410</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        2  0.3751 0.0390 10  0.3024  0.4191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           3  0.2347 0.0225 10  0.1897  0.2540</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          3 -0.2728 0.0448 10 -0.3325 -0.2056</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        3  0.5075 0.0596 10  0.4015  0.5783</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           4  0.3228 0.0319 10  0.2601  0.3590</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          4 -0.2222 0.0454 10 -0.2820 -0.1561</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        4  0.5450 0.0721 10  0.4185  0.6341</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           5  0.3456 0.0397 10  0.2715  0.3930</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          5 -0.1711 0.0420 10 -0.2280 -0.1120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        5  0.5167 0.0768 10  0.3841  0.6131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval         est         se  R        2.5%       97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.09362266 0.01335542 10 -0.12216082 -0.08253951</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.25030140 0.02478894 10 -0.28900397 -0.21151384</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.15667873 0.01498727 10  0.12895166  0.17257871</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.07477656 0.01533551 10  0.03793732  0.08263934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.30032315 0.03823914 10 -0.35462712 -0.24099344</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.37509972 0.03901509 10  0.30238483  0.41912425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.23472850 0.02252218 10  0.18973419  0.25403767</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.27275165 0.04482962 10 -0.33250256 -0.20562680</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.50748016 0.05957923 10  0.40149250  0.57826138</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.32280682 0.03188454 10  0.26007472  0.35900763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.22216560 0.04537112 10 -0.28203627 -0.15614229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.54497241 0.07211094 10  0.41847616  0.63410940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.34557261 0.03965676 10  0.27147412  0.39303569</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.17111843 0.04197355 10 -0.22796902 -0.11195868</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.51669104 0.07684775 10  0.38408232  0.61313504</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">boot</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval       2.5 %      97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.12216082 -0.08253951</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.28900397 -0.21151384</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.12895166  0.17257871</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.03793732  0.08263934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.35462712 -0.24099344</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.30238483  0.41912425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.18973419  0.25403767</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.33250256 -0.20562680</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.40149250  0.57826138</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.26007472  0.35900763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.28203627 -0.15614229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.41847616  0.63410940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.27147412  0.39303569</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.22796902 -0.11195868</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.38408232  0.61313504</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span> <span class="co"># bias-corrected</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> type = bc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.0936 0.0134 10 -0.1142 -0.0798</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2503 0.0248 10 -0.2748 -0.2053</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1567 0.0150 10  0.1290  0.1726</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           2  0.0748 0.0153 10  0.0625  0.0835</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          2 -0.3003 0.0382 10 -0.3405 -0.2317</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        2  0.3751 0.0390 10  0.3024  0.4191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           3  0.2347 0.0225 10  0.1979  0.2544</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          3 -0.2728 0.0448 10 -0.3204 -0.1970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        3  0.5075 0.0596 10  0.3830  0.5622</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           4  0.3228 0.0319 10  0.2601  0.3590</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          4 -0.2222 0.0454 10 -0.2700 -0.1495</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        4  0.5450 0.0721 10  0.3961  0.6118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total           5  0.3456 0.0397 10  0.2531  0.3758</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> direct          5 -0.1711 0.0420 10 -0.2164 -0.1068</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        5  0.5167 0.0768 10  0.3587  0.5748</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval         est         se  R        2.5%       97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.09362266 0.01335542 10 -0.11424194 -0.07982816</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.25030140 0.02478894 10 -0.27484443 -0.20530052</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.15667873 0.01498727 10  0.12895166  0.17257871</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.07477656 0.01533551 10  0.06246253  0.08347577</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.30032315 0.03823914 10 -0.34047147 -0.23173997</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.37509972 0.03901509 10  0.30238483  0.41912425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.23472850 0.02252218 10  0.19789544  0.25441987</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.27275165 0.04482962 10 -0.32038630 -0.19700819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.50748016 0.05957923 10  0.38304264  0.56222097</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.32280682 0.03188454 10  0.26007472  0.35900763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.22216560 0.04537112 10 -0.27003267 -0.14950792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.54497241 0.07211094 10  0.39614819  0.61182247</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.34557261 0.03965676 10  0.25305282  0.37582117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.17111843 0.04197355 10 -0.21639299 -0.10684974</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.51669104 0.07684775 10  0.35873699  0.57484841</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">boot</span>, level <span class="op">=</span> <span class="fl">0.95</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval       2.5 %      97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.11424194 -0.07982816</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.27484443 -0.20530052</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.12895166  0.17257871</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.06246253  0.08347577</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.34047147 -0.23173997</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.30238483  0.41912425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.19789544  0.25441987</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.32038630 -0.19700819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.38304264  0.56222097</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.26007472  0.35900763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.27003267 -0.14950792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.39614819  0.61182247</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.25305282  0.37582117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.21639299 -0.10684974</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.35873699  0.57484841</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -19,7 +19,7 @@ drift matrix \(\boldsymbol{\Phi}\)."><link rel="stylesheet" href="https://cdn.js
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -194,7 +194,7 @@ Psychometrika, 87 (1), 214–252.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/bootStateSpace" class="external-link">bootStateSpace</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># prepare parameters</span></span></span>
 <span class="r-in"><span><span class="co">## number of individuals</span></span></span>
@@ -285,6 +285,15 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  phi_hat <span class="op">=</span> <span class="va">phi_hat</span>,</span></span>
 <span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Indirect Effect Centrality</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> type = pc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        1 0.0000 0.0199 10 -0.0369 0.0226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        1 0.1674 0.0140 10  0.1435 0.1824</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        1 0.0000 0.0128 10 -0.0216 0.0183</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Range of time intervals ---------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu">BootIndirectCentral</span><span class="op">(</span></span></span>
@@ -293,18 +302,154 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="BootIndirectCentral-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootIndirectCentral-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootIndirectCentral-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span> <span class="co"># bias-corrected</span></span></span>
+<span class="r-plt img"><img src="BootIndirectCentral-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootIndirectCentral-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootIndirectCentral-6.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Methods -------------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co"># BootIndirectCentral has a number of methods including</span></span></span>
 <span class="r-in"><span><span class="co"># print, summary, confint, and plot</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Indirect Effect Centrality</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> type = pc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        1 0.0000 0.0199 10 -0.0369 0.0226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        1 0.1674 0.0140 10  0.1435 0.1824</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        1 0.0000 0.0128 10 -0.0216 0.0183</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        2 0.0000 0.0367 10 -0.0675 0.0439</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        2 0.4008 0.0366 10  0.3386 0.4386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        2 0.0000 0.0302 10 -0.0525 0.0405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        3 0.0000 0.0399 10 -0.0712 0.0515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        3 0.5423 0.0563 10  0.4484 0.6037</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        3 0.0000 0.0459 10 -0.0823 0.0539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        4 0.0000 0.0379 10 -0.0666 0.0505</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        4 0.5823 0.0687 10  0.4716 0.6655</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        4 0.0000 0.0616 10 -0.1127 0.0649</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        5 0.0000 0.0362 10 -0.0607 0.0469</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        5 0.5521 0.0739 10  0.4323 0.6466</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        5 0.0000 0.0766 10 -0.1430 0.0738</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval           est         se  R        2.5%      97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1  0.000000e+00 0.01985940 10 -0.03685723 0.02255445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1  1.674155e-01 0.01404908 10  0.14353163 0.18235696</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1  0.000000e+00 0.01279882 10 -0.02161436 0.01829366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2  0.000000e+00 0.03667352 10 -0.06749959 0.04393447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2  4.008043e-01 0.03658546 10  0.33856442 0.43863339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2  0.000000e+00 0.03015230 10 -0.05245187 0.04049064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3  0.000000e+00 0.03992476 10 -0.07116880 0.05146955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3  5.422564e-01 0.05629083 10  0.44836139 0.60367832</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 -3.330669e-16 0.04593961 10 -0.08234621 0.05392738</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4  0.000000e+00 0.03791042 10 -0.06661947 0.05051417</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4  5.823179e-01 0.06869160 10  0.47156366 0.66550030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4  0.000000e+00 0.06156756 10 -0.11273763 0.06492942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5  0.000000e+00 0.03616999 10 -0.06069927 0.04685244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5  5.520985e-01 0.07392980 10  0.43230658 0.64658607</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5  0.000000e+00 0.07657344 10 -0.14303981 0.07380935</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">boot</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval       2.5 %     97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 -0.03685723 0.02255445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1  0.14353163 0.18235696</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1 -0.02161436 0.01829366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2 -0.06749959 0.04393447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2  0.33856442 0.43863339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2 -0.05245187 0.04049064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3 -0.07116880 0.05146955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3  0.44836139 0.60367832</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 -0.08234621 0.05392738</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 -0.06661947 0.05051417</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4  0.47156366 0.66550030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4 -0.11273763 0.06492942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 -0.06069927 0.04685244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5  0.43230658 0.64658607</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 -0.14303981 0.07380935</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span> <span class="co"># bias-corrected</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Indirect Effect Centrality</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> type = bc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        1 0.0000 0.0199 10 -0.0369 0.0226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        1 0.1674 0.0140 10  0.1445 0.1832</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        1 0.0000 0.0128 10 -0.0216 0.0183</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        2 0.0000 0.0367 10 -0.0675 0.0439</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        2 0.4008 0.0366 10  0.3392 0.4391</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        2 0.0000 0.0302 10 -0.0525 0.0405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        3 0.0000 0.0399 10 -0.0712 0.0515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        3 0.5423 0.0563 10  0.4432 0.5936</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        3 0.0000 0.0459 10 -0.0823 0.0539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        4 0.0000 0.0379 10 -0.0585 0.0542</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        4 0.5823 0.0687 10  0.4586 0.6409</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        4 0.0000 0.0616 10 -0.1127 0.0649</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> x        5 0.0000 0.0362 10 -0.0607 0.0469</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> m        5 0.5521 0.0739 10  0.4167 0.6273</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> y        5 0.0000 0.0766 10 -0.1430 0.0738</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval           est         se  R        2.5%      97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1  0.000000e+00 0.01985940 10 -0.03685723 0.02255445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1  1.674155e-01 0.01404908 10  0.14445643 0.18324920</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1  0.000000e+00 0.01279882 10 -0.02161436 0.01829366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2  0.000000e+00 0.03667352 10 -0.06749959 0.04393447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2  4.008043e-01 0.03658546 10  0.33921616 0.43914357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2  0.000000e+00 0.03015230 10 -0.05245187 0.04049064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3  0.000000e+00 0.03992476 10 -0.07116880 0.05146955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3  5.422564e-01 0.05629083 10  0.44315433 0.59361883</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 -3.330669e-16 0.04593961 10 -0.08234621 0.05392738</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4  0.000000e+00 0.03791042 10 -0.05845978 0.05418397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4  5.823179e-01 0.06869160 10  0.45858979 0.64093404</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4  0.000000e+00 0.06156756 10 -0.11273763 0.06492942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5  0.000000e+00 0.03616999 10 -0.06069927 0.04685244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5  5.520985e-01 0.07392980 10  0.41668699 0.62734953</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5  0.000000e+00 0.07657344 10 -0.14303981 0.07380935</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">boot</span>, level <span class="op">=</span> <span class="fl">0.95</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval       2.5 %     97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 -0.03685723 0.02255445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1  0.14445643 0.18324920</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1 -0.02161436 0.01829366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2 -0.06749959 0.04393447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2  0.33921616 0.43914357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2 -0.05245187 0.04049064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3 -0.07116880 0.05146955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3  0.44315433 0.59361883</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 -0.08234621 0.05392738</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 -0.05845978 0.05418397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4  0.45858979 0.64093404</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4 -0.11273763 0.06492942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 -0.06069927 0.04685244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5  0.41668699 0.62734953</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 -0.14303981 0.07380935</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

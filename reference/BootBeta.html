@@ -21,7 +21,7 @@ drift matrix \(\boldsymbol{\Phi}\)."><link rel="stylesheet" href="https://cdn.js
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -197,7 +197,7 @@ Psychometrika, 87 (1), 214–252.
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/bootStateSpace" class="external-link">bootStateSpace</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># prepare parameters</span></span></span>
 <span class="r-in"><span><span class="co">## number of individuals</span></span></span>
@@ -288,6 +288,21 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  phi_hat <span class="op">=</span> <span class="va">phi_hat</span>,</span></span>
 <span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> type = pc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        1  0.6998 0.0462 10  0.6266  0.7449</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        1  0.5000 0.0248 10  0.4587  0.5299</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        1 -0.1000 0.0135 10 -0.1302 -0.0931</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        1  0.0000 0.0469 10 -0.0493  0.0834</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        1  0.5999 0.0277 10  0.5667  0.6537</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        1  0.3998 0.0171 10  0.3825  0.4322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        1  0.0000 0.0392 10 -0.0706  0.0489</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        1  0.0000 0.0276 10 -0.0375  0.0443</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        1  0.5001 0.0157 10  0.4886  0.5323</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Range of time intervals ---------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">boot</span> <span class="op">&lt;-</span> <span class="fu">BootBeta</span><span class="op">(</span></span></span>
@@ -296,18 +311,286 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="BootBeta-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-2.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-3.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-4.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-5.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-6.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-7.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-8.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-9.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span> <span class="co"># bias-corrected</span></span></span>
+<span class="r-plt img"><img src="BootBeta-10.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-11.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-12.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-13.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-14.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-15.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-16.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-17.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="BootBeta-18.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Methods -------------------------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="co"># BootBeta has a number of methods including</span></span></span>
 <span class="r-in"><span><span class="co"># print, summary, confint, and plot</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> type = pc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        1  0.6998 0.0462 10  0.6266  0.7449</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        1  0.5000 0.0248 10  0.4587  0.5299</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        1 -0.1000 0.0135 10 -0.1302 -0.0931</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        1  0.0000 0.0469 10 -0.0493  0.0834</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        1  0.5999 0.0277 10  0.5667  0.6537</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        1  0.3998 0.0171 10  0.3825  0.4322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        1  0.0000 0.0392 10 -0.0706  0.0489</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        1  0.0000 0.0276 10 -0.0375  0.0443</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        1  0.5001 0.0157 10  0.4886  0.5323</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        2 0.4897 0.0483 10  0.4098 0.5591</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        2 0.6499 0.0390 10  0.5798 0.6904</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        2 0.0799 0.0159 10  0.0406 0.0879</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        2 0.0000 0.0489 10 -0.0474 0.0818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        2 0.3599 0.0460 10  0.3184 0.4541</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        2 0.4398 0.0195 10  0.4226 0.4788</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        2 0.0000 0.0481 10 -0.0865 0.0616</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        2 0.0000 0.0440 10 -0.0689 0.0554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        2 0.2501 0.0190 10  0.2345 0.2841</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        3 0.3427 0.0463 10  0.2751 0.4257</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        3 0.6347 0.0502 10  0.5459 0.7052</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        3 0.2508 0.0187 10  0.2164 0.2668</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        3 0.0000 0.0401 10 -0.0469 0.0612</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        3 0.2159 0.0528 10  0.1761 0.3210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        3 0.3638 0.0247 10  0.3426 0.4109</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        3 0.0000 0.0450 10 -0.0822 0.0574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        3 0.0000 0.0536 10 -0.0934 0.0546</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        3 0.1251 0.0217 10  0.0991 0.1646</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        4 0.2398 0.0451 10  0.1818 0.3288</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        4 0.5521 0.0588 10  0.4572 0.6504</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        4 0.3449 0.0247 10  0.2959 0.3704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        4 0.0000 0.0316 10 -0.0473 0.0417</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        4 0.1295 0.0508 10  0.0907 0.2251</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        4 0.2683 0.0311 10  0.2429 0.3363</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        4 0.0000 0.0379 10 -0.0710 0.0473</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        4 0.0000 0.0565 10 -0.1030 0.0564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        4 0.0625 0.0266 10  0.0262 0.1026</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        5 0.1678 0.0436 10  0.1193 0.2574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        5 0.4511 0.0642 10  0.3589 0.5698</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        5 0.3693 0.0323 10  0.3088 0.4065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        5 0.0000 0.0253 10 -0.0430 0.0354</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        5 0.0777 0.0448 10  0.0312 0.1541</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        5 0.1859 0.0344 10  0.1610 0.2617</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        5 0.0000 0.0302 10 -0.0581 0.0366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        5 0.0000 0.0541 10 -0.1015 0.0562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        5 0.0313 0.0316 10 -0.0151 0.0702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         effect interval         est         se  R        2.5%       97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  from x to x        1  0.69977250 0.04619116 10  0.62664729  0.74488459</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  from x to m        1  0.50003412 0.02476283 10  0.45865329  0.52990640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  from x to y        1 -0.10003837 0.01352470 10 -0.13021799 -0.09314403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  from m to x        1  0.00000000 0.04693048 10 -0.04929444  0.08343532</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  from m to m        1  0.59989538 0.02765975 10  0.56673563  0.65366698</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  from m to y        1  0.39983562 0.01709394 10  0.38245910  0.43217031</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  from y to x        1  0.00000000 0.03921752 10 -0.07064902  0.04890429</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  from y to m        1  0.00000000 0.02757518 10 -0.03753362  0.04426060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  from y to y        1  0.50007360 0.01565101 10  0.48863283  0.53227520</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 from x to x        2  0.48968155 0.04829661 10  0.40983641  0.55913746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 from x to m        2  0.64987829 0.03899876 10  0.57977635  0.69042092</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 from x to y        2  0.07990080 0.01591422 10  0.04064558  0.08786268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 from m to x        2  0.00000000 0.04888590 10 -0.04743327  0.08178123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 from m to m        2  0.35987447 0.04599035 10  0.31838727  0.45406311</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 from m to y        2  0.43980678 0.01949252 10  0.42255274  0.47879973</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 from y to x        2  0.00000000 0.04808620 10 -0.08645868  0.06162203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 from y to m        2  0.00000000 0.04396104 10 -0.06887826  0.05544520</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 from y to y        2  0.25007360 0.01902263 10  0.23452458  0.28407526</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 from x to x        3  0.34266568 0.04625981 10  0.27505399  0.42572708</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 from x to m        3  0.63471647 0.05020048 10  0.54592419  0.70521856</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 from x to y        3  0.25081383 0.01873463 10  0.21635512  0.26676004</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 from m to x        3  0.00000000 0.04013982 10 -0.04686850  0.06118365</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 from m to m        3  0.21588703 0.05277385 10  0.17613806  0.32096736</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 from m to y        3  0.36382639 0.02473911 10  0.34257063  0.41085799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 from y to x        3  0.00000000 0.04496705 10 -0.08215661  0.05740087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 from y to m        3  0.00000000 0.05360473 10 -0.09343319  0.05463893</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 from y to y        3  0.12505520 0.02167083 10  0.09906528  0.16456126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 from x to x        4  0.23978802 0.04513964 10  0.18178975  0.32883844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 from x to m        4  0.55210801 0.05884353 10  0.45719753  0.65039899</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 from x to y        4  0.34492791 0.02474916 10  0.29592103  0.37042957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 from m to x        4  0.00000000 0.03158889 10 -0.04732694  0.04168309</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 from m to m        4  0.12950963 0.05084726 10  0.09070625  0.22505825</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 from m to y        4  0.26825930 0.03113957 10  0.24288443  0.33626007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 from y to x        4  0.00000000 0.03785506 10 -0.07095595  0.04725816</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 from y to m        4  0.00000000 0.05647188 10 -0.10303558  0.05638981</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 from y to y        4  0.06253681 0.02659055 10  0.02623799  0.10262406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 from x to x        5  0.16779706 0.04357747 10  0.11929313  0.25743403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 from x to m        5  0.45110924 0.06420883 10  0.35894087  0.56976928</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 from x to y        5  0.36925379 0.03226131 10  0.30878766  0.40647923</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 from m to x        5  0.00000000 0.02531419 10 -0.04300933  0.03537615</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 from m to m        5  0.07769223 0.04484573 10  0.03122991  0.15411817</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 from m to y        5  0.18593196 0.03444554 10  0.16101445  0.26167942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 from y to x        5  0.00000000 0.03018798 10 -0.05814267  0.03661063</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 from y to m        5  0.00000000 0.05406332 10 -0.10148472  0.05620318</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 from y to y        5  0.03127301 0.03156738 10 -0.01509265  0.07019346</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">boot</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         effect interval       2.5 %      97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  from x to x        1  0.62664729  0.74488459</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  from x to m        1  0.45865329  0.52990640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  from x to y        1 -0.13021799 -0.09314403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  from x to x        2  0.40983641  0.55913746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  from x to m        2  0.57977635  0.69042092</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  from x to y        2  0.04064558  0.08786268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  from x to x        3  0.27505399  0.42572708</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  from x to m        3  0.54592419  0.70521856</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  from x to y        3  0.21635512  0.26676004</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 from x to x        4  0.18178975  0.32883844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 from x to m        4  0.45719753  0.65039899</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 from x to y        4  0.29592103  0.37042957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 from x to x        5  0.11929313  0.25743403</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 from x to m        5  0.35894087  0.56976928</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 from x to y        5  0.30878766  0.40647923</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span> <span class="co"># bias-corrected</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> type = bc</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval     est     se  R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        1  0.6998 0.0462 10  0.6247  0.7391</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        1  0.5000 0.0248 10  0.4598  0.5310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        1 -0.1000 0.0135 10 -0.1193 -0.0928</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        1  0.0000 0.0469 10 -0.0493  0.0834</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        1  0.5999 0.0277 10  0.5653  0.6134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        1  0.3998 0.0171 10  0.3825  0.4322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        1  0.0000 0.0392 10 -0.0706  0.0489</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        1  0.0000 0.0276 10 -0.0337  0.0487</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        1  0.5001 0.0157 10  0.4886  0.5323</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        2 0.4897 0.0483 10  0.3995 0.5203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        2 0.6499 0.0390 10  0.5718 0.6806</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        2 0.0799 0.0159 10  0.0682 0.0888</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        2 0.0000 0.0489 10 -0.0467 0.0820</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        2 0.3599 0.0460 10  0.3177 0.4386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        2 0.4398 0.0195 10  0.4226 0.4634</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        2 0.0000 0.0481 10 -0.0865 0.0616</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        2 0.0000 0.0440 10 -0.0689 0.0554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        2 0.2501 0.0190 10  0.2339 0.2829</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        3 0.3427 0.0463 10  0.2607 0.3854</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        3 0.6347 0.0502 10  0.5323 0.6736</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        3 0.2508 0.0187 10  0.2205 0.2683</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        3 0.0000 0.0401 10 -0.0440 0.0617</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        3 0.2159 0.0528 10  0.1761 0.3210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        3 0.3638 0.0247 10  0.3416 0.3980</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        3 0.0000 0.0450 10 -0.0822 0.0574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        3 0.0000 0.0536 10 -0.0934 0.0546</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        3 0.1251 0.0217 10  0.0990 0.1432</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        4 0.2398 0.0451 10  0.1710 0.2551</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        4 0.5521 0.0588 10  0.4374 0.5848</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        4 0.3449 0.0247 10  0.3148 0.3716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        4 0.0000 0.0316 10 -0.0391 0.0422</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        4 0.1295 0.0508 10  0.0907 0.2251</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        4 0.2683 0.0311 10  0.2412 0.3233</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        4 0.0000 0.0379 10 -0.0710 0.0473</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        4 0.0000 0.0565 10 -0.1030 0.0564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        4 0.0625 0.0266 10  0.0246 0.0917</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             interval    est     se  R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to x        5 0.1678 0.0436 10  0.1135 0.2148</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to m        5 0.4511 0.0642 10  0.3371 0.5062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from x to y        5 0.3693 0.0323 10  0.2942 0.3981</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to x        5 0.0000 0.0253 10 -0.0430 0.0354</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to m        5 0.0777 0.0448 10  0.0412 0.1572</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from m to y        5 0.1859 0.0344 10  0.1592 0.2470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to x        5 0.0000 0.0302 10 -0.0581 0.0366</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to m        5 0.0000 0.0541 10 -0.1015 0.0562</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> from y to y        5 0.0313 0.0316 10 -0.0152 0.0641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">boot</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         effect interval         est         se  R        2.5%       97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  from x to x        1  0.69977250 0.04619116 10  0.62468140  0.73907938</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  from x to m        1  0.50003412 0.02476283 10  0.45980840  0.53098923</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  from x to y        1 -0.10003837 0.01352470 10 -0.11928264 -0.09276853</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  from m to x        1  0.00000000 0.04693048 10 -0.04929444  0.08343532</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  from m to m        1  0.59989538 0.02765975 10  0.56533542  0.61343471</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  from m to y        1  0.39983562 0.01709394 10  0.38245910  0.43217031</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  from y to x        1  0.00000000 0.03921752 10 -0.07064902  0.04890429</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  from y to m        1  0.00000000 0.02757518 10 -0.03373034  0.04870959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  from y to y        1  0.50007360 0.01565101 10  0.48863283  0.53227520</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 from x to x        2  0.48968155 0.04829661 10  0.39951058  0.52028969</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 from x to m        2  0.64987829 0.03899876 10  0.57182354  0.68061666</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 from x to y        2  0.07990080 0.01591422 10  0.06815270  0.08882083</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 from m to x        2  0.00000000 0.04888590 10 -0.04673487  0.08197855</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 from m to m        2  0.35987447 0.04599035 10  0.31766333  0.43855897</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 from m to y        2  0.43980678 0.01949252 10  0.42255078  0.46342043</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 from y to x        2  0.00000000 0.04808620 10 -0.08645868  0.06162203</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 from y to m        2  0.00000000 0.04396104 10 -0.06887826  0.05544520</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 from y to y        2  0.25007360 0.01902263 10  0.23392510  0.28285536</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 from x to x        3  0.34266568 0.04625981 10  0.26069578  0.38535309</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 from x to m        3  0.63471647 0.05020048 10  0.53225460  0.67358656</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 from x to y        3  0.25081383 0.01873463 10  0.22048639  0.26829406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 from m to x        3  0.00000000 0.04013982 10 -0.04400360  0.06166691</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 from m to m        3  0.21588703 0.05277385 10  0.17613806  0.32096736</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 from m to y        3  0.36382639 0.02473911 10  0.34164309  0.39800899</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 from y to x        3  0.00000000 0.04496705 10 -0.08215661  0.05740087</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 from y to m        3  0.00000000 0.05360473 10 -0.09343319  0.05463893</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 from y to y        3  0.12505520 0.02167083 10  0.09901812  0.14317853</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 from x to x        4  0.23978802 0.04513964 10  0.17104675  0.25509649</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 from x to m        4  0.55210801 0.05884353 10  0.43741315  0.58480548</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 from x to y        4  0.34492791 0.02474916 10  0.31483437  0.37160448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 from m to x        4  0.00000000 0.03158889 10 -0.03909152  0.04223043</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 from m to m        4  0.12950963 0.05084726 10  0.09070625  0.22505825</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 from m to y        4  0.26825930 0.03113957 10  0.24118376  0.32331608</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 from y to x        4  0.00000000 0.03785506 10 -0.07095595  0.04725816</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 from y to m        4  0.00000000 0.05647188 10 -0.10303558  0.05638981</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 from y to y        4  0.06253681 0.02659055 10  0.02457317  0.09166099</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 from x to x        5  0.16779706 0.04357747 10  0.11350347  0.21483345</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 from x to m        5  0.45110924 0.06420883 10  0.33710283  0.50621360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 from x to y        5  0.36925379 0.03226131 10  0.29418281  0.39806967</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 from m to x        5  0.00000000 0.02531419 10 -0.04300933  0.03537615</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 from m to m        5  0.07769223 0.04484573 10  0.04123415  0.15717773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 from m to y        5  0.18593196 0.03444554 10  0.15918697  0.24702743</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 from y to x        5  0.00000000 0.03018798 10 -0.05814267  0.03661063</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 from y to m        5  0.00000000 0.05406332 10 -0.10148472  0.05620318</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 from y to y        5  0.03127301 0.03156738 10 -0.01516324  0.06407115</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">boot</span>, level <span class="op">=</span> <span class="fl">0.95</span>, type <span class="op">=</span> <span class="st">"bc"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         effect interval      2.5 %      97.5 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  from x to x        1  0.6246814  0.73907938</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  from x to m        1  0.4598084  0.53098923</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  from x to y        1 -0.1192826 -0.09276853</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  from x to x        2  0.3995106  0.52028969</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  from x to m        2  0.5718235  0.68061666</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  from x to y        2  0.0681527  0.08882083</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  from x to x        3  0.2606958  0.38535309</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  from x to m        3  0.5322546  0.67358656</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  from x to y        3  0.2204864  0.26829406</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 from x to x        4  0.1710467  0.25509649</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 from x to m        4  0.4374131  0.58480548</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 from x to y        4  0.3148344  0.37160448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 from x to x        5  0.1135035  0.21483345</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 from x to m        5  0.3371028  0.50621360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 from x to y        5  0.2941828  0.39806967</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
