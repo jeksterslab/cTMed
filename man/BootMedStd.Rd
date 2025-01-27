@@ -100,7 +100,7 @@ See \code{\link[=TotalStd]{TotalStd()}},
 \code{\link[=IndirectStd]{IndirectStd()}} for more details.
 }
 \examples{
-\dontrun{
+\donttest{
 library(bootStateSpace)
 # prepare parameters
 ## number of individuals
