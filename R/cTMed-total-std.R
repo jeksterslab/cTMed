@@ -25,7 +25,7 @@
 #'   }
 #'   where
 #'   \eqn{\boldsymbol{\Phi}} denotes the drift matrix,
-#'   \eqn{\mathbf{S}} a diagonal matrix with model-implied
+#'   \eqn{\mathbf{S}} a diagonal matrix with model-implied steady-state
 #'   standard deviations on the diagonals and
 #'   \eqn{\Delta t} the time interval.
 #'

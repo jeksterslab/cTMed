@@ -10,7 +10,7 @@ lapply(
       paste(text, "TotalStd"),
       {
         testthat::skip_on_cran()
-        answer <- 0.07477656
+        answer <- 0.0656
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -30,20 +30,9 @@ lapply(
         )
         delta_t <- 2
         total <- expm::expm(delta_t * phi)
-        total_cov <- ExpCov(
+        total_cov <- simStateSpace::LinSDECov(
           phi = phi,
-          sigma = sigma,
-          delta_t = delta_t
-        )
-        ExpMean(
-          phi = phi,
-          iota = c(0, 0, 0),
-          delta_t = delta_t
-        )
-        ExpMean(
-          phi = phi,
-          iota = c(.5, .3, .4),
-          delta_t = delta_t
+          sigma = sigma
         )
         total_std <- matrix(
           data = 0.0,
@@ -72,7 +61,7 @@ lapply(
       paste(text, "TotalStdVec"),
       {
         testthat::skip_on_cran()
-        answer <- 0.07477656
+        answer <- 0.0656
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -92,20 +81,9 @@ lapply(
         )
         delta_t <- 2
         total <- expm::expm(delta_t * phi)
-        total_cov <- ExpCov(
+        total_cov <- simStateSpace::LinSDECov(
           phi = phi,
-          sigma = sigma,
-          delta_t = delta_t
-        )
-        ExpMean(
-          phi = phi,
-          iota = c(0, 0, 0),
-          delta_t = delta_t
-        )
-        ExpMean(
-          phi = phi,
-          iota = c(.5, .3, .4),
-          delta_t = delta_t
+          sigma = sigma
         )
         total_std <- matrix(
           data = 0.0,
@@ -139,7 +117,7 @@ lapply(
       paste(text, "TotalStdDeltaT"),
       {
         testthat::skip_on_cran()
-        answer <- 0.07477656
+        answer <- 0.0656
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -159,20 +137,9 @@ lapply(
         )
         delta_t <- 2
         total <- expm::expm(delta_t * phi)
-        total_cov <- ExpCov(
+        total_cov <- simStateSpace::LinSDECov(
           phi = phi,
-          sigma = sigma,
-          delta_t = delta_t
-        )
-        ExpMean(
-          phi = phi,
-          iota = c(0, 0, 0),
-          delta_t = delta_t
-        )
-        ExpMean(
-          phi = phi,
-          iota = c(.5, .3, .4),
-          delta_t = delta_t
+          sigma = sigma
         )
         total_std <- matrix(
           data = 0.0,
@@ -207,7 +174,7 @@ lapply(
       paste(text, "MedStd"),
       {
         testthat::skip_on_cran()
-        answer <- 0.07477656
+        answer <- 0.0656
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -227,20 +194,9 @@ lapply(
         )
         delta_t <- 2
         total <- expm::expm(delta_t * phi)
-        total_cov <- ExpCov(
+        total_cov <- simStateSpace::LinSDECov(
           phi = phi,
-          sigma = sigma,
-          delta_t = delta_t
-        )
-        ExpMean(
-          phi = phi,
-          iota = c(0, 0, 0),
-          delta_t = delta_t
-        )
-        ExpMean(
-          phi = phi,
-          iota = c(.5, .3, .4),
-          delta_t = delta_t
+          sigma = sigma
         )
         total_std <- matrix(
           data = 0.0,
@@ -272,7 +228,7 @@ lapply(
       paste(text, "plot error"),
       {
         testthat::skip_on_cran()
-        answer <- 0.07477656
+        answer <- 0.0656
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
