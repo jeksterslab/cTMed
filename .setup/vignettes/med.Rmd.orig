@@ -73,8 +73,9 @@ delta_t <- seq(from = 0, to = 10, length.out = 1000)
 
 ## Delta Method
 
-```{r delta}
+```{r}
 library(cTMed)
+start <- Sys.time()
 delta <- DeltaMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -84,12 +85,19 @@ delta <- DeltaMed(
   med = "m",
   ncores = parallel::detectCores() # use multiple cores
 )
+end <- Sys.time()
+elapsed <- end - start
+elapsed
+```
+
+```{r delta}
 plot(delta)
 ```
 
 ## Monte Carlo Method
 
-```{r mc}
+```{r}
+start <- Sys.time()
 mc <- MCMed(
   phi = phi,
   vcov_phi_vec = vcov_phi_vec,
@@ -100,6 +108,12 @@ mc <- MCMed(
   R = 20000L,
   ncores = parallel::detectCores() # use multiple cores
 )
+end <- Sys.time()
+elapsed <- end - start
+elapsed
+```
+
+```{r mc}
 plot(mc)
 ```
 

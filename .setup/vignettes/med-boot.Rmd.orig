@@ -357,7 +357,7 @@ theta_l <- t(chol(theta))
 ```
 
 ```{r}
-R <- 5L # use at least 1000 in actual research
+R <- 1000L # use at least 1000 in actual research
 path <- getwd()
 prefix <- "ou"
 ```
@@ -370,6 +370,7 @@ The `ncores = parallel::detectCores()` argument instructs the function to use al
 
 ```{r}
 library(bootStateSpace)
+start <- Sys.time()
 boot <- PBSSMOUFixed(
   R = R,
   path = path,
@@ -388,6 +389,9 @@ boot <- PBSSMOUFixed(
   ncores = parallel::detectCores(),
   seed = 42
 )
+end <- Sys.time()
+elapsed <- end - start
+elapsed
 ```
 
 The `extract` function from the `bootStateSpace` package is used to extract the bootstrap phi matrices as well as the sigma matrices.
@@ -450,8 +454,9 @@ sigma_hat <- matrix(
 
 ## Bootstrap Method
 
-```{r boot}
+```{r}
 library(cTMed)
+start <- Sys.time()
 boot <- BootMed(
   phi = phi,
   phi_hat = phi_hat,
@@ -461,13 +466,20 @@ boot <- BootMed(
   med = "m",
   ncores = parallel::detectCores() # use multiple cores
 )
+end <- Sys.time()
+elapsed <- end - start
+elapsed
+```
+
+```{r boot}
 plot(boot)
 plot(boot, type = "bc")
 ```
 
 The following generates bootstrap confidence intervals for the standardized effects.
 
-```{r boot-std}
+```{r}
+start <- Sys.time()
 boot <- BootMedStd(
   phi = phi,
   sigma = sigma,
@@ -479,6 +491,12 @@ boot <- BootMedStd(
   med = "m",
   ncores = parallel::detectCores() # use multiple cores
 )
+end <- Sys.time()
+elapsed <- end - start
+elapsed
+```
+
+```{r boot-std}
 plot(boot)
 plot(boot, type = "bc")
 ```

@@ -106,6 +106,7 @@ delta_t <- seq(from = 0, to = 10, length.out = 1000)
 
 ``` r
 library(cTMed)
+start <- Sys.time()
 delta <- DeltaMedStd(
   phi = phi,
   sigma = sigma,
@@ -116,6 +117,14 @@ delta <- DeltaMedStd(
   med = "m",
   ncores = parallel::detectCores() # use multiple cores
 )
+end <- Sys.time()
+elapsed <- end - start
+elapsed
+#> Time difference of 1.671006 secs
+```
+
+
+``` r
 plot(delta)
 ```
 
@@ -125,6 +134,7 @@ plot(delta)
 
 
 ``` r
+start <- Sys.time()
 mc <- MCMedStd(
   phi = phi,
   sigma = sigma,
@@ -136,6 +146,14 @@ mc <- MCMedStd(
   R = 20000L,
   ncores = parallel::detectCores() # use multiple cores
 )
+end <- Sys.time()
+elapsed <- end - start
+elapsed
+#> Time difference of 20.04317 mins
+```
+
+
+``` r
 plot(mc)
 ```
 
