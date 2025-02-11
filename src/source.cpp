@@ -20,24 +20,13 @@ bool TestStable(const arma::mat& x);
 double DirectStd(const arma::mat& phi, const arma::mat& sigma,
                  const double& delta_t, const arma::uword& from,
                  const arma::uword& to, const arma::vec& med) {
-  arma::mat I = arma::eye(phi.n_rows, phi.n_cols);
-  arma::mat J = arma::eye(phi.n_rows * phi.n_cols, phi.n_rows * phi.n_cols);
   arma::mat d = arma::eye(phi.n_rows, phi.n_rows);
   for (arma::uword i = 0; i < med.n_elem; ++i) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
   arma::mat total = arma::expmat(delta_t * phi);
-  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
-  arma::vec sigma_vec = arma::vectorise(sigma);
-  // arma::vec psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
-  // delta_t) - J) * sigma_vec;
-  arma::vec psi_vec = arma::solve(
-      phi_hashtag, (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec);
-  // arma::mat total_cov = arma::reshape(arma::inv(J - arma::kron(total, total))
-  // * psi_vec, phi.n_rows, phi.n_cols);
-  arma::mat total_cov =
-      arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
-                    phi.n_rows, phi.n_cols);
+  arma::mat total_cov;
+  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
@@ -62,46 +51,6 @@ double Direct(const arma::mat& phi, const double& delta_t,
   }
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
   return direct(to - 1, from - 1);
-}
-// -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-exp-cov.cpp
-// Ivan Jacob Agaloos Pesigan
-// -----------------------------------------------------------------------------
-
-#include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::export(.ExpCov)]]
-arma::mat ExpCov(const arma::mat& phi, const arma::mat& sigma,
-                 const double& delta_t) {
-  arma::mat I = arma::eye(phi.n_rows, phi.n_cols);
-  arma::mat J = arma::eye(phi.n_rows * phi.n_cols, phi.n_rows * phi.n_cols);
-  arma::mat beta = arma::expmat(delta_t * phi);
-  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
-  arma::vec sigma_vec = arma::vectorise(sigma);
-  arma::vec psi_vec = arma::inv(phi_hashtag) *
-                      (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec;
-  return arma::reshape(arma::inv(J - arma::kron(beta, beta)) * psi_vec,
-                       phi.n_rows, phi.n_cols);
-}
-// -----------------------------------------------------------------------------
-// edit .setup/cpp/cTMed-exp-mean.cpp
-// Ivan Jacob Agaloos Pesigan
-// -----------------------------------------------------------------------------
-
-#include <RcppArmadillo.h>
-// [[Rcpp::depends(RcppArmadillo)]]
-// [[Rcpp::export(.ExpMean)]]
-Rcpp::NumericVector ExpMean(const arma::mat& phi, const arma::vec& iota,
-                            const double& delta_t) {
-  if (arma::all(iota == 0)) {
-    return Rcpp::NumericVector(phi.n_rows, 0.0);
-  }
-  arma::mat I = arma::eye(phi.n_rows, phi.n_cols);
-  arma::mat beta = arma::expmat(delta_t * phi);
-  arma::vec alpha = arma::solve(phi, (beta - I) * iota);
-  arma::vec mu = arma::solve((I - beta), alpha);
-  Rcpp::NumericVector output(mu.begin(), mu.end());
-  return output;
 }
 // -----------------------------------------------------------------------------
 // edit .setup/cpp/cTMed-indirect-central-s.cpp
@@ -203,24 +152,13 @@ Rcpp::NumericVector IndirectCentral(const arma::mat& phi,
 double IndirectStd(const arma::mat& phi, const arma::mat& sigma,
                    const double& delta_t, const arma::uword& from,
                    const arma::uword& to, const arma::vec& med) {
-  arma::mat I = arma::eye(phi.n_rows, phi.n_cols);
-  arma::mat J = arma::eye(phi.n_rows * phi.n_cols, phi.n_rows * phi.n_cols);
   arma::mat d = arma::eye(phi.n_rows, phi.n_rows);
   for (arma::uword i = 0; i < med.n_elem; ++i) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
   arma::mat total = arma::expmat(delta_t * phi);
-  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
-  arma::vec sigma_vec = arma::vectorise(sigma);
-  // arma::vec psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
-  // delta_t) - J) * sigma_vec;
-  arma::vec psi_vec = arma::solve(
-      phi_hashtag, (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec);
-  // arma::mat total_cov = arma::reshape(arma::inv(J - arma::kron(total, total))
-  // * psi_vec, phi.n_rows, phi.n_cols);
-  arma::mat total_cov =
-      arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
-                    phi.n_rows, phi.n_cols);
+  arma::mat total_cov;
+  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   arma::mat total_std = sd_row * total * sd_col_inv;
@@ -492,27 +430,16 @@ arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
   for (arma::uword i = 0; i < med.n_elem; ++i) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
-  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
-  arma::vec sigma_vec = arma::vectorise(sigma);
-  arma::vec psi_vec(phi.n_rows * phi.n_cols, arma::fill::none);
-  arma::mat total_cov(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat sd_row(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat sd_col_inv(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat total_std(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct_std(phi.n_rows, phi.n_cols, arma::fill::none);
+  arma::mat total_cov;
+  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
+  sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
+  sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);
-    // psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
-    // delta_t[t]) - J) * sigma_vec;
-    psi_vec = arma::solve(
-        phi_hashtag, (arma::expmat(phi_hashtag * delta_t[t]) - J) * sigma_vec);
-    // total_cov = arma::reshape(arma::inv(J - arma::kron(total, total)) *
-    // psi_vec, phi.n_rows, phi.n_cols);
-    total_cov =
-        arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
-                      phi.n_rows, phi.n_cols);
-    sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
-    sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
     total_std = sd_row * total * sd_col_inv;
     total_dbl = total_std(to - 1, from - 1);
     direct = arma::expmat(delta_t[t] * d * phi * d);
@@ -557,20 +484,9 @@ Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t,
   for (arma::uword i = 0; i < med.n_elem; ++i) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
-  arma::mat I = arma::eye(p, p);
-  arma::mat J = arma::eye(p * p, p * p);
   arma::mat total = arma::expmat(delta_t * phi);
-  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
-  arma::vec sigma_vec = arma::vectorise(sigma);
-  // arma::vec psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
-  // delta_t) - J) * sigma_vec;
-  arma::vec psi_vec = arma::solve(
-      phi_hashtag, (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec);
-  // arma::mat total_cov = arma::reshape(arma::inv(J - arma::kron(total, total))
-  // * psi_vec, phi.n_rows, phi.n_cols);
-  arma::mat total_cov =
-      arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
-                    phi.n_rows, phi.n_cols);
+  arma::mat total_cov;
+  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   arma::mat total_std = sd_row * total * sd_col_inv;
@@ -597,24 +513,13 @@ Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t,
 Rcpp::NumericVector MedStd(const arma::mat& phi, const arma::mat& sigma,
                            const double& delta_t, const arma::uword& from,
                            const arma::uword& to, const arma::vec& med) {
-  arma::mat I = arma::eye(phi.n_rows, phi.n_cols);
-  arma::mat J = arma::eye(phi.n_rows * phi.n_cols, phi.n_rows * phi.n_cols);
   arma::mat d = arma::eye(phi.n_rows, phi.n_rows);
   for (arma::uword i = 0; i < med.n_elem; ++i) {
     d(med[i] - 1, med[i] - 1) = 0;
   }
   arma::mat total = arma::expmat(delta_t * phi);
-  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
-  arma::vec sigma_vec = arma::vectorise(sigma);
-  // arma::vec psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
-  // delta_t) - J) * sigma_vec;
-  arma::vec psi_vec = arma::solve(
-      phi_hashtag, (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec);
-  // arma::mat total_cov = arma::reshape(arma::inv(J - arma::kron(total, total))
-  // * psi_vec, phi.n_rows, phi.n_cols);
-  arma::mat total_cov =
-      arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
-                    phi.n_rows, phi.n_cols);
+  arma::mat total_cov;
+  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   arma::mat total_std = sd_row * total * sd_col_inv;
@@ -783,20 +688,9 @@ Rcpp::NumericVector TotalDeltaT(const arma::mat& phi, const double& delta_t) {
 // [[Rcpp::export(.TotalStdDeltaT)]]
 Rcpp::NumericVector TotalStdDeltaT(const arma::mat& phi, const arma::mat& sigma,
                                    const double& delta_t) {
-  arma::mat I = arma::eye(phi.n_rows, phi.n_cols);
-  arma::mat J = arma::eye(phi.n_rows * phi.n_cols, phi.n_rows * phi.n_cols);
   arma::mat total = arma::expmat(delta_t * phi);
-  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
-  arma::vec sigma_vec = arma::vectorise(sigma);
-  // arma::vec psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
-  // delta_t) - J) * sigma_vec;
-  arma::vec psi_vec = arma::solve(
-      phi_hashtag, (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec);
-  // arma::mat total_cov = arma::reshape(arma::inv(J - arma::kron(total, total))
-  // * psi_vec, phi.n_rows, phi.n_cols);
-  arma::mat total_cov =
-      arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
-                    phi.n_rows, phi.n_cols);
+  arma::mat total_cov;
+  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   arma::mat total_std = sd_row * total * sd_col_inv;
@@ -829,20 +723,9 @@ arma::vec TotalStdVec(const arma::vec& v, const double& delta_t) {
       index++;
     }
   }
-  arma::mat I = arma::eye(p, p);
-  arma::mat J = arma::eye(p * p, p * p);
   arma::mat total = arma::expmat(delta_t * phi);
-  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
-  arma::vec sigma_vec = arma::vectorise(sigma);
-  // arma::vec psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
-  // delta_t) - J) * sigma_vec;
-  arma::vec psi_vec = arma::solve(
-      phi_hashtag, (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec);
-  // arma::mat total_cov = arma::reshape(arma::inv(J - arma::kron(total, total))
-  // * psi_vec, phi.n_rows, phi.n_cols);
-  arma::mat total_cov =
-      arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
-                    phi.n_rows, phi.n_cols);
+  arma::mat total_cov;
+  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   arma::mat total_std = sd_row * total * sd_col_inv;
@@ -858,20 +741,9 @@ arma::vec TotalStdVec(const arma::vec& v, const double& delta_t) {
 // [[Rcpp::export(.TotalStd)]]
 arma::mat TotalStd(const arma::mat& phi, const arma::mat& sigma,
                    const double& delta_t) {
-  arma::mat I = arma::eye(phi.n_rows, phi.n_cols);
-  arma::mat J = arma::eye(phi.n_rows * phi.n_cols, phi.n_rows * phi.n_cols);
   arma::mat total = arma::expmat(delta_t * phi);
-  arma::mat phi_hashtag = arma::kron(phi, I) + arma::kron(I, phi);
-  arma::vec sigma_vec = arma::vectorise(sigma);
-  // arma::vec psi_vec = arma::inv(phi_hashtag) * (arma::expmat(phi_hashtag *
-  // delta_t) - J) * sigma_vec;
-  arma::vec psi_vec = arma::solve(
-      phi_hashtag, (arma::expmat(phi_hashtag * delta_t) - J) * sigma_vec);
-  // arma::mat total_cov = arma::reshape(arma::inv(J - arma::kron(total, total))
-  // * psi_vec, phi.n_rows, phi.n_cols);
-  arma::mat total_cov =
-      arma::reshape(arma::solve(J - arma::kron(total, total), psi_vec),
-                    phi.n_rows, phi.n_cols);
+  arma::mat total_cov;
+  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
   arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
   arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
   return sd_row * total * sd_col_inv;

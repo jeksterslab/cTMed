@@ -1,7 +1,7 @@
 ---
 title: "Total, Direct, and Indirect Effects in Continuous-Time Mediation Model"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-01-27"
+date: "2025-02-11"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -94,7 +94,6 @@ mc <- MCMed(
   R = 20000L,
   ncores = parallel::detectCores() # use multiple cores
 )
-#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
 plot(mc)
 ```
 

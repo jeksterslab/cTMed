@@ -42,32 +42,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// ExpCov
-arma::mat ExpCov(const arma::mat& phi, const arma::mat& sigma, const double& delta_t);
-RcppExport SEXP _cTMed_ExpCov(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
-    Rcpp::traits::input_parameter< const arma::mat& >::type sigma(sigmaSEXP);
-    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    rcpp_result_gen = Rcpp::wrap(ExpCov(phi, sigma, delta_t));
-    return rcpp_result_gen;
-END_RCPP
-}
-// ExpMean
-Rcpp::NumericVector ExpMean(const arma::mat& phi, const arma::vec& iota, const double& delta_t);
-RcppExport SEXP _cTMed_ExpMean(SEXP phiSEXP, SEXP iotaSEXP, SEXP delta_tSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
-    Rcpp::traits::input_parameter< const arma::vec& >::type iota(iotaSEXP);
-    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    rcpp_result_gen = Rcpp::wrap(ExpMean(phi, iota, delta_t));
-    return rcpp_result_gen;
-END_RCPP
-}
 // IndirectCentrals
 arma::mat IndirectCentrals(const arma::mat& phi, const arma::vec& delta_t);
 RcppExport SEXP _cTMed_IndirectCentrals(SEXP phiSEXP, SEXP delta_tSEXP) {
@@ -417,8 +391,6 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_DirectStd", (DL_FUNC) &_cTMed_DirectStd, 6},
     {"_cTMed_Direct", (DL_FUNC) &_cTMed_Direct, 5},
-    {"_cTMed_ExpCov", (DL_FUNC) &_cTMed_ExpCov, 3},
-    {"_cTMed_ExpMean", (DL_FUNC) &_cTMed_ExpMean, 3},
     {"_cTMed_IndirectCentrals", (DL_FUNC) &_cTMed_IndirectCentrals, 2},
     {"_cTMed_IndirectCentralVec", (DL_FUNC) &_cTMed_IndirectCentralVec, 2},
     {"_cTMed_IndirectCentral", (DL_FUNC) &_cTMed_IndirectCentral, 2},

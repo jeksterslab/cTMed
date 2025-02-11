@@ -3,6 +3,7 @@
 ## Patch
 
 * Latest development version.
+* Revised the standardization method using the steady-state covariance matrix.
 
 # cTMed 1.0.5
 

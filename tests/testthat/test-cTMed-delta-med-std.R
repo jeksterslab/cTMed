@@ -9,9 +9,9 @@ lapply(
       paste(text, "DeltaMedStd"),
       {
         testthat::skip_on_cran()
-        total <- 0.07477656
-        direct <- -0.30032315
-        indirect <- 0.37509972
+        total <- 0.0656
+        direct <- -0.2633
+        indirect <- 0.3289
         answer <- c(
           total,
           direct,
@@ -106,9 +106,9 @@ lapply(
       paste(text, "plot error"),
       {
         testthat::skip_on_cran()
-        total <- 0.07477656
-        direct <- -0.30032315
-        indirect <- 0.37509972
+        total <- 0.0656
+        direct <- -0.2633
+        indirect <- 0.3289
         answer <- c(
           total,
           direct,

@@ -165,8 +165,6 @@ Other Continuous Time Mediation Functions:
 \code{\link{DeltaTotalCentral}()},
 \code{\link{Direct}()},
 \code{\link{DirectStd}()},
-\code{\link{ExpCov}()},
-\code{\link{ExpMean}()},
 \code{\link{Indirect}()},
 \code{\link{IndirectCentral}()},
 \code{\link{IndirectStd}()},

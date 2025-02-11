@@ -38,7 +38,7 @@
 #'   are set to zero and the rest to one,
 #'   \eqn{i} the row index of \eqn{Y} in \eqn{\boldsymbol{\Phi}},
 #'   \eqn{j} the column index of \eqn{X} in \eqn{\boldsymbol{\Phi}},
-#'   \eqn{\mathbf{S}} a diagonal matrix with model-implied
+#'   \eqn{\mathbf{S}} a diagonal matrix with model-implied steady-state
 #'   standard deviations on the diagonals, and
 #'   \eqn{\Delta t} the time interval.
 #'

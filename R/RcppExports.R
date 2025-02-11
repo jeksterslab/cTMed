@@ -9,14 +9,6 @@
     .Call(`_cTMed_Direct`, phi, delta_t, from, to, med)
 }
 
-.ExpCov <- function(phi, sigma, delta_t) {
-    .Call(`_cTMed_ExpCov`, phi, sigma, delta_t)
-}
-
-.ExpMean <- function(phi, iota, delta_t) {
-    .Call(`_cTMed_ExpMean`, phi, iota, delta_t)
-}
-
 .IndirectCentrals <- function(phi, delta_t) {
     .Call(`_cTMed_IndirectCentrals`, phi, delta_t)
 }

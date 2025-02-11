@@ -9,7 +9,7 @@ lapply(
       paste(text, "DirectStd"),
       {
         testthat::skip_on_cran()
-        answer <- -0.30032315
+        answer <- -0.2633
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -46,7 +46,7 @@ lapply(
       paste(text, "MedStd"),
       {
         testthat::skip_on_cran()
-        answer <- -0.30032315
+        answer <- -0.2633
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,
@@ -83,7 +83,7 @@ lapply(
       paste(text, "plot error"),
       {
         testthat::skip_on_cran()
-        answer <- -0.30032315
+        answer <- -0.2633
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,

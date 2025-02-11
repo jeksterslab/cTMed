@@ -35,9 +35,6 @@ reference:
 - title: Effects
   contents:
   - has_keyword("effects")
-- title: Expectations
-  contents:
-  - has_keyword("expectations")
 - title: Methods
   contents:
   - has_keyword("methods")
