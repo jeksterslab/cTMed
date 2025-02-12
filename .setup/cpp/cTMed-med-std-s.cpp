@@ -25,17 +25,25 @@ arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
   arma::mat sd_col_inv(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat total_std(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct_std(phi.n_rows, phi.n_cols, arma::fill::none);
-  arma::mat total_cov;
-  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
-  sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
-  sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
+  arma::mat cov_eta;
+  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);
-    total_std = sd_row * total * sd_col_inv;
+    arma::mat total_std = total;
+    for (size_t i = 0; i < total.n_rows; i++) {
+      for (size_t j = 0; j < total.n_cols; j++) {
+        total_std(i, j) *= sqrt_diag(j) / sqrt_diag(i);
+      }
+    }
     total_dbl = total_std(to - 1, from - 1);
     direct = arma::expmat(delta_t[t] * d * phi * d);
-    // direct_std = d * (sd_row * direct * sd_col_inv) * d;
-    direct_std = sd_row * direct * sd_col_inv;
+    arma::mat direct_std = direct;
+    for (size_t i = 0; i < direct.n_rows; i++) {
+      for (size_t j = 0; j < direct.n_cols; j++) {
+        direct_std(i, j) *= sqrt_diag(j) / sqrt_diag(i);
+      }
+    }
     direct_dbl = direct_std(to - 1, from - 1);
     indirect_dbl = total_dbl - direct_dbl;
     output(t, 0) = total_dbl;

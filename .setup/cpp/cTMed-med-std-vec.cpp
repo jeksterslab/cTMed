@@ -29,15 +29,23 @@ Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t,
     d(med[i] - 1, med[i] - 1) = 0;
   }
   arma::mat total = arma::expmat(delta_t * phi);
-  arma::mat total_cov;
-  arma::syl(total_cov, phi, phi.t(), sigma * sigma.t());
-  arma::mat sd_row = arma::diagmat(arma::sqrt(total_cov.diag()));
-  arma::mat sd_col_inv = arma::diagmat(1.0 / arma::sqrt(total_cov.diag()));
-  arma::mat total_std = sd_row * total * sd_col_inv;
+  arma::mat cov_eta;
+  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
+  arma::mat total_std = total;
+  for (size_t i = 0; i < total.n_rows; i++) {
+    for (size_t j = 0; j < total.n_cols; j++) {
+      total_std(i, j) *= sqrt_diag(j) / sqrt_diag(i);
+    }
+  }
   double total_dbl = total_std(to - 1, from - 1);
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
-  // arma::mat direct_std = d * (sd_row * direct * sd_col_inv) * d;
-  arma::mat direct_std = sd_row * direct * sd_col_inv;
+  arma::mat direct_std = direct;
+  for (size_t i = 0; i < direct.n_rows; i++) {
+    for (size_t j = 0; j < direct.n_cols; j++) {
+      direct_std(i, j) *= sqrt_diag(j) / sqrt_diag(i);
+    }
+  }
   double direct_dbl = direct_std(to - 1, from - 1);
   double indirect_dbl = total_dbl - direct_dbl;
   Rcpp::NumericVector output(3);
