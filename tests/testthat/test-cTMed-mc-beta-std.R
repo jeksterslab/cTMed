@@ -90,8 +90,8 @@ lapply(
         for (j in 1:3) {
           for (i in 1:3) {
             total_std[i, j] <- (
-              sqrt(total_cov[i, i]) * total[i, j]
-            ) * (1 / sqrt(total_cov[j, j]))
+              sqrt(total_cov[j, j]) * total[i, j]
+            ) * (1 / sqrt(total_cov[i, i]))
           }
         }
         answer <- as.vector(
@@ -199,8 +199,8 @@ lapply(
         for (j in 1:3) {
           for (i in 1:3) {
             total_std[i, j] <- (
-              sqrt(total_cov[i, i]) * total[i, j]
-            ) * (1 / sqrt(total_cov[j, j]))
+              sqrt(total_cov[j, j]) * total[i, j]
+            ) * (1 / sqrt(total_cov[i, i]))
           }
         }
         answer <- as.vector(
