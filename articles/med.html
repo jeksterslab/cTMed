@@ -123,6 +123,7 @@ effects of <code>x</code> on <code>y</code>, mediated through
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/cTMed">cTMed</a></span><span class="op">)</span></span>
+<span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/DeltaMed.html">DeltaMed</a></span><span class="op">(</span></span>
 <span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
 <span>  vcov_phi_vec <span class="op">=</span> <span class="va">vcov_phi_vec</span>,</span>
@@ -132,14 +133,20 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span>  med <span class="op">=</span> <span class="st">"m"</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># use multiple cores</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
+<span><span class="va">elapsed</span></span>
+<span><span class="co">#&gt; Time difference of 1.857155 secs</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-delta-1.png" width="3300"><img src="fig-vignettes-med-delta-2.png" width="3300"><img src="fig-vignettes-med-delta-3.png" width="3300"></p>
 </div>
 <div class="section level2">
 <h2 id="monte-carlo-method">Monte Carlo Method<a class="anchor" aria-label="anchor" href="#monte-carlo-method"></a>
 </h2>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MCMed.html">MCMed</a></span><span class="op">(</span></span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MCMed.html">MCMed</a></span><span class="op">(</span></span>
 <span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
 <span>  vcov_phi_vec <span class="op">=</span> <span class="va">vcov_phi_vec</span>,</span>
 <span>  delta_t <span class="op">=</span> <span class="va">delta_t</span>,</span>
@@ -149,7 +156,12 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span>  R <span class="op">=</span> <span class="fl">20000L</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># use multiple cores</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
+<span><span class="va">elapsed</span></span>
+<span><span class="co">#&gt; Time difference of 23.6761 mins</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-mc-1.png" width="3300"><img src="fig-vignettes-med-mc-2.png" width="3300"><img src="fig-vignettes-med-mc-3.png" width="3300"></p>
 </div>
 <div class="section level2 unnumbered">
