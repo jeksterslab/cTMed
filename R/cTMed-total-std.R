@@ -17,7 +17,7 @@
 #'     \left(
 #'     \frac{\sigma_{{x}_{j}}}{\sigma_{{y}_{i}}}
 #'     \right)
-#'   }        
+#'   }
 #'   where
 #'   \eqn{\boldsymbol{\Phi}} denotes the drift matrix,
 #'   \eqn{\sigma_{{x}_{j}}} and \eqn{\sigma_{{y}_{i}}}
