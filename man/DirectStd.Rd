@@ -58,28 +58,16 @@ is given by
 \deqn{
     \mathrm{Direct}^{\ast}_{{\Delta t}_{i, j}}
     =
-    \mathbf{S}
+    \mathrm{Direct}_{{\Delta t}_{i, j}}
     \left(
-    \exp
-    \left(
-      \Delta t
-      \mathbf{D}
-      \boldsymbol{\Phi}
-      \mathbf{D}
-    \right)_{i, j}
+    \frac{\sigma_{{x}_{j}}}{\sigma_{{y}_{i}}}
     \right)
-    \mathbf{S}^{-1}
   }
 where
 \eqn{\boldsymbol{\Phi}} denotes the drift matrix,
-\eqn{\mathbf{D}} a diagonal matrix
-where the diagonal elements corresponding
-to mediator variables \eqn{\mathbf{m}}
-are set to zero and the rest to one,
-\eqn{i} the row index of \eqn{Y} in \eqn{\boldsymbol{\Phi}},
-\eqn{j} the column index of \eqn{X} in \eqn{\boldsymbol{\Phi}},
-\eqn{\mathbf{S}} a diagonal matrix with model-implied steady-state
-standard deviations on the diagonals, and
+\eqn{\sigma_{{x}_{j}}} and \eqn{\sigma_{{y}_{i}}}
+are the steady-state model-implied standard deviations
+of the state independent and dependent variables, respectively, and
 \eqn{\Delta t} the time interval.
 }
 \examples{

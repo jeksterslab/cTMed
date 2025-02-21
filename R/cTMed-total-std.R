@@ -11,22 +11,18 @@
 #'   over a specific time interval \eqn{\Delta t}
 #'   is given by
 #'   \deqn{
-#'     \mathrm{Total}^{\ast}_{\Delta t}
+#'     \mathrm{Total}^{\ast}_{{\Delta t}_{i, j}}
 #'     =
-#'     \mathbf{S}
+#'     \mathrm{Total}_{{\Delta t}_{i, j}}
 #'     \left(
-#'     \exp
-#'     \left(
-#'       \Delta t
-#'       \boldsymbol{\Phi}
+#'     \frac{\sigma_{{x}_{j}}}{\sigma_{{y}_{i}}}
 #'     \right)
-#'     \right)
-#'     \mathbf{S}^{-1}
 #'   }
 #'   where
 #'   \eqn{\boldsymbol{\Phi}} denotes the drift matrix,
-#'   \eqn{\mathbf{S}} a diagonal matrix with model-implied steady-state
-#'   standard deviations on the diagonals and
+#'   \eqn{\sigma_{{x}_{j}}} and \eqn{\sigma_{{y}_{i}}}
+#'   are the steady-state model-implied standard deviations
+#'   of the state independent and dependent variables, respectively, and
 #'   \eqn{\Delta t} the time interval.
 #'
 #' @author Ivan Jacob Agaloos Pesigan

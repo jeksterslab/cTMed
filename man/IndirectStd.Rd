@@ -59,8 +59,8 @@ is given by
 \deqn{
     \mathrm{Indirect}^{\ast}_{{\Delta t}_{i, j}}
     =
-    \mathrm{Total}^{\ast}_{\Delta t} -
-    \mathrm{Direct}^{\ast}_{\Delta t}
+    \mathrm{Total}^{\ast}_{{\Delta t}_{i, j}} -
+    \mathrm{Direct}^{\ast}_{{\Delta t}_{i, j}}
   }
 where
 \eqn{\mathrm{Total}^{\ast}_{\Delta t}} and
