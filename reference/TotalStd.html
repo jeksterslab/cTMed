@@ -15,7 +15,7 @@ and process noise covariance matrix \(\boldsymbol{\Sigma}\)."><link rel="stylesh
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,22 +101,18 @@ of class <code>ctmedeffect</code> which is a list with the following elements:</
 over a specific time interval \(\Delta t\)
 is given by
 $$
-    \mathrm{Total}^{\ast}_{\Delta t}
+    \mathrm{Total}^{\ast}_{{\Delta t}_{i, j}}
     =
-    \mathbf{S}
+    \mathrm{Total}_{{\Delta t}_{i, j}}
     \left(
-    \exp
-    \left(
-      \Delta t
-      \boldsymbol{\Phi}
+    \frac{\sigma_{{x}_{j}}}{\sigma_{{y}_{i}}}
     \right)
-    \right)
-    \mathbf{S}^{-1}
   $$
 where
 \(\boldsymbol{\Phi}\) denotes the drift matrix,
-\(\mathbf{S}\) a diagonal matrix with model-implied steady-state
-standard deviations on the diagonals and
+\(\sigma_{{x}_{j}}\) and \(\sigma_{{y}_{i}}\)
+are the steady-state model-implied standard deviations
+of the state independent and dependent variables, respectively, and
 \(\Delta t\) the time interval.</p>
     </div>
     <div class="section level2">

@@ -21,7 +21,7 @@ and process noise covariance matrix \(\boldsymbol{\Sigma}\)."><link rel="stylesh
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.5.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -129,28 +129,16 @@ is given by
 $$
     \mathrm{Direct}^{\ast}_{{\Delta t}_{i, j}}
     =
-    \mathbf{S}
+    \mathrm{Direct}_{{\Delta t}_{i, j}}
     \left(
-    \exp
-    \left(
-      \Delta t
-      \mathbf{D}
-      \boldsymbol{\Phi}
-      \mathbf{D}
-    \right)_{i, j}
+    \frac{\sigma_{{x}_{j}}}{\sigma_{{y}_{i}}}
     \right)
-    \mathbf{S}^{-1}
   $$
 where
 \(\boldsymbol{\Phi}\) denotes the drift matrix,
-\(\mathbf{D}\) a diagonal matrix
-where the diagonal elements corresponding
-to mediator variables \(\mathbf{m}\)
-are set to zero and the rest to one,
-\(i\) the row index of \(Y\) in \(\boldsymbol{\Phi}\),
-\(j\) the column index of \(X\) in \(\boldsymbol{\Phi}\),
-\(\mathbf{S}\) a diagonal matrix with model-implied steady-state
-standard deviations on the diagonals, and
+\(\sigma_{{x}_{j}}\) and \(\sigma_{{y}_{i}}\)
+are the steady-state model-implied standard deviations
+of the state independent and dependent variables, respectively, and
 \(\Delta t\) the time interval.</p>
     </div>
     <div class="section level2">
