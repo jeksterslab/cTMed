@@ -14,11 +14,9 @@
 #' @noRd
 .Z0 <- function(thetahatstar,
                 thetahat) {
-  return(
-    stats::qnorm(
-      p = sum(
-        thetahatstar < thetahat
-      ) / length(thetahatstar)
-    )
+  stats::qnorm(
+    p = sum(
+      thetahatstar < thetahat
+    ) / length(thetahatstar)
   )
 }

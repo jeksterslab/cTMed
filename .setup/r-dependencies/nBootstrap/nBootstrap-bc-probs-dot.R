@@ -12,9 +12,7 @@
 #' @noRd
 .BCProbs <- function(z0,
                      z1) {
-  return(
-    stats::pnorm(
-      q = 2 * z0 + z1
-    )
+  stats::pnorm(
+    q = 2 * z0 + z1
   )
 }

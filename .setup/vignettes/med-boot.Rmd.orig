@@ -34,7 +34,7 @@ The `cTMed` package provides a bootstrap approach, in addition to the delta and 
 ```{r}
 #| include = FALSE
 set.seed(42)
-n <- 50
+n <- 5
 time <- 100
 delta_t <- 0.10
 k <- p <- 3
@@ -357,7 +357,7 @@ theta_l <- t(chol(theta))
 ```
 
 ```{r}
-R <- 5L # use at least 1000 in actual research
+R <- 1000L # use at least 1000 in actual research
 path <- getwd()
 prefix <- "ou"
 ```

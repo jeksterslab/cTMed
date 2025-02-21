@@ -11,7 +11,5 @@
 #' @keywords nBootstrap ci internal
 #' @noRd
 .Z1 <- function(probs) {
-  return(
-    stats::qnorm(p = probs)
-  )
+  stats::qnorm(p = probs)
 }
