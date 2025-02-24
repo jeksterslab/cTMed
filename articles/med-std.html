@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2025-02-21</h4>
+            <h4 data-toc-skip class="date">2025-02-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/main/vignettes/med-std.Rmd"><code>vignettes/med-std.Rmd</code></a></small>
       <div class="d-none name"><code>med-std.Rmd</code></div>
@@ -83,86 +83,150 @@ Package</a> and <a href="https://jeksterslab.github.io/cTMed/articles/fit-ct-var
 the Continuous-Time Vector Autoregressive Model Using the OpenMx
 Package</a>, respectively.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Drift matrix</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;             Estimate Std. Error t value  ci.lower  ci.upper Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; phi_1_1    -0.351837   0.040477  -8.692 -0.431170 -0.272503   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_2_1     0.744281   0.022684  32.810  0.699821  0.788741   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_3_1    -0.458683   0.023307 -19.680 -0.504364 -0.413001   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_1_2     0.017299   0.035160   0.492 -0.051614  0.086211   0.3114    </span></span>
+<span><span class="co">#&gt; phi_2_2    -0.488816   0.019999 -24.442 -0.528013 -0.449619   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_3_2     0.726799   0.020673  35.157  0.686280  0.767318   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_1_3    -0.023825   0.026208  -0.909 -0.075191  0.027542   0.1817    </span></span>
+<span><span class="co">#&gt; phi_2_3    -0.009800   0.015134  -0.648 -0.039463  0.019863   0.2586    </span></span>
+<span><span class="co">#&gt; phi_3_3    -0.688346   0.015868 -43.379 -0.719448 -0.657245   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_1_1   0.242175   0.007291  33.216  0.227885  0.256465   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_2_1   0.023273   0.002647   8.792  0.018084  0.028461   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_3_1  -0.050572   0.002740 -18.459 -0.055941 -0.045202   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_2_2   0.070721   0.001916  36.921  0.066967  0.074476   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_3_2   0.014990   0.001380  10.865  0.012286  0.017695   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_3_3   0.072377   0.002106  34.361  0.068249  0.076505   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; theta_1_1   0.198862   0.001189 167.270  0.196532  0.201192   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; theta_2_2   0.199520   0.001001 199.355  0.197558  0.201481   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; theta_3_3   0.201171   0.001017 197.798  0.199178  0.203165   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; mu0_1_1     0.006365   0.118695   0.054 -0.226274  0.239004   0.4786    </span></span>
+<span><span class="co">#&gt; mu0_2_1    -0.042579   0.113165  -0.376 -0.264378  0.179220   0.3534    </span></span>
+<span><span class="co">#&gt; mu0_3_1     0.130157   0.102344   1.272 -0.070434  0.330747   0.1017    </span></span>
+<span><span class="co">#&gt; sigma0_1_1  1.150287   0.205378   5.601  0.747754  1.552820   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma0_2_1  0.413683   0.134865   3.067  0.149352  0.678015   0.0011 ** </span></span>
+<span><span class="co">#&gt; sigma0_3_1  0.225909   0.118800   1.902 -0.006935  0.458753   0.0286 *  </span></span>
+<span><span class="co">#&gt; sigma0_2_2  1.221862   0.198459   6.157  0.832890  1.610835   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma0_3_2  0.235429   0.125869   1.870 -0.011271  0.482128   0.0307 *  </span></span>
+<span><span class="co">#&gt; sigma0_3_3  0.962525   0.150708   6.387  0.667142  1.257908   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; -2 log-likelihood value at convergence = 429365.49</span></span>
+<span><span class="co">#&gt; AIC = 429419.49</span></span>
+<span><span class="co">#&gt; BIC = 429676.34</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">phi_varnames</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"phi_1_1"</span>,</span>
+<span>  <span class="st">"phi_2_1"</span>,</span>
+<span>  <span class="st">"phi_3_1"</span>,</span>
+<span>  <span class="st">"phi_1_2"</span>,</span>
+<span>  <span class="st">"phi_2_2"</span>,</span>
+<span>  <span class="st">"phi_3_2"</span>,</span>
+<span>  <span class="st">"phi_1_3"</span>,</span>
+<span>  <span class="st">"phi_2_3"</span>,</span>
+<span>  <span class="st">"phi_3_3"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>    <span class="op">-</span><span class="fl">0.357</span>, <span class="fl">0.771</span>, <span class="op">-</span><span class="fl">0.450</span>,</span>
-<span>    <span class="fl">0.0</span>, <span class="op">-</span><span class="fl">0.511</span>, <span class="fl">0.729</span>,</span>
-<span>    <span class="fl">0</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">0.693</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  nrow <span class="op">=</span> <span class="fl">3</span></span>
+<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="va">phi_varnames</span><span class="op">]</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">phi</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">rownames</a></span><span class="op">(</span><span class="va">phi</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"m"</span>, <span class="st">"y"</span><span class="op">)</span></span>
-<span><span class="co"># Process noise covariance matrix</span></span>
-<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>    <span class="fl">0.24455556</span>, <span class="fl">0.02201587</span>, <span class="op">-</span><span class="fl">0.05004762</span>,</span>
-<span>    <span class="fl">0.02201587</span>, <span class="fl">0.07067800</span>,  <span class="fl">0.01539456</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.05004762</span>, <span class="fl">0.01539456</span>,  <span class="fl">0.07553061</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  nrow <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="va">sigma_varnames</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"sigma_1_1"</span>, <span class="st">"sigma_2_1"</span>, <span class="st">"sigma_3_1"</span>,</span>
+<span>  <span class="st">"sigma_2_1"</span>, <span class="st">"sigma_2_2"</span>, <span class="st">"sigma_3_2"</span>,</span>
+<span>  <span class="st">"sigma_3_1"</span>, <span class="st">"sigma_3_2"</span>, <span class="st">"sigma_3_3"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co"># Sampling variance-covariance matrix of vec(phi) and vech(sigma)</span></span>
-<span><span class="va">vcov_theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
-<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>    <span class="fl">0.00843</span>, <span class="fl">0.00040</span>, <span class="op">-</span><span class="fl">0.00151</span>, <span class="op">-</span><span class="fl">0.00600</span>, <span class="op">-</span><span class="fl">0.00033</span>,</span>
-<span>    <span class="fl">0.00110</span>, <span class="fl">0.00324</span>, <span class="fl">0.00020</span>, <span class="op">-</span><span class="fl">0.00061</span>, <span class="op">-</span><span class="fl">0.00115</span>,</span>
-<span>    <span class="fl">0.00011</span>, <span class="fl">0.00015</span>, <span class="fl">0.00001</span>, <span class="op">-</span><span class="fl">0.00002</span>, <span class="op">-</span><span class="fl">0.00001</span>,</span>
-<span>    <span class="fl">0.00040</span>, <span class="fl">0.00374</span>, <span class="fl">0.00016</span>, <span class="op">-</span><span class="fl">0.00022</span>, <span class="op">-</span><span class="fl">0.00273</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00016</span>, <span class="fl">0.00009</span>, <span class="fl">0.00150</span>, <span class="fl">0.00012</span>, <span class="op">-</span><span class="fl">0.00010</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00026</span>, <span class="fl">0.00002</span>, <span class="fl">0.00012</span>, <span class="fl">0.00004</span>, <span class="op">-</span><span class="fl">0.00001</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00151</span>, <span class="fl">0.00016</span>, <span class="fl">0.00389</span>, <span class="fl">0.00103</span>, <span class="op">-</span><span class="fl">0.00007</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00283</span>, <span class="op">-</span><span class="fl">0.00050</span>, <span class="fl">0.00000</span>, <span class="fl">0.00156</span>, <span class="fl">0.00021</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00005</span>, <span class="op">-</span><span class="fl">0.00031</span>, <span class="fl">0.00001</span>, <span class="fl">0.00007</span>, <span class="fl">0.00006</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00600</span>, <span class="op">-</span><span class="fl">0.00022</span>, <span class="fl">0.00103</span>, <span class="fl">0.00644</span>, <span class="fl">0.00031</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00119</span>, <span class="op">-</span><span class="fl">0.00374</span>, <span class="op">-</span><span class="fl">0.00021</span>, <span class="fl">0.00070</span>, <span class="fl">0.00064</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00015</span>, <span class="op">-</span><span class="fl">0.00005</span>, <span class="fl">0.00000</span>, <span class="fl">0.00003</span>, <span class="op">-</span><span class="fl">0.00001</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00033</span>, <span class="op">-</span><span class="fl">0.00273</span>, <span class="op">-</span><span class="fl">0.00007</span>, <span class="fl">0.00031</span>, <span class="fl">0.00287</span>,</span>
-<span>    <span class="fl">0.00013</span>, <span class="op">-</span><span class="fl">0.00014</span>, <span class="op">-</span><span class="fl">0.00170</span>, <span class="op">-</span><span class="fl">0.00012</span>, <span class="fl">0.00006</span>,</span>
-<span>    <span class="fl">0.00014</span>, <span class="op">-</span><span class="fl">0.00001</span>, <span class="op">-</span><span class="fl">0.00015</span>, <span class="fl">0.00000</span>, <span class="fl">0.00001</span>,</span>
-<span>    <span class="fl">0.00110</span>, <span class="op">-</span><span class="fl">0.00016</span>, <span class="op">-</span><span class="fl">0.00283</span>, <span class="op">-</span><span class="fl">0.00119</span>, <span class="fl">0.00013</span>,</span>
-<span>    <span class="fl">0.00297</span>, <span class="fl">0.00063</span>, <span class="op">-</span><span class="fl">0.00004</span>, <span class="op">-</span><span class="fl">0.00177</span>, <span class="op">-</span><span class="fl">0.00013</span>,</span>
-<span>    <span class="fl">0.00005</span>, <span class="fl">0.00017</span>, <span class="op">-</span><span class="fl">0.00002</span>, <span class="op">-</span><span class="fl">0.00008</span>, <span class="fl">0.00001</span>,</span>
-<span>    <span class="fl">0.00324</span>, <span class="fl">0.00009</span>, <span class="op">-</span><span class="fl">0.00050</span>, <span class="op">-</span><span class="fl">0.00374</span>, <span class="op">-</span><span class="fl">0.00014</span>,</span>
-<span>    <span class="fl">0.00063</span>, <span class="fl">0.00495</span>, <span class="fl">0.00024</span>, <span class="op">-</span><span class="fl">0.00093</span>, <span class="op">-</span><span class="fl">0.00020</span>,</span>
-<span>    <span class="fl">0.00006</span>, <span class="op">-</span><span class="fl">0.00010</span>, <span class="fl">0.00000</span>, <span class="op">-</span><span class="fl">0.00001</span>, <span class="fl">0.00004</span>,</span>
-<span>    <span class="fl">0.00020</span>, <span class="fl">0.00150</span>, <span class="fl">0.00000</span>, <span class="op">-</span><span class="fl">0.00021</span>, <span class="op">-</span><span class="fl">0.00170</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00004</span>, <span class="fl">0.00024</span>, <span class="fl">0.00214</span>, <span class="fl">0.00012</span>, <span class="op">-</span><span class="fl">0.00002</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00004</span>, <span class="fl">0.00000</span>, <span class="fl">0.00006</span>, <span class="op">-</span><span class="fl">0.00005</span>, <span class="op">-</span><span class="fl">0.00001</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00061</span>, <span class="fl">0.00012</span>, <span class="fl">0.00156</span>, <span class="fl">0.00070</span>, <span class="op">-</span><span class="fl">0.00012</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00177</span>, <span class="op">-</span><span class="fl">0.00093</span>, <span class="fl">0.00012</span>, <span class="fl">0.00223</span>, <span class="fl">0.00004</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00002</span>, <span class="op">-</span><span class="fl">0.00003</span>, <span class="fl">0.00001</span>, <span class="fl">0.00003</span>, <span class="op">-</span><span class="fl">0.00013</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00115</span>, <span class="op">-</span><span class="fl">0.00010</span>, <span class="fl">0.00021</span>, <span class="fl">0.00064</span>, <span class="fl">0.00006</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00013</span>, <span class="op">-</span><span class="fl">0.00020</span>, <span class="op">-</span><span class="fl">0.00002</span>, <span class="fl">0.00004</span>, <span class="fl">0.00057</span>,</span>
-<span>    <span class="fl">0.00001</span>, <span class="op">-</span><span class="fl">0.00009</span>, <span class="fl">0.00000</span>, <span class="fl">0.00000</span>, <span class="fl">0.00001</span>,</span>
-<span>    <span class="fl">0.00011</span>, <span class="op">-</span><span class="fl">0.00026</span>, <span class="op">-</span><span class="fl">0.00005</span>, <span class="op">-</span><span class="fl">0.00015</span>, <span class="fl">0.00014</span>,</span>
-<span>    <span class="fl">0.00005</span>, <span class="fl">0.00006</span>, <span class="op">-</span><span class="fl">0.00004</span>, <span class="op">-</span><span class="fl">0.00002</span>, <span class="fl">0.00001</span>,</span>
-<span>    <span class="fl">0.00012</span>, <span class="fl">0.00001</span>, <span class="fl">0.00000</span>, <span class="op">-</span><span class="fl">0.00002</span>, <span class="fl">0.00000</span>,</span>
-<span>    <span class="fl">0.00015</span>, <span class="fl">0.00002</span>, <span class="op">-</span><span class="fl">0.00031</span>, <span class="op">-</span><span class="fl">0.00005</span>, <span class="op">-</span><span class="fl">0.00001</span>,</span>
-<span>    <span class="fl">0.00017</span>, <span class="op">-</span><span class="fl">0.00010</span>, <span class="fl">0.00000</span>, <span class="op">-</span><span class="fl">0.00003</span>, <span class="op">-</span><span class="fl">0.00009</span>,</span>
-<span>    <span class="fl">0.00001</span>, <span class="fl">0.00014</span>, <span class="fl">0.00000</span>, <span class="fl">0.00000</span>, <span class="op">-</span><span class="fl">0.00005</span>,</span>
-<span>    <span class="fl">0.00001</span>, <span class="fl">0.00012</span>, <span class="fl">0.00001</span>, <span class="fl">0.00000</span>, <span class="op">-</span><span class="fl">0.00015</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00002</span>, <span class="fl">0.00000</span>, <span class="fl">0.00006</span>, <span class="fl">0.00001</span>, <span class="fl">0.00000</span>,</span>
-<span>    <span class="fl">0.00000</span>, <span class="fl">0.00000</span>, <span class="fl">0.00010</span>, <span class="fl">0.00001</span>, <span class="fl">0.00000</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00002</span>, <span class="fl">0.00004</span>, <span class="fl">0.00007</span>, <span class="fl">0.00003</span>, <span class="fl">0.00000</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00008</span>, <span class="op">-</span><span class="fl">0.00001</span>, <span class="op">-</span><span class="fl">0.00005</span>, <span class="fl">0.00003</span>, <span class="fl">0.00000</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00002</span>, <span class="fl">0.00000</span>, <span class="fl">0.00001</span>, <span class="fl">0.00005</span>, <span class="fl">0.00001</span>,</span>
-<span>    <span class="op">-</span><span class="fl">0.00001</span>, <span class="op">-</span><span class="fl">0.00001</span>, <span class="fl">0.00006</span>, <span class="op">-</span><span class="fl">0.00001</span>, <span class="fl">0.00001</span>,</span>
-<span>    <span class="fl">0.00001</span>, <span class="fl">0.00004</span>, <span class="op">-</span><span class="fl">0.00001</span>, <span class="op">-</span><span class="fl">0.00013</span>, <span class="fl">0.00001</span>,</span>
-<span>    <span class="fl">0.00000</span>, <span class="op">-</span><span class="fl">0.00005</span>, <span class="fl">0.00000</span>, <span class="fl">0.00001</span>, <span class="fl">0.00012</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  nrow <span class="op">=</span> <span class="fl">15</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
+<span>  data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="va">sigma_varnames</span><span class="op">]</span>,</span>
+<span>  nrow <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">theta_varnames</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  <span class="va">phi_varnames</span>,</span>
+<span>  <span class="st">"sigma_1_1"</span>, <span class="st">"sigma_2_1"</span>, <span class="st">"sigma_3_1"</span>,</span>
+<span>  <span class="st">"sigma_2_2"</span>, <span class="st">"sigma_3_2"</span>,</span>
+<span>  <span class="st">"sigma_3_3"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">vcov_theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span><span class="op">[</span><span class="va">theta_varnames</span>, <span class="va">theta_varnames</span><span class="op">]</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Drift matrix</span></span>
+<span><span class="va">phi</span></span>
+<span><span class="co">#&gt;            x           m           y</span></span>
+<span><span class="co">#&gt; x -0.3518368  0.01729864 -0.02382471</span></span>
+<span><span class="co">#&gt; m  0.7442809 -0.48881584 -0.00979981</span></span>
+<span><span class="co">#&gt; y -0.4586826  0.72679902 -0.68834647</span></span>
+<span><span class="co"># Process noise covariance matrix</span></span>
+<span><span class="va">sigma</span></span>
+<span><span class="co">#&gt;             [,1]       [,2]        [,3]</span></span>
+<span><span class="co">#&gt; [1,]  0.24217468 0.02327250 -0.05057192</span></span>
+<span><span class="co">#&gt; [2,]  0.02327250 0.07072140  0.01499047</span></span>
+<span><span class="co">#&gt; [3,] -0.05057192 0.01499047  0.07237695</span></span>
+<span><span class="co"># Sampling variance-covariance matrix</span></span>
+<span><span class="va">vcov_theta</span></span>
+<span><span class="co">#&gt;                 phi_1_1       phi_2_1       phi_3_1       phi_1_2       phi_2_2</span></span>
+<span><span class="co">#&gt; phi_1_1    1.638395e-03  4.205720e-05 -2.365513e-04 -1.376185e-03 -4.400313e-05</span></span>
+<span><span class="co">#&gt; phi_2_1    4.205720e-05  5.145749e-04  1.901381e-05 -2.143907e-05 -4.359631e-04</span></span>
+<span><span class="co">#&gt; phi_3_1   -2.365513e-04  1.901381e-05  5.432299e-04  1.936645e-04 -9.386709e-06</span></span>
+<span><span class="co">#&gt; phi_1_2   -1.376185e-03 -2.143907e-05  1.936645e-04  1.236241e-03  3.126359e-05</span></span>
+<span><span class="co">#&gt; phi_2_2   -4.400313e-05 -4.359631e-04 -9.386709e-06  3.126359e-05  3.999593e-04</span></span>
+<span><span class="co">#&gt; phi_3_2    2.074921e-04 -2.517298e-05 -4.623548e-04 -1.848726e-04  1.576373e-05</span></span>
+<span><span class="co">#&gt; phi_1_3    9.257184e-04  8.251254e-06 -1.204207e-04 -8.555641e-04 -1.597444e-05</span></span>
+<span><span class="co">#&gt; phi_2_3    3.762530e-05  2.928343e-04  7.109899e-07 -3.090243e-05 -2.783699e-04</span></span>
+<span><span class="co">#&gt; phi_3_3   -1.487146e-04  2.380476e-05  3.133472e-04  1.369958e-04 -1.775455e-05</span></span>
+<span><span class="co">#&gt; sigma_1_1 -2.442013e-04 -1.579694e-05  3.757720e-05  1.933901e-04  1.302756e-05</span></span>
+<span><span class="co">#&gt; sigma_2_1  2.297497e-05 -3.896357e-05 -7.962854e-06 -2.294436e-05  2.962651e-05</span></span>
+<span><span class="co">#&gt; sigma_3_1  1.863072e-05  3.619382e-06 -4.198918e-05 -1.170724e-05 -2.840243e-06</span></span>
+<span><span class="co">#&gt; sigma_2_2 -3.578211e-06  1.541868e-05  2.332149e-06  3.281239e-06 -1.545537e-05</span></span>
+<span><span class="co">#&gt; sigma_3_2 -1.431835e-06  1.927127e-06  8.322808e-06  1.615242e-06  1.176296e-07</span></span>
+<span><span class="co">#&gt; sigma_3_3 -2.203611e-06 -1.270215e-06  4.429654e-06  1.092348e-06  8.732957e-07</span></span>
+<span><span class="co">#&gt;                 phi_3_2       phi_1_3       phi_2_3       phi_3_3     sigma_1_1</span></span>
+<span><span class="co">#&gt; phi_1_1    2.074921e-04  9.257184e-04  3.762530e-05 -1.487146e-04 -2.442013e-04</span></span>
+<span><span class="co">#&gt; phi_2_1   -2.517298e-05  8.251254e-06  2.928343e-04  2.380476e-05 -1.579694e-05</span></span>
+<span><span class="co">#&gt; phi_3_1   -4.623548e-04 -1.204207e-04  7.109899e-07  3.133472e-04  3.757720e-05</span></span>
+<span><span class="co">#&gt; phi_1_2   -1.848726e-04 -8.555641e-04 -3.090243e-05  1.369958e-04  1.933901e-04</span></span>
+<span><span class="co">#&gt; phi_2_2    1.576373e-05 -1.597444e-05 -2.783699e-04 -1.775455e-05  1.302756e-05</span></span>
+<span><span class="co">#&gt; phi_3_2    4.273789e-04  1.199960e-04 -4.260080e-06 -3.007907e-04 -3.085525e-05</span></span>
+<span><span class="co">#&gt; phi_1_3    1.199960e-04  6.868542e-04  2.386256e-05 -1.071758e-04 -1.210257e-04</span></span>
+<span><span class="co">#&gt; phi_2_3   -4.260080e-06  2.386256e-05  2.290520e-04  8.181839e-06 -8.695992e-06</span></span>
+<span><span class="co">#&gt; phi_3_3   -3.007907e-04 -1.071758e-04  8.181839e-06  2.518045e-04  2.042787e-05</span></span>
+<span><span class="co">#&gt; sigma_1_1 -3.085525e-05 -1.210257e-04 -8.695992e-06  2.042787e-05  5.315788e-05</span></span>
+<span><span class="co">#&gt; sigma_2_1  7.563860e-06  1.524066e-05 -1.770462e-05 -5.242933e-06 -1.473938e-06</span></span>
+<span><span class="co">#&gt; sigma_3_1  3.205242e-05  1.735962e-06  1.379332e-06 -1.843388e-05 -5.848017e-06</span></span>
+<span><span class="co">#&gt; sigma_2_2 -2.613218e-06 -2.319797e-06  9.763319e-06  1.906244e-06  4.039293e-07</span></span>
+<span><span class="co">#&gt; sigma_3_2 -8.237631e-06 -9.189074e-07 -2.405728e-06  4.981899e-06 -2.565611e-08</span></span>
+<span><span class="co">#&gt; sigma_3_3 -2.240050e-07  5.646350e-07 -1.197923e-07 -5.157492e-06  7.654383e-07</span></span>
+<span><span class="co">#&gt;               sigma_2_1     sigma_3_1     sigma_2_2     sigma_3_2     sigma_3_3</span></span>
+<span><span class="co">#&gt; phi_1_1    2.297497e-05  1.863072e-05 -3.578211e-06 -1.431835e-06 -2.203611e-06</span></span>
+<span><span class="co">#&gt; phi_2_1   -3.896357e-05  3.619382e-06  1.541868e-05  1.927127e-06 -1.270215e-06</span></span>
+<span><span class="co">#&gt; phi_3_1   -7.962854e-06 -4.198918e-05  2.332149e-06  8.322808e-06  4.429654e-06</span></span>
+<span><span class="co">#&gt; phi_1_2   -2.294436e-05 -1.170724e-05  3.281239e-06  1.615242e-06  1.092348e-06</span></span>
+<span><span class="co">#&gt; phi_2_2    2.962651e-05 -2.840243e-06 -1.545537e-05  1.176296e-07  8.732957e-07</span></span>
+<span><span class="co">#&gt; phi_3_2    7.563860e-06  3.205242e-05 -2.613218e-06 -8.237631e-06 -2.240050e-07</span></span>
+<span><span class="co">#&gt; phi_1_3    1.524066e-05  1.735962e-06 -2.319797e-06 -9.189074e-07  5.646350e-07</span></span>
+<span><span class="co">#&gt; phi_2_3   -1.770462e-05  1.379332e-06  9.763319e-06 -2.405728e-06 -1.197923e-07</span></span>
+<span><span class="co">#&gt; phi_3_3   -5.242933e-06 -1.843388e-05  1.906244e-06  4.981899e-06 -5.157492e-06</span></span>
+<span><span class="co">#&gt; sigma_1_1 -1.473938e-06 -5.848017e-06  4.039293e-07 -2.565611e-08  7.654383e-07</span></span>
+<span><span class="co">#&gt; sigma_2_1  7.006599e-06  1.438703e-07 -6.227217e-07 -9.558368e-07  2.524688e-08</span></span>
+<span><span class="co">#&gt; sigma_3_1  1.438703e-07  7.505554e-06  7.860849e-09 -2.941660e-07 -2.011280e-06</span></span>
+<span><span class="co">#&gt; sigma_2_2 -6.227217e-07  7.860849e-09  3.669146e-06  6.984348e-08 -4.218391e-08</span></span>
+<span><span class="co">#&gt; sigma_3_2 -9.558368e-07 -2.941660e-07  6.984348e-08  1.903497e-06  5.149938e-08</span></span>
+<span><span class="co">#&gt; sigma_3_3  2.524688e-08 -2.011280e-06 -4.218391e-08  5.149938e-08  4.436798e-06</span></span></code></pre></div>
 <p>In this example, we aim to calculate the total, direct, and indirect
 effects of <code>x</code> on <code>y</code>, mediated through
 <code>m</code>, over time intervals ranging from 0 to 10.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># time intervals</span></span>
 <span><span class="va">delta_t</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, to <span class="op">=</span> <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="delta-method">Delta Method<a class="anchor" aria-label="anchor" href="#delta-method"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jeksterslab/cTMed">cTMed</a></span><span class="op">)</span></span>
 <span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/DeltaMedStd.html">DeltaMedStd</a></span><span class="op">(</span></span>
@@ -178,15 +242,15 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
 <span><span class="va">elapsed</span></span>
-<span><span class="co">#&gt; Time difference of 1.543939 secs</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt; Time difference of 1.48478 secs</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-std-delta-1.png" width="3300"><img src="fig-vignettes-med-std-delta-2.png" width="3300"><img src="fig-vignettes-med-std-delta-3.png" width="3300"></p>
 </div>
 <div class="section level2">
 <h2 id="monte-carlo-method">Monte Carlo Method<a class="anchor" aria-label="anchor" href="#monte-carlo-method"></a>
 </h2>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MCMedStd.html">MCMedStd</a></span><span class="op">(</span></span>
 <span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
@@ -202,8 +266,8 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
 <span><span class="va">elapsed</span></span>
-<span><span class="co">#&gt; Time difference of 19.19146 mins</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt; Time difference of 19.19607 mins</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-std-mc-1.png" width="3300"><img src="fig-vignettes-med-std-mc-2.png" width="3300"><img src="fig-vignettes-med-std-mc-3.png" width="3300"></p>
 </div>

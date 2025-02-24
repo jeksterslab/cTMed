@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.6.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2025-02-21</h4>
+            <h4 data-toc-skip class="date">2025-02-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/main/vignettes/med-boot.Rmd"><code>vignettes/med-boot.Rmd</code></a></small>
       <div class="d-none name"><code>med-boot.Rmd</code></div>
@@ -80,48 +80,48 @@ model created using the <code>dynr</code> package.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
-<span><span class="co">#&gt;              Estimate Std. Error t value   ci.lower   ci.upper Pr(&gt;|t|)    </span></span>
-<span><span class="co">#&gt; phi_1_1    -0.4698862  0.3734948  -1.258 -1.2019225  0.2621501   0.1045    </span></span>
-<span><span class="co">#&gt; phi_2_1     0.4809285  0.1781928   2.699  0.1316771  0.8301800   0.0036 ** </span></span>
-<span><span class="co">#&gt; phi_3_1    -0.2711150  0.2083709  -1.301 -0.6795145  0.1372845   0.0969 .  </span></span>
-<span><span class="co">#&gt; phi_1_2    -0.1084163  0.2321649  -0.467 -0.5634512  0.3466185   0.3204    </span></span>
-<span><span class="co">#&gt; phi_2_2    -0.2331007  0.1105811  -2.108 -0.4498357 -0.0163658   0.0178 *  </span></span>
-<span><span class="co">#&gt; phi_3_2     0.5796100  0.1363571   4.251  0.3123549  0.8468651   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; phi_1_3     0.1213907  0.1565825   0.775 -0.1855054  0.4282868   0.2193    </span></span>
-<span><span class="co">#&gt; phi_2_3    -0.0744270  0.0735117  -1.012 -0.2185074  0.0696533   0.1559    </span></span>
-<span><span class="co">#&gt; phi_3_3    -0.5738682  0.0916326  -6.263 -0.7534648 -0.3942715   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; sigma_1_1   0.3007396  0.1122916   2.678  0.0806521  0.5208271   0.0038 ** </span></span>
-<span><span class="co">#&gt; sigma_2_1   0.0498648  0.0401853   1.241 -0.0288969  0.1286265   0.1076    </span></span>
-<span><span class="co">#&gt; sigma_3_1  -0.0741897  0.0428654  -1.731 -0.1582043  0.0098249   0.0421 *  </span></span>
-<span><span class="co">#&gt; sigma_2_2   0.0457407  0.0234338   1.952 -0.0001887  0.0916700   0.0258 *  </span></span>
-<span><span class="co">#&gt; sigma_3_2   0.0122009  0.0206733   0.590 -0.0283181  0.0527198   0.2777    </span></span>
-<span><span class="co">#&gt; sigma_3_3   0.0881988  0.0337203   2.616  0.0221082  0.1542894   0.0046 ** </span></span>
-<span><span class="co">#&gt; theta_1_1   0.1991190  0.0178903  11.130  0.1640546  0.2341833   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; theta_2_2   0.2112520  0.0148880  14.189  0.1820720  0.2404319   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; theta_3_3   0.1913294  0.0140468  13.621  0.1637981  0.2188606   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; mu0_1_1    -0.2189028  0.1678919  -1.304 -0.5479650  0.1101593   0.0965 .  </span></span>
-<span><span class="co">#&gt; mu0_2_1     0.5735116  0.2813058   2.039  0.0221625  1.1248608   0.0210 *  </span></span>
-<span><span class="co">#&gt; mu0_3_1     0.6406938  0.7675896   0.835 -0.8637542  2.1451418   0.2022    </span></span>
-<span><span class="co">#&gt; sigma0_1_1  0.0663477  0.0789889   0.840 -0.0884677  0.2211631   0.2007    </span></span>
-<span><span class="co">#&gt; sigma0_2_1  0.0480017  0.1080453   0.444 -0.1637632  0.2597665   0.3285    </span></span>
-<span><span class="co">#&gt; sigma0_3_1 -0.3808122  0.3502062  -1.087 -1.0672038  0.3055793   0.1387    </span></span>
-<span><span class="co">#&gt; sigma0_2_2  0.3573753  0.2484766   1.438 -0.1296299  0.8443804   0.0755 .  </span></span>
-<span><span class="co">#&gt; sigma0_3_2  0.1946208  0.5038433   0.386 -0.7928940  1.1821355   0.3497    </span></span>
-<span><span class="co">#&gt; sigma0_3_3  2.8986422  1.8778449   1.544 -0.7818662  6.5791505   0.0617 .  </span></span>
+<span><span class="co">#&gt;             Estimate Std. Error t value  ci.lower  ci.upper Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; phi_1_1    -0.351837   0.040477  -8.692 -0.431170 -0.272503   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_2_1     0.744281   0.022684  32.810  0.699821  0.788741   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_3_1    -0.458683   0.023307 -19.680 -0.504364 -0.413001   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_1_2     0.017299   0.035160   0.492 -0.051614  0.086211   0.3114    </span></span>
+<span><span class="co">#&gt; phi_2_2    -0.488816   0.019999 -24.442 -0.528013 -0.449619   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_3_2     0.726799   0.020673  35.157  0.686280  0.767318   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; phi_1_3    -0.023825   0.026208  -0.909 -0.075191  0.027542   0.1817    </span></span>
+<span><span class="co">#&gt; phi_2_3    -0.009800   0.015134  -0.648 -0.039463  0.019863   0.2586    </span></span>
+<span><span class="co">#&gt; phi_3_3    -0.688346   0.015868 -43.379 -0.719448 -0.657245   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_1_1   0.242175   0.007291  33.216  0.227885  0.256465   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_2_1   0.023273   0.002647   8.792  0.018084  0.028461   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_3_1  -0.050572   0.002740 -18.459 -0.055941 -0.045202   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_2_2   0.070721   0.001916  36.921  0.066967  0.074476   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_3_2   0.014990   0.001380  10.865  0.012286  0.017695   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma_3_3   0.072377   0.002106  34.361  0.068249  0.076505   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; theta_1_1   0.198862   0.001189 167.270  0.196532  0.201192   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; theta_2_2   0.199520   0.001001 199.355  0.197558  0.201481   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; theta_3_3   0.201171   0.001017 197.798  0.199178  0.203165   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; mu0_1_1     0.006365   0.118695   0.054 -0.226274  0.239004   0.4786    </span></span>
+<span><span class="co">#&gt; mu0_2_1    -0.042579   0.113165  -0.376 -0.264378  0.179220   0.3534    </span></span>
+<span><span class="co">#&gt; mu0_3_1     0.130157   0.102344   1.272 -0.070434  0.330747   0.1017    </span></span>
+<span><span class="co">#&gt; sigma0_1_1  1.150287   0.205378   5.601  0.747754  1.552820   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma0_2_1  0.413683   0.134865   3.067  0.149352  0.678015   0.0011 ** </span></span>
+<span><span class="co">#&gt; sigma0_3_1  0.225909   0.118800   1.902 -0.006935  0.458753   0.0286 *  </span></span>
+<span><span class="co">#&gt; sigma0_2_2  1.221862   0.198459   6.157  0.832890  1.610835   &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; sigma0_3_2  0.235429   0.125869   1.870 -0.011271  0.482128   0.0307 *  </span></span>
+<span><span class="co">#&gt; sigma0_3_3  0.962525   0.150708   6.387  0.667142  1.257908   &lt;2e-16 ***</span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; -2 log-likelihood value at convergence = 2176.87</span></span>
-<span><span class="co">#&gt; AIC = 2230.87</span></span>
-<span><span class="co">#&gt; BIC = 2344.67</span></span></code></pre></div>
+<span><span class="co">#&gt; -2 log-likelihood value at convergence = 429365.49</span></span>
+<span><span class="co">#&gt; AIC = 429419.49</span></span>
+<span><span class="co">#&gt; BIC = 429676.34</span></span></code></pre></div>
 <p>We need to extract the estimated parameters from the fitted object,
 which will be used to generate bootstrap samples.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">est</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/coef.html" class="external-link">coef</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
 <span><span class="va">n</span></span>
-<span><span class="co">#&gt; [1] 5</span></span>
-<span><span class="va">time</span></span>
 <span><span class="co">#&gt; [1] 100</span></span>
+<span><span class="va">time</span></span>
+<span><span class="co">#&gt; [1] 1000</span></span>
 <span><span class="va">delta_t</span></span>
 <span><span class="co">#&gt; [1] 0.1</span></span>
 <span><span class="va">lambda</span></span>
@@ -141,8 +141,8 @@ which will be used to generate bootstrap samples.</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">]</span></span>
 <span><span class="va">mu0</span></span>
-<span><span class="co">#&gt;    mu0_1_1    mu0_2_1    mu0_3_1 </span></span>
-<span><span class="co">#&gt; -0.2189028  0.5735116  0.6406938</span></span>
+<span><span class="co">#&gt;      mu0_1_1      mu0_2_1      mu0_3_1 </span></span>
+<span><span class="co">#&gt;  0.006364943 -0.042579267  0.130156689</span></span>
 <span><span class="va">sigma0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -161,10 +161,10 @@ which will be used to generate bootstrap samples.</p>
 <span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">sigma0</span></span>
-<span><span class="co">#&gt;             [,1]       [,2]       [,3]</span></span>
-<span><span class="co">#&gt; [1,]  0.06634768 0.04800168 -0.3808122</span></span>
-<span><span class="co">#&gt; [2,]  0.04800168 0.35737526  0.1946208</span></span>
-<span><span class="co">#&gt; [3,] -0.38081224 0.19462078  2.8986422</span></span>
+<span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
+<span><span class="co">#&gt; [1,] 1.1502871 0.4136832 0.2259086</span></span>
+<span><span class="co">#&gt; [2,] 0.4136832 1.2218621 0.2354286</span></span>
+<span><span class="co">#&gt; [3,] 0.2259086 0.2354286 0.9625248</span></span>
 <span><span class="va">sigma0_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">sigma0</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
@@ -184,10 +184,10 @@ which will be used to generate bootstrap samples.</p>
 <span>  ncol <span class="op">=</span> <span class="fl">3</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">phi</span></span>
-<span><span class="co">#&gt;            [,1]       [,2]        [,3]</span></span>
-<span><span class="co">#&gt; [1,] -0.4698862 -0.1084163  0.12139067</span></span>
-<span><span class="co">#&gt; [2,]  0.4809285 -0.2331007 -0.07442704</span></span>
-<span><span class="co">#&gt; [3,] -0.2711150  0.5796100 -0.57386817</span></span>
+<span><span class="co">#&gt;            [,1]        [,2]        [,3]</span></span>
+<span><span class="co">#&gt; [1,] -0.3518368  0.01729864 -0.02382471</span></span>
+<span><span class="co">#&gt; [2,]  0.7442809 -0.48881584 -0.00979981</span></span>
+<span><span class="co">#&gt; [3,] -0.4586826  0.72679902 -0.68834647</span></span>
 <span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -201,9 +201,9 @@ which will be used to generate bootstrap samples.</p>
 <span><span class="op">)</span></span>
 <span><span class="va">sigma</span></span>
 <span><span class="co">#&gt;             [,1]       [,2]        [,3]</span></span>
-<span><span class="co">#&gt; [1,]  0.30073959 0.04986477 -0.07418968</span></span>
-<span><span class="co">#&gt; [2,]  0.04986477 0.04574067  0.01220087</span></span>
-<span><span class="co">#&gt; [3,] -0.07418968 0.01220087  0.08819880</span></span>
+<span><span class="co">#&gt; [1,]  0.24217468 0.02327250 -0.05057192</span></span>
+<span><span class="co">#&gt; [2,]  0.02327250 0.07072140  0.01499047</span></span>
+<span><span class="co">#&gt; [3,] -0.05057192 0.01499047  0.07237695</span></span>
 <span><span class="va">sigma_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">sigma</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dynr/man/diag-character-method.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/dynr/man/diag-character-method.html" class="external-link">diag</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">est</span><span class="op">[</span></span>
@@ -214,10 +214,10 @@ which will be used to generate bootstrap samples.</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">]</span></span>
 <span><span class="va">theta</span></span>
-<span><span class="co">#&gt;          [,1]     [,2]      [,3]</span></span>
-<span><span class="co">#&gt; [1,] 0.199119 0.000000 0.0000000</span></span>
-<span><span class="co">#&gt; [2,] 0.000000 0.211252 0.0000000</span></span>
-<span><span class="co">#&gt; [3,] 0.000000 0.000000 0.1913294</span></span>
+<span><span class="co">#&gt;           [,1]      [,2]      [,3]</span></span>
+<span><span class="co">#&gt; [1,] 0.1988618 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; [2,] 0.0000000 0.1995199 0.0000000</span></span>
+<span><span class="co">#&gt; [3,] 0.0000000 0.0000000 0.2011713</span></span>
 <span><span class="va">theta_l</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/chol.html" class="external-link">chol</a></span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">R</span> <span class="op">&lt;-</span> <span class="fl">1000L</span> <span class="co"># use at least 1000 in actual research</span></span>
@@ -260,7 +260,7 @@ times is computationally intensive.</p>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
 <span><span class="va">elapsed</span></span>
-<span><span class="co">#&gt; Time difference of 55.5705 mins</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 11.13199 hours</span></span></code></pre></div>
 <p>The <code>extract</code> function from the
 <code>bootStateSpace</code> package is used to extract the bootstrap phi
 matrices as well as the sigma matrices.</p>
@@ -328,7 +328,7 @@ matrix from the original sample is also needed.</p>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
 <span><span class="va">elapsed</span></span>
-<span><span class="co">#&gt; Time difference of 9.527816 mins</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 9.870953 mins</span></span></code></pre></div>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-boot-boot-1.png" width="3300"><img src="fig-vignettes-med-boot-boot-2.png" width="3300"><img src="fig-vignettes-med-boot-boot-3.png" width="3300"></p>
@@ -350,10 +350,11 @@ standardized effects.</p>
 <span>  med <span class="op">=</span> <span class="st">"m"</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># use multiple cores</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in cleanup(mc.cleanup): unable to terminate child: No such process</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
 <span><span class="va">elapsed</span></span>
-<span><span class="co">#&gt; Time difference of 10.40956 mins</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 11.28642 mins</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">boot</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-boot-boot-std-1.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-2.png" width="3300"><img src="fig-vignettes-med-boot-boot-std-3.png" width="3300"></p>
