@@ -1,7 +1,7 @@
 ---
 title: "Total, Direct, and Indirect Effects in Continuous-Time Mediation Model"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-02-21"
+date: "2025-02-24"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -20,37 +20,117 @@ vignette: >
 The `cTMed` package offers tools for estimating and quantifying uncertainty in total, direct, and indirect effects within continuous-time mediation models across various time intervals using the delta and Monte Carlo methods. To implement these approaches, estimates from a continuous-time vector autoregressive (CT-VAR) model are required, particularly the drift matrix and its corresponding sampling variance-covariance matrix. For guidance on fitting CT-VAR models using the `dynr` or `OpenMx` packages, refer to [Fit the Continuous-Time Vector Autoregressive Model Using the dynr Package](https://jeksterslab.github.io/cTMed/articles/fit-ct-var-dynr.html) and [Fit the Continuous-Time Vector Autoregressive Model Using the OpenMx Package](https://jeksterslab.github.io/cTMed/articles/fit-ct-var-mx.html), respectively.
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ``` r
-# Drift matrix
+summary(fit)
+#> Coefficients:
+#>             Estimate Std. Error t value  ci.lower  ci.upper Pr(>|t|)    
+#> phi_1_1    -0.351837   0.040477  -8.692 -0.431170 -0.272503   <2e-16 ***
+#> phi_2_1     0.744281   0.022684  32.810  0.699821  0.788741   <2e-16 ***
+#> phi_3_1    -0.458683   0.023307 -19.680 -0.504364 -0.413001   <2e-16 ***
+#> phi_1_2     0.017299   0.035160   0.492 -0.051614  0.086211   0.3114    
+#> phi_2_2    -0.488816   0.019999 -24.442 -0.528013 -0.449619   <2e-16 ***
+#> phi_3_2     0.726799   0.020673  35.157  0.686280  0.767318   <2e-16 ***
+#> phi_1_3    -0.023825   0.026208  -0.909 -0.075191  0.027542   0.1817    
+#> phi_2_3    -0.009800   0.015134  -0.648 -0.039463  0.019863   0.2586    
+#> phi_3_3    -0.688346   0.015868 -43.379 -0.719448 -0.657245   <2e-16 ***
+#> sigma_1_1   0.242175   0.007291  33.216  0.227885  0.256465   <2e-16 ***
+#> sigma_2_1   0.023273   0.002647   8.792  0.018084  0.028461   <2e-16 ***
+#> sigma_3_1  -0.050572   0.002740 -18.459 -0.055941 -0.045202   <2e-16 ***
+#> sigma_2_2   0.070721   0.001916  36.921  0.066967  0.074476   <2e-16 ***
+#> sigma_3_2   0.014990   0.001380  10.865  0.012286  0.017695   <2e-16 ***
+#> sigma_3_3   0.072377   0.002106  34.361  0.068249  0.076505   <2e-16 ***
+#> theta_1_1   0.198862   0.001189 167.270  0.196532  0.201192   <2e-16 ***
+#> theta_2_2   0.199520   0.001001 199.355  0.197558  0.201481   <2e-16 ***
+#> theta_3_3   0.201171   0.001017 197.798  0.199178  0.203165   <2e-16 ***
+#> mu0_1_1     0.006365   0.118695   0.054 -0.226274  0.239004   0.4786    
+#> mu0_2_1    -0.042579   0.113165  -0.376 -0.264378  0.179220   0.3534    
+#> mu0_3_1     0.130157   0.102344   1.272 -0.070434  0.330747   0.1017    
+#> sigma0_1_1  1.150287   0.205378   5.601  0.747754  1.552820   <2e-16 ***
+#> sigma0_2_1  0.413683   0.134865   3.067  0.149352  0.678015   0.0011 ** 
+#> sigma0_3_1  0.225909   0.118800   1.902 -0.006935  0.458753   0.0286 *  
+#> sigma0_2_2  1.221862   0.198459   6.157  0.832890  1.610835   <2e-16 ***
+#> sigma0_3_2  0.235429   0.125869   1.870 -0.011271  0.482128   0.0307 *  
+#> sigma0_3_3  0.962525   0.150708   6.387  0.667142  1.257908   <2e-16 ***
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> -2 log-likelihood value at convergence = 429365.49
+#> AIC = 429419.49
+#> BIC = 429676.34
+```
+
+
+``` r
+phi_varnames <- c(
+  "phi_1_1",
+  "phi_2_1",
+  "phi_3_1",
+  "phi_1_2",
+  "phi_2_2",
+  "phi_3_2",
+  "phi_1_3",
+  "phi_2_3",
+  "phi_3_3"
+)
 phi <- matrix(
-  data = c(
-    -0.357, 0.771, -0.450,
-    0.0, -0.511, 0.729,
-    0, 0, -0.693
-  ),
-  nrow = 3
+  data = coef(fit)[phi_varnames],
+  nrow = 3,
+  ncol = 3
 )
 colnames(phi) <- rownames(phi) <- c("x", "m", "y")
+vcov_phi_vec <- vcov(fit)[phi_varnames, phi_varnames]
+```
+
+
+``` r
+# Drift matrix
+phi
+#>            x           m           y
+#> x -0.3518368  0.01729864 -0.02382471
+#> m  0.7442809 -0.48881584 -0.00979981
+#> y -0.4586826  0.72679902 -0.68834647
 # Sampling variance-covariance matrix
-vcov_phi_vec <- matrix(
-  data = c(
-    0.00843, 0.00040, -0.00151, -0.00600, -0.00033, 0.00110,
-    0.00324, 0.00020, -0.00061, 0.00040, 0.00374, 0.00016,
-    -0.00022, -0.00273, -0.00016, 0.00009, 0.00150, 0.00012,
-    -0.00151, 0.00016, 0.00389, 0.00103, -0.00007, -0.00283,
-    -0.00050, 0.00000, 0.00156, -0.00600, -0.00022, 0.00103,
-    0.00644, 0.00031, -0.00119, -0.00374, -0.00021, 0.00070,
-    -0.00033, -0.00273, -0.00007, 0.00031, 0.00287, 0.00013,
-    -0.00014, -0.00170, -0.00012, 0.00110, -0.00016, -0.00283,
-    -0.00119, 0.00013, 0.00297, 0.00063, -0.00004, -0.00177,
-    0.00324, 0.00009, -0.00050, -0.00374, -0.00014, 0.00063,
-    0.00495, 0.00024, -0.00093, 0.00020, 0.00150, 0.00000,
-    -0.00021, -0.00170, -0.00004, 0.00024, 0.00214, 0.00012,
-    -0.00061, 0.00012, 0.00156, 0.00070, -0.00012, -0.00177,
-    -0.00093, 0.00012, 0.00223
-  ),
-  nrow = 9
-)
+vcov_phi_vec
+#>               phi_1_1       phi_2_1       phi_3_1       phi_1_2       phi_2_2
+#> phi_1_1  1.638395e-03  4.205720e-05 -2.365513e-04 -1.376185e-03 -4.400313e-05
+#> phi_2_1  4.205720e-05  5.145749e-04  1.901381e-05 -2.143907e-05 -4.359631e-04
+#> phi_3_1 -2.365513e-04  1.901381e-05  5.432299e-04  1.936645e-04 -9.386709e-06
+#> phi_1_2 -1.376185e-03 -2.143907e-05  1.936645e-04  1.236241e-03  3.126359e-05
+#> phi_2_2 -4.400313e-05 -4.359631e-04 -9.386709e-06  3.126359e-05  3.999593e-04
+#> phi_3_2  2.074921e-04 -2.517298e-05 -4.623548e-04 -1.848726e-04  1.576373e-05
+#> phi_1_3  9.257184e-04  8.251254e-06 -1.204207e-04 -8.555641e-04 -1.597444e-05
+#> phi_2_3  3.762530e-05  2.928343e-04  7.109899e-07 -3.090243e-05 -2.783699e-04
+#> phi_3_3 -1.487146e-04  2.380476e-05  3.133472e-04  1.369958e-04 -1.775455e-05
+#>               phi_3_2       phi_1_3       phi_2_3       phi_3_3
+#> phi_1_1  2.074921e-04  9.257184e-04  3.762530e-05 -1.487146e-04
+#> phi_2_1 -2.517298e-05  8.251254e-06  2.928343e-04  2.380476e-05
+#> phi_3_1 -4.623548e-04 -1.204207e-04  7.109899e-07  3.133472e-04
+#> phi_1_2 -1.848726e-04 -8.555641e-04 -3.090243e-05  1.369958e-04
+#> phi_2_2  1.576373e-05 -1.597444e-05 -2.783699e-04 -1.775455e-05
+#> phi_3_2  4.273789e-04  1.199960e-04 -4.260080e-06 -3.007907e-04
+#> phi_1_3  1.199960e-04  6.868542e-04  2.386256e-05 -1.071758e-04
+#> phi_2_3 -4.260080e-06  2.386256e-05  2.290520e-04  8.181839e-06
+#> phi_3_3 -3.007907e-04 -1.071758e-04  8.181839e-06  2.518045e-04
 ```
 
 In this example, we aim to calculate the total, direct, and indirect effects of `x` on `y`, mediated through `m`, over time intervals ranging from 0 to 10.
@@ -79,7 +159,7 @@ delta <- DeltaMed(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 1.562968 secs
+#> Time difference of 1.23162 secs
 ```
 
 
@@ -107,7 +187,7 @@ mc <- MCMed(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 23.52096 mins
+#> Time difference of 16.84551 mins
 ```
 
 
