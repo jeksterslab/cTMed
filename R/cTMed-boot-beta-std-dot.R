@@ -57,12 +57,10 @@
             X = phis,
             FUN = function(x,
                            delta_t) {
-              return(
-                .TotalStdDeltaT(
-                  phi = x[[1]],
-                  sigma = x[[2]],
-                  delta_t = delta_t
-                )
+              .TotalStdDeltaT(
+                phi = x[[1]],
+                sigma = x[[2]],
+                delta_t = delta_t
               )
             },
             delta_t = i,
@@ -79,12 +77,11 @@
             delta_t = i
           )
           names(est) <- varnames
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     } else {
@@ -110,12 +107,10 @@
             X = phis,
             fun = function(x,
                            delta_t) {
-              return(
-                .TotalStdDeltaT(
-                  phi = x[[1]],
-                  sigma = x[[2]],
-                  delta_t = delta_t
-                )
+              .TotalStdDeltaT(
+                phi = x[[1]],
+                sigma = x[[2]],
+                delta_t = delta_t
               )
             },
             delta_t = i
@@ -131,12 +126,11 @@
             delta_t = i
           )
           names(est) <- varnames
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     }
@@ -158,12 +152,10 @@
           X = phis,
           FUN = function(x,
                          delta_t) {
-            return(
-              .TotalStdDeltaT(
-                phi = x[[1]],
-                sigma = x[[2]],
-                delta_t = delta_t
-              )
+            .TotalStdDeltaT(
+              phi = x[[1]],
+              sigma = x[[2]],
+              delta_t = delta_t
             )
           },
           delta_t = i
@@ -179,14 +171,13 @@
           delta_t = i
         )
         names(est) <- varnames
-        out <- list(
+        list(
           delta_t = i,
           est = est,
           thetahatstar = thetahatstar
         )
-        return(out)
       }
     )
   }
-  return(output)
+  output
 }

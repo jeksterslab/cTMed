@@ -257,9 +257,7 @@ MCMedStd <- function(phi,
     X = med,
     FUN = function(x,
                    idx) {
-      return(
-        which(idx == x)
-      )
+      which(idx == x)
     },
     idx = idx
   )
@@ -287,5 +285,5 @@ MCMedStd <- function(phi,
     "ctmedmc",
     class(out)
   )
-  return(out)
+  out
 }

@@ -105,5 +105,5 @@ IndirectCentral <- function(phi,
     "ctmedmed",
     class(out)
   )
-  return(out)
+  out
 }

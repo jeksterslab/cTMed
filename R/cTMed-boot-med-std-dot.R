@@ -49,15 +49,13 @@
                            from,
                            to,
                            med) {
-              return(
-                .MedStd(
-                  phi = x[[1]],
-                  sigma = x[[2]],
-                  delta_t = delta_t,
-                  from = from,
-                  to = to,
-                  med = med
-                )
+              .MedStd(
+                phi = x[[1]],
+                sigma = x[[2]],
+                delta_t = delta_t,
+                from = from,
+                to = to,
+                med = med
               )
             },
             delta_t = i,
@@ -90,12 +88,11 @@
             "indirect",
             "interval"
           )
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     } else {
@@ -124,15 +121,13 @@
                            from,
                            to,
                            med) {
-              return(
-                .MedStd(
-                  phi = x[[1]],
-                  sigma = x[[2]],
-                  delta_t = delta_t,
-                  from = from,
-                  to = to,
-                  med = med
-                )
+              .MedStd(
+                phi = x[[1]],
+                sigma = x[[2]],
+                delta_t = delta_t,
+                from = from,
+                to = to,
+                med = med
               )
             },
             delta_t = i,
@@ -164,12 +159,11 @@
             "indirect",
             "interval"
           )
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     }
@@ -194,15 +188,13 @@
                          from,
                          to,
                          med) {
-            return(
-              .MedStd(
-                phi = x[[1]],
-                sigma = x[[2]],
-                delta_t = delta_t,
-                from = from,
-                to = to,
-                med = med
-              )
+            .MedStd(
+              phi = x[[1]],
+              sigma = x[[2]],
+              delta_t = delta_t,
+              from = from,
+              to = to,
+              med = med
             )
           },
           delta_t = i,
@@ -234,14 +226,13 @@
           "indirect",
           "interval"
         )
-        out <- list(
+        list(
           delta_t = i,
           est = est,
           thetahatstar = thetahatstar
         )
-        return(out)
       }
     )
   }
-  return(output)
+  output
 }

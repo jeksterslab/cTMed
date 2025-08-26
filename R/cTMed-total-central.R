@@ -104,5 +104,5 @@ TotalCentral <- function(phi,
     "ctmedmed",
     class(out)
   )
-  return(out)
+  out
 }

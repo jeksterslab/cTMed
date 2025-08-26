@@ -19,7 +19,7 @@ summary.ctmedposteriorphi <- function(object, # nocov start
       X = object,
       FUN = function(x) {
         dim(x) <- NULL
-        return(x)
+        x
       }
     )
   )
@@ -30,10 +30,8 @@ summary.ctmedposteriorphi <- function(object, # nocov start
   )
   colnames(phi) <- rownames(phi) <- varnames
   vcov_phi_vec <- stats::var(x)
-  return(
-    list(
-      phi = phi,
-      vcov_phi_vec = vcov_phi_vec
-    )
+  list(
+    phi = phi,
+    vcov_phi_vec = vcov_phi_vec
   )
 } # nocov end

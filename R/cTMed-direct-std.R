@@ -112,9 +112,7 @@ DirectStd <- function(phi,
       X = med,
       FUN = function(x,
                      idx) {
-        return(
-          which(idx == x)
-        )
+        which(idx == x)
       },
       idx = idx
     )
@@ -129,5 +127,5 @@ DirectStd <- function(phi,
     "ctmedeffect",
     class(out)
   )
-  return(out)
+  out
 }

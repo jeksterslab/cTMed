@@ -129,36 +129,33 @@ summary.ctmedmed <- function(object,
                              digits = 4,
                              ...) {
   if (object$args$network) {
-    return(
-      round(
-        object$output[
-          ,
-          c(
-            "interval",
-            colnames(object$args$phi)
-          ),
-          drop = FALSE
-        ],
-        digits = digits
-      )
+    out <- round(
+      object$output[
+        ,
+        c(
+          "interval",
+          colnames(object$args$phi)
+        ),
+        drop = FALSE
+      ],
+      digits = digits
     )
   } else {
-    return(
-      round(
-        object$output[
-          ,
-          c(
-            "interval",
-            "total",
-            "direct",
-            "indirect"
-          ),
-          drop = FALSE
-        ],
-        digits = digits
-      )
+    out <- round(
+      object$output[
+        ,
+        c(
+          "interval",
+          "total",
+          "direct",
+          "indirect"
+        ),
+        drop = FALSE
+      ],
+      digits = digits
     )
   }
+  out
 }
 
 #' Plot Method for an Object of Class `ctmedmed`
@@ -204,20 +201,17 @@ plot.ctmedmed <- function(x,
                           legend_pos = "topright",
                           ...) {
   if (x$args$network) {
-    return(
-      .PlotCentral(
-        object = x,
-        col = col,
-        legend_pos = legend_pos
-      )
+    out <- .PlotCentral(
+      object = x,
+      col = col,
+      legend_pos = legend_pos
     )
   } else {
-    return(
-      .PlotMed(
-        object = x,
-        col = col,
-        legend_pos = legend_pos
-      )
+    out <- .PlotMed(
+      object = x,
+      col = col,
+      legend_pos = legend_pos
     )
   }
+  out
 }

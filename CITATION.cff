@@ -8,30 +8,40 @@ message: 'To cite package "cTMed" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'cTMed: Continuous Time Mediation'
-version: 1.0.6.9000
+version: 1.0.7
+doi: 10.1037/met0000779
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.cTMed
-abstract: Calculates standard errors and confidence intervals for effects in continuous-time
-  mediation models. This package extends the work of Deboeck and Preacher (2015) <https://doi.org/10.1080/10705511.2014.973960>
-  and Ryan and Hamaker (2021) <https://doi.org/10.1007/s11336-021-09767-0> by providing
-  methods to generate standard errors and confidence intervals for the total, direct,
-  and indirect effects in these models.
+abstract: Implements the methods introduced in Pesigan, Russell, and Chow (2025) <https://doi.org/10.1037/met0000779>
+  to compute standard errors, confidence intervals, and effect sizes for total, direct,
+  and indirect effects in continuous-time mediation models.
 authors:
 - family-names: Pesigan
   given-names: Ivan Jacob Agaloos
   email: r.jeksterslab@gmail.com
   orcid: https://orcid.org/0000-0003-4818-8420
 preferred-citation:
-  type: manual
-  title: 'cTMed: Continuous Time Mediation'
+  type: article
+  title: Inferences and Effect Sizes for Direct, Indirect, and Total Effects in Continuous-Time
+    Mediation Models
   authors:
   - family-names: Pesigan
     given-names: Ivan Jacob Agaloos
     email: r.jeksterslab@gmail.com
     orcid: https://orcid.org/0000-0003-4818-8420
-  year: '2024'
-  notes: R package version 1.0.6.9000
+  - family-names: Russell
+    given-names: Michael A.
+    email: mar60@psu.edu
+    orcid: https://orcid.org/0000-0002-3956-604X
+  - family-names: Chow
+    given-names: Sy-Miin
+    email: quc16@psu.edu
+    orcid: https://orcid.org/0000-0003-1938-027X
+  year: '2025'
+  doi: 10.1037/met0000779
+  journal: Psychological Methods
+  notes: R package version 1.0.7
 repository: https://CRAN.R-project.org/package=cTMed
 repository-code: https://github.com/jeksterslab/cTMed
 url: https://jeksterslab.github.io/cTMed/

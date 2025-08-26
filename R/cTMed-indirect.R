@@ -268,9 +268,7 @@ Indirect <- function(phi,
       X = med,
       FUN = function(x,
                      idx) {
-        return(
-          which(idx == x)
-        )
+        which(idx == x)
       },
       idx = idx
     )
@@ -285,5 +283,5 @@ Indirect <- function(phi,
     "ctmedeffect",
     class(out)
   )
-  return(out)
+  out
 }

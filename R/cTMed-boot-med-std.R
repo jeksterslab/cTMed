@@ -224,9 +224,7 @@ BootMedStd <- function(phi,
     X = med,
     FUN = function(x,
                    idx) {
-      return(
-        which(idx == x)
-      )
+      which(idx == x)
     },
     idx = idx
   )
@@ -252,5 +250,5 @@ BootMedStd <- function(phi,
     "ctmedboot",
     class(out)
   )
-  return(out)
+  out
 }

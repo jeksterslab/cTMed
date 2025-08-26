@@ -48,9 +48,7 @@ print.ctmedtraj <- function(x,
     direct,
     indirect
   )
-  return(
-    out[, -c(1)]
-  )
+  out[, -c(1)]
 }
 
 #' Summary Method for an Object of Class `ctmedtraj`
@@ -105,9 +103,7 @@ summary.ctmedtraj <- function(object,
     direct,
     indirect
   )
-  return(
-    out[, -c(1)]
-  )
+  out[, -c(1)]
 }
 
 #' Plot Method for an Object of Class `ctmedtraj`
@@ -151,11 +147,9 @@ plot.ctmedtraj <- function(x,
                            legend_pos = "topright",
                            total = TRUE,
                            ...) {
-  return(
-    .PlotTrajectory(
-      object = x,
-      legend_pos = legend_pos,
-      total = total
-    )
+  .PlotTrajectory(
+    object = x,
+    legend_pos = legend_pos,
+    total = total
   )
 }

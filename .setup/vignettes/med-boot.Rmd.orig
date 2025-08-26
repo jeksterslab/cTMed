@@ -230,16 +230,7 @@ dynr_model <- dynr.model(
   measurement = dynr_measurement,
   dynamics = dynr_dynamics,
   noise = dynr_noise,
-  outfile = tempfile(
-    paste0(
-      "src-",
-      format(
-        Sys.time(),
-        "%Y-%m-%d-%H-%M-%OS3"
-      )
-    ),
-    fileext = ".c"
-  )
+  outfile = "fit-ct-var-dynr.c"
 )
 dynr_model@options$maxeval <- 100000
 lb <- ub <- rep(NA, times = length(dynr_model$xstart))
@@ -502,6 +493,11 @@ plot(boot, type = "bc")
 ```
 
 ## References
+
+```{r}
+#| include = FALSE
+unlink(c("fit-ct-var-dynr.c", "fit-ct-var-dynr.s", "fit-ct-var-dynr.so", "fit-ct-var-dynr.o"))
+```
 
 ```{r}
 #| include = FALSE

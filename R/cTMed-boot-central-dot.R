@@ -59,12 +59,11 @@
             colnames(phi_hat),
             "interval"
           )
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     } else {
@@ -101,12 +100,11 @@
             colnames(phi_hat),
             "interval"
           )
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     }
@@ -140,14 +138,13 @@
           colnames(phi_hat),
           "interval"
         )
-        out <- list(
+        list(
           delta_t = i,
           est = est,
           thetahatstar = thetahatstar
         )
-        return(out)
       }
     )
   }
-  return(output)
+  output
 }

@@ -45,9 +45,7 @@
                 "indirect",
                 "interval"
               )
-              return(
-                out
-              )
+              out
             },
             mc.cores = ncores
           )
@@ -55,12 +53,10 @@
             what = "rbind",
             args = thetahatstar
           )
-          return(
-            list(
-              delta_t = i,
-              est = colMeans(thetahatstar),
-              thetahatstar = thetahatstar
-            )
+          list(
+            delta_t = i,
+            est = colMeans(thetahatstar),
+            thetahatstar = thetahatstar
           )
         }
       )
@@ -89,21 +85,17 @@
                 "indirect",
                 "interval"
               )
-              return(
-                out
-              )
+              out
             }
           )
           thetahatstar <- do.call(
             what = "rbind",
             args = thetahatstar
           )
-          return(
-            list(
-              delta_t = i,
-              est = colMeans(thetahatstar),
-              thetahatstar = thetahatstar
-            )
+          list(
+            delta_t = i,
+            est = colMeans(thetahatstar),
+            thetahatstar = thetahatstar
           )
         }
       )
@@ -129,24 +121,20 @@
               "indirect",
               "interval"
             )
-            return(
-              out
-            )
+            out
           }
         )
         thetahatstar <- do.call(
           what = "rbind",
           args = thetahatstar
         )
-        return(
-          list(
-            delta_t = i,
-            est = colMeans(thetahatstar),
-            thetahatstar = thetahatstar
-          )
+        list(
+          delta_t = i,
+          est = colMeans(thetahatstar),
+          thetahatstar = thetahatstar
         )
       }
     )
   }
-  return(output)
+  output
 }

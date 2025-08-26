@@ -1,7 +1,7 @@
 cTMed
 ================
 Ivan Jacob Agaloos Pesigan
-2025-02-24
+2025-08-26
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -30,8 +30,18 @@ Check](https://github.com/jeksterslab/cTMed/actions/workflows/shellcheck.yml/bad
 
 ## Description
 
-Calculates standard errors and confidence intervals for effects in
-continuous time mediation models.
+Implements the methods introduced in Pesigan, Russell, and Chow (2025:
+<https://doi.org/10.1037/met0000779>) to compute standard errors,
+confidence intervals, and effect sizes for total, direct, and indirect
+effects in continuous-time mediation models.
+
+## Author-Accepted Manuscript
+
+See
+<https://github.com/jeksterslab/manCTMed/blob/main/.setup/latex/manCTMed-manuscript.Rtex>
+for the latex file of the manuscript. See
+<https://github.com/jeksterslab/manCTMed/blob/latex/manCTMed-manuscript.pdf>
+for the compiled PDF.
 
 ## Installation
 
@@ -47,6 +57,10 @@ remotes::install_github("jeksterslab/cTMed")
 
 See [GitHub Pages](https://jeksterslab.github.io/cTMed/index.html) for
 package documentation.
+
+## Citation
+
+To cite `cTMed` in publications, please cite Pesigan et al. (2025).
 
 ## References
 
@@ -70,9 +84,17 @@ Modeling: A Multidisciplinary Journal*, *23*(1), 61–75.
 
 </div>
 
-<div id="ref-RCoreTeam-2024" class="csl-entry">
+<div id="ref-Pesigan-Russell-Chow-2025a" class="csl-entry">
 
-R Core Team. (2024). *R: A language and environment for statistical
+Pesigan, I. J. A., Russell, M. A., & Chow, S.-M. (2025). Inferences and
+effect sizes for direct, indirect, and total effects in continuous-time
+mediation models. *Psychological Methods*.
+
+</div>
+
+<div id="ref-RCoreTeam-2025" class="csl-entry">
+
+R Core Team. (2025). *R: A language and environment for statistical
 computing*. R Foundation for Statistical Computing.
 <https://www.R-project.org/>
 

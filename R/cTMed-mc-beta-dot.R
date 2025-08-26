@@ -47,12 +47,10 @@
       phis <- parallel::mclapply(
         X = seq_len(R),
         FUN = function(i) {
-          return(
-            .MCPhiI(
-              phi = phi,
-              vcov_phi_vec_l = t(chol(vcov_phi_vec)),
-              test_phi = test_phi
-            )
+          .MCPhiI(
+            phi = phi,
+            vcov_phi_vec_l = t(chol(vcov_phi_vec)),
+            test_phi = test_phi
           )
         },
         mc.cores = ncores
@@ -76,12 +74,11 @@
             delta_t = i
           )
           names(est) <- varnames
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     } else {
@@ -100,12 +97,10 @@
         cl = cl,
         X = seq_len(R),
         fun = function(i) {
-          return(
-            .MCPhiI(
-              phi = phi,
-              vcov_phi_vec_l = t(chol(vcov_phi_vec)),
-              test_phi = test_phi
-            )
+          .MCPhiI(
+            phi = phi,
+            vcov_phi_vec_l = t(chol(vcov_phi_vec)),
+            test_phi = test_phi
           )
         }
       )
@@ -128,12 +123,11 @@
             delta_t = i
           )
           names(est) <- varnames
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     }
@@ -146,12 +140,10 @@
     phis <- lapply(
       X = seq_len(R),
       FUN = function(i) {
-        return(
-          .MCPhiI(
-            phi = phi,
-            vcov_phi_vec_l = t(chol(vcov_phi_vec)),
-            test_phi = test_phi
-          )
+        .MCPhiI(
+          phi = phi,
+          vcov_phi_vec_l = t(chol(vcov_phi_vec)),
+          test_phi = test_phi
         )
       }
     )
@@ -173,14 +165,13 @@
           delta_t = i
         )
         names(est) <- varnames
-        out <- list(
+        list(
           delta_t = i,
           est = est,
           thetahatstar = thetahatstar
         )
-        return(out)
       }
     )
   }
-  return(output)
+  output
 }
