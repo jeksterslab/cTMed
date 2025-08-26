@@ -148,5 +148,5 @@ Trajectory <- function(mu0,
     "ctmedtraj",
     class(out)
   )
-  return(out)
+  out
 }

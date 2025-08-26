@@ -204,5 +204,5 @@ Total <- function(phi,
     "ctmedeffect",
     class(out)
   )
-  return(out)
+  out
 }

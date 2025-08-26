@@ -87,18 +87,14 @@ lapply(
         mc_phi <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[1]]
-            )
+            i[[1]]
           }
         )
         mc_phi <- (1 / R) * Reduce(f = `+`, x = mc_phi)
         mc_sigma <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[2]]
-            )
+            i[[2]]
           }
         )
         mc_sigma <- (1 / R) * Reduce(f = `+`, x = mc_sigma)

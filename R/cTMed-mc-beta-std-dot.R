@@ -52,12 +52,10 @@
       phisigmas <- parallel::mclapply(
         X = seq_len(R),
         FUN = function(i) {
-          return(
-            .MCPhiSigmaI(
-              theta = theta,
-              vcov_theta = vcov_theta,
-              test_phi = test_phi
-            )
+          .MCPhiSigmaI(
+            theta = theta,
+            vcov_theta = vcov_theta,
+            test_phi = test_phi
           )
         },
         mc.cores = ncores
@@ -69,12 +67,10 @@
             X = phisigmas,
             FUN = function(x,
                            delta_t) {
-              return(
-                .TotalStdDeltaT(
-                  phi = x[[1]],
-                  sigma = x[[2]],
-                  delta_t = delta_t
-                )
+              .TotalStdDeltaT(
+                phi = x[[1]],
+                sigma = x[[2]],
+                delta_t = delta_t
               )
             },
             delta_t = i,
@@ -91,12 +87,11 @@
             delta_t = i
           )
           names(est) <- varnames
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     } else {
@@ -115,12 +110,10 @@
         cl = cl,
         X = seq_len(R),
         fun = function(i) {
-          return(
-            .MCPhiSigmaI(
-              theta = theta,
-              vcov_theta = vcov_theta,
-              test_phi = test_phi
-            )
+          .MCPhiSigmaI(
+            theta = theta,
+            vcov_theta = vcov_theta,
+            test_phi = test_phi
           )
         }
       )
@@ -132,12 +125,10 @@
             X = phisigmas,
             fun = function(x,
                            delta_t) {
-              return(
-                .TotalStdDeltaT(
-                  phi = x[[1]],
-                  sigma = x[[2]],
-                  delta_t = delta_t
-                )
+              .TotalStdDeltaT(
+                phi = x[[1]],
+                sigma = x[[2]],
+                delta_t = delta_t
               )
             },
             delta_t = i
@@ -153,12 +144,11 @@
             delta_t = i
           )
           names(est) <- varnames
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     }
@@ -171,12 +161,10 @@
     phisigmas <- lapply(
       X = seq_len(R),
       FUN = function(i) {
-        return(
-          .MCPhiSigmaI(
-            theta = theta,
-            vcov_theta = vcov_theta,
-            test_phi = test_phi
-          )
+        .MCPhiSigmaI(
+          theta = theta,
+          vcov_theta = vcov_theta,
+          test_phi = test_phi
         )
       }
     )
@@ -187,12 +175,10 @@
           X = phisigmas,
           FUN = function(x,
                          delta_t) {
-            return(
-              .TotalStdDeltaT(
-                phi = x[[1]],
-                sigma = x[[2]],
-                delta_t = delta_t
-              )
+            .TotalStdDeltaT(
+              phi = x[[1]],
+              sigma = x[[2]],
+              delta_t = delta_t
             )
           },
           delta_t = i
@@ -208,14 +194,13 @@
           delta_t = i
         )
         names(est) <- varnames
-        out <- list(
+        list(
           delta_t = i,
           est = est,
           thetahatstar = thetahatstar
         )
-        return(out)
       }
     )
   }
-  return(output)
+  output
 }

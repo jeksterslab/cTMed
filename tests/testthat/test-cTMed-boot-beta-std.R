@@ -78,7 +78,7 @@ lapply(
         )
         delta_t <- 2
         total <- expm::expm(delta_t * phi)
-        total_cov <- simStateSpace::LinSDECov(
+        total_cov <- simStateSpace::LinSDECovEta(
           phi = phi,
           sigma = sigma
         )
@@ -109,17 +109,13 @@ lapply(
         mc_phi <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[1]]
-            )
+            i[[1]]
           }
         )
         mc_sigma <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[2]]
-            )
+            i[[2]]
           }
         )
         boot <- BootBetaStd(
@@ -211,7 +207,7 @@ lapply(
         )
         delta_t <- 2
         total <- expm::expm(delta_t * phi)
-        total_cov <- simStateSpace::LinSDECov(
+        total_cov <- simStateSpace::LinSDECovEta(
           phi = phi,
           sigma = sigma
         )
@@ -242,17 +238,13 @@ lapply(
         mc_phi <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[1]]
-            )
+            i[[1]]
           }
         )
         mc_sigma <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[2]]
-            )
+            i[[2]]
           }
         )
         boot <- BootBetaStd(

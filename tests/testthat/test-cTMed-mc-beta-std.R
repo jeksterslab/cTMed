@@ -78,7 +78,7 @@ lapply(
         )
         delta_t <- 2
         total <- expm::expm(delta_t * phi)
-        total_cov <- simStateSpace::LinSDECov(
+        total_cov <- simStateSpace::LinSDECovEta(
           phi = phi,
           sigma = sigma
         )
@@ -187,7 +187,7 @@ lapply(
         )
         delta_t <- 2
         total <- expm::expm(delta_t * phi)
-        total_cov <- simStateSpace::LinSDECov(
+        total_cov <- simStateSpace::LinSDECovEta(
           phi = phi,
           sigma = sigma
         )

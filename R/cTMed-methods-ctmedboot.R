@@ -371,7 +371,7 @@ summary.ctmedboot <- function(object,
   varnames <- colnames(ci)
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
-  return(ci[, varnames])
+  ci[, varnames]
 }
 
 #' Bootstrap Method Confidence Intervals
@@ -531,9 +531,7 @@ confint.ctmedboot <- function(object,
         x = varnames
       )
       colnames(out) <- varnames
-      return(
-        out
-      )
+      out
     }
   )
   ci <- do.call(
@@ -553,7 +551,7 @@ confint.ctmedboot <- function(object,
   varnames <- colnames(ci)
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
-  return(ci[, varnames])
+  ci[, varnames]
 }
 
 #' Plot Method for an Object of Class `ctmedboot`
@@ -681,33 +679,28 @@ plot.ctmedboot <- function(x,
                            type = "pc",
                            ...) {
   if (x$args$network) {
-    return(
-      .PlotCentralCI(
-        object = x,
-        alpha = alpha,
-        col = col
-      )
+    out <- .PlotCentralCI(
+      object = x,
+      alpha = alpha,
+      col = col
     )
   } else {
     if (x$fun == "BootMed" || x$fun == "BootMedStd") {
-      return(
-        .PlotMedCI(
-          object = x,
-          alpha = alpha,
-          col = col,
-          type = type
-        )
+      out <- .PlotMedCI(
+        object = x,
+        alpha = alpha,
+        col = col,
+        type = type
       )
     }
     if (x$fun == "BootBeta" || x$fun == "BootBetaStd") {
-      return(
-        .PlotBetaCI(
-          object = x,
-          alpha = alpha,
-          col = col,
-          type = type
-        )
+      out <- .PlotBetaCI(
+        object = x,
+        alpha = alpha,
+        col = col,
+        type = type
       )
     }
   }
+  out
 }

@@ -288,9 +288,7 @@ DeltaMedStd <- function(phi,
     X = med,
     FUN = function(x,
                    idx) {
-      return(
-        which(idx == x)
-      )
+      which(idx == x)
     },
     idx = idx
   )
@@ -368,5 +366,5 @@ DeltaMedStd <- function(phi,
     "ctmeddelta",
     class(out)
   )
-  return(out)
+  out
 }

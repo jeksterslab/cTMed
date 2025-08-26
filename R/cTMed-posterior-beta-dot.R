@@ -9,7 +9,7 @@
       X = phi,
       FUN = function(x) {
         dim(x) <- NULL
-        return(x)
+        x
       }
     )
   )
@@ -73,12 +73,11 @@
             delta_t = i
           )
           names(est) <- varnames
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     } else {
@@ -105,12 +104,11 @@
             delta_t = i
           )
           names(est) <- varnames
-          out <- list(
+          list(
             delta_t = i,
             est = est,
             thetahatstar = thetahatstar
           )
-          return(out)
         }
       )
     }
@@ -134,14 +132,13 @@
           delta_t = i
         )
         names(est) <- varnames
-        out <- list(
+        list(
           delta_t = i,
           est = est,
           thetahatstar = thetahatstar
         )
-        return(out)
       }
     )
   }
-  return(output)
+  output
 }

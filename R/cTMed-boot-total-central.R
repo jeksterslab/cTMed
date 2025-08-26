@@ -193,5 +193,5 @@ BootTotalCentral <- function(phi,
     "ctmedboot",
     class(out)
   )
-  return(out)
+  out
 }

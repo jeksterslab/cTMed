@@ -230,9 +230,7 @@ Med <- function(phi,
     X = med,
     FUN = function(x,
                    idx) {
-      return(
-        which(idx == x)
-      )
+      which(idx == x)
     },
     idx = idx
   )
@@ -278,5 +276,5 @@ Med <- function(phi,
     "ctmedmed",
     class(out)
   )
-  return(out)
+  out
 }

@@ -146,12 +146,10 @@ MCPhiSigma <- function(phi,
       output <- parallel::mclapply(
         X = seq_len(R),
         FUN = function(i) {
-          return(
-            .MCPhiSigmaI(
-              theta = c(.Vec(phi), .Vech(sigma)),
-              vcov_theta = vcov_theta,
-              test_phi = test_phi
-            )
+          .MCPhiSigmaI(
+            theta = c(.Vec(phi), .Vech(sigma)),
+            vcov_theta = vcov_theta,
+            test_phi = test_phi
           )
         },
         mc.cores = ncores
@@ -171,12 +169,10 @@ MCPhiSigma <- function(phi,
         cl = cl,
         X = seq_len(R),
         fun = function(i) {
-          return(
-            .MCPhiSigmaI(
-              theta = c(.Vec(phi), .Vech(sigma)),
-              vcov_theta = vcov_theta,
-              test_phi = test_phi
-            )
+          .MCPhiSigmaI(
+            theta = c(.Vec(phi), .Vech(sigma)),
+            vcov_theta = vcov_theta,
+            test_phi = test_phi
           )
         }
       )
@@ -197,7 +193,7 @@ MCPhiSigma <- function(phi,
     X = output,
     FUN = function(x) {
       colnames(x[[1]]) <- rownames(x[[1]]) <- idx
-      return(x)
+      x
     }
   )
   out <- list(
@@ -210,5 +206,5 @@ MCPhiSigma <- function(phi,
     "ctmedmcphi",
     class(out)
   )
-  return(out)
+  out
 }

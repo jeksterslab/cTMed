@@ -8,19 +8,15 @@
                           from,
                           to,
                           med) {
-    return(
-      function(x) {
-        return(
-          .MedVec(
-            phi_vec = x,
-            delta_t = delta_t,
-            from = from,
-            to = to,
-            med = med
-          )
-        )
-      }
-    )
+    function(x) {
+      .MedVec(
+        phi_vec = x,
+        delta_t = delta_t,
+        from = from,
+        to = to,
+        med = med
+      )
+    }
   }
   func <- constructor(
     delta_t = delta_t,
@@ -33,12 +29,10 @@
     func = func,
     x = phi
   )
-  return(
-    list(
-      delta_t = delta_t,
-      jacobian = jacobian,
-      est = func(x = phi),
-      vcov = jacobian %*% vcov_phi_vec %*% t(jacobian)
-    )
+  list(
+    delta_t = delta_t,
+    jacobian = jacobian,
+    est = func(x = phi),
+    vcov = jacobian %*% vcov_phi_vec %*% t(jacobian)
   )
 }

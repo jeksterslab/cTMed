@@ -291,5 +291,5 @@ DeltaIndirectCentral <- function(phi,
     "ctmeddelta",
     class(out)
   )
-  return(out)
+  out
 }

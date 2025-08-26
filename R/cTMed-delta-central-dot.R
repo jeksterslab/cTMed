@@ -9,16 +9,14 @@
   }
   constructor <- function(delta_t,
                           varnames) {
-    return(
-      function(x) {
-        output <- Fun(
-          phi_vec = x,
-          delta_t = delta_t
-        )
-        names(output) <- varnames
-        return(output)
-      }
-    )
+    function(x) {
+      output <- Fun(
+        phi_vec = x,
+        delta_t = delta_t
+      )
+      names(output) <- varnames
+      output
+    }
   }
   func <- constructor(
     delta_t = delta_t,
@@ -29,12 +27,10 @@
     func = func,
     x = phi
   )
-  return(
-    list(
-      delta_t = delta_t,
-      jacobian = jacobian,
-      est = func(x = phi),
-      vcov = jacobian %*% vcov_phi_vec %*% t(jacobian)
-    )
+  list(
+    delta_t = delta_t,
+    jacobian = jacobian,
+    est = func(x = phi),
+    vcov = jacobian %*% vcov_phi_vec %*% t(jacobian)
   )
 }

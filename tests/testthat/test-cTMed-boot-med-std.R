@@ -96,17 +96,13 @@ lapply(
         mc_phi <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[1]]
-            )
+            i[[1]]
           }
         )
         mc_sigma <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[2]]
-            )
+            i[[2]]
           }
         )
         boot <- BootMedStd(
@@ -219,17 +215,13 @@ lapply(
         mc_phi <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[1]]
-            )
+            i[[1]]
           }
         )
         mc_sigma <- lapply(
           X = mc,
           FUN = function(i) {
-            return(
-              i[[2]]
-            )
+            i[[2]]
           }
         )
         boot <- BootMedStd(

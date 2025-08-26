@@ -156,5 +156,5 @@ PosteriorIndirectCentral <- function(phi,
     "ctmedmc",
     class(out)
   )
-  return(out)
+  out
 }

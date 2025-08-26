@@ -52,7 +52,7 @@ print.ctmedmcphi <- function(x,
             x[[2]],
             digits = digits
           )
-          return(x)
+          x
         }
       )
     )

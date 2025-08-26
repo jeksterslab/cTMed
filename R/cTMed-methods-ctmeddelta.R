@@ -279,7 +279,7 @@ summary.ctmeddelta <- function(object,
   varnames <- colnames(ci)
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
-  return(ci[, varnames])
+  ci[, varnames]
 }
 
 #' Delta Method Confidence Intervals
@@ -387,9 +387,7 @@ confint.ctmeddelta <- function(object,
         x = varnames
       )
       colnames(out) <- varnames
-      return(
-        out
-      )
+      out
     }
   )
   ci <- do.call(
@@ -409,7 +407,7 @@ confint.ctmeddelta <- function(object,
   varnames <- colnames(ci)
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
-  return(ci[, varnames])
+  ci[, varnames]
 }
 
 #' Plot Method for an Object of Class `ctmeddelta`
@@ -487,31 +485,26 @@ plot.ctmeddelta <- function(x,
                             col = NULL,
                             ...) {
   if (x$args$network) {
-    return(
-      .PlotCentralCI(
+    out <- .PlotCentralCI(
+      object = x,
+      alpha = alpha,
+      col = col
+    )
+  } else {
+    if (x$fun == "DeltaMed" || x$fun == "DeltaMedStd") {
+      out <- .PlotMedCI(
         object = x,
         alpha = alpha,
         col = col
       )
-    )
-  } else {
-    if (x$fun == "DeltaMed" || x$fun == "DeltaMedStd") {
-      return(
-        .PlotMedCI(
-          object = x,
-          alpha = alpha,
-          col = col
-        )
-      )
     }
     if (x$fun == "DeltaBeta" || x$fun == "DeltaBetaStd") {
-      return(
-        .PlotBetaCI(
-          object = x,
-          alpha = alpha,
-          col = col
-        )
+      out <- .PlotBetaCI(
+        object = x,
+        alpha = alpha,
+        col = col
       )
     }
   }
+  out
 }

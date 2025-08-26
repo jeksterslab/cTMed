@@ -1,8 +1,8 @@
-# cTMed 1.0.6.9000
+# cTMed 1.0.7
 
 ## Patch
 
-* Latest development version.
+* Added citation to Pesigan, I. J. A., Russell, M. A., & Chow, S.-M. (2025). Inferences and Effect Sizes for Direct, Indirect, and Total Effects in Continuous-Time Mediation Models. *Psychological Methods*. https://doi.org/10.1037/met0000779.
 
 # cTMed 1.0.6
 

@@ -267,7 +267,7 @@ summary.ctmedmc <- function(object,
   varnames <- colnames(ci)
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
-  return(ci[, varnames])
+  ci[, varnames]
 }
 
 #' Monte Carlo Method Confidence Intervals
@@ -378,9 +378,7 @@ confint.ctmedmc <- function(object,
         x = varnames
       )
       colnames(out) <- varnames
-      return(
-        out
-      )
+      out
     }
   )
   ci <- do.call(
@@ -400,7 +398,7 @@ confint.ctmedmc <- function(object,
   varnames <- colnames(ci)
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
-  return(ci[, varnames])
+  ci[, varnames]
 }
 
 #' Plot Method for an Object of Class `ctmedmc`
@@ -480,31 +478,26 @@ plot.ctmedmc <- function(x,
                          col = NULL,
                          ...) {
   if (x$args$network) {
-    return(
-      .PlotCentralCI(
+    out <- .PlotCentralCI(
+      object = x,
+      alpha = alpha,
+      col = col
+    )
+  } else {
+    if (x$fun %in% c("MCMed", "MCMedStd", "PosteriorMed", "BootMed")) {
+      out <- .PlotMedCI(
         object = x,
         alpha = alpha,
         col = col
       )
-    )
-  } else {
-    if (x$fun %in% c("MCMed", "MCMedStd", "PosteriorMed", "BootMed")) {
-      return(
-        .PlotMedCI(
-          object = x,
-          alpha = alpha,
-          col = col
-        )
-      )
     }
     if (x$fun %in% c("MCBeta", "MCBetaStd", "PosteriorBeta")) {
-      return(
-        .PlotBetaCI(
-          object = x,
-          alpha = alpha,
-          col = col
-        )
+      out <- .PlotBetaCI(
+        object = x,
+        alpha = alpha,
+        col = col
       )
     }
   }
+  out
 }
