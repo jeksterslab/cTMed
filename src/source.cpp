@@ -26,7 +26,7 @@ double DirectStd(const arma::mat& phi, const arma::mat& sigma,
   }
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   arma::mat direct_std = direct;
   for (size_t i = 0; i < direct.n_rows; i++) {
@@ -160,7 +160,7 @@ double IndirectStd(const arma::mat& phi, const arma::mat& sigma,
   }
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   arma::mat total_std = total;
   for (size_t i = 0; i < total.n_rows; i++) {
@@ -445,7 +445,7 @@ arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
   arma::mat total_std(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct_std(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);
@@ -504,7 +504,7 @@ Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t,
   }
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   arma::mat total_std = total;
   for (size_t i = 0; i < total.n_rows; i++) {
@@ -545,7 +545,7 @@ Rcpp::NumericVector MedStd(const arma::mat& phi, const arma::mat& sigma,
   }
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   arma::mat total_std = total;
   for (size_t i = 0; i < total.n_rows; i++) {
@@ -724,7 +724,7 @@ Rcpp::NumericVector TotalStdDeltaT(const arma::mat& phi, const arma::mat& sigma,
                                    const double& delta_t) {
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   arma::mat total_std = total;
   for (size_t i = 0; i < total.n_rows; i++) {
@@ -763,7 +763,7 @@ arma::vec TotalStdVec(const arma::vec& v, const double& delta_t) {
   }
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   arma::mat total_std = total;
   for (size_t i = 0; i < total.n_rows; i++) {
@@ -785,7 +785,7 @@ arma::mat TotalStd(const arma::mat& phi, const arma::mat& sigma,
                    const double& delta_t) {
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   arma::mat total_std = total;
   for (size_t i = 0; i < total.n_rows; i++) {

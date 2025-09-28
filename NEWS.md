@@ -2,7 +2,7 @@
 
 ## Patch
 
-* Added citation to Pesigan, I. J. A., Russell, M. A., & Chow, S.-M. (2025). Inferences and Effect Sizes for Direct, Indirect, and Total Effects in Continuous-Time Mediation Models. *Psychological Methods*. https://doi.org/10.1037/met0000779.
+* Armadillo 15.0.x transition at CRAN.
 
 # cTMed 1.0.6
 

@@ -7,10 +7,10 @@ Authors@R:
            role = c("aut", "cre", "cph"),
            email = "r.jeksterslab@gmail.com",
            comment = c(ORCID = "0000-0003-4818-8420"))
-Description: Implements the methods introduced in Pesigan, Russell, and
-    Chow (2025) <doi:10.1037/met0000779> to compute standard errors,
-    confidence intervals, and effect sizes for total, direct, and indirect
-    effects in continuous-time mediation models.
+Description: Calculates effect sizes, standard errors and confidence intervals
+    in continuous-time mediation models
+    (Deboeck and Preacher, 2015 <doi:10.1080/10705511.2014.973960>;
+    Ryan and Hamaker, 2021 <doi:10.1007/s11336-021-09767-0>).
 URL: https://github.com/jeksterslab/cTMed,
         https://jeksterslab.github.io/cTMed/
 BugReports: https://github.com/jeksterslab/cTMed/issues
@@ -18,12 +18,12 @@ License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 3.5.0)
-LinkingTo: Rcpp, RcppArmadillo
+LinkingTo: Rcpp, RcppArmadillo (>= 15.0.2-2)
 Imports: Rcpp, numDeriv, parallel, simStateSpace
 Suggests: knitr, rmarkdown, testthat, expm, bootStateSpace
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3.9000
 NeedsCompilation: yes
-Packaged: 2025-08-26 20:01:51 UTC; root
+Packaged: 2025-09-28 04:06:29 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0003-4818-8420>)
 Maintainer: Ivan Jacob Agaloos Pesigan <r.jeksterslab@gmail.com>
