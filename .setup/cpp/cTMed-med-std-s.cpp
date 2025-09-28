@@ -26,7 +26,7 @@ arma::mat MedStds(const arma::mat& phi, const arma::mat& sigma,
   arma::mat total_std(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat direct_std(phi.n_rows, phi.n_cols, arma::fill::none);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   for (arma::uword t = 0; t < delta_t.n_elem; t++) {
     total = arma::expmat(delta_t[t] * phi);

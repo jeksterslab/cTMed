@@ -10,7 +10,7 @@ arma::mat TotalStd(const arma::mat& phi, const arma::mat& sigma,
                    const double& delta_t) {
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   arma::mat total_std = total;
   for (size_t i = 0; i < total.n_rows; i++) {

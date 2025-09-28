@@ -6,7 +6,7 @@
 \alias{cTMed-package}
 \title{cTMed: Continuous Time Mediation}
 \description{
-Implements the methods introduced in Pesigan, Russell, and Chow (2025) \doi{10.1037/met0000779} to compute standard errors, confidence intervals, and effect sizes for total, direct, and indirect effects in continuous-time mediation models.
+Calculates effect sizes, standard errors and confidence intervals in continuous-time mediation models (Deboeck and Preacher, 2015 \doi{10.1080/10705511.2014.973960}; Ryan and Hamaker, 2021 \doi{10.1007/s11336-021-09767-0}).
 }
 \seealso{
 Useful links:

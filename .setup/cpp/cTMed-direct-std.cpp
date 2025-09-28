@@ -15,7 +15,7 @@ double DirectStd(const arma::mat& phi, const arma::mat& sigma,
   }
   arma::mat direct = arma::expmat(delta_t * d * phi * d);
   arma::mat cov_eta;
-  arma::syl(cov_eta, phi, phi.t(), sigma);
+  arma::sylvester(cov_eta, phi, phi.t(), sigma);
   arma::vec sqrt_diag = arma::sqrt(cov_eta.diag());
   arma::mat direct_std = direct;
   for (size_t i = 0; i < direct.n_rows; i++) {
