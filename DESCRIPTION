@@ -34,3 +34,4 @@ Suggests:
     dynr,
     bootStateSpace
 SystemRequirements: GNU GSL (>= 2.0)
+RoxygenNote: 7.3.3.9000

@@ -6,7 +6,9 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.Indirect)]]
-double Indirect(const arma::mat& phi, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med) {
+double Indirect(const arma::mat& phi, const double& delta_t,
+                const arma::uword& from, const arma::uword& to,
+                const arma::vec& med) {
   arma::mat total = arma::expmat(delta_t * phi);
   double total_dbl = total(to - 1, from - 1);
   arma::mat d = arma::eye(phi.n_rows, phi.n_rows);
