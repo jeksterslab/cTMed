@@ -29,6 +29,15 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r}
+#| echo = FALSE
+Sys.setenv(
+  OMP_NUM_THREADS = "1",
+  MKL_NUM_THREADS = "1",
+  OPENBLAS_NUM_THREADS = "1"
+)
+```
+
 The `cTMed` package provides a bootstrap approach, in addition to the delta and Monte Carlo methods, for estimating and quantifying uncertainty in total, direct, and indirect effects within continuous-time mediation models across different time intervals.
 
 ```{r}

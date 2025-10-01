@@ -31,5 +31,6 @@ Suggests:
     rmarkdown,
     testthat,
     expm,
+    dynr,
     bootStateSpace
-RoxygenNote: 7.3.3.9000
+SystemRequirements: GNU GSL (>= 2.0)

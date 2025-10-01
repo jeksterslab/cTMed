@@ -6,9 +6,7 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.MedStdVec)]]
-Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t,
-                              const arma::uword& from, const arma::uword& to,
-                              const arma::vec& med) {
+Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med) {
   arma::uword q = v.n_elem;
   arma::uword p = (-1 + std::sqrt(1 + 24 * q)) / 6;
   arma::mat phi = arma::mat(v.subvec(0, p * p - 1)).reshape(p, p);
@@ -17,11 +15,11 @@ Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t,
   arma::uword index = 0;
   for (arma::uword j = 0; j < p; ++j) {
     for (arma::uword i = j; i < p; ++i) {
-      sigma(i, j) = sigma_vech[index];
-      if (i != j) {
-        sigma(j, i) = sigma_vech[index];
-      }
-      index++;
+        sigma(i, j) = sigma_vech[index];
+        if (i != j) {
+            sigma(j, i) = sigma_vech[index];
+        }
+        index++;
     }
   }
   arma::mat d = arma::eye(p, p);

@@ -6,8 +6,7 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.MCPhiSigma)]]
-Rcpp::List MCPhiSigma(const arma::vec& theta, const arma::mat& vcov_theta,
-                      const arma::uword& R, bool test_phi = true) {
+Rcpp::List MCPhiSigma(const arma::vec& theta, const arma::mat& vcov_theta, const arma::uword& R, bool test_phi = true) {
   Rcpp::List output(R);
   arma::uword n = theta.n_elem;
   arma::uword p = (-1 + std::sqrt(1 + 24 * n)) / 6;
