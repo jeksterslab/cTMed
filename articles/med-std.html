@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2025-09-27</h4>
+            <h4 data-toc-skip class="date">2025-10-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/main/vignettes/med-std.Rmd"><code>vignettes/med-std.Rmd</code></a></small>
       <div class="d-none name"><code>med-std.Rmd</code></div>
@@ -242,16 +242,15 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
 <span><span class="va">elapsed</span></span>
-<span><span class="co">#&gt; Time difference of 1.555012 secs</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 1.457454 secs</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-std-delta-1.png" width="3300"><img src="fig-vignettes-med-std-delta-2.png" width="3300"><img src="fig-vignettes-med-std-delta-3.png" width="3300"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="monte-carlo-method">Monte Carlo Method<a class="anchor" aria-label="anchor" href="#monte-carlo-method"></a>
 </h2>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">start</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/MCMedStd.html">MCMedStd</a></span><span class="op">(</span></span>
 <span>  phi <span class="op">=</span> <span class="va">phi</span>,</span>
@@ -267,11 +266,10 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
 <span><span class="va">elapsed</span></span>
-<span><span class="co">#&gt; Time difference of 17.70854 mins</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<span><span class="co">#&gt; Time difference of 18.48063 mins</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-std-mc-1.png" width="3300"><img src="fig-vignettes-med-std-mc-2.png" width="3300"><img src="fig-vignettes-med-std-mc-3.png" width="3300"></p>
-<pre><code><span><span class="co">#&gt; NULL</span></span></code></pre>
 </div>
 <div class="section level2 unnumbered">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
