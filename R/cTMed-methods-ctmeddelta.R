@@ -485,26 +485,25 @@ plot.ctmeddelta <- function(x,
                             col = NULL,
                             ...) {
   if (x$args$network) {
-    out <- .PlotCentralCI(
+    .PlotCentralCI(
       object = x,
       alpha = alpha,
       col = col
     )
   } else {
     if (x$fun == "DeltaMed" || x$fun == "DeltaMedStd") {
-      out <- .PlotMedCI(
+      .PlotMedCI(
         object = x,
         alpha = alpha,
         col = col
       )
     }
     if (x$fun == "DeltaBeta" || x$fun == "DeltaBetaStd") {
-      out <- .PlotBetaCI(
+      .PlotBetaCI(
         object = x,
         alpha = alpha,
         col = col
       )
     }
   }
-  out
 }

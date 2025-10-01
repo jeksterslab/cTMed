@@ -679,14 +679,14 @@ plot.ctmedboot <- function(x,
                            type = "pc",
                            ...) {
   if (x$args$network) {
-    out <- .PlotCentralCI(
+    .PlotCentralCI(
       object = x,
       alpha = alpha,
       col = col
     )
   } else {
     if (x$fun == "BootMed" || x$fun == "BootMedStd") {
-      out <- .PlotMedCI(
+      .PlotMedCI(
         object = x,
         alpha = alpha,
         col = col,
@@ -694,7 +694,7 @@ plot.ctmedboot <- function(x,
       )
     }
     if (x$fun == "BootBeta" || x$fun == "BootBetaStd") {
-      out <- .PlotBetaCI(
+      .PlotBetaCI(
         object = x,
         alpha = alpha,
         col = col,
@@ -702,5 +702,4 @@ plot.ctmedboot <- function(x,
       )
     }
   }
-  out
 }

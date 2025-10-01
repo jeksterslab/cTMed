@@ -1,7 +1,7 @@
 ---
 title: "Standardized Total, Direct, and Indirect Effects in Continuous-Time Mediation Model"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-09-27"
+date: "2025-10-01"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -210,7 +210,7 @@ delta <- DeltaMedStd(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 1.555012 secs
+#> Time difference of 1.457454 secs
 ```
 
 
@@ -219,10 +219,6 @@ plot(delta)
 ```
 
 <img src="fig-vignettes-med-std-delta-1.png" width="3300" /><img src="fig-vignettes-med-std-delta-2.png" width="3300" /><img src="fig-vignettes-med-std-delta-3.png" width="3300" />
-
-```
-#> NULL
-```
 
 ## Monte Carlo Method
 
@@ -243,7 +239,7 @@ mc <- MCMedStd(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 17.70854 mins
+#> Time difference of 18.48063 mins
 ```
 
 
@@ -252,10 +248,6 @@ plot(mc)
 ```
 
 <img src="fig-vignettes-med-std-mc-1.png" width="3300" /><img src="fig-vignettes-med-std-mc-2.png" width="3300" /><img src="fig-vignettes-med-std-mc-3.png" width="3300" />
-
-```
-#> NULL
-```
 
 ## References
 

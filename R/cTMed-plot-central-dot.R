@@ -102,4 +102,5 @@
     cex = 0.8,
     lwd = 2
   )
+  invisible(NULL)
 }

@@ -48,6 +48,9 @@ articles:
   contents:
   - med
   - med-std
+- title: Confidence Intervals for Continuous-Time Mediation Models (Parametric Bootstrap)
+  contents:
+  - med-boot
 - title: Session Information
   contents:
   - session
