@@ -65,7 +65,7 @@ drift matrix \eqn{\boldsymbol{\Phi}}.
 See \code{\link[=Total]{Total()}}.
 }
 \examples{
-\donttest{
+\dontrun{
 library(bootStateSpace)
 # prepare parameters
 ## number of individuals

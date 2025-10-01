@@ -201,17 +201,16 @@ plot.ctmedmed <- function(x,
                           legend_pos = "topright",
                           ...) {
   if (x$args$network) {
-    out <- .PlotCentral(
+    .PlotCentral(
       object = x,
       col = col,
       legend_pos = legend_pos
     )
   } else {
-    out <- .PlotMed(
+    .PlotMed(
       object = x,
       col = col,
       legend_pos = legend_pos
     )
   }
-  out
 }

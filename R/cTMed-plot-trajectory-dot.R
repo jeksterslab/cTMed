@@ -126,4 +126,5 @@
       )
     }
   }
+  invisible(NULL)
 }

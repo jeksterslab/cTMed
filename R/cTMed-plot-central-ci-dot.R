@@ -267,5 +267,6 @@
       ci = ci
     )
   }
+  invisible(NULL)
 }
 # nolint end

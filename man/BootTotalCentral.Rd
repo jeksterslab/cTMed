@@ -64,7 +64,7 @@ drift matrix \eqn{\boldsymbol{\Phi}}.
 See \code{\link[=TotalCentral]{TotalCentral()}} more details.
 }
 \examples{
-\donttest{
+\dontrun{
 library(bootStateSpace)
 # prepare parameters
 ## number of individuals

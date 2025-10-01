@@ -478,26 +478,25 @@ plot.ctmedmc <- function(x,
                          col = NULL,
                          ...) {
   if (x$args$network) {
-    out <- .PlotCentralCI(
+    .PlotCentralCI(
       object = x,
       alpha = alpha,
       col = col
     )
   } else {
     if (x$fun %in% c("MCMed", "MCMedStd", "PosteriorMed", "BootMed")) {
-      out <- .PlotMedCI(
+      .PlotMedCI(
         object = x,
         alpha = alpha,
         col = col
       )
     }
     if (x$fun %in% c("MCBeta", "MCBetaStd", "PosteriorBeta")) {
-      out <- .PlotBetaCI(
+      .PlotBetaCI(
         object = x,
         alpha = alpha,
         col = col
       )
     }
   }
-  out
 }
