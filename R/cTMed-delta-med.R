@@ -209,7 +209,7 @@
 #' confint(delta, level = 0.95)
 #' plot(delta)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed path delta
 #' @export
 DeltaMed <- function(phi,

@@ -155,7 +155,7 @@
 #' confint(mc, level = 0.95)
 #' plot(mc)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed network mc
 #' @export
 MCIndirectCentral <- function(phi,

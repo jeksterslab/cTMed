@@ -1,12 +1,13 @@
 cTMed
 ================
 Ivan Jacob Agaloos Pesigan
-2025-10-01
+2025-10-09
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 <!-- badges: start -->
 
+[![DOI](https://zenodo.org/badge/DOI/10.1037/met0000779.svg)](https://doi.org/10.1037/met0000779)
 [![CRAN
 Status](https://www.r-pkg.org/badges/version/cTMed)](https://cran.r-project.org/package=cTMed)
 [![R-Universe
@@ -30,10 +31,10 @@ Check](https://github.com/jeksterslab/cTMed/actions/workflows/shellcheck.yml/bad
 
 ## Description
 
-Implements the methods introduced in Pesigan, Russell, and Chow (2025:
-<https://doi.org/10.1037/met0000779>) to compute standard errors,
-confidence intervals, and effect sizes for total, direct, and indirect
-effects in continuous-time mediation models.
+Computes effect sizes, standard errors, and confidence intervals for
+total, direct, and indirect effects in continuous-time mediation models
+as described in Pesigan, Russell, and Chow (2025:
+<https://doi.org/10.1037/met0000779>).
 
 ## Author-Accepted Manuscript
 

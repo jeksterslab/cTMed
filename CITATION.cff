@@ -7,29 +7,41 @@ cff-version: 1.2.0
 message: 'To cite package "cTMed" in publications use:'
 type: software
 license: GPL-3.0-or-later
-title: 'cTMed: Continuous Time Mediation'
-version: 1.0.7
+title: 'cTMed: Continuous-Time Mediation'
+version: 1.0.8
+doi: 10.1037/met0000779
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.cTMed
-abstract: Calculates effect sizes, standard errors and confidence intervals in continuous-time
-  mediation models (Deboeck and Preacher, 2015 <https://doi.org/10.1080/10705511.2014.973960>;
-  Ryan and Hamaker, 2021 <https://doi.org/10.1007/s11336-021-09767-0>).
+abstract: Computes effect sizes, standard errors, and confidence intervals for total,
+  direct, and indirect effects in continuous-time mediation models as described in
+  Pesigan, Russell, and Chow (2025) <https://doi.org/10.1037/met0000779>.
 authors:
 - family-names: Pesigan
   given-names: Ivan Jacob Agaloos
   email: r.jeksterslab@gmail.com
   orcid: https://orcid.org/0000-0003-4818-8420
 preferred-citation:
-  type: manual
-  title: 'cTMed: Continuous Time Mediation'
+  type: article
+  title: Inferences and effect sizes for direct, indirect, and total effects in continuous-time
+    mediation models
   authors:
   - family-names: Pesigan
     given-names: Ivan Jacob Agaloos
     email: r.jeksterslab@gmail.com
     orcid: https://orcid.org/0000-0003-4818-8420
+  - family-names: Russell
+    given-names: Michael A.
+    email: mar60@psu.edu
+    orcid: https://orcid.org/0000-0002-3956-604X
+  - family-names: Chow
+    given-names: Sy-Miin
+    email: quc16@psu.edu
+    orcid: https://orcid.org/0000-0003-1938-027X
   year: '2025'
-  notes: R package version 1.0.7
+  doi: 10.1037/met0000779
+  journal: Psychological Methods
+  notes: R package version 1.0.8
 repository: https://CRAN.R-project.org/package=cTMed
 repository-code: https://github.com/jeksterslab/cTMed
 url: https://jeksterslab.github.io/cTMed/

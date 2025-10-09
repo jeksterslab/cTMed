@@ -8,6 +8,7 @@ nocite: |
   @RCoreTeam-2024
   @Deboeck-Preacher-2015
   @Ryan-Hamaker-2021
+  @Pesigan-Russell-Chow-2025a
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Standardized Total, Direct, and Indirect Effects in Continuous-Time Mediation Model}

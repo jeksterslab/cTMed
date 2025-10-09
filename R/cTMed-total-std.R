@@ -64,7 +64,7 @@
 #'   delta_t = delta_t
 #' )
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed effects
 #' @export
 TotalStd <- function(phi,

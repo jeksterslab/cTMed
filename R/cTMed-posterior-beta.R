@@ -107,7 +107,7 @@
 #' confint(posterior, level = 0.95)
 #' plot(posterior)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed beta posterior
 #' @export
 PosteriorBeta <- function(phi,

@@ -1,19 +1,22 @@
 ---
 title: "Total, Direct, and Indirect Effects in Continuous-Time Mediation Model (Bootstrap)"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-10-01"
+date: "2025-10-08"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
   @RCoreTeam-2024
   @Deboeck-Preacher-2015
   @Ryan-Hamaker-2021
+  @Pesigan-Russell-Chow-2025a
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Total, Direct, and Indirect Effects in Continuous-Time Mediation Model (Bootstrap)}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+
 
 
 
@@ -45,15 +48,15 @@ In this example, we will use the fitted model from [Fit the Continuous-Time Vect
 ``` r
 summary(fit)
 #> Coefficients:
-#>              Estimate Std. Error t value   ci.lower   ci.upper Pr(>|t|)
+#>              Estimate Std. Error t value   ci.lower   ci.upper Pr(>|t|)    
 #> phi_1_1    -0.3518738  0.0345599 -10.182 -0.4196100 -0.2841377   <2e-16 ***
 #> phi_2_1     0.7442754  0.0213025  34.938  0.7025233  0.7860275   <2e-16 ***
 #> phi_3_1    -0.4586681  0.0224194 -20.459 -0.5026093 -0.4147269   <2e-16 ***
-#> phi_1_2     0.0173316  0.0304068   0.570 -0.0422645  0.0769278   0.2843
+#> phi_1_2     0.0173316  0.0304068   0.570 -0.0422645  0.0769278   0.2843    
 #> phi_2_2    -0.4888138  0.0188377 -25.949 -0.5257350 -0.4518927   <2e-16 ***
 #> phi_3_2     0.7267855  0.0198254  36.659  0.6879284  0.7656426   <2e-16 ***
-#> phi_1_3    -0.0238213  0.0233767  -1.019 -0.0696387  0.0219962   0.1541
-#> phi_2_3    -0.0098181  0.0144220  -0.681 -0.0380848  0.0184485   0.2480
+#> phi_1_3    -0.0238213  0.0233767  -1.019 -0.0696387  0.0219962   0.1541    
+#> phi_2_3    -0.0098181  0.0144220  -0.681 -0.0380848  0.0184485   0.2480    
 #> phi_3_3    -0.6883228  0.0152967 -44.998 -0.7183038 -0.6583418   <2e-16 ***
 #> sigma_1_1   0.2421847  0.0064484  37.557  0.2295461  0.2548232   <2e-16 ***
 #> sigma_2_1   0.0232727  0.0025183   9.241  0.0183369  0.0282084   <2e-16 ***
@@ -64,18 +67,18 @@ summary(fit)
 #> theta_1_1   0.1988610  0.0011588 171.608  0.1965898  0.2011323   <2e-16 ***
 #> theta_2_2   0.1995204  0.0009996 199.609  0.1975613  0.2014795   <2e-16 ***
 #> theta_3_3   0.2011716  0.0010145 198.288  0.1991832  0.2031601   <2e-16 ***
-#> mu0_1_1     0.0062149  0.1219710   0.051 -0.2328439  0.2452737   0.4797
-#> mu0_2_1    -0.0425006  0.1208284  -0.352 -0.2793200  0.1943187   0.3625
-#> mu0_3_1     0.1300648  0.1041761   1.249 -0.0741167  0.3342462   0.1059
+#> mu0_1_1     0.0062149  0.1219710   0.051 -0.2328439  0.2452737   0.4797    
+#> mu0_2_1    -0.0425006  0.1208284  -0.352 -0.2793200  0.1943187   0.3625    
+#> mu0_3_1     0.1300648  0.1041761   1.249 -0.0741167  0.3342462   0.1059    
 #> sigma0_1_1  1.1504264  0.1810442   6.354  0.7955863  1.5052665   <2e-16 ***
-#> sigma0_2_1  0.4136629  0.1418008   2.917  0.1357384  0.6915875   0.0018 **
-#> sigma0_3_1  0.2260142  0.1187792   1.903 -0.0067889  0.4588172   0.0285 *
+#> sigma0_2_1  0.4136629  0.1418008   2.917  0.1357384  0.6915875   0.0018 ** 
+#> sigma0_3_1  0.2260142  0.1187792   1.903 -0.0067889  0.4588172   0.0285 *  
 #> sigma0_2_2  1.2218038  0.1985814   6.153  0.8325914  1.6110161   <2e-16 ***
-#> sigma0_3_2  0.2353104  0.1267133   1.857 -0.0130432  0.4836640   0.0317 *
+#> sigma0_3_2  0.2353104  0.1267133   1.857 -0.0130432  0.4836640   0.0317 *  
 #> sigma0_3_3  0.9626701  0.1594441   6.038  0.6501655  1.2751747   <2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-#>
+#> 
 #> -2 log-likelihood value at convergence = 429365.49
 #> AIC = 429419.49
 #> BIC = 429676.34
@@ -109,7 +112,7 @@ mu0 <- est[
   )
 ]
 mu0
-#>      mu0_1_1      mu0_2_1      mu0_3_1
+#>      mu0_1_1      mu0_2_1      mu0_3_1 
 #>  0.006214893 -0.042500647  0.130064755
 sigma0 <- matrix(
   data = est[
@@ -200,7 +203,7 @@ The estimated parameters are then passed as arguments to the `PBSSMOUFixed` func
 The generated data and model estimates are stored in `path` using the specified `prefix` for the file names.
 The `ncores = parallel::detectCores()` argument instructs the function to use all available CPU cores in the system.
 
-> **_NOTE:_**  Fitting the CT-VAR model multiple times is computationally intensive.
+> **_NOTE:_**  Fitting the CT-VAR model multiple times is computationally intensive. 
 
 
 ``` r
@@ -221,7 +224,8 @@ boot <- PBSSMOUFixed(
   lambda = lambda,
   theta_l = theta_l,
   ncores = parallel::detectCores(),
-  seed = 42
+  seed = 42,
+  clean = FALSE
 )
 ```
 

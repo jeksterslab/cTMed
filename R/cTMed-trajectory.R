@@ -54,7 +54,7 @@
 #' summary(traj)
 #' plot(traj)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed effects path
 #' @export
 Trajectory <- function(mu0,

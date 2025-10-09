@@ -109,7 +109,7 @@
 #'   test_phi = FALSE
 #' )
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed mc
 #' @export
 MCPhi <- function(phi,

@@ -216,7 +216,7 @@ Psychometrika, 87 (1), 214–252.
 \doi{10.1007/s11336-021-09767-0}
 }
 \seealso{
-Other Continuous Time Mediation Functions: 
+Other Continuous-Time Mediation Functions: 
 \code{\link{BootBeta}()},
 \code{\link{BootIndirectCentral}()},
 \code{\link{BootMed}()},
@@ -255,7 +255,7 @@ Other Continuous Time Mediation Functions:
 \author{
 Ivan Jacob Agaloos Pesigan
 }
-\concept{Continuous Time Mediation Functions}
+\concept{Continuous-Time Mediation Functions}
 \keyword{boot}
 \keyword{cTMed}
 \keyword{path}

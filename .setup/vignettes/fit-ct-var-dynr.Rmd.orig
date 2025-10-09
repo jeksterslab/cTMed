@@ -7,6 +7,7 @@ csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa
 nocite: |
   @RCoreTeam-2024
   @Ou-Hunter-Chow-2019
+  @Pesigan-Russell-Chow-2025a
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Fit the Continuous-Time Vector Autoregressive Model Using the dynr Package}

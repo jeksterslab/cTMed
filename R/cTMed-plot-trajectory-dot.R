@@ -34,7 +34,7 @@
 #'
 #' plot(traj)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed plot
 #' @noRd
 .PlotTrajectory <- function(object,

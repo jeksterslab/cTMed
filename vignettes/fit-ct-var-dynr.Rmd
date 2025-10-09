@@ -1,7 +1,7 @@
 ---
 title: "Fit the Continuous-Time Vector Autoregressive Model Using the dynr Package"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-10-01"
+date: "2025-10-06"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -288,8 +288,8 @@ fit <- dynr.cook(
 #> 
 #> Doing end processing
 #> Successful trial
-#> Total Time: 2.481268 
-#> Backend Time: 2.481074
+#> Total Time: 2.218897 
+#> Backend Time: 2.218727
 summary(fit)
 #> Coefficients:
 #>              Estimate Std. Error t value   ci.lower   ci.upper Pr(>|t|)    

@@ -1,19 +1,22 @@
 ---
 title: "Standardized Total, Direct, and Indirect Effects in Continuous-Time Mediation Model"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-10-01"
+date: "2025-10-09"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
   @RCoreTeam-2024
   @Deboeck-Preacher-2015
   @Ryan-Hamaker-2021
+  @Pesigan-Russell-Chow-2025a
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Standardized Total, Direct, and Indirect Effects in Continuous-Time Mediation Model}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+
 
 
 
@@ -210,7 +213,7 @@ delta <- DeltaMedStd(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 1.457454 secs
+#> Time difference of 1.40086 secs
 ```
 
 
@@ -239,7 +242,7 @@ mc <- MCMedStd(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 18.48063 mins
+#> Time difference of 19.80582 mins
 ```
 
 

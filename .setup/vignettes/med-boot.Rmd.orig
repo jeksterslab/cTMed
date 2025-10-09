@@ -8,6 +8,7 @@ nocite: |
   @RCoreTeam-2024
   @Deboeck-Preacher-2015
   @Ryan-Hamaker-2021
+  @Pesigan-Russell-Chow-2025a
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Total, Direct, and Indirect Effects in Continuous-Time Mediation Model (Bootstrap)}
@@ -386,7 +387,8 @@ boot <- PBSSMOUFixed(
   lambda = lambda,
   theta_l = theta_l,
   ncores = parallel::detectCores(),
-  seed = 42
+  seed = 42,
+  clean = FALSE
 )
 ```
 

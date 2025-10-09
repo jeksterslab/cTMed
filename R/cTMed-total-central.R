@@ -53,7 +53,7 @@
 #' summary(total_central)
 #' plot(total_central)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed network effects
 #' @export
 TotalCentral <- function(phi,
