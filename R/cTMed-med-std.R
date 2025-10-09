@@ -88,7 +88,7 @@
 #' summary(med)
 #' plot(med)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed effects path
 #' @export
 MedStd <- function(phi,

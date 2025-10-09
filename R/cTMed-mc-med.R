@@ -166,7 +166,7 @@
 #' summary(mc)
 #' confint(mc, level = 0.95)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed path mc
 #' @export
 MCMed <- function(phi,

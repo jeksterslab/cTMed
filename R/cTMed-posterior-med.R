@@ -124,7 +124,7 @@
 #' confint(posterior, level = 0.95)
 #' plot(posterior)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed path posterior
 #' @export
 PosteriorMed <- function(phi,

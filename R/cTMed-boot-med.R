@@ -168,7 +168,7 @@
 #' confint(boot, level = 0.95, type = "bc")
 #' }
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed path boot
 #' @export
 BootMed <- function(phi,

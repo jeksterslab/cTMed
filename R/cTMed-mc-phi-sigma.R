@@ -95,7 +95,7 @@
 #'   R = 100L # use a large value for R in actual research
 #' )
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed mc
 #' @export
 MCPhiSigma <- function(phi,

@@ -195,7 +195,7 @@
 #'   med = c("y1", "y3")
 #' )
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed effects
 #' @export
 Direct <- function(phi,

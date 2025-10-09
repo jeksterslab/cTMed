@@ -73,7 +73,7 @@ plot(traj)
 
 }
 \seealso{
-Other Continuous Time Mediation Functions: 
+Other Continuous-Time Mediation Functions: 
 \code{\link{BootBeta}()},
 \code{\link{BootBetaStd}()},
 \code{\link{BootIndirectCentral}()},
@@ -109,7 +109,7 @@ Other Continuous Time Mediation Functions:
 \code{\link{TotalCentral}()},
 \code{\link{TotalStd}()}
 }
-\concept{Continuous Time Mediation Functions}
+\concept{Continuous-Time Mediation Functions}
 \keyword{cTMed}
 \keyword{effects}
 \keyword{path}

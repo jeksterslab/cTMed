@@ -239,7 +239,7 @@ Psychometrika, 87 (1), 214–252.
 \doi{10.1007/s11336-021-09767-0}
 }
 \seealso{
-Other Continuous Time Mediation Functions: 
+Other Continuous-Time Mediation Functions: 
 \code{\link{BootBeta}()},
 \code{\link{BootBetaStd}()},
 \code{\link{BootIndirectCentral}()},
@@ -278,7 +278,7 @@ Other Continuous Time Mediation Functions:
 \author{
 Ivan Jacob Agaloos Pesigan
 }
-\concept{Continuous Time Mediation Functions}
+\concept{Continuous-Time Mediation Functions}
 \keyword{cTMed}
 \keyword{delta}
 \keyword{network}

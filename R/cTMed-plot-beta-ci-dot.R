@@ -68,7 +68,7 @@
 #' )
 #' plot(beta)
 #'
-#' @family Continuous Time Mediation Functions
+#' @family Continuous-Time Mediation Functions
 #' @keywords cTMed plot
 #' @noRd
 # nolint start: cyclocomp_linter
