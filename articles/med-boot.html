@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2025-10-01</h4>
+            <h4 data-toc-skip class="date">2025-10-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/main/vignettes/med-boot.Rmd"><code>vignettes/med-boot.Rmd</code></a></small>
       <div class="d-none name"><code>med-boot.Rmd</code></div>
@@ -80,15 +80,15 @@ model created using the <code>dynr</code> package.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">fit</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Coefficients:</span></span>
-<span><span class="co">#&gt;              Estimate Std. Error t value   ci.lower   ci.upper Pr(&gt;|t|)</span></span>
+<span><span class="co">#&gt;              Estimate Std. Error t value   ci.lower   ci.upper Pr(&gt;|t|)    </span></span>
 <span><span class="co">#&gt; phi_1_1    -0.3518738  0.0345599 -10.182 -0.4196100 -0.2841377   &lt;2e-16 ***</span></span>
 <span><span class="co">#&gt; phi_2_1     0.7442754  0.0213025  34.938  0.7025233  0.7860275   &lt;2e-16 ***</span></span>
 <span><span class="co">#&gt; phi_3_1    -0.4586681  0.0224194 -20.459 -0.5026093 -0.4147269   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; phi_1_2     0.0173316  0.0304068   0.570 -0.0422645  0.0769278   0.2843</span></span>
+<span><span class="co">#&gt; phi_1_2     0.0173316  0.0304068   0.570 -0.0422645  0.0769278   0.2843    </span></span>
 <span><span class="co">#&gt; phi_2_2    -0.4888138  0.0188377 -25.949 -0.5257350 -0.4518927   &lt;2e-16 ***</span></span>
 <span><span class="co">#&gt; phi_3_2     0.7267855  0.0198254  36.659  0.6879284  0.7656426   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; phi_1_3    -0.0238213  0.0233767  -1.019 -0.0696387  0.0219962   0.1541</span></span>
-<span><span class="co">#&gt; phi_2_3    -0.0098181  0.0144220  -0.681 -0.0380848  0.0184485   0.2480</span></span>
+<span><span class="co">#&gt; phi_1_3    -0.0238213  0.0233767  -1.019 -0.0696387  0.0219962   0.1541    </span></span>
+<span><span class="co">#&gt; phi_2_3    -0.0098181  0.0144220  -0.681 -0.0380848  0.0184485   0.2480    </span></span>
 <span><span class="co">#&gt; phi_3_3    -0.6883228  0.0152967 -44.998 -0.7183038 -0.6583418   &lt;2e-16 ***</span></span>
 <span><span class="co">#&gt; sigma_1_1   0.2421847  0.0064484  37.557  0.2295461  0.2548232   &lt;2e-16 ***</span></span>
 <span><span class="co">#&gt; sigma_2_1   0.0232727  0.0025183   9.241  0.0183369  0.0282084   &lt;2e-16 ***</span></span>
@@ -99,18 +99,18 @@ model created using the <code>dynr</code> package.</p>
 <span><span class="co">#&gt; theta_1_1   0.1988610  0.0011588 171.608  0.1965898  0.2011323   &lt;2e-16 ***</span></span>
 <span><span class="co">#&gt; theta_2_2   0.1995204  0.0009996 199.609  0.1975613  0.2014795   &lt;2e-16 ***</span></span>
 <span><span class="co">#&gt; theta_3_3   0.2011716  0.0010145 198.288  0.1991832  0.2031601   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; mu0_1_1     0.0062149  0.1219710   0.051 -0.2328439  0.2452737   0.4797</span></span>
-<span><span class="co">#&gt; mu0_2_1    -0.0425006  0.1208284  -0.352 -0.2793200  0.1943187   0.3625</span></span>
-<span><span class="co">#&gt; mu0_3_1     0.1300648  0.1041761   1.249 -0.0741167  0.3342462   0.1059</span></span>
+<span><span class="co">#&gt; mu0_1_1     0.0062149  0.1219710   0.051 -0.2328439  0.2452737   0.4797    </span></span>
+<span><span class="co">#&gt; mu0_2_1    -0.0425006  0.1208284  -0.352 -0.2793200  0.1943187   0.3625    </span></span>
+<span><span class="co">#&gt; mu0_3_1     0.1300648  0.1041761   1.249 -0.0741167  0.3342462   0.1059    </span></span>
 <span><span class="co">#&gt; sigma0_1_1  1.1504264  0.1810442   6.354  0.7955863  1.5052665   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; sigma0_2_1  0.4136629  0.1418008   2.917  0.1357384  0.6915875   0.0018 **</span></span>
-<span><span class="co">#&gt; sigma0_3_1  0.2260142  0.1187792   1.903 -0.0067889  0.4588172   0.0285 *</span></span>
+<span><span class="co">#&gt; sigma0_2_1  0.4136629  0.1418008   2.917  0.1357384  0.6915875   0.0018 ** </span></span>
+<span><span class="co">#&gt; sigma0_3_1  0.2260142  0.1187792   1.903 -0.0067889  0.4588172   0.0285 *  </span></span>
 <span><span class="co">#&gt; sigma0_2_2  1.2218038  0.1985814   6.153  0.8325914  1.6110161   &lt;2e-16 ***</span></span>
-<span><span class="co">#&gt; sigma0_3_2  0.2353104  0.1267133   1.857 -0.0130432  0.4836640   0.0317 *</span></span>
+<span><span class="co">#&gt; sigma0_3_2  0.2353104  0.1267133   1.857 -0.0130432  0.4836640   0.0317 *  </span></span>
 <span><span class="co">#&gt; sigma0_3_3  0.9626701  0.1594441   6.038  0.6501655  1.2751747   &lt;2e-16 ***</span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
-<span><span class="co">#&gt;</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; -2 log-likelihood value at convergence = 429365.49</span></span>
 <span><span class="co">#&gt; AIC = 429419.49</span></span>
 <span><span class="co">#&gt; BIC = 429676.34</span></span></code></pre></div>
@@ -141,7 +141,7 @@ which will be used to generate bootstrap samples.</p>
 <span>  <span class="op">)</span></span>
 <span><span class="op">]</span></span>
 <span><span class="va">mu0</span></span>
-<span><span class="co">#&gt;      mu0_1_1      mu0_2_1      mu0_3_1</span></span>
+<span><span class="co">#&gt;      mu0_1_1      mu0_2_1      mu0_3_1 </span></span>
 <span><span class="co">#&gt;  0.006214893 -0.042500647  0.130064755</span></span>
 <span><span class="va">sigma0</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span></span>
 <span>  data <span class="op">=</span> <span class="va">est</span><span class="op">[</span></span>
@@ -254,7 +254,8 @@ times is computationally intensive.</p>
 <span>  lambda <span class="op">=</span> <span class="va">lambda</span>,</span>
 <span>  theta_l <span class="op">=</span> <span class="va">theta_l</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  seed <span class="op">=</span> <span class="fl">42</span></span>
+<span>  seed <span class="op">=</span> <span class="fl">42</span>,</span>
+<span>  clean <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>The <code>extract</code> function from the
 <code>bootStateSpace</code> package is used to extract the bootstrap phi
@@ -354,6 +355,11 @@ standardized effects.</p>
 Deboeck, P. R., &amp; Preacher, K. J. (2015). No need to be discrete: A
 method for continuous time mediation analysis. <em>Structural Equation
 Modeling: A Multidisciplinary Journal</em>, <em>23</em>(1), 61–75. <a href="https://doi.org/10.1080/10705511.2014.973960" class="external-link">https://doi.org/10.1080/10705511.2014.973960</a>
+</div>
+<div id="ref-Pesigan-Russell-Chow-2025a" class="csl-entry">
+Pesigan, I. J. A., Russell, M. A., &amp; Chow, S.-M. (2025). Inferences
+and effect sizes for direct, indirect, and total effects in
+continuous-time mediation models. <em>Psychological Methods</em>. <a href="https://doi.org/10.1037/met0000779" class="external-link">https://doi.org/10.1037/met0000779</a>
 </div>
 <div id="ref-RCoreTeam-2024" class="csl-entry">
 R Core Team. (2024). <em><span>R</span>: A language and environment for

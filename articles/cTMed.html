@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>cTMed: Continuous Time Mediation • cTMed</title>
+<title>cTMed: Continuous-Time Mediation • cTMed</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet">
@@ -13,7 +13,7 @@
 <link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="cTMed: Continuous Time Mediation">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="cTMed: Continuous-Time Mediation">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 </head>
@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>cTMed: Continuous Time Mediation</h1>
+      <h1>cTMed: Continuous-Time Mediation</h1>
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
@@ -69,14 +69,13 @@ Agaloos Pesigan</h4>
     
     
 <!-- badges: start -->
-<p><a href="https://github.com/jeksterslab/cTMed/actions/workflows/make.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/make.yml/badge.svg" alt="Make Project"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/check-full.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/check-full.yml/badge.svg" alt="R-CMD-check"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml/badge.svg" alt="R Package Test Coverage"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/lint.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/lint.yml/badge.svg" alt="Lint R Package"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/pkgdown-gh-pages.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/pkgdown-gh-pages.yml/badge.svg" alt="Package Website (GitHub Pages)"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/latex.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/latex.yml/badge.svg" alt="Compile LaTeX"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/shellcheck.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/shellcheck.yml/badge.svg" alt="Shell Check"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a> <a href="https://codecov.io/gh/jeksterslab/cTMed" class="external-link"><img src="https://codecov.io/gh/jeksterslab/cTMed/branch/main/graph/badge.svg?token=KVLUET3DJ6" alt="codecov"></a> <!-- badges: end --></p>
+<p><a href="https://doi.org/10.1037/met0000779" class="external-link"><img src="https://zenodo.org/badge/DOI/10.1037/met0000779.svg" alt="DOI"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/make.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/make.yml/badge.svg" alt="Make Project"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/check-full.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/check-full.yml/badge.svg" alt="R-CMD-check"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml/badge.svg" alt="R Package Test Coverage"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/lint.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/lint.yml/badge.svg" alt="Lint R Package"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/pkgdown-gh-pages.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/pkgdown-gh-pages.yml/badge.svg" alt="Package Website (GitHub Pages)"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/latex.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/latex.yml/badge.svg" alt="Compile LaTeX"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/shellcheck.yml"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/shellcheck.yml/badge.svg" alt="Shell Check"></a> <a href="https://github.com/jeksterslab/cTMed/actions/workflows/pages/pages-build-deployment"><img src="https://github.com/jeksterslab/cTMed/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a> <a href="https://codecov.io/gh/jeksterslab/cTMed" class="external-link"><img src="https://codecov.io/gh/jeksterslab/cTMed/branch/main/graph/badge.svg?token=KVLUET3DJ6" alt="codecov"></a> <!-- badges: end --></p>
 <div class="section level2">
 <h2 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
 </h2>
-<p>Implements the methods introduced in Pesigan, Russell, and Chow
-(2025: <a href="https://doi.org/10.1037/met0000779" class="external-link uri">https://doi.org/10.1037/met0000779</a>) to compute standard
-errors, confidence intervals, and effect sizes for total, direct, and
-indirect effects in continuous-time mediation models.</p>
+<p>Computes effect sizes, standard errors, and confidence intervals for
+total, direct, and indirect effects in continuous-time mediation models
+as described in Pesigan, Russell, and Chow (2025: <a href="https://doi.org/10.1037/met0000779" class="external-link uri">https://doi.org/10.1037/met0000779</a>).</p>
 </div>
 <div class="section level2">
 <h2 id="author-accepted-manuscript">Author-Accepted Manuscript<a class="anchor" aria-label="anchor" href="#author-accepted-manuscript"></a>

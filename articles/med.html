@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Ivan Jacob
 Agaloos Pesigan</h4>
             
-            <h4 data-toc-skip class="date">2025-10-01</h4>
+            <h4 data-toc-skip class="date">2025-10-09</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jeksterslab/cTMed/blob/main/vignettes/med.Rmd"><code>vignettes/med.Rmd</code></a></small>
       <div class="d-none name"><code>med.Rmd</code></div>
@@ -190,7 +190,7 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
 <span><span class="va">elapsed</span></span>
-<span><span class="co">#&gt; Time difference of 1.025756 secs</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 0.9919231 secs</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-delta-1.png" width="3300"><img src="fig-vignettes-med-delta-2.png" width="3300"><img src="fig-vignettes-med-delta-3.png" width="3300"></p>
@@ -210,10 +210,11 @@ effects of <code>x</code> on <code>y</code>, mediated through
 <span>  R <span class="op">=</span> <span class="fl">20000L</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="fu">parallel</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/parallel/detectCores.html" class="external-link">detectCores</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># use multiple cores</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in cleanup(mc.cleanup): unable to terminate child: No such process</span></span>
 <span><span class="va">end</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">elapsed</span> <span class="op">&lt;-</span> <span class="va">end</span> <span class="op">-</span> <span class="va">start</span></span>
 <span><span class="va">elapsed</span></span>
-<span><span class="co">#&gt; Time difference of 16.70291 mins</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 17.74917 mins</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></code></pre></div>
 <p><img src="fig-vignettes-med-mc-1.png" width="3300"><img src="fig-vignettes-med-mc-2.png" width="3300"><img src="fig-vignettes-med-mc-3.png" width="3300"></p>
@@ -226,6 +227,11 @@ effects of <code>x</code> on <code>y</code>, mediated through
 Deboeck, P. R., &amp; Preacher, K. J. (2015). No need to be discrete: A
 method for continuous time mediation analysis. <em>Structural Equation
 Modeling: A Multidisciplinary Journal</em>, <em>23</em>(1), 61–75. <a href="https://doi.org/10.1080/10705511.2014.973960" class="external-link">https://doi.org/10.1080/10705511.2014.973960</a>
+</div>
+<div id="ref-Pesigan-Russell-Chow-2025a" class="csl-entry">
+Pesigan, I. J. A., Russell, M. A., &amp; Chow, S.-M. (2025). Inferences
+and effect sizes for direct, indirect, and total effects in
+continuous-time mediation models. <em>Psychological Methods</em>. <a href="https://doi.org/10.1037/met0000779" class="external-link">https://doi.org/10.1037/met0000779</a>
 </div>
 <div id="ref-RCoreTeam-2024" class="csl-entry">
 R Core Team. (2024). <em><span>R</span>: A language and environment for
