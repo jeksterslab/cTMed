@@ -1,7 +1,7 @@
 ---
 title: "Standardized Total, Direct, and Indirect Effects in Continuous-Time Mediation Model"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-10-09"
+date: "2025-10-12"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -213,7 +213,7 @@ delta <- DeltaMedStd(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 1.40086 secs
+#> Time difference of 1.320528 secs
 ```
 
 
@@ -242,7 +242,7 @@ mc <- MCMedStd(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 19.80582 mins
+#> Time difference of 18.90861 mins
 ```
 
 

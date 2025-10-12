@@ -1,13 +1,14 @@
 ---
 title: "Fit the Continuous-Time Vector Autoregressive Model Using the OpenMx Package"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-10-06"
+date: "2025-10-11"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
   @RCoreTeam-2024
   @Neale-Hunter-Pritikin-etal-2015
   @Hunter-2017
+  @Pesigan-Russell-Chow-2025a
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Fit the Continuous-Time Vector Autoregressive Model Using the OpenMx Package}
@@ -527,8 +528,8 @@ summary(fit)
 #> AIC:      -170580.5               429419.5                 429419.5
 #> BIC:     -3024201.3               429676.3                 429590.5
 #> To get additional fit indices, see help(mxRefModels)
-#> timestamp: 2025-10-06 07:05:40 
-#> Wall clock time: 4151.828 secs 
+#> timestamp: 2025-10-11 22:55:26 
+#> Wall clock time: 3989.417 secs 
 #> optimizer:  SLSQP 
 #> OpenMx version number: 2.22.9 
 #> Need help?  See help(mxSummary)

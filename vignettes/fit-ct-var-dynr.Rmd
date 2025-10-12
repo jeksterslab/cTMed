@@ -1,12 +1,13 @@
 ---
 title: "Fit the Continuous-Time Vector Autoregressive Model Using the dynr Package"
 author: Ivan Jacob Agaloos Pesigan
-date: "2025-10-06"
+date: "2025-10-11"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
   @RCoreTeam-2024
   @Ou-Hunter-Chow-2019
+  @Pesigan-Russell-Chow-2025a
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Fit the Continuous-Time Vector Autoregressive Model Using the dynr Package}
@@ -288,8 +289,8 @@ fit <- dynr.cook(
 #> 
 #> Doing end processing
 #> Successful trial
-#> Total Time: 2.218897 
-#> Backend Time: 2.218727
+#> Total Time: 2.243252 
+#> Backend Time: 2.243075
 summary(fit)
 #> Coefficients:
 #>              Estimate Std. Error t value   ci.lower   ci.upper Pr(>|t|)    

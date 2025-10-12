@@ -1,7 +1,7 @@
 cTMed
 ================
 Ivan Jacob Agaloos Pesigan
-2025-10-09
+2025-10-12
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -68,23 +68,6 @@ To cite `cTMed` in publications, please cite Pesigan et al. (2025).
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0" line-spacing="2">
 
-<div id="ref-Bollen-1987" class="csl-entry">
-
-Bollen, K. A. (1987). Total, direct, and indirect effects in structural
-equation models. *Sociological Methodology*, *17*, 37.
-<https://doi.org/10.2307/271028>
-
-</div>
-
-<div id="ref-Deboeck-Preacher-2015" class="csl-entry">
-
-Deboeck, P. R., & Preacher, K. J. (2015). No need to be discrete: A
-method for continuous time mediation analysis. *Structural Equation
-Modeling: A Multidisciplinary Journal*, *23*(1), 61–75.
-<https://doi.org/10.1080/10705511.2014.973960>
-
-</div>
-
 <div id="ref-Pesigan-Russell-Chow-2025a" class="csl-entry">
 
 Pesigan, I. J. A., Russell, M. A., & Chow, S.-M. (2025). Inferences and
@@ -99,23 +82,6 @@ mediation models. *Psychological Methods*.
 R Core Team. (2025). *R: A language and environment for statistical
 computing*. R Foundation for Statistical Computing.
 <https://www.R-project.org/>
-
-</div>
-
-<div id="ref-Ryan-Hamaker-2021" class="csl-entry">
-
-Ryan, O., & Hamaker, E. L. (2021). Time to intervene: A continuous-time
-approach to network analysis and centrality. *Psychometrika*, *87*(1),
-214–252. <https://doi.org/10.1007/s11336-021-09767-0>
-
-</div>
-
-<div id="ref-Wang-Zhang-2020" class="csl-entry">
-
-Wang, L., & Zhang, Q. (2020). Investigating the impact of the time
-interval selection on autoregressive mediation modeling: Result
-interpretations, effect reporting, and temporal designs. *Psychological
-Methods*, *25*(3), 271–291. <https://doi.org/10.1037/met0000235>
 
 </div>
 
