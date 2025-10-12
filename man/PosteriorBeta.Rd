@@ -10,9 +10,11 @@ or a Range of Time Intervals}
 PosteriorBeta(phi, delta_t, ncores = NULL, tol = 0.01)
 }
 \arguments{
-\item{phi}{Numeric matrix.
-The drift matrix (\eqn{\boldsymbol{\Phi}}).
-\code{phi} should have row and column names
+\item{phi}{List of numeric matrices.
+Each element of the list is a sample
+from the posterior distribution
+of the drift matrix (\eqn{\boldsymbol{\Phi}}).
+Each matrix should have row and column names
 pertaining to the variables in the system.}
 
 \item{delta_t}{Numeric.

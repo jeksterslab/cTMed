@@ -19,6 +19,12 @@
 #' @inheritParams Indirect
 #' @inheritParams MCPhi
 #' @inheritParams MCMed
+#' @param phi List of numeric matrices.
+#'   Each element of the list is a sample
+#'   from the posterior distribution
+#'   of the drift matrix (\eqn{\boldsymbol{\Phi}}).
+#'   Each matrix should have row and column names
+#'   pertaining to the variables in the system.
 #' @inherit Indirect references
 #'
 #' @return Returns an object
