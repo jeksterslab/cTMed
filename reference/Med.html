@@ -21,7 +21,7 @@ drift matrix \(\boldsymbol{\Phi}\)."><script id="MathJax-script" async src="http
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -246,6 +246,11 @@ No need to be discrete:
 A method for continuous time mediation analysis.
 Structural Equation Modeling: A Multidisciplinary Journal, 23 (1), 61–75.
 <a href="https://doi.org/10.1080/10705511.2014.973960" class="external-link">doi:10.1080/10705511.2014.973960</a></p>
+<p>Pesigan, I. J. A., Russell, M. A., &amp; Chow, S.-M. (2025).
+Inferences and effect sizes for direct, indirect, and total effects
+in continuous-time mediation models.
+Psychological Methods.
+<a href="https://doi.org/10.1037/met0000779" class="external-link">doi:10.1037/met0000779</a></p>
 <p>Ryan, O., &amp; Hamaker, E. L. (2021).
 Time to intervene:
 A continuous-time approach to network analysis and centrality.
@@ -315,6 +320,8 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  to <span class="op">=</span> <span class="st">"y"</span>,</span></span>
 <span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Med(phi = phi, delta_t = 1, from = "x", to = "y", med = "m")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -343,6 +350,8 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">med</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Med(phi = phi, delta_t = 1:5, from = "x", to = "y", med = "m")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -353,6 +362,11 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-out co"><span class="r-pr">#&gt;</span> [4,]        4  0.3449 -0.2374   0.5823</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [5,]        5  0.3693 -0.1828   0.5521</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">med</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Med(phi = phi, delta_t = 1:5, from = "x", to = "y", med = "m")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      interval   total  direct indirect</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1,]        1 -0.1000 -0.2675   0.1674</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [2,]        2  0.0799 -0.3209   0.4008</span>

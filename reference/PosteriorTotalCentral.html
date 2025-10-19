@@ -21,7 +21,7 @@ drift matrix \(\boldsymbol{\Phi}\)."><script id="MathJax-script" async src="http
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -141,6 +141,11 @@ No need to be discrete:
 A method for continuous time mediation analysis.
 Structural Equation Modeling: A Multidisciplinary Journal, 23 (1), 61–75.
 <a href="https://doi.org/10.1080/10705511.2014.973960" class="external-link">doi:10.1080/10705511.2014.973960</a></p>
+<p>Pesigan, I. J. A., Russell, M. A., &amp; Chow, S.-M. (2025).
+Inferences and effect sizes for direct, indirect, and total effects
+in continuous-time mediation models.
+Psychological Methods.
+<a href="https://doi.org/10.1037/met0000779" class="external-link">doi:10.1037/met0000779</a></p>
 <p>Ryan, O., &amp; Hamaker, E. L. (2021).
 Time to intervene:
 A continuous-time approach to network analysis and centrality.
@@ -245,15 +250,15 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  phi <span class="op">=</span> <span class="va">phi</span>,</span></span>
 <span class="r-in"><span>  delta_t <span class="op">=</span> <span class="fl">1</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PosteriorTotalCentral(phi = phi, delta_t = 1)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Total Effect Centrality</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se    R    2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x        1 0.3991 0.0485 1000  0.3039 0.4915</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m        1 0.3987 0.0416 1000  0.3158 0.4763</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y        1 0.0017 0.0651 1000 -0.1237 0.1280</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   variable interval    est     se    R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        x        1 0.3991 0.0485 1000  0.3039 0.4915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        m        1 0.3987 0.0416 1000  0.3158 0.4763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        y        1 0.0017 0.0651 1000 -0.1237 0.1280</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Range of time intervals ---------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">posterior</span> <span class="op">&lt;-</span> <span class="fu">PosteriorTotalCentral</span><span class="op">(</span></span></span>
@@ -265,56 +270,49 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span><span class="co"># PosteriorTotalCentral has a number of methods including</span></span></span>
 <span class="r-in"><span><span class="co"># print, summary, confint, and plot</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PosteriorTotalCentral(phi = phi, delta_t = 1:5)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Total Effect Centrality</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se    R    2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x        1 0.3991 0.0485 1000  0.3039 0.4915</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m        1 0.3987 0.0416 1000  0.3158 0.4763</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y        1 0.0017 0.0651 1000 -0.1237 0.1280</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se    R    2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x        2 0.7324 0.0695 1000  0.5981 0.8725</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m        2 0.4386 0.0536 1000  0.3283 0.5424</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y        2 0.0020 0.0952 1000 -0.1858 0.1888</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se    R    2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x        3 0.8935 0.0880 1000  0.7298 1.0839</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m        3 0.3631 0.0612 1000  0.2403 0.4838</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y        3 0.0015 0.1027 1000 -0.2063 0.2047</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se    R    2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x        4 0.9099 0.1027 1000  0.7253 1.1318</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m        4 0.2680 0.0662 1000  0.1298 0.3954</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y        4 0.0012 0.0971 1000 -0.1927 0.1928</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   interval    est     se    R    2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> x        5 0.8368 0.1122 1000  0.6337 1.0768</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> m        5 0.1862 0.0682 1000  0.0471 0.3200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> y        5 0.0012 0.0851 1000 -0.1688 0.1678</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval    est     se    R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 0.3991 0.0485 1000  0.3039 0.4915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1 0.3987 0.0416 1000  0.3158 0.4763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1 0.0017 0.0651 1000 -0.1237 0.1280</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2 0.7324 0.0695 1000  0.5981 0.8725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2 0.4386 0.0536 1000  0.3283 0.5424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2 0.0020 0.0952 1000 -0.1858 0.1888</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3 0.8935 0.0880 1000  0.7298 1.0839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3 0.3631 0.0612 1000  0.2403 0.4838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 0.0015 0.1027 1000 -0.2063 0.2047</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 0.9099 0.1027 1000  0.7253 1.1318</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4 0.2680 0.0662 1000  0.1298 0.3954</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4 0.0012 0.0971 1000 -0.1927 0.1928</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 0.8368 0.1122 1000  0.6337 1.0768</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5 0.1862 0.0682 1000  0.0471 0.3200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 0.0012 0.0851 1000 -0.1688 0.1678</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval         est         se    R        2.5%     97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 0.399145415 0.04849587 1000  0.30389727 0.4914777</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1 0.398675170 0.04164916 1000  0.31584766 0.4762828</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1 0.001719838 0.06506416 1000 -0.12372017 0.1279576</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2 0.732433749 0.06945339 1000  0.59814836 0.8724793</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2 0.438607207 0.05357593 1000  0.32826858 0.5424170</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2 0.001977828 0.09522589 1000 -0.18582907 0.1887818</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3 0.893487413 0.08803293 1000  0.72979419 1.0838910</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3 0.363097286 0.06116563 1000  0.24025621 0.4838154</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 0.001536263 0.10269142 1000 -0.20628187 0.2047223</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 0.909927663 0.10269526 1000  0.72530366 1.1318121</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4 0.268023424 0.06624071 1000  0.12984662 0.3954040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4 0.001166616 0.09706192 1000 -0.19272102 0.1928162</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 0.836809628 0.11218833 1000  0.63366101 1.0767630</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5 0.186209191 0.06821030 1000  0.04707667 0.3200269</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 0.001247043 0.08513143 1000 -0.16878260 0.1677510</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PosteriorTotalCentral(phi = phi, delta_t = 1:5)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total Effect Centrality</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval    est     se    R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 0.3991 0.0485 1000  0.3039 0.4915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1 0.3987 0.0416 1000  0.3158 0.4763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1 0.0017 0.0651 1000 -0.1237 0.1280</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2 0.7324 0.0695 1000  0.5981 0.8725</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2 0.4386 0.0536 1000  0.3283 0.5424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2 0.0020 0.0952 1000 -0.1858 0.1888</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3 0.8935 0.0880 1000  0.7298 1.0839</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3 0.3631 0.0612 1000  0.2403 0.4838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 0.0015 0.1027 1000 -0.2063 0.2047</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 0.9099 0.1027 1000  0.7253 1.1318</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4 0.2680 0.0662 1000  0.1298 0.3954</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4 0.0012 0.0971 1000 -0.1927 0.1928</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 0.8368 0.1122 1000  0.6337 1.0768</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5 0.1862 0.0682 1000  0.0471 0.3200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 0.0012 0.0851 1000 -0.1688 0.1678</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">posterior</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval       2.5 %    97.5 %</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1  0.30389727 0.4914777</span>

@@ -27,7 +27,7 @@ and process noise covariance matrix \(\boldsymbol{\Sigma}\)."><script id="MathJa
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -269,6 +269,11 @@ No need to be discrete:
 A method for continuous time mediation analysis.
 Structural Equation Modeling: A Multidisciplinary Journal, 23 (1), 61–75.
 <a href="https://doi.org/10.1080/10705511.2014.973960" class="external-link">doi:10.1080/10705511.2014.973960</a></p>
+<p>Pesigan, I. J. A., Russell, M. A., &amp; Chow, S.-M. (2025).
+Inferences and effect sizes for direct, indirect, and total effects
+in continuous-time mediation models.
+Psychological Methods.
+<a href="https://doi.org/10.1037/met0000779" class="external-link">doi:10.1037/met0000779</a></p>
 <p>Ryan, O., &amp; Hamaker, E. L. (2021).
 Time to intervene:
 A continuous-time approach to network analysis and centrality.
@@ -399,15 +404,16 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span>,</span></span>
 <span class="r-in"><span>  R <span class="op">=</span> <span class="fl">100L</span> <span class="co"># use a large value for R in actual research</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MCMedStd(phi = phi, sigma = sigma, vcov_theta = vcov_theta, delta_t = 1, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     from = "x", to = "y", med = "m", R = 100L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.1069 0.0353 100 -0.1865 -0.0383</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2858 0.0470 100 -0.3934 -0.1913</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1789 0.0193 100  0.1445  0.2196</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     effect interval     est     se   R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    total        1 -0.1069 0.0353 100 -0.1865 -0.0383</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   direct        1 -0.2858 0.0470 100 -0.3934 -0.1913</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 indirect        1  0.1789 0.0193 100  0.1445  0.2196</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Range of time intervals ---------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">mc</span> <span class="op">&lt;-</span> <span class="fu">MCMedStd</span><span class="op">(</span></span></span>
@@ -429,56 +435,51 @@ Psychometrika, 87 (1), 214–252.
 <span class="r-in"><span><span class="co"># MCMedStd has a number of methods including</span></span></span>
 <span class="r-in"><span><span class="co"># print, summary, confint, and plot</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MCMedStd(phi = phi, sigma = sigma, vcov_theta = vcov_theta, delta_t = 1:5, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     from = "x", to = "y", med = "m", R = 100L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.1069 0.0337 100 -0.1713 -0.0391</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2858 0.0419 100 -0.3559 -0.2046</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1789 0.0185 100  0.1391  0.2148</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           2  0.0854 0.0385 100  0.0165  0.1550</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          2 -0.3429 0.0574 100 -0.4526 -0.2425</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        2  0.4283 0.0464 100  0.3354  0.5235</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           3  0.2680 0.0363 100  0.1941  0.3368</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          3 -0.3114 0.0631 100 -0.4466 -0.2046</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        3  0.5794 0.0697 100  0.4549  0.7422</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           4  0.3686 0.0358 100  0.3038  0.4534</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          4 -0.2537 0.0635 100 -0.4090 -0.1566</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        4  0.6222 0.0849 100  0.4887  0.8125</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se   R    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           5  0.3946 0.0385 100  0.3385  0.4786</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          5 -0.1954 0.0605 100 -0.3602 -0.1127</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        5  0.5899 0.0917 100  0.4650  0.7957</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval     est     se   R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.1069 0.0337 100 -0.1713 -0.0391</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.2858 0.0419 100 -0.3559 -0.2046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.1789 0.0185 100  0.1391  0.2148</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.0854 0.0385 100  0.0165  0.1550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.3429 0.0574 100 -0.4526 -0.2425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.4283 0.0464 100  0.3354  0.5235</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.2680 0.0363 100  0.1941  0.3368</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.3114 0.0631 100 -0.4466 -0.2046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.5794 0.0697 100  0.4549  0.7422</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.3686 0.0358 100  0.3038  0.4534</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.2537 0.0635 100 -0.4090 -0.1566</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.6222 0.0849 100  0.4887  0.8125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.3946 0.0385 100  0.3385  0.4786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.1954 0.0605 100 -0.3602 -0.1127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.5899 0.0917 100  0.4650  0.7957</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval         est         se   R        2.5%       97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.10689374 0.03373783 100 -0.17134324 -0.03910697</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.28578179 0.04187813 100 -0.35589460 -0.20459967</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.17888805 0.01849330 100  0.13914626  0.21479420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.08537619 0.03845986 100  0.01652097  0.15495342</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.34289417 0.05742850 100 -0.45259965 -0.24249560</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.42827036 0.04639628 100  0.33540816  0.52345368</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.26800143 0.03626586 100  0.19406457  0.33680333</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.31141439 0.06307812 100 -0.44658476 -0.20462236</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.57941582 0.06972077 100  0.45491230  0.74217235</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.36856490 0.03575807 100  0.30375980  0.45341980</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.25365773 0.06345028 100 -0.40899422 -0.15657623</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.62222263 0.08491286 100  0.48869631  0.81248945</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.39455777 0.03849245 100  0.33845203  0.47862426</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.19537458 0.06052826 100 -0.36017010 -0.11272510</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.58993235 0.09167103 100  0.46500543  0.79569340</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MCMedStd(phi = phi, sigma = sigma, vcov_theta = vcov_theta, delta_t = 1:5, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     from = "x", to = "y", med = "m", R = 100L)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval     est     se   R    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.1069 0.0337 100 -0.1713 -0.0391</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.2858 0.0419 100 -0.3559 -0.2046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.1789 0.0185 100  0.1391  0.2148</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.0854 0.0385 100  0.0165  0.1550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.3429 0.0574 100 -0.4526 -0.2425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.4283 0.0464 100  0.3354  0.5235</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.2680 0.0363 100  0.1941  0.3368</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.3114 0.0631 100 -0.4466 -0.2046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.5794 0.0697 100  0.4549  0.7422</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.3686 0.0358 100  0.3038  0.4534</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.2537 0.0635 100 -0.4090 -0.1566</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.6222 0.0849 100  0.4887  0.8125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.3946 0.0385 100  0.3385  0.4786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.1954 0.0605 100 -0.3602 -0.1127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.5899 0.0917 100  0.4650  0.7957</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">mc</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval       2.5 %      97.5 %</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.17134324 -0.03910697</span>

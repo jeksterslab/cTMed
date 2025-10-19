@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.8.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,15 +136,16 @@ confidence intervals.</p>
 <span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DeltaMed(phi = phi, vcov_phi_vec = vcov_phi_vec, delta_t = 1, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     from = "x", to = "y", med = "m")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se       z      p    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.1000 0.0306 -3.2703 0.0011 -0.1600 -0.0401</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2675 0.0394 -6.7894 0.0000 -0.3447 -0.1902</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1674 0.0175  9.5524 0.0000  0.1331  0.2018</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     effect interval     est     se       z      p    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    total        1 -0.1000 0.0306 -3.2703 0.0011 -0.1600 -0.0401</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   direct        1 -0.2675 0.0394 -6.7894 0.0000 -0.3447 -0.1902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 indirect        1  0.1674 0.0175  9.5524 0.0000  0.1331  0.2018</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Range of time intervals ---------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="DeltaMed.html">DeltaMed</a></span><span class="op">(</span></span></span>
@@ -156,39 +157,28 @@ confidence intervals.</p>
 <span class="r-in"><span>  med <span class="op">=</span> <span class="st">"m"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DeltaMed(phi = phi, vcov_phi_vec = vcov_phi_vec, delta_t = 1:5, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     from = "x", to = "y", med = "m")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Total, Direct, and Indirect Effects</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`1`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se       z      p    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           1 -0.1000 0.0306 -3.2703 0.0011 -0.1600 -0.0401</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          1 -0.2675 0.0394 -6.7894 0.0000 -0.3447 -0.1902</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        1  0.1674 0.0175  9.5524 0.0000  0.1331  0.2018</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`2`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se       z      p    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           2  0.0799 0.0342  2.3337 0.0196  0.0128  0.1470</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          2 -0.3209 0.0552 -5.8129 0.0000 -0.4291 -0.2127</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        2  0.4008 0.0461  8.7033 0.0000  0.3105  0.4911</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`3`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se       z p    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           3  0.2508 0.0353  7.1106 0  0.1817  0.3199</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          3 -0.2914 0.0608 -4.7907 0 -0.4107 -0.1722</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        3  0.5423 0.0703  7.7121 0  0.4044  0.6801</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`4`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se       z     p    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           4  0.3449 0.0394  8.7512 0e+00  0.2677  0.4222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          4 -0.2374 0.0604 -3.9333 1e-04 -0.3557 -0.1191</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        4  0.5823 0.0850  6.8529 0e+00  0.4158  0.7489</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`5`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          interval     est     se       z      p    2.5%   97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total           5  0.3693 0.0441  8.3649 0.0000  0.2827  0.4558</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> direct          5 -0.1828 0.0561 -3.2606 0.0011 -0.2928 -0.0729</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> indirect        5  0.5521 0.0899  6.1417 0.0000  0.3759  0.7283</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      effect interval     est     se       z      p    2.5%   97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     total        1 -0.1000 0.0306 -3.2703 0.0011 -0.1600 -0.0401</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    direct        1 -0.2675 0.0394 -6.7894 0.0000 -0.3447 -0.1902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  indirect        1  0.1674 0.0175  9.5524 0.0000  0.1331  0.2018</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     total        2  0.0799 0.0342  2.3337 0.0196  0.0128  0.1470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5    direct        2 -0.3209 0.0552 -5.8129 0.0000 -0.4291 -0.2127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  indirect        2  0.4008 0.0461  8.7033 0.0000  0.3105  0.4911</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     total        3  0.2508 0.0353  7.1106 0.0000  0.1817  0.3199</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8    direct        3 -0.2914 0.0608 -4.7907 0.0000 -0.4107 -0.1722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  indirect        3  0.5423 0.0703  7.7121 0.0000  0.4044  0.6801</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    total        4  0.3449 0.0394  8.7512 0.0000  0.2677  0.4222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   direct        4 -0.2374 0.0604 -3.9333 0.0001 -0.3557 -0.1191</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 indirect        4  0.5823 0.0850  6.8529 0.0000  0.4158  0.7489</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13    total        5  0.3693 0.0441  8.3649 0.0000  0.2827  0.4558</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   direct        5 -0.1828 0.0561 -3.2606 0.0011 -0.2928 -0.0729</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 indirect        5  0.5521 0.0899  6.1417 0.0000  0.3759  0.7283</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
