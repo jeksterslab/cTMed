@@ -137,38 +137,11 @@ print.ctmedboot <- function(x,
                             digits = 4,
                             type = "pc",
                             ...) {
-  if (x$args$network) {
-    if (x$args$total) {
-      cat(
-        paste0(
-          "\nTotal Effect Centrality\n",
-          "type = ", type, "\n"
-        )
-      )
-    } else {
-      cat(
-        paste0(
-          "\nIndirect Effect Centrality\n",
-          "type = ", type, "\n"
-        )
-      )
-    }
-  } else {
-    cat(
-      paste0(
-        "\nTotal, Direct, and Indirect Effects\n",
-        "type = ", type, "\n"
-      )
-    )
-  }
-  base::print(
-    lapply(
-      X = .BootCI(
-        object = x,
-        alpha = alpha,
-        type = type
-      ),
-      FUN = round,
+  print.summary.ctmedboot(
+    summary.ctmedboot(
+      object = x,
+      alpha = alpha,
+      type = type,
       digits = digits
     )
   )
@@ -186,6 +159,7 @@ print.ctmedboot <- function(x,
 #'   Confidence interval type, that is,
 #'   `type = "pc"` for percentile;
 #'   `type = "bc"` for bias corrected.
+#' @param digits Integer indicating the number of decimal places to display.
 #'
 #' @return Returns a data frame of
 #'   effects,
@@ -312,43 +286,8 @@ print.ctmedboot <- function(x,
 summary.ctmedboot <- function(object,
                               alpha = 0.05,
                               type = "pc",
+                              digits = 4,
                               ...) {
-  if (object$args$network) {
-    if (object$args$total) {
-      if (interactive()) {
-        # nocov start
-        cat(
-          paste0(
-            "\nTotal Effect Centrality\n",
-            "type = ", type, "\n"
-          )
-        )
-        # nocov end
-      }
-    } else {
-      if (interactive()) {
-        # nocov start
-        cat(
-          paste0(
-            "\nIndirect Effect Centrality\n",
-            "type = ", type, "\n"
-          )
-        )
-        # nocov end
-      }
-    }
-  } else {
-    if (interactive()) {
-      # nocov start
-      cat(
-        paste0(
-          "\nTotal, Direct, and Indirect Effects\n",
-          "type = ", type, "\n"
-        )
-      )
-      # nocov end
-    }
-  }
   ci <- .BootCI(
     object = object,
     alpha = alpha,
@@ -371,7 +310,86 @@ summary.ctmedboot <- function(object,
   varnames <- colnames(ci)
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
-  ci[, varnames]
+  ci <- ci[, varnames]
+  print_summary <- ci
+  num_cols <- sapply(
+    X = print_summary,
+    FUN = is.numeric
+  )
+  print_summary[num_cols] <- lapply(
+    X = print_summary[num_cols],
+    FUN = round,
+    digits = digits
+  )
+  attr(
+    x = ci,
+    which = "fit"
+  ) <- object
+  attr(
+    x = ci,
+    which = "print_summary"
+  ) <- print_summary
+  attr(
+    x = ci,
+    which = "alpha"
+  ) <- alpha
+  attr(
+    x = ci,
+    which = "type"
+  ) <- type
+  attr(
+    x = ci,
+    which = "digits"
+  ) <- digits
+  class(ci) <- "summary.ctmedboot"
+  ci
+}
+
+#' @noRd
+#' @keywords internal
+#' @exportS3Method print summary.ctmedboot
+print.summary.ctmedboot <- function(x,
+                                    ...) {
+  print_summary <- attr(
+    x = x,
+    which = "print_summary"
+  )
+  object <- attr(
+    x = x,
+    which = "fit"
+  )
+  type <- attr(
+    x = x,
+    which = "type"
+  )
+  cat("Call:\n")
+  base::print(object$call)
+  if (object$args$network) {
+    if (object$args$total) {
+      cat(
+        paste0(
+          "\nTotal Effect Centrality\n",
+          "type = ", type, "\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n",
+          "type = ", type, "\n"
+        )
+      )
+    }
+  } else {
+    cat(
+      paste0(
+        "\nTotal, Direct, and Indirect Effects\n",
+        "type = ", type, "\n"
+      )
+    )
+  }
+  print(print_summary)
+  invisible(x)
 }
 
 #' Bootstrap Method Confidence Intervals

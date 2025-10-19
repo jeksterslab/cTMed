@@ -43,39 +43,9 @@
 print.ctmedmed <- function(x,
                            digits = 4,
                            ...) {
-  if (x$args$network) {
-    if (x$args$total) {
-      cat(
-        paste0(
-          "\nTotal Effect Centrality\n\n"
-        )
-      )
-    } else {
-      cat(
-        paste0(
-          "\nIndirect Effect Centrality\n\n"
-        )
-      )
-    }
-  } else {
-    cat(
-      paste0(
-        "\nTotal, Direct, and Indirect Effects\n\n"
-      )
-    )
-  }
-  varnames <- colnames(x$output)
-  varnames <- c(
-    "interval",
-    varnames[which(varnames != "interval")]
-  )
-  base::print(
-    round(
-      x$output[
-        ,
-        varnames,
-        drop = FALSE
-      ],
+  print.summary.ctmedmed(
+    summary.ctmedmed(
+      object = x,
       digits = digits
     )
   )
@@ -129,33 +99,84 @@ summary.ctmedmed <- function(object,
                              digits = 4,
                              ...) {
   if (object$args$network) {
-    out <- round(
-      object$output[
-        ,
-        c(
-          "interval",
-          colnames(object$args$phi)
-        ),
-        drop = FALSE
-      ],
-      digits = digits
-    )
+    out <- object$output[
+      ,
+      c(
+        "interval",
+        colnames(object$args$phi)
+      ),
+      drop = FALSE
+    ]
   } else {
-    out <- round(
-      object$output[
-        ,
-        c(
-          "interval",
-          "total",
-          "direct",
-          "indirect"
-        ),
-        drop = FALSE
-      ],
-      digits = digits
+    out <- object$output[
+      ,
+      c(
+        "interval",
+        "total",
+        "direct",
+        "indirect"
+      ),
+      drop = FALSE
+    ]
+  }
+  print_summary <- round(
+    x = out,
+    digits = digits
+  )
+  attr(
+    x = out,
+    which = "fit"
+  ) <- object
+  attr(
+    x = out,
+    which = "print_summary"
+  ) <- print_summary
+  attr(
+    x = out,
+    which = "digits"
+  ) <- digits
+  class(out) <- "summary.ctmedmed"
+  out
+}
+
+#' @noRd
+#' @keywords internal
+#' @exportS3Method print summary.ctmedmed
+print.summary.ctmedmed <- function(x,
+                                   ...) {
+  print_summary <- attr(
+    x = x,
+    which = "print_summary"
+  )
+  object <- attr(
+    x = x,
+    which = "fit"
+  )
+  cat("Call:\n")
+  base::print(object$call)
+  if (object$args$network) {
+    if (object$args$total) {
+      cat(
+        paste0(
+          "\nTotal Effect Centrality\n\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n\n"
+        )
+      )
+    }
+  } else {
+    cat(
+      paste0(
+        "\nTotal, Direct, and Indirect Effects\n\n"
+      )
     )
   }
-  out
+  print(print_summary)
+  invisible(x)
 }
 
 #' Plot Method for an Object of Class `ctmedmed`

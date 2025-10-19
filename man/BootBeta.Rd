@@ -190,6 +190,12 @@ A method for continuous time mediation analysis.
 Structural Equation Modeling: A Multidisciplinary Journal, 23 (1), 61–75.
 \doi{10.1080/10705511.2014.973960}
 
+Pesigan, I. J. A., Russell, M. A., & Chow, S.-M. (2025).
+Inferences and effect sizes for direct, indirect, and total effects
+in continuous-time mediation models.
+Psychological Methods.
+\doi{10.1037/met0000779}
+
 Ryan, O., & Hamaker, E. L. (2021).
 Time to intervene:
 A continuous-time approach to network analysis and centrality.

@@ -1,3 +1,9 @@
+# cTMed 1.0.8.9000
+
+## Patch
+
+* Minor edits to methods.
+
 # cTMed 1.0.8
 
 ## Patch

@@ -4,13 +4,15 @@
 \alias{summary.ctmeddelta}
 \title{Summary Method for an Object of Class \code{ctmeddelta}}
 \usage{
-\method{summary}{ctmeddelta}(object, alpha = 0.05, ...)
+\method{summary}{ctmeddelta}(object, alpha = 0.05, digits = 4, ...)
 }
 \arguments{
 \item{object}{Object of class \code{ctmeddelta}.}
 
 \item{alpha}{Numeric vector.
 Significance level \eqn{\alpha}.}
+
+\item{digits}{Integer indicating the number of decimal places to display.}
 
 \item{...}{additional arguments.}
 }

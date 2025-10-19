@@ -4,10 +4,12 @@
 \alias{summary.ctmedtraj}
 \title{Summary Method for an Object of Class \code{ctmedtraj}}
 \usage{
-\method{summary}{ctmedtraj}(object, ...)
+\method{summary}{ctmedtraj}(object, digits = 4, ...)
 }
 \arguments{
 \item{object}{an object of class \code{ctmedtraj}.}
+
+\item{digits}{Integer indicating the number of decimal places to display.}
 
 \item{...}{further arguments.}
 }

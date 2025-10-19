@@ -89,34 +89,10 @@ print.ctmedmc <- function(x,
                           alpha = 0.05,
                           digits = 4,
                           ...) {
-  if (x$args$network) {
-    if (x$args$total) {
-      cat(
-        paste0(
-          "\nTotal Effect Centrality\n\n"
-        )
-      )
-    } else {
-      cat(
-        paste0(
-          "\nIndirect Effect Centrality\n\n"
-        )
-      )
-    }
-  } else {
-    cat(
-      paste0(
-        "\nTotal, Direct, and Indirect Effects\n\n"
-      )
-    )
-  }
-  base::print(
-    lapply(
-      X = .MCCI(
-        object = x,
-        alpha = alpha
-      ),
-      FUN = round,
+  print.summary.ctmedmc(
+    summary.ctmedmc(
+      object = x,
+      alpha = alpha,
       digits = digits
     )
   )
@@ -130,6 +106,7 @@ print.ctmedmc <- function(x,
 #' @param ... additional arguments.
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
+#' @param digits Integer indicating the number of decimal places to display.
 #'
 #' @return Returns a data frame of
 #'   effects,
@@ -212,40 +189,8 @@ print.ctmedmc <- function(x,
 #' @export
 summary.ctmedmc <- function(object,
                             alpha = 0.05,
+                            digits = 4,
                             ...) {
-  if (object$args$network) {
-    if (object$args$total) {
-      if (interactive()) {
-        # nocov start
-        cat(
-          paste0(
-            "\nTotal Effect Centrality\n\n"
-          )
-        )
-        # nocov end
-      }
-    } else {
-      if (interactive()) {
-        # nocov start
-        cat(
-          paste0(
-            "\nIndirect Effect Centrality\n\n"
-          )
-        )
-        # nocov end
-      }
-    }
-  } else {
-    if (interactive()) {
-      # nocov start
-      cat(
-        paste0(
-          "\nTotal, Direct, and Indirect Effects\n\n"
-        )
-      )
-      # nocov end
-    }
-  }
   ci <- .MCCI(
     object = object,
     alpha = alpha
@@ -267,7 +212,75 @@ summary.ctmedmc <- function(object,
   varnames <- colnames(ci)
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
-  ci[, varnames]
+  ci <- ci[, varnames]
+  print_summary <- ci
+  num_cols <- sapply(
+    X = print_summary,
+    FUN = is.numeric
+  )
+  print_summary[num_cols] <- lapply(
+    X = print_summary[num_cols],
+    FUN = round,
+    digits = digits
+  )
+  attr(
+    x = ci,
+    which = "fit"
+  ) <- object
+  attr(
+    x = ci,
+    which = "print_summary"
+  ) <- print_summary
+  attr(
+    x = ci,
+    which = "alpha"
+  ) <- alpha
+  attr(
+    x = ci,
+    which = "digits"
+  ) <- digits
+  class(ci) <- "summary.ctmedmc"
+  ci
+}
+
+#' @noRd
+#' @keywords internal
+#' @exportS3Method print summary.ctmedmc
+print.summary.ctmedmc <- function(x,
+                                  ...) {
+  print_summary <- attr(
+    x = x,
+    which = "print_summary"
+  )
+  object <- attr(
+    x = x,
+    which = "fit"
+  )
+  cat("Call:\n")
+  base::print(object$call)
+  if (object$args$network) {
+    if (object$args$total) {
+      cat(
+        paste0(
+          "\nTotal Effect Centrality\n\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n\n"
+        )
+      )
+    }
+  } else {
+    cat(
+      paste0(
+        "\nTotal, Direct, and Indirect Effects\n\n"
+      )
+    )
+  }
+  print(print_summary)
+  invisible(x)
 }
 
 #' Monte Carlo Method Confidence Intervals

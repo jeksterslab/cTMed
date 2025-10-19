@@ -1,6 +1,6 @@
 Package: cTMed
 Title: Continuous-Time Mediation
-Version: 1.0.8
+Version: 1.0.8.9000
 Authors@R: c(
     person(given = "Ivan Jacob Agaloos",
            family = "Pesigan",
@@ -34,7 +34,7 @@ Suggests: knitr, rmarkdown, testthat, expm, dynr, bootStateSpace
 SystemRequirements: GNU GSL (>= 2.5)
 RoxygenNote: 7.3.3.9000
 NeedsCompilation: yes
-Packaged: 2025-10-13 02:42:50 UTC; root
+Packaged: 2025-10-19 16:09:29 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0003-4818-8420>),
   Michael A. Russell [ctb] (ORCID:

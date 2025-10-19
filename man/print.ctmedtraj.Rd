@@ -4,10 +4,12 @@
 \alias{print.ctmedtraj}
 \title{Print Method for Object of Class \code{ctmedtraj}}
 \usage{
-\method{print}{ctmedtraj}(x, ...)
+\method{print}{ctmedtraj}(x, digits = 4, ...)
 }
 \arguments{
 \item{x}{an object of class \code{ctmedtraj}.}
+
+\item{digits}{Integer indicating the number of decimal places to display.}
 
 \item{...}{further arguments.}
 }
