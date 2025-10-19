@@ -4,7 +4,7 @@
 \alias{summary.ctmedboot}
 \title{Summary Method for an Object of Class \code{ctmedboot}}
 \usage{
-\method{summary}{ctmedboot}(object, alpha = 0.05, type = "pc", ...)
+\method{summary}{ctmedboot}(object, alpha = 0.05, type = "pc", digits = 4, ...)
 }
 \arguments{
 \item{object}{Object of class \code{ctmedboot}.}
@@ -16,6 +16,8 @@ Significance level \eqn{\alpha}.}
 Confidence interval type, that is,
 \code{type = "pc"} for percentile;
 \code{type = "bc"} for bias corrected.}
+
+\item{digits}{Integer indicating the number of decimal places to display.}
 
 \item{...}{additional arguments.}
 }

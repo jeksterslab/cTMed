@@ -87,42 +87,10 @@ print.ctmeddelta <- function(x,
                              alpha = 0.05,
                              digits = 4,
                              ...) {
-  if (x$args$network) {
-    if (x$args$total) {
-      cat(
-        paste0(
-          "\nTotal Effect Centrality\n\n"
-        )
-      )
-    } else {
-      cat(
-        paste0(
-          "\nIndirect Effect Centrality\n\n"
-        )
-      )
-    }
-  } else {
-    if (x$fun == "DeltaMed" || x$fun == "DeltaMedStd") {
-      cat(
-        paste0(
-          "\nTotal, Direct, and Indirect Effects\n\n"
-        )
-      )
-    } else {
-      cat(
-        paste0(
-          "\nElements of the matrix of lagged coefficients\n\n"
-        )
-      )
-    }
-  }
-  base::print(
-    lapply(
-      X = .DeltaCI(
-        object = x,
-        alpha = alpha
-      ),
-      FUN = round,
+  print.summary.ctmeddelta(
+    summary.ctmeddelta(
+      object = x,
+      alpha = alpha,
       digits = digits
     )
   )
@@ -146,6 +114,7 @@ print.ctmeddelta <- function(x,
 #' @param ... additional arguments.
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
+#' @param digits Integer indicating the number of decimal places to display.
 #'
 #' @examples
 #' phi <- matrix(
@@ -216,48 +185,8 @@ print.ctmeddelta <- function(x,
 #' @export
 summary.ctmeddelta <- function(object,
                                alpha = 0.05,
+                               digits = 4,
                                ...) {
-  if (object$args$network) {
-    if (object$args$total) {
-      if (interactive()) {
-        # nocov start
-        cat(
-          paste0(
-            "\nTotal Effect Centrality\n\n"
-          )
-        )
-        # nocov end
-      }
-    } else {
-      if (interactive()) {
-        # nocov start
-        cat(
-          paste0(
-            "\nIndirect Effect Centrality\n\n"
-          )
-        )
-        # nocov end
-      }
-    }
-  } else {
-    if (interactive()) {
-      # nocov start
-      if (object$fun == "DeltaMed" || object$fun == "DeltaMedStd") {
-        cat(
-          paste0(
-            "\nTotal, Direct, and Indirect Effects\n\n"
-          )
-        )
-      } else {
-        cat(
-          paste0(
-            "\nElements of the matrix of lagged coefficients\n\n"
-          )
-        )
-      }
-      # nocov end
-    }
-  }
   ci <- .DeltaCI(
     object = object,
     alpha = alpha
@@ -279,7 +208,83 @@ summary.ctmeddelta <- function(object,
   varnames <- colnames(ci)
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
-  ci[, varnames]
+  ci <- ci[, varnames]
+  print_summary <- ci
+  num_cols <- sapply(
+    X = print_summary,
+    FUN = is.numeric
+  )
+  print_summary[num_cols] <- lapply(
+    X = print_summary[num_cols],
+    FUN = round,
+    digits = digits
+  )
+  attr(
+    x = ci,
+    which = "fit"
+  ) <- object
+  attr(
+    x = ci,
+    which = "print_summary"
+  ) <- print_summary
+  attr(
+    x = ci,
+    which = "alpha"
+  ) <- alpha
+  attr(
+    x = ci,
+    which = "digits"
+  ) <- digits
+  class(ci) <- "summary.ctmeddelta"
+  ci
+}
+
+#' @noRd
+#' @keywords internal
+#' @exportS3Method print summary.ctmeddelta
+print.summary.ctmeddelta <- function(x,
+                                     ...) {
+  print_summary <- attr(
+    x = x,
+    which = "print_summary"
+  )
+  object <- attr(
+    x = x,
+    which = "fit"
+  )
+  cat("Call:\n")
+  base::print(object$call)
+  if (object$args$network) {
+    if (object$args$total) {
+      cat(
+        paste0(
+          "\nTotal Effect Centrality\n\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n\n"
+        )
+      )
+    }
+  } else {
+    if (object$fun == "DeltaMed" || object$fun == "DeltaMedStd") {
+      cat(
+        paste0(
+          "\nTotal, Direct, and Indirect Effects\n\n"
+        )
+      )
+    } else {
+      cat(
+        paste0(
+          "\nElements of the matrix of lagged coefficients\n\n"
+        )
+      )
+    }
+  }
+  print(print_summary)
+  invisible(x)
 }
 
 #' Delta Method Confidence Intervals

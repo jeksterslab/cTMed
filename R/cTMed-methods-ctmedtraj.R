@@ -3,6 +3,7 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param x an object of class `ctmedtraj`.
 #' @param ... further arguments.
+#' @param digits Integer indicating the number of decimal places to display.
 #'
 #' @return Prints a data frame of simulated data.
 #'
@@ -29,26 +30,14 @@
 #' @keywords methods
 #' @export
 print.ctmedtraj <- function(x,
+                            digits = 4,
                             ...) {
-  x <- x$output
-  total <- simStateSpace:::as.data.frame.simstatespace(
-    x$total
+  print.summary.ctmedtraj(
+    summary.ctmedtraj(
+      object = x,
+      digits = digits
+    )
   )
-  total$effect <- "total"
-  direct <- simStateSpace:::as.data.frame.simstatespace(
-    x$direct
-  )
-  direct$effect <- "direct"
-  indirect <- simStateSpace:::as.data.frame.simstatespace(
-    x$indirect
-  )
-  indirect$effect <- "indirect"
-  out <- rbind(
-    total,
-    direct,
-    indirect
-  )
-  out[, -c(1)]
 }
 
 #' Summary Method for an Object of Class `ctmedtraj`
@@ -58,6 +47,7 @@ print.ctmedtraj <- function(x,
 #' @author Ivan Jacob Agaloos Pesigan
 #' @param object an object of class `ctmedtraj`.
 #' @param ... further arguments.
+#' @param digits Integer indicating the number of decimal places to display.
 #'
 #' @return Returns a data frame of simulated data.
 #'
@@ -84,6 +74,7 @@ print.ctmedtraj <- function(x,
 #' @keywords methods
 #' @export
 summary.ctmedtraj <- function(object,
+                              digits = 4,
                               ...) {
   x <- object$output
   total <- simStateSpace:::as.data.frame.simstatespace(
@@ -103,7 +94,50 @@ summary.ctmedtraj <- function(object,
     direct,
     indirect
   )
-  out[, -c(1)]
+  out <- out[, -c(1)]
+  print_summary <- out
+  num_cols <- sapply(
+    X = print_summary,
+    FUN = is.numeric
+  )
+  print_summary[num_cols] <- lapply(
+    X = print_summary[num_cols],
+    FUN = round,
+    digits = digits
+  )
+  attr(
+    x = out,
+    which = "fit"
+  ) <- object
+  attr(
+    x = out,
+    which = "print_summary"
+  ) <- print_summary
+  attr(
+    x = out,
+    which = "digits"
+  ) <- digits
+  class(out) <- "summary.ctmedtraj"
+  out
+}
+
+#' @noRd
+#' @keywords internal
+#' @exportS3Method print summary.ctmedtraj
+print.summary.ctmedtraj <- function(x,
+                                    ...) {
+  print_summary <- attr(
+    x = x,
+    which = "print_summary"
+  )
+  object <- attr(
+    x = x,
+    which = "fit"
+  )
+  cat("Call:\n")
+  base::print(object$call)
+  print(print_summary)
+  invisible(x)
 }
 
 #' Plot Method for an Object of Class `ctmedtraj`

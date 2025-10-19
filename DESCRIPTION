@@ -1,6 +1,6 @@
 Package: cTMed
 Title: Continuous-Time Mediation
-Version: 1.0.8
+Version: 1.0.8.9000
 Authors@R: c(
     person(given = "Ivan Jacob Agaloos",
            family = "Pesigan",
