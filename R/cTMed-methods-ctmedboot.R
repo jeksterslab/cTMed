@@ -311,8 +311,14 @@ summary.ctmedboot <- function(object,
   p <- dim(ci)[2]
   varnames <- varnames[c(p, 1:(p - 1))]
   ci <- ci[, varnames]
-  print_summary <- round(
-    x = ci,
+  print_summary <- ci
+  num_cols <- sapply(
+    X = print_summary,
+    FUN = is.numeric
+  )
+  print_summary[num_cols] <- lapply(
+    X = print_summary[num_cols],
+    FUN = round,
     digits = digits
   )
   attr(
