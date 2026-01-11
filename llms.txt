@@ -1,0 +1,387 @@
+# cTMed
+
+Ivan Jacob Agaloos Pesigan 2026-01-11
+
+## Description
+
+Computes effect sizes, standard errors, and confidence intervals for
+total, direct, and indirect effects in continuous-time mediation models
+as described in Pesigan, Russell, and Chow (2025:
+<https://doi.org/10.1037/met0000779>).
+
+## Author-Accepted Manuscript
+
+See
+<https://github.com/jeksterslab/manCTMed/blob/main/.setup/latex/manCTMed-manuscript.Rtex>
+for the latex file of the manuscript. See
+<https://github.com/jeksterslab/manCTMed/blob/latex/manCTMed-manuscript.pdf>
+for the compiled PDF.
+
+## Installation
+
+You can install the development version of `cTMed` from
+[GitHub](https://github.com/jeksterslab/cTMed) with:
+
+``` r
+
+if (!require("remotes")) install.packages("remotes")
+remotes::install_github("jeksterslab/cTMed")
+```
+
+## Documentation
+
+See [GitHub Pages](https://jeksterslab.github.io/cTMed/index.html) for
+package documentation.
+
+## Citation
+
+To cite `cTMed` in publications, please cite Pesigan et al. (2025).
+
+## References
+
+Pesigan, I. J. A., Russell, M. A., & Chow, S.-M. (2025). Inferences and
+effect sizes for direct, indirect, and total effects in continuous-time
+mediation models. *Psychological Methods*.
+<https://doi.org/10.1037/met0000779>
+
+R Core Team. (2025). *R: A language and environment for statistical
+computing*. R Foundation for Statistical Computing.
+<https://www.R-project.org/>
+
+# Package index
+
+## Monte Carlo Method
+
+- [`MCBeta()`](https://github.com/jeksterslab/cTMed/reference/MCBeta.md)
+  : Monte Carlo Sampling Distribution for the Elements of the Matrix of
+  Lagged Coefficients Over a Specific Time Interval or a Range of Time
+  Intervals
+- [`MCBetaStd()`](https://github.com/jeksterslab/cTMed/reference/MCBetaStd.md)
+  : Monte Carlo Sampling Distribution for the Elements of the
+  Standardized Matrix of Lagged Coefficients Over a Specific Time
+  Interval or a Range of Time Intervals
+- [`MCIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.md)
+  : Monte Carlo Sampling Distribution of Indirect Effect Centrality Over
+  a Specific Time Interval or a Range of Time Intervals
+- [`MCMed()`](https://github.com/jeksterslab/cTMed/reference/MCMed.md) :
+  Monte Carlo Sampling Distribution of Total, Direct, and Indirect
+  Effects of X on Y Through M Over a Specific Time Interval or a Range
+  of Time Intervals
+- [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md)
+  : Monte Carlo Sampling Distribution of Standardized Total, Direct, and
+  Indirect Effects of X on Y Through M Over a Specific Time Interval or
+  a Range of Time Intervals
+- [`MCPhi()`](https://github.com/jeksterslab/cTMed/reference/MCPhi.md) :
+  Generate Random Drift Matrices Using the Monte Carlo Method
+- [`MCPhiSigma()`](https://github.com/jeksterslab/cTMed/reference/MCPhiSigma.md)
+  : Generate Random Drift Matrices and Process Noise Covariance Matrices
+  Using the Monte Carlo Method
+- [`MCTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentral.md)
+  : Monte Carlo Sampling Distribution of Total Effect Centrality Over a
+  Specific Time Interval or a Range of Time Intervals
+
+## Delta Method
+
+- [`DeltaBeta()`](https://github.com/jeksterslab/cTMed/reference/DeltaBeta.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the Elements of
+  the Matrix of Lagged Coefficients Over a Specific Time Interval or a
+  Range of Time Intervals
+- [`DeltaBetaStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaBetaStd.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the Elements of
+  the Standardized Matrix of Lagged Coefficients Over a Specific Time
+  Interval or a Range of Time Intervals
+- [`DeltaIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the Indirect
+  Effect Centrality Over a Specific Time Interval or a Range of Time
+  Intervals
+- [`DeltaMed()`](https://github.com/jeksterslab/cTMed/reference/DeltaMed.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the Total,
+  Direct, and Indirect Effects of X on Y Through M Over a Specific Time
+  Interval or a Range of Time Intervals
+- [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the
+  Standardized Total, Direct, and Indirect Effects of X on Y Through M
+  Over a Specific Time Interval or a Range of Time Intervals
+- [`DeltaTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the Total
+  Effect Centrality Over a Specific Time Interval or a Range of Time
+  Intervals
+
+## Posterior
+
+- [`PosteriorBeta()`](https://github.com/jeksterslab/cTMed/reference/PosteriorBeta.md)
+  : Posterior Sampling Distribution for the Elements of the Matrix of
+  Lagged Coefficients Over a Specific Time Interval or a Range of Time
+  Intervals
+- [`PosteriorIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.md)
+  : Posterior Distribution of the Indirect Effect Centrality Over a
+  Specific Time Interval or a Range of Time Intervals
+- [`PosteriorMed()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMed.md)
+  : Posterior Distribution of Total, Direct, and Indirect Effects of X
+  on Y Through M Over a Specific Time Interval or a Range of Time
+  Intervals
+- [`PosteriorTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.md)
+  : Posterior Distribution of the Total Effect Centrality Over a
+  Specific Time Interval or a Range of Time Intervals
+
+## Bootstrap
+
+- [`BootBeta()`](https://github.com/jeksterslab/cTMed/reference/BootBeta.md)
+  : Bootstrap Sampling Distribution for the Elements of the Matrix of
+  Lagged Coefficients Over a Specific Time Interval or a Range of Time
+  Intervals
+- [`BootBetaStd()`](https://github.com/jeksterslab/cTMed/reference/BootBetaStd.md)
+  : Bootstrap Sampling Distribution for the Elements of the Standardized
+  Matrix of Lagged Coefficients Over a Specific Time Interval or a Range
+  of Time Intervals
+- [`BootIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentral.md)
+  : Bootstrap Sampling Distribution for the Indirect Effect Centrality
+  Over a Specific Time Interval or a Range of Time Intervals
+- [`BootMed()`](https://github.com/jeksterslab/cTMed/reference/BootMed.md)
+  : Bootstrap Sampling Distribution of Total, Direct, and Indirect
+  Effects of X on Y Through M Over a Specific Time Interval or a Range
+  of Time Intervals
+- [`BootMedStd()`](https://github.com/jeksterslab/cTMed/reference/BootMedStd.md)
+  : Bootstrap Sampling Distribution of Standardized Total, Direct, and
+  Indirect Effects of X on Y Through M Over a Specific Time Interval or
+  a Range of Time Intervals
+- [`BootTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentral.md)
+  : Bootstrap Sampling Distribution for the Total Effect Centrality Over
+  a Specific Time Interval or a Range of Time Intervals
+
+## Mediation
+
+- [`BootBeta()`](https://github.com/jeksterslab/cTMed/reference/BootBeta.md)
+  : Bootstrap Sampling Distribution for the Elements of the Matrix of
+  Lagged Coefficients Over a Specific Time Interval or a Range of Time
+  Intervals
+- [`BootBetaStd()`](https://github.com/jeksterslab/cTMed/reference/BootBetaStd.md)
+  : Bootstrap Sampling Distribution for the Elements of the Standardized
+  Matrix of Lagged Coefficients Over a Specific Time Interval or a Range
+  of Time Intervals
+- [`BootMed()`](https://github.com/jeksterslab/cTMed/reference/BootMed.md)
+  : Bootstrap Sampling Distribution of Total, Direct, and Indirect
+  Effects of X on Y Through M Over a Specific Time Interval or a Range
+  of Time Intervals
+- [`BootMedStd()`](https://github.com/jeksterslab/cTMed/reference/BootMedStd.md)
+  : Bootstrap Sampling Distribution of Standardized Total, Direct, and
+  Indirect Effects of X on Y Through M Over a Specific Time Interval or
+  a Range of Time Intervals
+- [`DeltaMed()`](https://github.com/jeksterslab/cTMed/reference/DeltaMed.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the Total,
+  Direct, and Indirect Effects of X on Y Through M Over a Specific Time
+  Interval or a Range of Time Intervals
+- [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the
+  Standardized Total, Direct, and Indirect Effects of X on Y Through M
+  Over a Specific Time Interval or a Range of Time Intervals
+- [`MCMed()`](https://github.com/jeksterslab/cTMed/reference/MCMed.md) :
+  Monte Carlo Sampling Distribution of Total, Direct, and Indirect
+  Effects of X on Y Through M Over a Specific Time Interval or a Range
+  of Time Intervals
+- [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md)
+  : Monte Carlo Sampling Distribution of Standardized Total, Direct, and
+  Indirect Effects of X on Y Through M Over a Specific Time Interval or
+  a Range of Time Intervals
+- [`Med()`](https://github.com/jeksterslab/cTMed/reference/Med.md) :
+  Total, Direct, and Indirect Effects of X on Y Through M Over a
+  Specific Time Interval or a Range of Time Intervals
+- [`MedStd()`](https://github.com/jeksterslab/cTMed/reference/MedStd.md)
+  : Standardized Total, Direct, and Indirect Effects of X on Y Through M
+  Over a Specific Time Interval or a Range of Time Intervals
+- [`PosteriorMed()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMed.md)
+  : Posterior Distribution of Total, Direct, and Indirect Effects of X
+  on Y Through M Over a Specific Time Interval or a Range of Time
+  Intervals
+- [`Trajectory()`](https://github.com/jeksterslab/cTMed/reference/Trajectory.md)
+  : Simulate Trajectories of Variables
+
+## Network Centrality
+
+- [`BootIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentral.md)
+  : Bootstrap Sampling Distribution for the Indirect Effect Centrality
+  Over a Specific Time Interval or a Range of Time Intervals
+- [`BootTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentral.md)
+  : Bootstrap Sampling Distribution for the Total Effect Centrality Over
+  a Specific Time Interval or a Range of Time Intervals
+- [`DeltaIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the Indirect
+  Effect Centrality Over a Specific Time Interval or a Range of Time
+  Intervals
+- [`DeltaTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the Total
+  Effect Centrality Over a Specific Time Interval or a Range of Time
+  Intervals
+- [`IndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentral.md)
+  : Indirect Effect Centrality
+- [`MCIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.md)
+  : Monte Carlo Sampling Distribution of Indirect Effect Centrality Over
+  a Specific Time Interval or a Range of Time Intervals
+- [`MCTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentral.md)
+  : Monte Carlo Sampling Distribution of Total Effect Centrality Over a
+  Specific Time Interval or a Range of Time Intervals
+- [`PosteriorIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.md)
+  : Posterior Distribution of the Indirect Effect Centrality Over a
+  Specific Time Interval or a Range of Time Intervals
+- [`PosteriorTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.md)
+  : Posterior Distribution of the Total Effect Centrality Over a
+  Specific Time Interval or a Range of Time Intervals
+- [`TotalCentral()`](https://github.com/jeksterslab/cTMed/reference/TotalCentral.md)
+  : Total Effect Centrality
+
+## Effects
+
+- [`Direct()`](https://github.com/jeksterslab/cTMed/reference/Direct.md)
+  : Direct Effect of X on Y Over a Specific Time Interval
+- [`DirectStd()`](https://github.com/jeksterslab/cTMed/reference/DirectStd.md)
+  : Standardized Direct Effect of X on Y Over a Specific Time Interval
+- [`Indirect()`](https://github.com/jeksterslab/cTMed/reference/Indirect.md)
+  : Indirect Effect of X on Y Through M Over a Specific Time Interval
+- [`IndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentral.md)
+  : Indirect Effect Centrality
+- [`IndirectStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectStd.md)
+  : Standardized Indirect Effect of X on Y Through M Over a Specific
+  Time Interval
+- [`Med()`](https://github.com/jeksterslab/cTMed/reference/Med.md) :
+  Total, Direct, and Indirect Effects of X on Y Through M Over a
+  Specific Time Interval or a Range of Time Intervals
+- [`MedStd()`](https://github.com/jeksterslab/cTMed/reference/MedStd.md)
+  : Standardized Total, Direct, and Indirect Effects of X on Y Through M
+  Over a Specific Time Interval or a Range of Time Intervals
+- [`Total()`](https://github.com/jeksterslab/cTMed/reference/Total.md) :
+  Total Effect Matrix Over a Specific Time Interval
+- [`TotalCentral()`](https://github.com/jeksterslab/cTMed/reference/TotalCentral.md)
+  : Total Effect Centrality
+- [`TotalStd()`](https://github.com/jeksterslab/cTMed/reference/TotalStd.md)
+  : Standardized Total Effect Matrix Over a Specific Time Interval
+- [`Trajectory()`](https://github.com/jeksterslab/cTMed/reference/Trajectory.md)
+  : Simulate Trajectories of Variables
+
+## Methods
+
+- [`confint(`*`<ctmedboot>`*`)`](https://github.com/jeksterslab/cTMed/reference/confint.ctmedboot.md)
+  : Bootstrap Method Confidence Intervals
+
+- [`confint(`*`<ctmeddelta>`*`)`](https://github.com/jeksterslab/cTMed/reference/confint.ctmeddelta.md)
+  : Delta Method Confidence Intervals
+
+- [`confint(`*`<ctmedmc>`*`)`](https://github.com/jeksterslab/cTMed/reference/confint.ctmedmc.md)
+  : Monte Carlo Method Confidence Intervals
+
+- [`plot(`*`<ctmedboot>`*`)`](https://github.com/jeksterslab/cTMed/reference/plot.ctmedboot.md)
+  :
+
+  Plot Method for an Object of Class `ctmedboot`
+
+- [`plot(`*`<ctmeddelta>`*`)`](https://github.com/jeksterslab/cTMed/reference/plot.ctmeddelta.md)
+  :
+
+  Plot Method for an Object of Class `ctmeddelta`
+
+- [`plot(`*`<ctmedmc>`*`)`](https://github.com/jeksterslab/cTMed/reference/plot.ctmedmc.md)
+  :
+
+  Plot Method for an Object of Class `ctmedmc`
+
+- [`plot(`*`<ctmedmed>`*`)`](https://github.com/jeksterslab/cTMed/reference/plot.ctmedmed.md)
+  :
+
+  Plot Method for an Object of Class `ctmedmed`
+
+- [`plot(`*`<ctmedtraj>`*`)`](https://github.com/jeksterslab/cTMed/reference/plot.ctmedtraj.md)
+  :
+
+  Plot Method for an Object of Class `ctmedtraj`
+
+- [`print(`*`<ctmedboot>`*`)`](https://github.com/jeksterslab/cTMed/reference/print.ctmedboot.md)
+  :
+
+  Print Method for Object of Class `ctmedboot`
+
+- [`print(`*`<ctmeddelta>`*`)`](https://github.com/jeksterslab/cTMed/reference/print.ctmeddelta.md)
+  :
+
+  Print Method for Object of Class `ctmeddelta`
+
+- [`print(`*`<ctmedeffect>`*`)`](https://github.com/jeksterslab/cTMed/reference/print.ctmedeffect.md)
+  :
+
+  Print Method for Object of Class `ctmedeffect`
+
+- [`print(`*`<ctmedmc>`*`)`](https://github.com/jeksterslab/cTMed/reference/print.ctmedmc.md)
+  :
+
+  Print Method for Object of Class `ctmedmc`
+
+- [`print(`*`<ctmedmcphi>`*`)`](https://github.com/jeksterslab/cTMed/reference/print.ctmedmcphi.md)
+  :
+
+  Print Method for Object of Class `ctmedmcphi`
+
+- [`print(`*`<ctmedmed>`*`)`](https://github.com/jeksterslab/cTMed/reference/print.ctmedmed.md)
+  :
+
+  Print Method for Object of Class `ctmedmed`
+
+- [`print(`*`<ctmedtraj>`*`)`](https://github.com/jeksterslab/cTMed/reference/print.ctmedtraj.md)
+  :
+
+  Print Method for Object of Class `ctmedtraj`
+
+- [`summary(`*`<ctmedboot>`*`)`](https://github.com/jeksterslab/cTMed/reference/summary.ctmedboot.md)
+  :
+
+  Summary Method for an Object of Class `ctmedboot`
+
+- [`summary(`*`<ctmeddelta>`*`)`](https://github.com/jeksterslab/cTMed/reference/summary.ctmeddelta.md)
+  :
+
+  Summary Method for an Object of Class `ctmeddelta`
+
+- [`summary(`*`<ctmedmc>`*`)`](https://github.com/jeksterslab/cTMed/reference/summary.ctmedmc.md)
+  :
+
+  Summary Method for an Object of Class `ctmedmc`
+
+- [`summary(`*`<ctmedmed>`*`)`](https://github.com/jeksterslab/cTMed/reference/summary.ctmedmed.md)
+  :
+
+  Summary Method for an Object of Class `ctmedmed`
+
+- [`summary(`*`<ctmedposteriorphi>`*`)`](https://github.com/jeksterslab/cTMed/reference/summary.ctmedposteriorphi.md)
+  :
+
+  Summary Method for Object of Class `ctmedposteriorphi`
+
+- [`summary(`*`<ctmedtraj>`*`)`](https://github.com/jeksterslab/cTMed/reference/summary.ctmedtraj.md)
+  :
+
+  Summary Method for an Object of Class `ctmedtraj`
+
+# Articles
+
+### Fitting Continuous-Time Vector Autoregressive Models
+
+- [Fit the Continuous-Time Vector Autoregressive Model Using the dynr
+  Package](https://github.com/jeksterslab/cTMed/articles/fit-ct-var-dynr.md):
+- [Fit the Continuous-Time Vector Autoregressive Model Using the OpenMx
+  Package](https://github.com/jeksterslab/cTMed/articles/fit-ct-var-mx.md):
+
+### Confidence Intervals for Continuous-Time Mediation Models
+
+- [Total, Direct, and Indirect Effects in Continuous-Time Mediation
+  Model](https://github.com/jeksterslab/cTMed/articles/med.md):
+- [Standardized Total, Direct, and Indirect Effects in Continuous-Time
+  Mediation
+  Model](https://github.com/jeksterslab/cTMed/articles/med-std.md):
+
+### Confidence Intervals for Continuous-Time Mediation Models (Parametric Bootstrap)
+
+- [Total, Direct, and Indirect Effects in Continuous-Time Mediation
+  Model
+  (Bootstrap)](https://github.com/jeksterslab/cTMed/articles/med-boot.md):
+
+### Session Information
+
+- [cTMed:
+  Session](https://github.com/jeksterslab/cTMed/articles/session.md):
