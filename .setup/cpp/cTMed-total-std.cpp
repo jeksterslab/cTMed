@@ -6,7 +6,8 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.TotalStd)]]
-arma::mat TotalStd(const arma::mat& phi, const arma::mat& sigma, const double& delta_t) {
+arma::mat TotalStd(const arma::mat& phi, const arma::mat& sigma,
+                   const double& delta_t) {
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat cov_eta;
   arma::sylvester(cov_eta, phi, phi.t(), sigma);
