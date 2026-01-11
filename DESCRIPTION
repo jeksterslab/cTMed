@@ -12,7 +12,7 @@ Authors@R: c(
            role = "ctb",
            email = "mar60@psu.edu",
            comment = c(ORCID = "0000-0002-3956-604X")),
-    person(given = "Sy-Miin",,
+    person(given = "Sy-Miin",
            family = "Chow",
            role = "ctb",
            email = "quc16@psu.edu",
@@ -30,11 +30,12 @@ Roxygen: list(markdown = TRUE)
 Depends: R (>= 3.5.0)
 LinkingTo: Rcpp (>= 1.0.12), RcppArmadillo (>= 15.0.2-2)
 Imports: Rcpp, numDeriv, parallel, simStateSpace
-Suggests: knitr, rmarkdown, testthat, expm, dynr, bootStateSpace
+Suggests: knitr, rmarkdown, testthat, expm, dynr, betaDelta,
+        bootStateSpace
 SystemRequirements: GNU GSL (>= 2.5)
 RoxygenNote: 7.3.3.9000
 NeedsCompilation: yes
-Packaged: 2025-10-19 16:09:29 UTC; root
+Packaged: 2026-01-11 02:49:40 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0003-4818-8420>),
   Michael A. Russell [ctb] (ORCID:
