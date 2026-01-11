@@ -8,7 +8,7 @@ nocite: |
   @RCoreTeam-2024
   @Neale-Hunter-Pritikin-etal-2015
   @Hunter-2017
-  @Pesigan-Russell-Chow-2025a
+  @Pesigan-Russell-Chow-2025o
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Fit the Continuous-Time Vector Autoregressive Model Using the OpenMx Package}

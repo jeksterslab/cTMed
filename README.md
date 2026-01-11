@@ -1,7 +1,7 @@
 cTMed
 ================
 Ivan Jacob Agaloos Pesigan
-2025-10-19
+2026-01-11
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -68,7 +68,7 @@ To cite `cTMed` in publications, please cite Pesigan et al. (2025).
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0" line-spacing="2">
 
-<div id="ref-Pesigan-Russell-Chow-2025a" class="csl-entry">
+<div id="ref-Pesigan-Russell-Chow-2025o" class="csl-entry">
 
 Pesigan, I. J. A., Russell, M. A., & Chow, S.-M. (2025). Inferences and
 effect sizes for direct, indirect, and total effects in continuous-time

@@ -7,7 +7,7 @@ bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
   @RCoreTeam-2025
-  @Pesigan-Russell-Chow-2025a
+  @Pesigan-Russell-Chow-2025o
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -62,6 +62,6 @@ for package documentation.
 
 ## Citation
 
-To cite `cTMed` in publications, please cite @Pesigan-Russell-Chow-2025a.
+To cite `cTMed` in publications, please cite @Pesigan-Russell-Chow-2025o.
 
 ## References

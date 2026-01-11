@@ -75,7 +75,7 @@
 
 \section*{Description}
 
-Implements the methods introduced in \Textcite{Pesigan-Russell-Chow-2025a} to compute standard errors, confidence intervals, and effect sizes for total, direct, and indirect effects in continuous-time mediation models.
+Implements the methods introduced in \Textcite{Pesigan-Russell-Chow-2025o} to compute standard errors, confidence intervals, and effect sizes for total, direct, and indirect effects in continuous-time mediation models.
     
 \section*{Installation}
 
@@ -95,6 +95,10 @@ See
 \href{https://jeksterslab.github.io/cTMed/index.html}{GitHub Pages}
 for package documentation.
 
+\section*{Citation}
+
+To cite \texttt{cTMed} in publications, please cite \Textcite{Pesigan-Russell-Chow-2025o}.
+
 \nocite{RCoreTeam-2025}
 
 \nocite{Bollen-1987}
@@ -105,7 +109,7 @@ for package documentation.
 
 \nocite{Wang-Zhang-2020}
 
-\nocite{Pesigan-Russell-Chow-2025a}
+\nocite{Pesigan-Russell-Chow-2025o}
 
 \printbibliography
 
