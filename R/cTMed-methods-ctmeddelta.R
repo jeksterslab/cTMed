@@ -373,8 +373,8 @@ confint.ctmeddelta <- function(object,
                                level = 0.95,
                                ...) {
   if (is.null(parm)) {
-    parm <- seq_len(
-      length(object$output[[1]]$est)
+    parm <- seq_along(
+      object$output[[1]]$est
     )
   }
   ci <- .DeltaCI(

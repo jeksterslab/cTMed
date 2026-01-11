@@ -23,6 +23,7 @@ jobs:
             "./.git/*"
             "./inst/GPL3/LICENSE.md"
             "./README.md"
+            "./LICENSE.md"
           )
           OR_EXCLUDES=()
           for pat in "${EXCLUDES[@]}"; do

@@ -6,8 +6,7 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends(RcppArmadillo)]]
 // [[Rcpp::export(.IndirectCentral)]]
-Rcpp::NumericVector IndirectCentral(const arma::mat& phi,
-                                    const double& delta_t) {
+Rcpp::NumericVector IndirectCentral(const arma::mat& phi, const double& delta_t) {
   arma::uword p = phi.n_rows;
   arma::mat total = arma::expmat(delta_t * phi);
   arma::mat direct(p, p, arma::fill::none);

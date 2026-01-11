@@ -97,7 +97,7 @@
   graphics::legend(
     x = legend_pos,
     legend = varnames,
-    lty = seq_len(length(varnames)),
+    lty = seq_along(varnames),
     col = col,
     cex = 0.8,
     lwd = 2

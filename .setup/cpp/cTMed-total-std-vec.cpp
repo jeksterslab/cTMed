@@ -17,7 +17,7 @@ arma::vec TotalStdVec(const arma::vec& v, const double& delta_t) {
     for (arma::uword i = j; i < p; ++i) {
       sigma(i, j) = sigma_vech[index];
       if (i != j) {
-        sigma(j, i) = sigma_vech[index];
+          sigma(j, i) = sigma_vech[index];
       }
       index++;
     }

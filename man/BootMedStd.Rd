@@ -234,7 +234,7 @@ Sociological Methodology, 17, 37.
 Deboeck, P. R., & Preacher, K. J. (2015).
 No need to be discrete:
 A method for continuous time mediation analysis.
-Structural Equation Modeling: A Multidisciplinary Journal, 23 (1), 61–75.
+Structural Equation Modeling: A Multidisciplinary Journal, 23 (1), 61-75.
 \doi{10.1080/10705511.2014.973960}
 
 Pesigan, I. J. A., Russell, M. A., & Chow, S.-M. (2025).
@@ -246,7 +246,7 @@ Psychological Methods.
 Ryan, O., & Hamaker, E. L. (2021).
 Time to intervene:
 A continuous-time approach to network analysis and centrality.
-Psychometrika, 87 (1), 214–252.
+Psychometrika, 87 (1), 214-252.
 \doi{10.1007/s11336-021-09767-0}
 }
 \seealso{

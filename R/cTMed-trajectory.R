@@ -67,7 +67,7 @@ Trajectory <- function(mu0,
     idx == colnames(phi),
     length(mu0) == p
   )
-  for (i in seq_len(length(med))) {
+  for (i in seq_along(med)) {
     stopifnot(
       med[i] %in% idx
     )

@@ -27,12 +27,13 @@ License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-Depends: R (>= 3.5.0)
+Depends:
+    R (>= 4.1.0)
 LinkingTo: 
     Rcpp (>= 1.0.12),
     RcppArmadillo (>= 15.0.2-2)
 Imports: 
-    Rcpp,
+    Rcpp (>= 1.0.12),
     numDeriv,
     parallel,
     simStateSpace
@@ -45,4 +46,3 @@ Suggests:
     betaDelta,
     bootStateSpace
 SystemRequirements: GNU GSL (>= 2.5)
-RoxygenNote: 7.3.3.9000
