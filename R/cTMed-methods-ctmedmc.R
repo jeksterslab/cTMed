@@ -372,8 +372,8 @@ confint.ctmedmc <- function(object,
                             level = 0.95,
                             ...) {
   if (is.null(parm)) {
-    parm <- seq_len(
-      length(object$output[[1]]$est[1:3])
+    parm <- seq_along(
+      object$output[[1]]$est[1:3]
     )
   }
   ci <- .MCCI(

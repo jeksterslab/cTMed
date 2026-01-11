@@ -188,7 +188,7 @@ MCMed <- function(phi,
     from %in% idx,
     to %in% idx
   )
-  for (i in seq_len(length(med))) {
+  for (i in seq_along(med)) {
     stopifnot(
       med[i] %in% idx
     )

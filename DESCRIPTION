@@ -27,15 +27,15 @@ BugReports: https://github.com/jeksterslab/cTMed/issues
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Depends: R (>= 3.5.0)
+Depends: R (>= 4.1.0)
 LinkingTo: Rcpp (>= 1.0.12), RcppArmadillo (>= 15.0.2-2)
-Imports: Rcpp, numDeriv, parallel, simStateSpace
+Imports: Rcpp (>= 1.0.12), numDeriv, parallel, simStateSpace
 Suggests: knitr, rmarkdown, testthat, expm, dynr, betaDelta,
         bootStateSpace
 SystemRequirements: GNU GSL (>= 2.5)
 RoxygenNote: 7.3.3.9000
 NeedsCompilation: yes
-Packaged: 2026-01-11 02:49:40 UTC; root
+Packaged: 2026-01-11 03:20:26 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0003-4818-8420>),
   Michael A. Russell [ctb] (ORCID:
