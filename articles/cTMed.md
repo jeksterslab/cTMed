@@ -1,9 +1,13 @@
 # cTMed: Continuous-Time Mediation
 
 [![DOI](https://zenodo.org/badge/DOI/10.1037/met0000779.svg)](https://doi.org/10.1037/met0000779)
+[![CRAN
+Status](https://www.r-pkg.org/badges/version/cTMed)](https://cran.r-project.org/package=cTMed)
+[![R-Universe
+Status](https://jeksterslab.r-universe.dev/badges/cTMed)](https://jeksterslab.r-universe.dev)
 [![Make
 Project](https://github.com/jeksterslab/cTMed/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/make.yml)
-[![R-CMD-check](https://github.com/jeksterslab/cTMed/actions/workflows/check-full.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/check-full.yml)
+[![R-CMD-check-standard](https://github.com/jeksterslab/cTMed/actions/workflows/check-standard.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/check-standard.yml)
 [![R Package Test
 Coverage](https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml)
 [![Lint R
