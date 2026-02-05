@@ -316,10 +316,6 @@ boot <- BootMedStd(
   med = "m",
   ncores = parallel::detectCores() # use multiple cores
 )
-#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
-#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
-#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
-#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
 ```
 
 ``` r

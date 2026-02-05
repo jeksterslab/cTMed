@@ -506,8 +506,8 @@ fit <- mxTryHardctsem(
     #> AIC:      -170580.5               429419.5                 429419.5
     #> BIC:     -3024201.3               429676.3                 429590.5
     #> To get additional fit indices, see help(mxRefModels)
-    #> timestamp: 2026-01-09 02:12:13 
-    #> Wall clock time: 1743.959 secs 
+    #> timestamp: 2026-02-04 03:28:05 
+    #> Wall clock time: 1748.603 secs 
     #> optimizer:  SLSQP 
     #> OpenMx version number: 2.22.10 
     #> Need help?  See help(mxSummary)
