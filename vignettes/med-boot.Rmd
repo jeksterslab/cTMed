@@ -1,7 +1,7 @@
 ---
 title: "Total, Direct, and Indirect Effects in Continuous-Time Mediation Model (Bootstrap)"
 author: Ivan Jacob Agaloos Pesigan
-date: "2026-01-09"
+date: "2026-02-04"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
@@ -336,10 +336,6 @@ boot <- BootMedStd(
   med = "m",
   ncores = parallel::detectCores() # use multiple cores
 )
-#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
-#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
-#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
-#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
 ```
 
 

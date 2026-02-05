@@ -8,7 +8,7 @@ message: 'To cite package "cTMed" in publications use:'
 type: software
 license: GPL-3.0-or-later
 title: 'cTMed: Continuous-Time Mediation'
-version: 1.0.8.9000
+version: 1.0.9
 doi: 10.1037/met0000779
 identifiers:
 - type: doi
@@ -41,7 +41,7 @@ preferred-citation:
   year: '2025'
   doi: 10.1037/met0000779
   journal: Psychological Methods
-  notes: R package version 1.0.8.9000
+  notes: R package version 1.0.9
 repository: https://CRAN.R-project.org/package=cTMed
 repository-code: https://github.com/jeksterslab/cTMed
 url: https://jeksterslab.github.io/cTMed/
