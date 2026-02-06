@@ -2,6 +2,8 @@
 
 ## cTMed 1.0.9
 
+CRAN release: 2026-02-05
+
 ### Patch
 
 - Minor edits to methods.
