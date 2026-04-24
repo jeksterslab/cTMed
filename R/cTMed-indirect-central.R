@@ -69,7 +69,7 @@ IndirectCentral <- function(phi,
     phi = phi,
     delta_t = delta_t,
     network = TRUE,
-    total = FALSE
+    centrality = "indirect"
   )
   if (length(delta_t) > 1) {
     output <- .IndirectCentrals(

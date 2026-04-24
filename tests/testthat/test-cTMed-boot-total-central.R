@@ -122,12 +122,6 @@ lapply(
           ),
           nrow = 9
         )
-        delta_t <- 2
-        answer <- c(
-          0.7297791,
-          0.4398068,
-          0.0000000
-        )
         R <- 1000
         mc <- MCPhi(
           phi = phi,

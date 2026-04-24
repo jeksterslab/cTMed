@@ -158,7 +158,7 @@ BootIndirectCentral <- function(phi,
   stopifnot(
     idx == colnames(phi_hat)
   )
-  total <- FALSE
+  centrality <- "indirect"
   args <- list(
     phi = phi,
     phi_hat = phi_hat,
@@ -166,7 +166,7 @@ BootIndirectCentral <- function(phi,
     ncores = ncores,
     method = "boot",
     network = TRUE,
-    total = total
+    centrality = centrality
   )
   delta_t <- sort(
     ifelse(
@@ -179,7 +179,7 @@ BootIndirectCentral <- function(phi,
     phi = phi,
     phi_hat = phi_hat,
     delta_t = delta_t,
-    total = total,
+    centrality = centrality,
     ncores = ncores
   )
   names(output) <- delta_t

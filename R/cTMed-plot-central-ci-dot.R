@@ -191,9 +191,13 @@
   if (is.null(col)) {
     col <- grDevices::rainbow(length(effect))
   }
-  if (object$args$total) {
+  if (object$args$centrality == "total") {
     centrality <- " Total Effect Centrality of "
-  } else {
+  }
+  if (object$args$centrality == "direct") {
+    centrality <- " Direct Effect Centrality of "
+  }
+  if (object$args$centrality == "indirect") {
     centrality <- " Indirect Effect Centrality of "
   }
   foo <- function(effect,

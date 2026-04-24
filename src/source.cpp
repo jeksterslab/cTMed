@@ -10,6 +10,90 @@ bool TestPhi(const arma::mat& phi);
 
 bool TestStable(const arma::mat& x);
 // -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-direct-central-s.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.DirectCentrals)]]
+arma::mat DirectCentrals(const arma::mat& phi, const arma::vec& delta_t) {
+  arma::mat output(phi.n_rows, delta_t.n_elem, arma::fill::zeros);
+  arma::mat direct(phi.n_rows, phi.n_cols, arma::fill::none);
+  arma::mat d = arma::eye(phi.n_rows, phi.n_cols);
+  for (arma::uword t = 0; t < delta_t.n_elem; t++) {
+    for (arma::uword m = 0; m < phi.n_rows; m++) {
+      d = arma::eye(phi.n_rows, phi.n_cols);
+      d(m, m) = 0;
+      direct = arma::expmat(delta_t[t] * d * phi * d);
+      for (arma::uword j = 0; j < phi.n_rows; j++) {
+        for (arma::uword i = 0; i < phi.n_rows; i++) {
+          if (!(m == i || m == j || i == j)) {
+            output(m, t) += direct(i, j);
+          }
+        }
+      }
+    }
+  }
+  return output.t();
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-direct-central-vec.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.DirectCentralVec)]]
+Rcpp::NumericVector DirectCentralVec(const arma::vec& phi_vec,
+                                     const double& delta_t) {
+  arma::uword p = std::sqrt(phi_vec.n_elem);
+  arma::mat phi = arma::reshape(phi_vec, p, p);
+  arma::mat direct(p, p, arma::fill::none);
+  arma::mat d = arma::eye(p, p);
+  Rcpp::NumericVector output(p);
+  for (arma::uword m = 0; m < p; m++) {
+    d = arma::eye(p, p);
+    d(m, m) = 0;
+    direct = arma::expmat(delta_t * d * phi * d);
+    for (arma::uword j = 0; j < p; j++) {
+      for (arma::uword i = 0; i < p; i++) {
+        if (!(m == i || m == j || i == j)) {
+          output(m) += direct(i, j);
+        }
+      }
+    }
+  }
+  return output;
+}
+// -----------------------------------------------------------------------------
+// edit .setup/cpp/cTMed-direct-central.cpp
+// Ivan Jacob Agaloos Pesigan
+// -----------------------------------------------------------------------------
+
+#include <RcppArmadillo.h>
+// [[Rcpp::depends(RcppArmadillo)]]
+// [[Rcpp::export(.DirectCentral)]]
+Rcpp::NumericVector DirectCentral(const arma::mat& phi, const double& delta_t) {
+  arma::uword p = phi.n_rows;
+  arma::mat direct(p, p, arma::fill::none);
+  arma::mat d = arma::eye(p, p);
+  Rcpp::NumericVector output(p);
+  for (arma::uword m = 0; m < p; m++) {
+    d = arma::eye(p, p);
+    d(m, m) = 0;
+    direct = arma::expmat(delta_t * d * phi * d);
+    for (arma::uword j = 0; j < p; j++) {
+      for (arma::uword i = 0; i < p; i++) {
+        if (!(m == i || m == j || i == j)) {
+          output(m) += direct(i, j);
+        }
+      }
+    }
+  }
+  return output;
+}
+// -----------------------------------------------------------------------------
 // edit .setup/cpp/cTMed-direct-std.cpp
 // Ivan Jacob Agaloos Pesigan
 // -----------------------------------------------------------------------------

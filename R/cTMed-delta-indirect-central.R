@@ -209,7 +209,7 @@ DeltaIndirectCentral <- function(phi,
   stopifnot(
     idx == colnames(phi)
   )
-  total <- FALSE
+  centrality <- "indirect"
   args <- list(
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
@@ -217,7 +217,7 @@ DeltaIndirectCentral <- function(phi,
     ncores = ncores,
     method = "delta",
     network = TRUE,
-    total = total
+    centrality = centrality
   )
   delta_t <- sort(
     ifelse(
@@ -253,7 +253,7 @@ DeltaIndirectCentral <- function(phi,
         FUN = .DeltaCentral,
         phi = phi,
         vcov_phi_vec = vcov_phi_vec,
-        total = total,
+        centrality = centrality,
         mc.cores = ncores
       )
     } else {
@@ -267,7 +267,7 @@ DeltaIndirectCentral <- function(phi,
         fun = .DeltaCentral,
         phi = phi,
         vcov_phi_vec = vcov_phi_vec,
-        total = total
+        centrality = centrality
       )
     }
     # nocov end
@@ -277,7 +277,7 @@ DeltaIndirectCentral <- function(phi,
       FUN = .DeltaCentral,
       phi = phi,
       vcov_phi_vec = vcov_phi_vec,
-      total = total
+      centrality = centrality
     )
   }
   names(output) <- delta_t

@@ -1,11 +1,15 @@
 .BootCentral <- function(phi,
                          phi_hat,
                          delta_t,
-                         total,
+                         centrality,
                          ncores = NULL) {
-  if (total) {
+  if (centrality == "total") {
     Fun <- .TotalCentral
-  } else {
+  }
+  if (centrality == "direct") {
+    Fun <- .DirectCentral
+  }
+  if (centrality == "indirect") {
     Fun <- .IndirectCentral
   }
   # nocov start

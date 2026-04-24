@@ -123,14 +123,14 @@ PosteriorIndirectCentral <- function(phi,
     is.list(phi),
     is.matrix(phi[[1]])
   )
-  total <- FALSE
+  centrality <- "indirect"
   args <- list(
     phi = phi,
     delta_t = delta_t,
     ncores = ncores,
     method = "posterior",
     network = TRUE,
-    total = total
+    centrality = centrality
   )
   delta_t <- sort(
     ifelse(
@@ -142,7 +142,7 @@ PosteriorIndirectCentral <- function(phi,
   output <- .PosteriorCentral(
     phi = phi,
     delta_t = delta_t,
-    total = total,
+    centrality = centrality,
     ncores = ncores
   )
   names(output) <- delta_t

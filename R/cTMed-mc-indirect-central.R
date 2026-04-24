@@ -170,7 +170,7 @@ MCIndirectCentral <- function(phi,
   stopifnot(
     idx == colnames(phi)
   )
-  total <- FALSE
+  centrality <- "indirect"
   args <- list(
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
@@ -181,7 +181,7 @@ MCIndirectCentral <- function(phi,
     seed = seed,
     method = "mc",
     network = TRUE,
-    total = total
+    centrality = centrality
   )
   delta_t <- sort(
     ifelse(
@@ -194,7 +194,7 @@ MCIndirectCentral <- function(phi,
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
     delta_t = delta_t,
-    total = total,
+    centrality = centrality,
     R = R,
     test_phi = test_phi,
     ncores = ncores,

@@ -11,6 +11,42 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// DirectCentrals
+arma::mat DirectCentrals(const arma::mat& phi, const arma::vec& delta_t);
+RcppExport SEXP _cTMed_DirectCentrals(SEXP phiSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const arma::vec& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(DirectCentrals(phi, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// DirectCentralVec
+Rcpp::NumericVector DirectCentralVec(const arma::vec& phi_vec, const double& delta_t);
+RcppExport SEXP _cTMed_DirectCentralVec(SEXP phi_vecSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::vec& >::type phi_vec(phi_vecSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(DirectCentralVec(phi_vec, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
+// DirectCentral
+Rcpp::NumericVector DirectCentral(const arma::mat& phi, const double& delta_t);
+RcppExport SEXP _cTMed_DirectCentral(SEXP phiSEXP, SEXP delta_tSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const arma::mat& >::type phi(phiSEXP);
+    Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
+    rcpp_result_gen = Rcpp::wrap(DirectCentral(phi, delta_t));
+    return rcpp_result_gen;
+END_RCPP
+}
 // DirectStd
 double DirectStd(const arma::mat& phi, const arma::mat& sigma, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
 RcppExport SEXP _cTMed_DirectStd(SEXP phiSEXP, SEXP sigmaSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
@@ -389,6 +425,9 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_cTMed_DirectCentrals", (DL_FUNC) &_cTMed_DirectCentrals, 2},
+    {"_cTMed_DirectCentralVec", (DL_FUNC) &_cTMed_DirectCentralVec, 2},
+    {"_cTMed_DirectCentral", (DL_FUNC) &_cTMed_DirectCentral, 2},
     {"_cTMed_DirectStd", (DL_FUNC) &_cTMed_DirectStd, 6},
     {"_cTMed_Direct", (DL_FUNC) &_cTMed_Direct, 5},
     {"_cTMed_IndirectCentrals", (DL_FUNC) &_cTMed_IndirectCentrals, 2},
