@@ -365,14 +365,23 @@ print.summary.ctmedboot <- function(x,
   cat("Call:\n")
   base::print(object$call)
   if (object$args$network) {
-    if (object$args$total) {
+    if (object$args$centrality == "total") {
       cat(
         paste0(
           "\nTotal Effect Centrality\n",
           "type = ", type, "\n"
         )
       )
-    } else {
+    }
+    if (object$args$centrality == "direct") {
+      cat(
+        paste0(
+          "\nDirect Effect Centrality\n",
+          "type = ", type, "\n"
+        )
+      )
+    }
+    if (object$args$centrality == "indirect") {
       cat(
         paste0(
           "\nIndirect Effect Centrality\n",

@@ -259,16 +259,24 @@ print.summary.ctmedmc <- function(x,
   cat("Call:\n")
   base::print(object$call)
   if (object$args$network) {
-    if (object$args$total) {
+    if (object$args$centrality == "total") {
       cat(
         paste0(
-          "\nTotal Effect Centrality\n\n"
+          "\nTotal Effect Centrality\n"
         )
       )
-    } else {
+    }
+    if (object$args$centrality == "direct") {
       cat(
         paste0(
-          "\nIndirect Effect Centrality\n\n"
+          "\nDirect Effect Centrality\n"
+        )
+      )
+    }
+    if (object$args$centrality == "indirect") {
+      cat(
+        paste0(
+          "\nIndirect Effect Centrality\n"
         )
       )
     }

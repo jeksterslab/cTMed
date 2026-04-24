@@ -68,7 +68,7 @@ TotalCentral <- function(phi,
     phi = phi,
     delta_t = delta_t,
     network = TRUE,
-    total = TRUE
+    centrality = "total"
   )
   if (length(delta_t) > 1) {
     output <- .TotalCentrals(

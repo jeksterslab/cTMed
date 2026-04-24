@@ -1,7 +1,7 @@
 cTMed
 ================
 Ivan Jacob Agaloos Pesigan
-2026-02-06
+2026-04-24
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -11,10 +11,10 @@ Ivan Jacob Agaloos Pesigan
 [![CRAN
 Status](https://www.r-pkg.org/badges/version/cTMed)](https://cran.r-project.org/package=cTMed)
 [![R-Universe
-Status](https://jeksterslab.r-universe.dev/badges/cTMed)](https://jeksterslab.r-universe.dev/cTMed)
+Status](https://jeksterslab.r-universe.dev/badges/cTMed)](https://jeksterslab.r-universe.dev)
 [![Make
 Project](https://github.com/jeksterslab/cTMed/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/make.yml)
-[![R-CMD-check](https://github.com/jeksterslab/cTMed/actions/workflows/check-full.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/check-full.yml)
+[![R-CMD-check-standard](https://github.com/jeksterslab/cTMed/actions/workflows/check-standard.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/check-standard.yml)
 [![R Package Test
 Coverage](https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml)
 [![Lint R
@@ -46,12 +46,18 @@ for the compiled PDF.
 
 ## Installation
 
+You can install the CRAN release of `cTMed` with:
+
+``` r
+install.packages("cTMed")
+```
+
 You can install the development version of `cTMed` from
 [GitHub](https://github.com/jeksterslab/cTMed) with:
 
 ``` r
-if (!require("remotes")) install.packages("remotes")
-remotes::install_github("jeksterslab/cTMed")
+if (!require("pak")) install.packages("pak")
+pak::pkg_install("jeksterslab/cTMed")
 ```
 
 ## Documentation
@@ -77,9 +83,9 @@ mediation models. *Psychological Methods*.
 
 </div>
 
-<div id="ref-RCoreTeam-2025" class="csl-entry">
+<div id="ref-RCoreTeam-2026" class="csl-entry">
 
-R Core Team. (2025). *R: A language and environment for statistical
+R Core Team. (2026). *R: A language and environment for statistical
 computing*. R Foundation for Statistical Computing.
 <https://www.R-project.org/>
 

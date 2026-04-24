@@ -75,18 +75,29 @@
 
 \section*{Description}
 
-Implements the methods introduced in \Textcite{Pesigan-Russell-Chow-2025o} to compute standard errors, confidence intervals, and effect sizes for total, direct, and indirect effects in continuous-time mediation models.
-    
+Computes effect sizes, standard errors, and confidence intervals for total, direct, and indirect effects in continuous-time mediation models as described in \Textcite{Pesigan-Russell-Chow-2025o}.
+
+\section*{Author-Accepted Manuscript}
+
+See \url{https://github.com/jeksterslab/manCTMed/blob/main/.setup/latex/manCTMed-manuscript.Rtex} for the latex file of the manuscript. See \url{https://github.com/jeksterslab/manCTMed/blob/latex/manCTMed-manuscript.pdf} for the compiled PDF.
+
 \section*{Installation}
 
-You can install the development version of \texttt{cTMed} from
+You can install the CRAN release of `cTMed` with:
+
+%% begin.rcode
+% #| eval = FALSE
+% install.packages("cTMed")
+%% end.rcode
+
+\noindent You can install the development version of \texttt{cTMed} from
 \href{https://github.com/jeksterslab/cTMed}{GitHub}
 with:
 
 %% begin.rcode
 % #| eval = FALSE
-% if (!require("remotes")) install.packages("remotes")
-% remotes::install_github("jeksterslab/cTMed")
+% if (!require("pak")) install.packages("pak")
+% pak::pkg_install("jeksterslab/cTMed")
 %% end.rcode
 
 \section*{More Information}
@@ -99,15 +110,7 @@ for package documentation.
 
 To cite \texttt{cTMed} in publications, please cite \Textcite{Pesigan-Russell-Chow-2025o}.
 
-\nocite{RCoreTeam-2025}
-
-\nocite{Bollen-1987}
-
-\nocite{Deboeck-Preacher-2015}
-
-\nocite{Ryan-Hamaker-2021}
-
-\nocite{Wang-Zhang-2020}
+\nocite{RCoreTeam-2026}
 
 \nocite{Pesigan-Russell-Chow-2025o}
 

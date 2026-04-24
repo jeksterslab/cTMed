@@ -55,10 +55,11 @@ lapply(
           ),
           nrow = 9
         )
+        delta_t <- 2
         delta <- DeltaTotalCentral(
           phi = phi,
           vcov_phi_vec = vcov_phi_vec,
-          delta_t = 2
+          delta_t = delta_t
         )
         testthat::expect_true(
           all(
@@ -73,11 +74,6 @@ lapply(
       paste(text, "plot error"),
       {
         testthat::skip_on_cran()
-        answer <- c(
-          0.7297791,
-          0.4398068,
-          0.0000000
-        )
         phi <- matrix(
           data = c(
             -0.357, 0.771, -0.450,

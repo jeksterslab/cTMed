@@ -5,7 +5,7 @@ output: rmarkdown::html_vignette
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
-  @RCoreTeam-2025
+  @RCoreTeam-2026
   @Pesigan-Russell-Chow-2025o
 vignette: >
   %\VignetteIndexEntry{cTMed: Continuous-Time Mediation}
@@ -38,12 +38,18 @@ See https://github.com/jeksterslab/manCTMed/blob/main/.setup/latex/manCTMed-manu
 
 ## Installation
 
+You can install the CRAN release of `cTMed` with:
+
+```r
+install.packages("cTMed")
+```
+
 You can install the development version of `cTMed` from
 [GitHub](https://github.com/jeksterslab/cTMed) with:
 
 ```r
-if (!require("remotes")) install.packages("remotes")
-remotes::install_github("jeksterslab/cTMed")
+if (!require("pak")) install.packages("pak")
+pak::pkg_install("jeksterslab/cTMed")
 ```
 
 ## Documentation

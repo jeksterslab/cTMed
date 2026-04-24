@@ -1,11 +1,11 @@
 ---
 title: "Fit the Continuous-Time Vector Autoregressive Model Using the dynr Package"
 author: Ivan Jacob Agaloos Pesigan
-date: "2026-02-04"
+date: "2026-04-24"
 bibliography: "vignettes.bib"
 csl: https://raw.githubusercontent.com/citation-style-language/styles/master/apa.csl
 nocite: |
-  @RCoreTeam-2024
+  @RCoreTeam-2026
   @Ou-Hunter-Chow-2019
   @Pesigan-Russell-Chow-2025o
 output: rmarkdown::html_vignette
@@ -268,7 +268,7 @@ fit <- dynr.cook(
   verbose = FALSE
 )
 #> [1] "Get ready!!!!"
-#> using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+#> using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0’
 #> Optimization function called.
 #> Starting Hessian calculation ...
 #> Finished Hessian calculation.
@@ -289,8 +289,8 @@ fit <- dynr.cook(
 #> 
 #> Doing end processing
 #> Successful trial
-#> Total Time: 43.31237 
-#> Backend Time: 43.30633
+#> Total Time: 42.82154 
+#> Backend Time: 42.81541
 summary(fit)
 #> Coefficients:
 #>             Estimate Std. Error t value  ci.lower  ci.upper Pr(>|t|)    

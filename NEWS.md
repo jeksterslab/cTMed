@@ -1,3 +1,9 @@
+# cTMed 1.0.10
+
+## Patch
+
+* Added direct effect centrality.
+
 # cTMed 1.0.9
 
 ## Patch
