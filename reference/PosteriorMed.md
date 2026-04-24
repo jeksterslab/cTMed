@@ -115,23 +115,27 @@ approach to network analysis and centrality. Psychometrika, 87 (1),
 Other Continuous-Time Mediation Functions:
 [`BootBeta()`](https://github.com/jeksterslab/cTMed/reference/BootBeta.md),
 [`BootBetaStd()`](https://github.com/jeksterslab/cTMed/reference/BootBetaStd.md),
+[`BootDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentral.md),
 [`BootIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentral.md),
 [`BootMed()`](https://github.com/jeksterslab/cTMed/reference/BootMed.md),
 [`BootMedStd()`](https://github.com/jeksterslab/cTMed/reference/BootMedStd.md),
 [`BootTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentral.md),
 [`DeltaBeta()`](https://github.com/jeksterslab/cTMed/reference/DeltaBeta.md),
 [`DeltaBetaStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaBetaStd.md),
+[`DeltaDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentral.md),
 [`DeltaIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.md),
 [`DeltaMed()`](https://github.com/jeksterslab/cTMed/reference/DeltaMed.md),
 [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md),
 [`DeltaTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.md),
 [`Direct()`](https://github.com/jeksterslab/cTMed/reference/Direct.md),
+[`DirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DirectCentral.md),
 [`DirectStd()`](https://github.com/jeksterslab/cTMed/reference/DirectStd.md),
 [`Indirect()`](https://github.com/jeksterslab/cTMed/reference/Indirect.md),
 [`IndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentral.md),
 [`IndirectStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectStd.md),
 [`MCBeta()`](https://github.com/jeksterslab/cTMed/reference/MCBeta.md),
 [`MCBetaStd()`](https://github.com/jeksterslab/cTMed/reference/MCBetaStd.md),
+[`MCDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentral.md),
 [`MCIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.md),
 [`MCMed()`](https://github.com/jeksterslab/cTMed/reference/MCMed.md),
 [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md),
@@ -141,6 +145,7 @@ Other Continuous-Time Mediation Functions:
 [`Med()`](https://github.com/jeksterslab/cTMed/reference/Med.md),
 [`MedStd()`](https://github.com/jeksterslab/cTMed/reference/MedStd.md),
 [`PosteriorBeta()`](https://github.com/jeksterslab/cTMed/reference/PosteriorBeta.md),
+[`PosteriorDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentral.md),
 [`PosteriorIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.md),
 [`PosteriorTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.md),
 [`Total()`](https://github.com/jeksterslab/cTMed/reference/Total.md),
@@ -217,9 +222,9 @@ PosteriorMed(
 #> Total, Direct, and Indirect Effects
 #> 
 #>     effect interval     est     se    R    2.5%   97.5%
-#> 1    total        1 -0.0998 0.0307 1000 -0.1665 -0.0426
-#> 2   direct        1 -0.2664 0.0395 1000 -0.3488 -0.1949
-#> 3 indirect        1  0.1666 0.0175 1000  0.1345  0.2033
+#> 1    total        1 -0.0998 0.0300 1000 -0.1541 -0.0428
+#> 2   direct        1 -0.2681 0.0394 1000 -0.3443 -0.1939
+#> 3 indirect        1  0.1683 0.0178 1000  0.1340  0.2037
 
 # Range of time intervals ---------------------------------------------------
 posterior <- PosteriorMed(
@@ -241,21 +246,21 @@ print(posterior)
 #> Total, Direct, and Indirect Effects
 #> 
 #>      effect interval     est     se    R    2.5%   97.5%
-#> 1     total        1 -0.0998 0.0307 1000 -0.1665 -0.0426
-#> 2    direct        1 -0.2664 0.0395 1000 -0.3488 -0.1949
-#> 3  indirect        1  0.1666 0.0175 1000  0.1345  0.2033
-#> 4     total        2  0.0791 0.0343 1000  0.0044  0.1380
-#> 5    direct        2 -0.3209 0.0564 1000 -0.4448 -0.2203
-#> 6  indirect        2  0.4000 0.0465 1000  0.3159  0.4971
-#> 7     total        3  0.2497 0.0350 1000  0.1816  0.3176
-#> 8    direct        3 -0.2937 0.0637 1000 -0.4384 -0.1875
-#> 9  indirect        3  0.5433 0.0723 1000  0.4154  0.6986
-#> 10    total        4  0.3442 0.0393 1000  0.2728  0.4219
-#> 11   direct        4 -0.2419 0.0649 1000 -0.3952 -0.1405
-#> 12 indirect        4  0.5862 0.0890 1000  0.4338  0.7824
-#> 13    total        5  0.3695 0.0444 1000  0.2879  0.4614
-#> 14   direct        5 -0.1893 0.0622 1000 -0.3465 -0.0973
-#> 15 indirect        5  0.5588 0.0958 1000  0.4051  0.7721
+#> 1     total        1 -0.0998 0.0300 1000 -0.1541 -0.0428
+#> 2    direct        1 -0.2681 0.0394 1000 -0.3443 -0.1939
+#> 3  indirect        1  0.1683 0.0178 1000  0.1340  0.2037
+#> 4     total        2  0.0802 0.0329 1000  0.0145  0.1446
+#> 5    direct        2 -0.3231 0.0560 1000 -0.4327 -0.2247
+#> 6  indirect        2  0.4033 0.0472 1000  0.3157  0.5009
+#> 7     total        3  0.2515 0.0342 1000  0.1849  0.3216
+#> 8    direct        3 -0.2957 0.0626 1000 -0.4238 -0.1898
+#> 9  indirect        3  0.5471 0.0728 1000  0.4195  0.7048
+#> 10    total        4  0.3465 0.0393 1000  0.2786  0.4346
+#> 11   direct        4 -0.2436 0.0633 1000 -0.3827 -0.1413
+#> 12 indirect        4  0.5901 0.0889 1000  0.4436  0.7843
+#> 13    total        5  0.3722 0.0446 1000  0.2983  0.4719
+#> 14   direct        5 -0.1906 0.0603 1000 -0.3309 -0.1006
+#> 15 indirect        5  0.5628 0.0951 1000  0.4087  0.7885
 summary(posterior)
 #> Call:
 #> PosteriorMed(phi = phi, delta_t = 1:5, from = "x", to = "y", 
@@ -264,38 +269,38 @@ summary(posterior)
 #> Total, Direct, and Indirect Effects
 #> 
 #>      effect interval     est     se    R    2.5%   97.5%
-#> 1     total        1 -0.0998 0.0307 1000 -0.1665 -0.0426
-#> 2    direct        1 -0.2664 0.0395 1000 -0.3488 -0.1949
-#> 3  indirect        1  0.1666 0.0175 1000  0.1345  0.2033
-#> 4     total        2  0.0791 0.0343 1000  0.0044  0.1380
-#> 5    direct        2 -0.3209 0.0564 1000 -0.4448 -0.2203
-#> 6  indirect        2  0.4000 0.0465 1000  0.3159  0.4971
-#> 7     total        3  0.2497 0.0350 1000  0.1816  0.3176
-#> 8    direct        3 -0.2937 0.0637 1000 -0.4384 -0.1875
-#> 9  indirect        3  0.5433 0.0723 1000  0.4154  0.6986
-#> 10    total        4  0.3442 0.0393 1000  0.2728  0.4219
-#> 11   direct        4 -0.2419 0.0649 1000 -0.3952 -0.1405
-#> 12 indirect        4  0.5862 0.0890 1000  0.4338  0.7824
-#> 13    total        5  0.3695 0.0444 1000  0.2879  0.4614
-#> 14   direct        5 -0.1893 0.0622 1000 -0.3465 -0.0973
-#> 15 indirect        5  0.5588 0.0958 1000  0.4051  0.7721
+#> 1     total        1 -0.0998 0.0300 1000 -0.1541 -0.0428
+#> 2    direct        1 -0.2681 0.0394 1000 -0.3443 -0.1939
+#> 3  indirect        1  0.1683 0.0178 1000  0.1340  0.2037
+#> 4     total        2  0.0802 0.0329 1000  0.0145  0.1446
+#> 5    direct        2 -0.3231 0.0560 1000 -0.4327 -0.2247
+#> 6  indirect        2  0.4033 0.0472 1000  0.3157  0.5009
+#> 7     total        3  0.2515 0.0342 1000  0.1849  0.3216
+#> 8    direct        3 -0.2957 0.0626 1000 -0.4238 -0.1898
+#> 9  indirect        3  0.5471 0.0728 1000  0.4195  0.7048
+#> 10    total        4  0.3465 0.0393 1000  0.2786  0.4346
+#> 11   direct        4 -0.2436 0.0633 1000 -0.3827 -0.1413
+#> 12 indirect        4  0.5901 0.0889 1000  0.4436  0.7843
+#> 13    total        5  0.3722 0.0446 1000  0.2983  0.4719
+#> 14   direct        5 -0.1906 0.0603 1000 -0.3309 -0.1006
+#> 15 indirect        5  0.5628 0.0951 1000  0.4087  0.7885
 confint(posterior, level = 0.95)
-#>      effect interval        2.5 %      97.5 %
-#> 1     total        1 -0.166470645 -0.04260420
-#> 2    direct        1 -0.348803573 -0.19489083
-#> 3  indirect        1  0.134503056  0.20333979
-#> 4     total        2  0.004369168  0.13802573
-#> 5    direct        2 -0.444768981 -0.22030376
-#> 6  indirect        2  0.315851481  0.49710561
-#> 7     total        3  0.181639312  0.31755141
-#> 8    direct        3 -0.438396767 -0.18748070
-#> 9  indirect        3  0.415430083  0.69859417
-#> 10    total        4  0.272760335  0.42191848
-#> 11   direct        4 -0.395163282 -0.14053097
-#> 12 indirect        4  0.433771997  0.78244742
-#> 13    total        5  0.287872340  0.46141766
-#> 14   direct        5 -0.346457942 -0.09726921
-#> 15 indirect        5  0.405107599  0.77212881
+#>      effect interval      2.5 %      97.5 %
+#> 1     total        1 -0.1541331 -0.04278507
+#> 2    direct        1 -0.3442722 -0.19389771
+#> 3  indirect        1  0.1339817  0.20369213
+#> 4     total        2  0.0145340  0.14459580
+#> 5    direct        2 -0.4326701 -0.22470431
+#> 6  indirect        2  0.3157411  0.50092997
+#> 7     total        3  0.1849007  0.32164073
+#> 8    direct        3 -0.4237842 -0.18982649
+#> 9  indirect        3  0.4194591  0.70481461
+#> 10    total        4  0.2786364  0.43455167
+#> 11   direct        4 -0.3827311 -0.14134158
+#> 12 indirect        4  0.4436055  0.78428773
+#> 13    total        5  0.2983093  0.47189128
+#> 14   direct        5 -0.3308675 -0.10056713
+#> 15 indirect        5  0.4086515  0.78851620
 plot(posterior)
 
 

@@ -151,23 +151,27 @@ approach to network analysis and centrality. Psychometrika, 87 (1),
 Other Continuous-Time Mediation Functions:
 [`BootBeta()`](https://github.com/jeksterslab/cTMed/reference/BootBeta.md),
 [`BootBetaStd()`](https://github.com/jeksterslab/cTMed/reference/BootBetaStd.md),
+[`BootDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentral.md),
 [`BootIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentral.md),
 [`BootMed()`](https://github.com/jeksterslab/cTMed/reference/BootMed.md),
 [`BootMedStd()`](https://github.com/jeksterslab/cTMed/reference/BootMedStd.md),
 [`BootTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentral.md),
 [`DeltaBeta()`](https://github.com/jeksterslab/cTMed/reference/DeltaBeta.md),
 [`DeltaBetaStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaBetaStd.md),
+[`DeltaDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentral.md),
 [`DeltaIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.md),
 [`DeltaMed()`](https://github.com/jeksterslab/cTMed/reference/DeltaMed.md),
 [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md),
 [`DeltaTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.md),
 [`Direct()`](https://github.com/jeksterslab/cTMed/reference/Direct.md),
+[`DirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DirectCentral.md),
 [`DirectStd()`](https://github.com/jeksterslab/cTMed/reference/DirectStd.md),
 [`Indirect()`](https://github.com/jeksterslab/cTMed/reference/Indirect.md),
 [`IndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentral.md),
 [`IndirectStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectStd.md),
 [`MCBeta()`](https://github.com/jeksterslab/cTMed/reference/MCBeta.md),
 [`MCBetaStd()`](https://github.com/jeksterslab/cTMed/reference/MCBetaStd.md),
+[`MCDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentral.md),
 [`MCIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.md),
 [`MCMed()`](https://github.com/jeksterslab/cTMed/reference/MCMed.md),
 [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md),
@@ -176,6 +180,7 @@ Other Continuous-Time Mediation Functions:
 [`Med()`](https://github.com/jeksterslab/cTMed/reference/Med.md),
 [`MedStd()`](https://github.com/jeksterslab/cTMed/reference/MedStd.md),
 [`PosteriorBeta()`](https://github.com/jeksterslab/cTMed/reference/PosteriorBeta.md),
+[`PosteriorDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentral.md),
 [`PosteriorIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.md),
 [`PosteriorMed()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMed.md),
 [`PosteriorTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.md),
@@ -246,7 +251,6 @@ MCTotalCentral(
 #>     R = 100L)
 #> 
 #> Total Effect Centrality
-#> 
 #>   variable interval    est     se   R    2.5%  97.5%
 #> 1        x        1 0.4000 0.0504 100  0.3120 0.4933
 #> 2        m        1 0.3998 0.0387 100  0.3248 0.4864
@@ -273,7 +277,6 @@ print(mc)
 #>     R = 100L)
 #> 
 #> Total Effect Centrality
-#> 
 #>    variable interval    est     se   R    2.5%  97.5%
 #> 1         x        1 0.4000 0.0475 100  0.3141 0.4843
 #> 2         m        1 0.3998 0.0381 100  0.3314 0.4624
@@ -296,7 +299,6 @@ summary(mc)
 #>     R = 100L)
 #> 
 #> Total Effect Centrality
-#> 
 #>    variable interval    est     se   R    2.5%  97.5%
 #> 1         x        1 0.4000 0.0475 100  0.3141 0.4843
 #> 2         m        1 0.3998 0.0381 100  0.3314 0.4624

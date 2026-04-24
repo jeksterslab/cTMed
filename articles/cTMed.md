@@ -38,13 +38,20 @@ for the compiled PDF.
 
 ## Installation
 
+You can install the CRAN release of `cTMed` with:
+
+``` r
+
+install.packages("cTMed")
+```
+
 You can install the development version of `cTMed` from
 [GitHub](https://github.com/jeksterslab/cTMed) with:
 
 ``` r
 
-if (!require("remotes")) install.packages("remotes")
-remotes::install_github("jeksterslab/cTMed")
+if (!require("pak")) install.packages("pak")
+pak::pkg_install("jeksterslab/cTMed")
 ```
 
 ## Documentation
@@ -63,6 +70,6 @@ effect sizes for direct, indirect, and total effects in continuous-time
 mediation models. *Psychological Methods*.
 <https://doi.org/10.1037/met0000779>
 
-R Core Team. (2025). *R: A language and environment for statistical
+R Core Team. (2026). *R: A language and environment for statistical
 computing*. R Foundation for Statistical Computing.
 <https://www.R-project.org/>

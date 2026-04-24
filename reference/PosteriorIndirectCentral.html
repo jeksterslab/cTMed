@@ -21,7 +21,7 @@ drift matrix \(\boldsymbol{\Phi}\)."><script id="MathJax-script" async src="http
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.10</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -157,23 +157,27 @@ Psychometrika, 87 (1), 214-252.
     <div class="dont-index"><p>Other Continuous-Time Mediation Functions:
 <code><a href="BootBeta.html">BootBeta()</a></code>,
 <code><a href="BootBetaStd.html">BootBetaStd()</a></code>,
+<code><a href="BootDirectCentral.html">BootDirectCentral()</a></code>,
 <code><a href="BootIndirectCentral.html">BootIndirectCentral()</a></code>,
 <code><a href="BootMed.html">BootMed()</a></code>,
 <code><a href="BootMedStd.html">BootMedStd()</a></code>,
 <code><a href="BootTotalCentral.html">BootTotalCentral()</a></code>,
 <code><a href="DeltaBeta.html">DeltaBeta()</a></code>,
 <code><a href="DeltaBetaStd.html">DeltaBetaStd()</a></code>,
+<code><a href="DeltaDirectCentral.html">DeltaDirectCentral()</a></code>,
 <code><a href="DeltaIndirectCentral.html">DeltaIndirectCentral()</a></code>,
 <code><a href="DeltaMed.html">DeltaMed()</a></code>,
 <code><a href="DeltaMedStd.html">DeltaMedStd()</a></code>,
 <code><a href="DeltaTotalCentral.html">DeltaTotalCentral()</a></code>,
 <code><a href="Direct.html">Direct()</a></code>,
+<code><a href="DirectCentral.html">DirectCentral()</a></code>,
 <code><a href="DirectStd.html">DirectStd()</a></code>,
 <code><a href="Indirect.html">Indirect()</a></code>,
 <code><a href="IndirectCentral.html">IndirectCentral()</a></code>,
 <code><a href="IndirectStd.html">IndirectStd()</a></code>,
 <code><a href="MCBeta.html">MCBeta()</a></code>,
 <code><a href="MCBetaStd.html">MCBetaStd()</a></code>,
+<code><a href="MCDirectCentral.html">MCDirectCentral()</a></code>,
 <code><a href="MCIndirectCentral.html">MCIndirectCentral()</a></code>,
 <code><a href="MCMed.html">MCMed()</a></code>,
 <code><a href="MCMedStd.html">MCMedStd()</a></code>,
@@ -183,6 +187,7 @@ Psychometrika, 87 (1), 214-252.
 <code><a href="Med.html">Med()</a></code>,
 <code><a href="MedStd.html">MedStd()</a></code>,
 <code><a href="PosteriorBeta.html">PosteriorBeta()</a></code>,
+<code><a href="PosteriorDirectCentral.html">PosteriorDirectCentral()</a></code>,
 <code><a href="PosteriorMed.html">PosteriorMed()</a></code>,
 <code><a href="PosteriorTotalCentral.html">PosteriorTotalCentral()</a></code>,
 <code><a href="Total.html">Total()</a></code>,
@@ -254,11 +259,10 @@ Psychometrika, 87 (1), 214-252.
 <span class="r-out co"><span class="r-pr">#&gt;</span> PosteriorIndirectCentral(phi = phi, delta_t = 1)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Indirect Effect Centrality</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   variable interval    est     se    R    2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1        x        1 0.0005 0.0189 1000 -0.0325 0.0386</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        m        1 0.1667 0.0176 1000  0.1328 0.2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3        y        1 0.0007 0.0135 1000 -0.0233 0.0277</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        x        1 0.0012 0.0198 1000 -0.0356 0.0386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        m        1 0.1660 0.0179 1000  0.1336 0.2015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        y        1 0.0012 0.0139 1000 -0.0256 0.0273</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Range of time intervals ---------------------------------------------------</span></span></span>
 <span class="r-in"><span><span class="va">posterior</span> <span class="op">&lt;-</span> <span class="fu">PosteriorIndirectCentral</span><span class="op">(</span></span></span>
@@ -274,62 +278,60 @@ Psychometrika, 87 (1), 214-252.
 <span class="r-out co"><span class="r-pr">#&gt;</span> PosteriorIndirectCentral(phi = phi, delta_t = 1:5)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Indirect Effect Centrality</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval     est     se    R    2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1  0.0005 0.0189 1000 -0.0325 0.0386</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1  0.1667 0.0176 1000  0.1328 0.2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1  0.0007 0.0135 1000 -0.0233 0.0277</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2  0.0009 0.0370 1000 -0.0670 0.0749</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2  0.3999 0.0465 1000  0.3125 0.4956</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2  0.0015 0.0311 1000 -0.0527 0.0640</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3  0.0005 0.0454 1000 -0.0869 0.0874</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3  0.5431 0.0719 1000  0.4176 0.6970</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3  0.0014 0.0467 1000 -0.0851 0.0936</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 -0.0001 0.0506 1000 -0.1030 0.0960</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4  0.5864 0.0881 1000  0.4427 0.7814</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4  0.0006 0.0620 1000 -0.1189 0.1163</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 -0.0003 0.0549 1000 -0.1129 0.1041</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5  0.5598 0.0947 1000  0.4126 0.7809</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 -0.0004 0.0763 1000 -0.1484 0.1444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval    est     se    R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 0.0012 0.0198 1000 -0.0356 0.0386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1 0.1660 0.0179 1000  0.1336 0.2015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1 0.0012 0.0139 1000 -0.0256 0.0273</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2 0.0021 0.0388 1000 -0.0724 0.0724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2 0.3991 0.0476 1000  0.3140 0.4955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2 0.0026 0.0320 1000 -0.0565 0.0631</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3 0.0016 0.0471 1000 -0.0909 0.0904</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3 0.5429 0.0737 1000  0.4182 0.7040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 0.0028 0.0480 1000 -0.0858 0.0910</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 0.0007 0.0518 1000 -0.1032 0.1007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4 0.5868 0.0903 1000  0.4383 0.7983</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4 0.0020 0.0638 1000 -0.1206 0.1184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 0.0001 0.0556 1000 -0.1142 0.1062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5 0.5607 0.0971 1000  0.4051 0.7926</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 0.0009 0.0787 1000 -0.1532 0.1472</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> PosteriorIndirectCentral(phi = phi, delta_t = 1:5)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Indirect Effect Centrality</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval     est     se    R    2.5%  97.5%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1  0.0005 0.0189 1000 -0.0325 0.0386</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1  0.1667 0.0176 1000  0.1328 0.2023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1  0.0007 0.0135 1000 -0.0233 0.0277</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2  0.0009 0.0370 1000 -0.0670 0.0749</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2  0.3999 0.0465 1000  0.3125 0.4956</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2  0.0015 0.0311 1000 -0.0527 0.0640</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3  0.0005 0.0454 1000 -0.0869 0.0874</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3  0.5431 0.0719 1000  0.4176 0.6970</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3  0.0014 0.0467 1000 -0.0851 0.0936</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 -0.0001 0.0506 1000 -0.1030 0.0960</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4  0.5864 0.0881 1000  0.4427 0.7814</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4  0.0006 0.0620 1000 -0.1189 0.1163</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 -0.0003 0.0549 1000 -0.1129 0.1041</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5  0.5598 0.0947 1000  0.4126 0.7809</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 -0.0004 0.0763 1000 -0.1484 0.1444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval    est     se    R    2.5%  97.5%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 0.0012 0.0198 1000 -0.0356 0.0386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1 0.1660 0.0179 1000  0.1336 0.2015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1 0.0012 0.0139 1000 -0.0256 0.0273</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2 0.0021 0.0388 1000 -0.0724 0.0724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2 0.3991 0.0476 1000  0.3140 0.4955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2 0.0026 0.0320 1000 -0.0565 0.0631</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3 0.0016 0.0471 1000 -0.0909 0.0904</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3 0.5429 0.0737 1000  0.4182 0.7040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 0.0028 0.0480 1000 -0.0858 0.0910</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 0.0007 0.0518 1000 -0.1032 0.1007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4 0.5868 0.0903 1000  0.4383 0.7983</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4 0.0020 0.0638 1000 -0.1206 0.1184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 0.0001 0.0556 1000 -0.1142 0.1062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5 0.5607 0.0971 1000  0.4051 0.7926</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 0.0009 0.0787 1000 -0.1532 0.1472</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html" class="external-link">confint</a></span><span class="op">(</span><span class="va">posterior</span>, level <span class="op">=</span> <span class="fl">0.95</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval       2.5 %     97.5 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 -0.03250983 0.03857900</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1  0.13278798 0.20227734</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1 -0.02331382 0.02772267</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2 -0.06695886 0.07488156</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2  0.31252172 0.49556382</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2 -0.05271001 0.06397910</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3 -0.08690579 0.08744346</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3  0.41756817 0.69698988</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 -0.08512262 0.09356038</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 -0.10301180 0.09604241</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4  0.44270165 0.78135684</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4 -0.11892150 0.11625868</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 -0.11286648 0.10411650</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5  0.41257630 0.78088527</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 -0.14842636 0.14441182</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 -0.03562903 0.03858116</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1  0.13355604 0.20146626</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3         y        1 -0.02560192 0.02732945</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4         x        2 -0.07244090 0.07244703</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5         m        2  0.31396819 0.49552641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6         y        2 -0.05645701 0.06313106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7         x        3 -0.09088982 0.09039606</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         m        3  0.41818122 0.70401691</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9         y        3 -0.08580920 0.09103733</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        x        4 -0.10316810 0.10071590</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        m        4  0.43826382 0.79833319</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12        y        4 -0.12059238 0.11841166</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13        x        5 -0.11416462 0.10621817</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14        m        5  0.40510439 0.79260397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15        y        5 -0.15315646 0.14723179</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">posterior</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="PosteriorIndirectCentral-1.png" alt="" width="700" height="433"></span>
 <span class="r-plt img"><img src="PosteriorIndirectCentral-2.png" alt="" width="700" height="433"></span>

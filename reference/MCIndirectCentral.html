@@ -17,7 +17,7 @@ drift matrix \(\boldsymbol{\Phi}\)."><script id="MathJax-script" async src="http
 
     <a class="navbar-brand me-2" href="../index.html">cTMed</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.10</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -237,23 +237,27 @@ Psychometrika, 87 (1), 214-252.
     <div class="dont-index"><p>Other Continuous-Time Mediation Functions:
 <code><a href="BootBeta.html">BootBeta()</a></code>,
 <code><a href="BootBetaStd.html">BootBetaStd()</a></code>,
+<code><a href="BootDirectCentral.html">BootDirectCentral()</a></code>,
 <code><a href="BootIndirectCentral.html">BootIndirectCentral()</a></code>,
 <code><a href="BootMed.html">BootMed()</a></code>,
 <code><a href="BootMedStd.html">BootMedStd()</a></code>,
 <code><a href="BootTotalCentral.html">BootTotalCentral()</a></code>,
 <code><a href="DeltaBeta.html">DeltaBeta()</a></code>,
 <code><a href="DeltaBetaStd.html">DeltaBetaStd()</a></code>,
+<code><a href="DeltaDirectCentral.html">DeltaDirectCentral()</a></code>,
 <code><a href="DeltaIndirectCentral.html">DeltaIndirectCentral()</a></code>,
 <code><a href="DeltaMed.html">DeltaMed()</a></code>,
 <code><a href="DeltaMedStd.html">DeltaMedStd()</a></code>,
 <code><a href="DeltaTotalCentral.html">DeltaTotalCentral()</a></code>,
 <code><a href="Direct.html">Direct()</a></code>,
+<code><a href="DirectCentral.html">DirectCentral()</a></code>,
 <code><a href="DirectStd.html">DirectStd()</a></code>,
 <code><a href="Indirect.html">Indirect()</a></code>,
 <code><a href="IndirectCentral.html">IndirectCentral()</a></code>,
 <code><a href="IndirectStd.html">IndirectStd()</a></code>,
 <code><a href="MCBeta.html">MCBeta()</a></code>,
 <code><a href="MCBetaStd.html">MCBetaStd()</a></code>,
+<code><a href="MCDirectCentral.html">MCDirectCentral()</a></code>,
 <code><a href="MCMed.html">MCMed()</a></code>,
 <code><a href="MCMedStd.html">MCMedStd()</a></code>,
 <code><a href="MCPhi.html">MCPhi()</a></code>,
@@ -262,6 +266,7 @@ Psychometrika, 87 (1), 214-252.
 <code><a href="Med.html">Med()</a></code>,
 <code><a href="MedStd.html">MedStd()</a></code>,
 <code><a href="PosteriorBeta.html">PosteriorBeta()</a></code>,
+<code><a href="PosteriorDirectCentral.html">PosteriorDirectCentral()</a></code>,
 <code><a href="PosteriorIndirectCentral.html">PosteriorIndirectCentral()</a></code>,
 <code><a href="PosteriorMed.html">PosteriorMed()</a></code>,
 <code><a href="PosteriorTotalCentral.html">PosteriorTotalCentral()</a></code>,
@@ -332,7 +337,6 @@ Psychometrika, 87 (1), 214-252.
 <span class="r-out co"><span class="r-pr">#&gt;</span>     R = 100L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Indirect Effect Centrality</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   variable interval    est     se   R    2.5%  97.5%</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1        x        1 0.0000 0.0203 100 -0.0444 0.0410</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2        m        1 0.1674 0.0188 100  0.1305 0.1977</span>
@@ -359,7 +363,6 @@ Psychometrika, 87 (1), 214-252.
 <span class="r-out co"><span class="r-pr">#&gt;</span>     R = 100L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Indirect Effect Centrality</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval    est     se   R    2.5%  97.5%</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 0.0000 0.0170 100 -0.0295 0.0308</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1 0.1674 0.0180 100  0.1303 0.1963</span>
@@ -382,7 +385,6 @@ Psychometrika, 87 (1), 214-252.
 <span class="r-out co"><span class="r-pr">#&gt;</span>     R = 100L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Indirect Effect Centrality</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    variable interval    est     se   R    2.5%  97.5%</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1         x        1 0.0000 0.0170 100 -0.0295 0.0308</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2         m        1 0.1674 0.0180 100  0.1303 0.1963</span>

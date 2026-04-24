@@ -1,5 +1,11 @@
 # Changelog
 
+## cTMed 1.0.10
+
+### Patch
+
+- Added direct effect centrality.
+
 ## cTMed 1.0.9
 
 CRAN release: 2026-02-05

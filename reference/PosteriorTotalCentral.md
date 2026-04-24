@@ -98,23 +98,27 @@ approach to network analysis and centrality. Psychometrika, 87 (1),
 Other Continuous-Time Mediation Functions:
 [`BootBeta()`](https://github.com/jeksterslab/cTMed/reference/BootBeta.md),
 [`BootBetaStd()`](https://github.com/jeksterslab/cTMed/reference/BootBetaStd.md),
+[`BootDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentral.md),
 [`BootIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentral.md),
 [`BootMed()`](https://github.com/jeksterslab/cTMed/reference/BootMed.md),
 [`BootMedStd()`](https://github.com/jeksterslab/cTMed/reference/BootMedStd.md),
 [`BootTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentral.md),
 [`DeltaBeta()`](https://github.com/jeksterslab/cTMed/reference/DeltaBeta.md),
 [`DeltaBetaStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaBetaStd.md),
+[`DeltaDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentral.md),
 [`DeltaIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.md),
 [`DeltaMed()`](https://github.com/jeksterslab/cTMed/reference/DeltaMed.md),
 [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md),
 [`DeltaTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.md),
 [`Direct()`](https://github.com/jeksterslab/cTMed/reference/Direct.md),
+[`DirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DirectCentral.md),
 [`DirectStd()`](https://github.com/jeksterslab/cTMed/reference/DirectStd.md),
 [`Indirect()`](https://github.com/jeksterslab/cTMed/reference/Indirect.md),
 [`IndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentral.md),
 [`IndirectStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectStd.md),
 [`MCBeta()`](https://github.com/jeksterslab/cTMed/reference/MCBeta.md),
 [`MCBetaStd()`](https://github.com/jeksterslab/cTMed/reference/MCBetaStd.md),
+[`MCDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentral.md),
 [`MCIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.md),
 [`MCMed()`](https://github.com/jeksterslab/cTMed/reference/MCMed.md),
 [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md),
@@ -124,6 +128,7 @@ Other Continuous-Time Mediation Functions:
 [`Med()`](https://github.com/jeksterslab/cTMed/reference/Med.md),
 [`MedStd()`](https://github.com/jeksterslab/cTMed/reference/MedStd.md),
 [`PosteriorBeta()`](https://github.com/jeksterslab/cTMed/reference/PosteriorBeta.md),
+[`PosteriorDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentral.md),
 [`PosteriorIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.md),
 [`PosteriorMed()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMed.md),
 [`Total()`](https://github.com/jeksterslab/cTMed/reference/Total.md),
@@ -195,11 +200,10 @@ PosteriorTotalCentral(
 #> PosteriorTotalCentral(phi = phi, delta_t = 1)
 #> 
 #> Total Effect Centrality
-#> 
 #>   variable interval    est     se    R    2.5%  97.5%
-#> 1        x        1 0.3991 0.0485 1000  0.3039 0.4915
-#> 2        m        1 0.3987 0.0416 1000  0.3158 0.4763
-#> 3        y        1 0.0017 0.0651 1000 -0.1237 0.1280
+#> 1        x        1 0.3991 0.0490 1000  0.3024 0.4946
+#> 2        m        1 0.3977 0.0414 1000  0.3077 0.4777
+#> 3        y        1 0.0038 0.0659 1000 -0.1194 0.1346
 
 # Range of time intervals ---------------------------------------------------
 posterior <- PosteriorTotalCentral(
@@ -215,62 +219,60 @@ print(posterior)
 #> PosteriorTotalCentral(phi = phi, delta_t = 1:5)
 #> 
 #> Total Effect Centrality
-#> 
 #>    variable interval    est     se    R    2.5%  97.5%
-#> 1         x        1 0.3991 0.0485 1000  0.3039 0.4915
-#> 2         m        1 0.3987 0.0416 1000  0.3158 0.4763
-#> 3         y        1 0.0017 0.0651 1000 -0.1237 0.1280
-#> 4         x        2 0.7324 0.0695 1000  0.5981 0.8725
-#> 5         m        2 0.4386 0.0536 1000  0.3283 0.5424
-#> 6         y        2 0.0020 0.0952 1000 -0.1858 0.1888
-#> 7         x        3 0.8935 0.0880 1000  0.7298 1.0839
-#> 8         m        3 0.3631 0.0612 1000  0.2403 0.4838
-#> 9         y        3 0.0015 0.1027 1000 -0.2063 0.2047
-#> 10        x        4 0.9099 0.1027 1000  0.7253 1.1318
-#> 11        m        4 0.2680 0.0662 1000  0.1298 0.3954
-#> 12        y        4 0.0012 0.0971 1000 -0.1927 0.1928
-#> 13        x        5 0.8368 0.1122 1000  0.6337 1.0768
-#> 14        m        5 0.1862 0.0682 1000  0.0471 0.3200
-#> 15        y        5 0.0012 0.0851 1000 -0.1688 0.1678
+#> 1         x        1 0.3991 0.0490 1000  0.3024 0.4946
+#> 2         m        1 0.3977 0.0414 1000  0.3077 0.4777
+#> 3         y        1 0.0038 0.0659 1000 -0.1194 0.1346
+#> 4         x        2 0.7305 0.0707 1000  0.5957 0.8756
+#> 5         m        2 0.4370 0.0539 1000  0.3289 0.5420
+#> 6         y        2 0.0055 0.0968 1000 -0.1737 0.1970
+#> 7         x        3 0.8883 0.0908 1000  0.7220 1.0804
+#> 8         m        3 0.3612 0.0621 1000  0.2435 0.4894
+#> 9         y        3 0.0058 0.1044 1000 -0.1906 0.2119
+#> 10        x        4 0.9017 0.1070 1000  0.7111 1.1284
+#> 11        m        4 0.2663 0.0677 1000  0.1378 0.4128
+#> 12        y        4 0.0055 0.0985 1000 -0.1808 0.2030
+#> 13        x        5 0.8265 0.1180 1000  0.6238 1.0846
+#> 14        m        5 0.1851 0.0701 1000  0.0549 0.3366
+#> 15        y        5 0.0054 0.0863 1000 -0.1619 0.1782
 summary(posterior)
 #> Call:
 #> PosteriorTotalCentral(phi = phi, delta_t = 1:5)
 #> 
 #> Total Effect Centrality
-#> 
 #>    variable interval    est     se    R    2.5%  97.5%
-#> 1         x        1 0.3991 0.0485 1000  0.3039 0.4915
-#> 2         m        1 0.3987 0.0416 1000  0.3158 0.4763
-#> 3         y        1 0.0017 0.0651 1000 -0.1237 0.1280
-#> 4         x        2 0.7324 0.0695 1000  0.5981 0.8725
-#> 5         m        2 0.4386 0.0536 1000  0.3283 0.5424
-#> 6         y        2 0.0020 0.0952 1000 -0.1858 0.1888
-#> 7         x        3 0.8935 0.0880 1000  0.7298 1.0839
-#> 8         m        3 0.3631 0.0612 1000  0.2403 0.4838
-#> 9         y        3 0.0015 0.1027 1000 -0.2063 0.2047
-#> 10        x        4 0.9099 0.1027 1000  0.7253 1.1318
-#> 11        m        4 0.2680 0.0662 1000  0.1298 0.3954
-#> 12        y        4 0.0012 0.0971 1000 -0.1927 0.1928
-#> 13        x        5 0.8368 0.1122 1000  0.6337 1.0768
-#> 14        m        5 0.1862 0.0682 1000  0.0471 0.3200
-#> 15        y        5 0.0012 0.0851 1000 -0.1688 0.1678
+#> 1         x        1 0.3991 0.0490 1000  0.3024 0.4946
+#> 2         m        1 0.3977 0.0414 1000  0.3077 0.4777
+#> 3         y        1 0.0038 0.0659 1000 -0.1194 0.1346
+#> 4         x        2 0.7305 0.0707 1000  0.5957 0.8756
+#> 5         m        2 0.4370 0.0539 1000  0.3289 0.5420
+#> 6         y        2 0.0055 0.0968 1000 -0.1737 0.1970
+#> 7         x        3 0.8883 0.0908 1000  0.7220 1.0804
+#> 8         m        3 0.3612 0.0621 1000  0.2435 0.4894
+#> 9         y        3 0.0058 0.1044 1000 -0.1906 0.2119
+#> 10        x        4 0.9017 0.1070 1000  0.7111 1.1284
+#> 11        m        4 0.2663 0.0677 1000  0.1378 0.4128
+#> 12        y        4 0.0055 0.0985 1000 -0.1808 0.2030
+#> 13        x        5 0.8265 0.1180 1000  0.6238 1.0846
+#> 14        m        5 0.1851 0.0701 1000  0.0549 0.3366
+#> 15        y        5 0.0054 0.0863 1000 -0.1619 0.1782
 confint(posterior, level = 0.95)
 #>    variable interval       2.5 %    97.5 %
-#> 1         x        1  0.30389727 0.4914777
-#> 2         m        1  0.31584766 0.4762828
-#> 3         y        1 -0.12372017 0.1279576
-#> 4         x        2  0.59814836 0.8724793
-#> 5         m        2  0.32826858 0.5424170
-#> 6         y        2 -0.18582907 0.1887818
-#> 7         x        3  0.72979419 1.0838910
-#> 8         m        3  0.24025621 0.4838154
-#> 9         y        3 -0.20628187 0.2047223
-#> 10        x        4  0.72530366 1.1318121
-#> 11        m        4  0.12984662 0.3954040
-#> 12        y        4 -0.19272102 0.1928162
-#> 13        x        5  0.63366101 1.0767630
-#> 14        m        5  0.04707667 0.3200269
-#> 15        y        5 -0.16878260 0.1677510
+#> 1         x        1  0.30242255 0.4946222
+#> 2         m        1  0.30765535 0.4777067
+#> 3         y        1 -0.11938095 0.1345947
+#> 4         x        2  0.59573589 0.8755547
+#> 5         m        2  0.32886587 0.5419811
+#> 6         y        2 -0.17369621 0.1970271
+#> 7         x        3  0.72200441 1.0804187
+#> 8         m        3  0.24349627 0.4894379
+#> 9         y        3 -0.19057916 0.2118894
+#> 10        x        4  0.71107787 1.1284043
+#> 11        m        4  0.13782885 0.4128118
+#> 12        y        4 -0.18080469 0.2030095
+#> 13        x        5  0.62383170 1.0846273
+#> 14        m        5  0.05494448 0.3365555
+#> 15        y        5 -0.16194225 0.1781791
 plot(posterior)
 
 

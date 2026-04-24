@@ -249,7 +249,7 @@ fit <- dynr.cook(
   verbose = FALSE
 )
 #> [1] "Get ready!!!!"
-#> using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0’
+#> using C compiler: ‘gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0’
 #> Optimization function called.
 #> Starting Hessian calculation ...
 #> Finished Hessian calculation.
@@ -270,8 +270,8 @@ fit <- dynr.cook(
 #> 
 #> Doing end processing
 #> Successful trial
-#> Total Time: 43.31237 
-#> Backend Time: 43.30633
+#> Total Time: 42.82154 
+#> Backend Time: 42.81541
 summary(fit)
 #> Coefficients:
 #>             Estimate Std. Error t value  ci.lower  ci.upper Pr(>|t|)    
@@ -486,6 +486,6 @@ effect sizes for direct, indirect, and total effects in continuous-time
 mediation models. *Psychological Methods*.
 <https://doi.org/10.1037/met0000779>
 
-R Core Team. (2024). *R: A language and environment for statistical
+R Core Team. (2026). *R: A language and environment for statistical
 computing*. R Foundation for Statistical Computing.
 <https://www.R-project.org/>
