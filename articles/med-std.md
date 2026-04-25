@@ -189,7 +189,7 @@ delta <- DeltaMedStd(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 0.8466625 secs
+#> Time difference of 0.7087016 secs
 ```
 
 ``` r
@@ -218,7 +218,7 @@ mc <- MCMedStd(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 15.01979 mins
+#> Time difference of 16.09378 mins
 ```
 
 ``` r
