@@ -59,6 +59,9 @@
 #'   The sampling variance-covariance matrix of
 #'   \eqn{\mathrm{vec} \left( \boldsymbol{\Phi} \right)} and
 #'   \eqn{\mathrm{vech} \left( \boldsymbol{\Sigma} \right)}
+#' @param diag_sigma Logical.
+#'   If `diag_sigma = TRUE`,
+#'   treat \eqn{\boldsymbol{\Sigma}} as a diagonal matrix.
 #'
 #' @return Returns an object
 #'   of class `ctmedmc` which is a list with the following elements:
@@ -103,12 +106,24 @@ MCPhiSigma <- function(phi,
                        vcov_theta,
                        R,
                        test_phi = TRUE,
+                       diag_sigma = FALSE,
                        ncores = NULL,
                        seed = NULL) {
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi)
   )
+  if (diag_sigma) {
+    theta <- c(
+      .Vec(phi),
+      diag(sigma)
+    )
+  } else {
+    theta <- c(
+      .Vec(phi),
+      .Vech(sigma)
+    )
+  }
   args <- list(
     phi = phi,
     sigma = sigma,
@@ -147,9 +162,10 @@ MCPhiSigma <- function(phi,
         X = seq_len(R),
         FUN = function(i) {
           .MCPhiSigmaI(
-            theta = c(.Vec(phi), .Vech(sigma)),
+            theta = theta,
             vcov_theta = vcov_theta,
-            test_phi = test_phi
+            test_phi = test_phi,
+            diag_sigma = diag_sigma
           )
         },
         mc.cores = ncores
@@ -170,9 +186,10 @@ MCPhiSigma <- function(phi,
         X = seq_len(R),
         fun = function(i) {
           .MCPhiSigmaI(
-            theta = c(.Vec(phi), .Vech(sigma)),
+            theta = theta,
             vcov_theta = vcov_theta,
-            test_phi = test_phi
+            test_phi = test_phi,
+            diag_sigma = diag_sigma
           )
         }
       )
@@ -183,10 +200,11 @@ MCPhiSigma <- function(phi,
       set.seed(seed)
     }
     output <- .MCPhiSigma(
-      theta = c(.Vec(phi), .Vech(sigma)),
+      theta = theta,
       vcov_theta = vcov_theta,
       R = R,
-      test_phi = test_phi
+      test_phi = test_phi,
+      diag_sigma = diag_sigma
     )
   }
   output <- lapply(
