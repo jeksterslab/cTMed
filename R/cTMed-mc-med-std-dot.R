@@ -7,12 +7,20 @@
                       med,
                       R,
                       test_phi = TRUE,
+                      diag_sigma = FALSE,
                       ncores = NULL,
                       seed = NULL) {
-  theta <- c(
-    .Vec(phi),
-    .Vech(sigma)
-  )
+  if (diag_sigma) {
+    theta <- c(
+      .Vec(phi),
+      diag(sigma)
+    )
+  } else {
+    theta <- c(
+      .Vec(phi),
+      .Vech(sigma)
+    )
+  }
   # nocov start
   par <- FALSE
   if (!is.null(ncores)) {
@@ -44,7 +52,8 @@
           .MCPhiSigmaI(
             theta = theta,
             vcov_theta = vcov_theta,
-            test_phi = test_phi
+            test_phi = test_phi,
+            diag_sigma = diag_sigma
           )
         },
         mc.cores = ncores
@@ -124,7 +133,8 @@
           .MCPhiSigmaI(
             theta = theta,
             vcov_theta = vcov_theta,
-            test_phi = test_phi
+            test_phi = test_phi,
+            diag_sigma = diag_sigma
           )
         }
       )
@@ -197,7 +207,8 @@
         .MCPhiSigmaI(
           theta = theta,
           vcov_theta = vcov_theta,
-          test_phi = test_phi
+          test_phi = test_phi,
+          diag_sigma = diag_sigma
         )
       }
     )
