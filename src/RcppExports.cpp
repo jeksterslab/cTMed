@@ -159,21 +159,22 @@ BEGIN_RCPP
 END_RCPP
 }
 // MCPhiSigmaI
-Rcpp::List MCPhiSigmaI(const arma::vec& theta, const arma::mat& vcov_theta, bool test_phi);
-RcppExport SEXP _cTMed_MCPhiSigmaI(SEXP thetaSEXP, SEXP vcov_thetaSEXP, SEXP test_phiSEXP) {
+Rcpp::List MCPhiSigmaI(const arma::vec& theta, const arma::mat& vcov_theta, bool test_phi, bool diag_sigma);
+RcppExport SEXP _cTMed_MCPhiSigmaI(SEXP thetaSEXP, SEXP vcov_thetaSEXP, SEXP test_phiSEXP, SEXP diag_sigmaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
     Rcpp::traits::input_parameter< const arma::mat& >::type vcov_theta(vcov_thetaSEXP);
     Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCPhiSigmaI(theta, vcov_theta, test_phi));
+    Rcpp::traits::input_parameter< bool >::type diag_sigma(diag_sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(MCPhiSigmaI(theta, vcov_theta, test_phi, diag_sigma));
     return rcpp_result_gen;
 END_RCPP
 }
 // MCPhiSigma
-Rcpp::List MCPhiSigma(const arma::vec& theta, const arma::mat& vcov_theta, const arma::uword& R, bool test_phi);
-RcppExport SEXP _cTMed_MCPhiSigma(SEXP thetaSEXP, SEXP vcov_thetaSEXP, SEXP RSEXP, SEXP test_phiSEXP) {
+Rcpp::List MCPhiSigma(const arma::vec& theta, const arma::mat& vcov_theta, const arma::uword& R, bool test_phi, bool diag_sigma);
+RcppExport SEXP _cTMed_MCPhiSigma(SEXP thetaSEXP, SEXP vcov_thetaSEXP, SEXP RSEXP, SEXP test_phiSEXP, SEXP diag_sigmaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -181,7 +182,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::mat& >::type vcov_theta(vcov_thetaSEXP);
     Rcpp::traits::input_parameter< const arma::uword& >::type R(RSEXP);
     Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCPhiSigma(theta, vcov_theta, R, test_phi));
+    Rcpp::traits::input_parameter< bool >::type diag_sigma(diag_sigmaSEXP);
+    rcpp_result_gen = Rcpp::wrap(MCPhiSigma(theta, vcov_theta, R, test_phi, diag_sigma));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -436,8 +438,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_IndirectStd", (DL_FUNC) &_cTMed_IndirectStd, 6},
     {"_cTMed_Indirect", (DL_FUNC) &_cTMed_Indirect, 5},
     {"_cTMed_MCPhiI", (DL_FUNC) &_cTMed_MCPhiI, 3},
-    {"_cTMed_MCPhiSigmaI", (DL_FUNC) &_cTMed_MCPhiSigmaI, 3},
-    {"_cTMed_MCPhiSigma", (DL_FUNC) &_cTMed_MCPhiSigma, 4},
+    {"_cTMed_MCPhiSigmaI", (DL_FUNC) &_cTMed_MCPhiSigmaI, 4},
+    {"_cTMed_MCPhiSigma", (DL_FUNC) &_cTMed_MCPhiSigma, 5},
     {"_cTMed_MCPhi", (DL_FUNC) &_cTMed_MCPhi, 4},
     {"_cTMed_Meds", (DL_FUNC) &_cTMed_Meds, 5},
     {"_cTMed_MedStds", (DL_FUNC) &_cTMed_MedStds, 6},

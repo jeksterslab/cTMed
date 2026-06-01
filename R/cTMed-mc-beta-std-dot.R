@@ -175,7 +175,7 @@
           theta = theta,
           vcov_theta = vcov_theta,
           test_phi = test_phi,
-            diag_sigma = diag_sigma
+          diag_sigma = diag_sigma
         )
       }
     )

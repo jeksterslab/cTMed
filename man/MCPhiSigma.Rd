@@ -12,6 +12,7 @@ MCPhiSigma(
   vcov_theta,
   R,
   test_phi = TRUE,
+  diag_sigma = FALSE,
   ncores = NULL,
   seed = NULL
 )
@@ -41,6 +42,10 @@ If the test returns \code{FALSE},
 the function generates a new drift matrix \eqn{\boldsymbol{\Phi}}
 and runs the test recursively
 until the test returns \code{TRUE}.}
+
+\item{diag_sigma}{Logical.
+If \code{diag_sigma = TRUE},
+treat \eqn{\boldsymbol{\Sigma}} as a diagonal matrix.}
 
 \item{ncores}{Positive integer.
 Number of cores to use.
