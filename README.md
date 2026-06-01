@@ -7,7 +7,6 @@ Ivan Jacob Agaloos Pesigan
 
 <!-- badges: start -->
 
-[![DOI](https://zenodo.org/badge/DOI/10.1037/met0000779.svg)](https://doi.org/10.1037/met0000779)
 [![CRAN
 Status](https://www.r-pkg.org/badges/version/cTMed)](https://cran.r-project.org/package=cTMed)
 [![R-Universe
@@ -15,6 +14,7 @@ Status](https://jeksterslab.r-universe.dev/badges/cTMed)](https://jeksterslab.r-
 [![Make
 Project](https://github.com/jeksterslab/cTMed/actions/workflows/make.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/make.yml)
 [![R-CMD-check-standard](https://github.com/jeksterslab/cTMed/actions/workflows/check-standard.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/check-standard.yml)
+[![R-CMD-check-oldrel](https://github.com/jeksterslab/cTMed/actions/workflows/check-oldrel.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/check-oldrel.yml)
 [![R Package Test
 Coverage](https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/jeksterslab/cTMed/actions/workflows/test-coverage.yml)
 [![Lint R
