@@ -21,6 +21,7 @@ MCMedStd(
   med,
   R,
   test_phi = TRUE,
+  diag_sigma = FALSE,
   ncores = NULL,
   seed = NULL,
   tol = 0.01
@@ -72,6 +73,11 @@ MCMedStd(
   `FALSE`, the function generates a new drift matrix
   \\\boldsymbol{\Phi}\\ and runs the test recursively until the test
   returns `TRUE`.
+
+- diag_sigma:
+
+  Logical. If `diag_sigma = TRUE`, treat \\\boldsymbol{\Sigma}\\ as a
+  diagonal matrix.
 
 - ncores:
 
