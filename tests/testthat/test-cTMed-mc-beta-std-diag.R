@@ -90,9 +90,10 @@ lapply(
         )
         colnames(sigma) <- rownames(sigma) <- colnames(phi)
         sigma_vech_diag <- c(1, 4, 6)
+        q <- length(phi)
         keep <- c(
-          seq_len(length(phi)),
-          length(phi) + sigma_vech_diag
+          seq_len(q),
+          q + sigma_vech_diag
         )
         vcov_theta <- vcov_theta[keep, keep, drop = FALSE]
         delta_t <- 2
@@ -212,9 +213,10 @@ lapply(
         )
         colnames(sigma) <- rownames(sigma) <- colnames(phi)
         sigma_vech_diag <- c(1, 4, 6)
+        q <- length(phi)
         keep <- c(
-          seq_len(length(phi)),
-          length(phi) + sigma_vech_diag
+          seq_len(q),
+          q + sigma_vech_diag
         )
         vcov_theta <- vcov_theta[keep, keep, drop = FALSE]
         delta_t <- 2
