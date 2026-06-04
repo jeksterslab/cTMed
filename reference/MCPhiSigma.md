@@ -13,7 +13,7 @@ MCPhiSigma(
   vcov_theta,
   R,
   test_phi = TRUE,
-  diag_sigma = FALSE,
+  sigma_diag = FALSE,
   ncores = NULL,
   seed = NULL
 )
@@ -49,9 +49,9 @@ MCPhiSigma(
   \\\boldsymbol{\Phi}\\ and runs the test recursively until the test
   returns `TRUE`.
 
-- diag_sigma:
+- sigma_diag:
 
-  Logical. If `diag_sigma = TRUE`, treat \\\boldsymbol{\Sigma}\\ as a
+  Logical. If `sigma_diag = TRUE`, treat \\\boldsymbol{\Sigma}\\ as a
   diagonal matrix.
 
 - ncores:

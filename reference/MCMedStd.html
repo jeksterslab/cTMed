@@ -81,7 +81,7 @@ and process noise covariance matrix \(\boldsymbol{\Sigma}\).</p>
 <span>  <span class="va">med</span>,</span>
 <span>  <span class="va">R</span>,</span>
 <span>  test_phi <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  diag_sigma <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  sigma_diag <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  ncores <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  seed <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  tol <span class="op">=</span> <span class="fl">0.01</span></span>
@@ -148,9 +148,9 @@ and runs the test recursively
 until the test returns <code>TRUE</code>.</p></dd>
 
 
-<dt id="arg-diag-sigma">diag_sigma<a class="anchor" aria-label="anchor" href="#arg-diag-sigma"></a></dt>
+<dt id="arg-sigma-diag">sigma_diag<a class="anchor" aria-label="anchor" href="#arg-sigma-diag"></a></dt>
 <dd><p>Logical.
-If <code>diag_sigma = TRUE</code>,
+If <code>sigma_diag = TRUE</code>,
 treat \(\boldsymbol{\Sigma}\) as a diagonal matrix.</p></dd>
 
 
