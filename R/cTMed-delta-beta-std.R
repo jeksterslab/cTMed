@@ -236,6 +236,7 @@ DeltaBetaStd <- function(phi,
                          sigma,
                          vcov_theta,
                          delta_t,
+                         sigma_diag = FALSE,
                          ncores = NULL,
                          tol = 0.01) {
   idx <- rownames(phi)
@@ -281,7 +282,8 @@ DeltaBetaStd <- function(phi,
       fun = .DeltaBetaStd,
       phi = phi,
       sigma = sigma,
-      vcov_theta = vcov_theta
+      vcov_theta = vcov_theta,
+      sigma_diag = sigma_diag
     )
     # nocov end
   } else {
@@ -290,7 +292,8 @@ DeltaBetaStd <- function(phi,
       FUN = .DeltaBetaStd,
       phi = phi,
       sigma = sigma,
-      vcov_theta = vcov_theta
+      vcov_theta = vcov_theta,
+      sigma_diag = sigma_diag
     )
   }
   names(output) <- delta_t

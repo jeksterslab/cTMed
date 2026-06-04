@@ -16,6 +16,7 @@ DeltaMedStd(
   from,
   to,
   med,
+  sigma_diag = FALSE,
   ncores = NULL,
   tol = 0.01
 )
@@ -46,6 +47,10 @@ Name of the dependent variable \eqn{Y} in \code{phi}.}
 
 \item{med}{Character vector.
 Name/s of the mediator variable/s in \code{phi}.}
+
+\item{sigma_diag}{Logical.
+If \code{sigma_diag = TRUE},
+treat \eqn{\boldsymbol{\Sigma}} as a diagonal matrix.}
 
 \item{ncores}{Positive integer.
 Number of cores to use.

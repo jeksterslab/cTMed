@@ -4,18 +4,21 @@
                          vcov_theta,
                          from,
                          to,
-                         med) {
+                         med,
+                         sigma_diag) {
   constructor <- function(delta_t,
                           from,
                           to,
-                          med) {
+                          med,
+                          sigma_diag) {
     function(x) {
       .MedStdVec(
         v = x,
         delta_t = delta_t,
         from = from,
         to = to,
-        med = med
+        med = med,
+        sigma_diag = sigma_diag
       )
     }
   }
@@ -23,12 +26,20 @@
     delta_t = delta_t,
     from = from,
     to = to,
-    med = med
+    med = med,
+    sigma_diag = sigma_diag
   )
-  v <- c(
-    .Vec(phi),
-    .Vech(sigma)
-  )
+  if (sigma_diag) {
+    v <- c(
+      .Vec(phi),
+      diag(sigma)
+    )
+  } else {
+    v <- c(
+      .Vec(phi),
+      .Vech(sigma)
+    )
+  }
   jacobian <- numDeriv::jacobian(
     func = func,
     x = v

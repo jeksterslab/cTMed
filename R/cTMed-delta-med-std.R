@@ -248,6 +248,7 @@ DeltaMedStd <- function(phi,
                         from,
                         to,
                         med,
+                        sigma_diag = FALSE,
                         ncores = NULL,
                         tol = 0.01) {
   idx <- rownames(phi)
@@ -271,6 +272,7 @@ DeltaMedStd <- function(phi,
     from = from,
     to = to,
     med = med,
+    sigma_diag = sigma_diag,
     ncores = ncores,
     method = "delta",
     network = FALSE
@@ -323,6 +325,7 @@ DeltaMedStd <- function(phi,
         from = from,
         to = to,
         med = med,
+        sigma_diag = sigma_diag,
         mc.cores = ncores
       )
     } else {
@@ -339,7 +342,8 @@ DeltaMedStd <- function(phi,
         vcov_theta = vcov_theta,
         from = from,
         to = to,
-        med = med
+        med = med,
+        sigma_diag = sigma_diag
       )
     }
     # nocov end
@@ -352,7 +356,8 @@ DeltaMedStd <- function(phi,
       vcov_theta = vcov_theta,
       from = from,
       to = to,
-      med = med
+      med = med,
+      sigma_diag = sigma_diag
     )
   }
   names(output) <- delta_t

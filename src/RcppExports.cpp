@@ -233,8 +233,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // MedStdVec
-Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med);
-RcppExport SEXP _cTMed_MedStdVec(SEXP vSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP) {
+Rcpp::NumericVector MedStdVec(const arma::vec& v, const double& delta_t, const arma::uword& from, const arma::uword& to, const arma::vec& med, const bool& sigma_diag);
+RcppExport SEXP _cTMed_MedStdVec(SEXP vSEXP, SEXP delta_tSEXP, SEXP fromSEXP, SEXP toSEXP, SEXP medSEXP, SEXP sigma_diagSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -243,7 +243,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::uword& >::type from(fromSEXP);
     Rcpp::traits::input_parameter< const arma::uword& >::type to(toSEXP);
     Rcpp::traits::input_parameter< const arma::vec& >::type med(medSEXP);
-    rcpp_result_gen = Rcpp::wrap(MedStdVec(v, delta_t, from, to, med));
+    Rcpp::traits::input_parameter< const bool& >::type sigma_diag(sigma_diagSEXP);
+    rcpp_result_gen = Rcpp::wrap(MedStdVec(v, delta_t, from, to, med, sigma_diag));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -377,14 +378,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // TotalStdVec
-arma::vec TotalStdVec(const arma::vec& v, const double& delta_t);
-RcppExport SEXP _cTMed_TotalStdVec(SEXP vSEXP, SEXP delta_tSEXP) {
+arma::vec TotalStdVec(const arma::vec& v, const double& delta_t, const bool& sigma_diag);
+RcppExport SEXP _cTMed_TotalStdVec(SEXP vSEXP, SEXP delta_tSEXP, SEXP sigma_diagSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::vec& >::type v(vSEXP);
     Rcpp::traits::input_parameter< const double& >::type delta_t(delta_tSEXP);
-    rcpp_result_gen = Rcpp::wrap(TotalStdVec(v, delta_t));
+    Rcpp::traits::input_parameter< const bool& >::type sigma_diag(sigma_diagSEXP);
+    rcpp_result_gen = Rcpp::wrap(TotalStdVec(v, delta_t, sigma_diag));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -443,7 +445,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_MCPhi", (DL_FUNC) &_cTMed_MCPhi, 4},
     {"_cTMed_Meds", (DL_FUNC) &_cTMed_Meds, 5},
     {"_cTMed_MedStds", (DL_FUNC) &_cTMed_MedStds, 6},
-    {"_cTMed_MedStdVec", (DL_FUNC) &_cTMed_MedStdVec, 5},
+    {"_cTMed_MedStdVec", (DL_FUNC) &_cTMed_MedStdVec, 6},
     {"_cTMed_MedStd", (DL_FUNC) &_cTMed_MedStd, 6},
     {"_cTMed_MedVec", (DL_FUNC) &_cTMed_MedVec, 5},
     {"_cTMed_Med", (DL_FUNC) &_cTMed_Med, 5},
@@ -454,7 +456,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_cTMed_TotalCentral", (DL_FUNC) &_cTMed_TotalCentral, 2},
     {"_cTMed_TotalDeltaT", (DL_FUNC) &_cTMed_TotalDeltaT, 2},
     {"_cTMed_TotalStdDeltaT", (DL_FUNC) &_cTMed_TotalStdDeltaT, 3},
-    {"_cTMed_TotalStdVec", (DL_FUNC) &_cTMed_TotalStdVec, 2},
+    {"_cTMed_TotalStdVec", (DL_FUNC) &_cTMed_TotalStdVec, 3},
     {"_cTMed_TotalStd", (DL_FUNC) &_cTMed_TotalStd, 3},
     {"_cTMed_TotalVec", (DL_FUNC) &_cTMed_TotalVec, 2},
     {"_cTMed_Total", (DL_FUNC) &_cTMed_Total, 2},

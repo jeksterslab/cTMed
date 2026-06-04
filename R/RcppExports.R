@@ -65,8 +65,8 @@
     .Call(`_cTMed_MedStds`, phi, sigma, delta_t, from, to, med)
 }
 
-.MedStdVec <- function(v, delta_t, from, to, med) {
-    .Call(`_cTMed_MedStdVec`, v, delta_t, from, to, med)
+.MedStdVec <- function(v, delta_t, from, to, med, sigma_diag = FALSE) {
+    .Call(`_cTMed_MedStdVec`, v, delta_t, from, to, med, sigma_diag)
 }
 
 .MedStd <- function(phi, sigma, delta_t, from, to, med) {
@@ -109,8 +109,8 @@
     .Call(`_cTMed_TotalStdDeltaT`, phi, sigma, delta_t)
 }
 
-.TotalStdVec <- function(v, delta_t) {
-    .Call(`_cTMed_TotalStdVec`, v, delta_t)
+.TotalStdVec <- function(v, delta_t, sigma_diag = FALSE) {
+    .Call(`_cTMed_TotalStdVec`, v, delta_t, sigma_diag)
 }
 
 .TotalStd <- function(phi, sigma, delta_t) {
