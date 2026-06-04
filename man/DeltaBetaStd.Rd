@@ -7,7 +7,15 @@ for the Elements of the Standardized Matrix of Lagged Coefficients
 Over a Specific Time Interval
 or a Range of Time Intervals}
 \usage{
-DeltaBetaStd(phi, sigma, vcov_theta, delta_t, ncores = NULL, tol = 0.01)
+DeltaBetaStd(
+  phi,
+  sigma,
+  vcov_theta,
+  delta_t,
+  sigma_diag = FALSE,
+  ncores = NULL,
+  tol = 0.01
+)
 }
 \arguments{
 \item{phi}{Numeric matrix.
@@ -26,6 +34,10 @@ The sampling variance-covariance matrix of
 \item{delta_t}{Numeric.
 Time interval
 (\eqn{\Delta t}).}
+
+\item{sigma_diag}{Logical.
+If \code{sigma_diag = TRUE},
+treat \eqn{\boldsymbol{\Sigma}} as a diagonal matrix.}
 
 \item{ncores}{Positive integer.
 Number of cores to use.

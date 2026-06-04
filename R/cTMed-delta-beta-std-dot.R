@@ -1,22 +1,33 @@
 .DeltaBetaStd <- function(delta_t,
                           phi,
                           sigma,
-                          vcov_theta) {
-  constructor <- function(delta_t) {
+                          vcov_theta,
+                          sigma_diag) {
+  constructor <- function(delta_t,
+                          sigma_diag) {
     function(x) {
       .TotalStdVec(
         v = x,
-        delta_t = delta_t
+        delta_t = delta_t,
+        sigma_diag = sigma_diag
       )
     }
   }
   func <- constructor(
-    delta_t = delta_t
+    delta_t = delta_t,
+    sigma_diag = sigma_diag
   )
-  v <- c(
-    .Vec(phi),
-    .Vech(sigma)
-  )
+  if (sigma_diag) {
+    v <- c(
+      .Vec(phi),
+      diag(sigma)
+    )
+  } else {
+    v <- c(
+      .Vec(phi),
+      .Vech(sigma)
+    )
+  }
   jacobian <- numDeriv::jacobian(
     func = func,
     x = v
