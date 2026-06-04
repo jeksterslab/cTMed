@@ -159,22 +159,22 @@ BEGIN_RCPP
 END_RCPP
 }
 // MCPhiSigmaI
-Rcpp::List MCPhiSigmaI(const arma::vec& theta, const arma::mat& vcov_theta, bool test_phi, bool diag_sigma);
-RcppExport SEXP _cTMed_MCPhiSigmaI(SEXP thetaSEXP, SEXP vcov_thetaSEXP, SEXP test_phiSEXP, SEXP diag_sigmaSEXP) {
+Rcpp::List MCPhiSigmaI(const arma::vec& theta, const arma::mat& vcov_theta, bool test_phi, bool sigma_diag);
+RcppExport SEXP _cTMed_MCPhiSigmaI(SEXP thetaSEXP, SEXP vcov_thetaSEXP, SEXP test_phiSEXP, SEXP sigma_diagSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const arma::vec& >::type theta(thetaSEXP);
     Rcpp::traits::input_parameter< const arma::mat& >::type vcov_theta(vcov_thetaSEXP);
     Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    Rcpp::traits::input_parameter< bool >::type diag_sigma(diag_sigmaSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCPhiSigmaI(theta, vcov_theta, test_phi, diag_sigma));
+    Rcpp::traits::input_parameter< bool >::type sigma_diag(sigma_diagSEXP);
+    rcpp_result_gen = Rcpp::wrap(MCPhiSigmaI(theta, vcov_theta, test_phi, sigma_diag));
     return rcpp_result_gen;
 END_RCPP
 }
 // MCPhiSigma
-Rcpp::List MCPhiSigma(const arma::vec& theta, const arma::mat& vcov_theta, const arma::uword& R, bool test_phi, bool diag_sigma);
-RcppExport SEXP _cTMed_MCPhiSigma(SEXP thetaSEXP, SEXP vcov_thetaSEXP, SEXP RSEXP, SEXP test_phiSEXP, SEXP diag_sigmaSEXP) {
+Rcpp::List MCPhiSigma(const arma::vec& theta, const arma::mat& vcov_theta, const arma::uword& R, bool test_phi, bool sigma_diag);
+RcppExport SEXP _cTMed_MCPhiSigma(SEXP thetaSEXP, SEXP vcov_thetaSEXP, SEXP RSEXP, SEXP test_phiSEXP, SEXP sigma_diagSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -182,8 +182,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< const arma::mat& >::type vcov_theta(vcov_thetaSEXP);
     Rcpp::traits::input_parameter< const arma::uword& >::type R(RSEXP);
     Rcpp::traits::input_parameter< bool >::type test_phi(test_phiSEXP);
-    Rcpp::traits::input_parameter< bool >::type diag_sigma(diag_sigmaSEXP);
-    rcpp_result_gen = Rcpp::wrap(MCPhiSigma(theta, vcov_theta, R, test_phi, diag_sigma));
+    Rcpp::traits::input_parameter< bool >::type sigma_diag(sigma_diagSEXP);
+    rcpp_result_gen = Rcpp::wrap(MCPhiSigma(theta, vcov_theta, R, test_phi, sigma_diag));
     return rcpp_result_gen;
 END_RCPP
 }

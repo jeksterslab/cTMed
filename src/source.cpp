@@ -324,12 +324,12 @@ arma::mat MCPhiI(const arma::mat& phi, const arma::mat& vcov_phi_vec_l,
 
 // [[Rcpp::export(.MCPhiSigmaI)]]
 Rcpp::List MCPhiSigmaI(const arma::vec& theta, const arma::mat& vcov_theta,
-                       bool test_phi = true, bool diag_sigma = false) {
+                       bool test_phi = true, bool sigma_diag = false) {
   Rcpp::List output(2);
   arma::uword n = theta.n_elem;
   arma::uword p;
   arma::uword sigma_n;
-  if (diag_sigma) {
+  if (sigma_diag) {
     p = (-1 + std::sqrt(1 + 4 * n)) / 2;
     sigma_n = p;
   } else {
@@ -358,7 +358,7 @@ Rcpp::List MCPhiSigmaI(const arma::vec& theta, const arma::mat& vcov_theta,
       run = false;
     }
     if (run == false) {
-      if (diag_sigma) {
+      if (sigma_diag) {
         sigma_i.zeros();
         for (arma::uword i = 0; i < p; ++i) {
           sigma_i(i, i) = std::max(sigma_vec_i(i), 1e-8);
@@ -393,12 +393,12 @@ Rcpp::List MCPhiSigmaI(const arma::vec& theta, const arma::mat& vcov_theta,
 // [[Rcpp::export(.MCPhiSigma)]]
 Rcpp::List MCPhiSigma(const arma::vec& theta, const arma::mat& vcov_theta,
                       const arma::uword& R, bool test_phi = true,
-                      bool diag_sigma = false) {
+                      bool sigma_diag = false) {
   Rcpp::List output(R);
   arma::uword n = theta.n_elem;
   arma::uword p;
   arma::uword q;
-  if (diag_sigma) {
+  if (sigma_diag) {
     p = (-1 + std::sqrt(1 + 4 * n)) / 2;
     q = p;
   } else {
@@ -431,7 +431,7 @@ Rcpp::List MCPhiSigma(const arma::vec& theta, const arma::mat& vcov_theta,
         run = false;
       }
       if (run == false) {
-        if (diag_sigma) {
+        if (sigma_diag) {
           sigma_i.zeros();
           for (arma::uword j = 0; j < p; ++j) {
             sigma_i(j, j) = std::max(sigma_vec_i(j), 1e-8);

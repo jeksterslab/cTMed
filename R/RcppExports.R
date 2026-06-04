@@ -45,12 +45,12 @@
     .Call(`_cTMed_MCPhiI`, phi, vcov_phi_vec_l, test_phi)
 }
 
-.MCPhiSigmaI <- function(theta, vcov_theta, test_phi = TRUE, diag_sigma = FALSE) {
-    .Call(`_cTMed_MCPhiSigmaI`, theta, vcov_theta, test_phi, diag_sigma)
+.MCPhiSigmaI <- function(theta, vcov_theta, test_phi = TRUE, sigma_diag = FALSE) {
+    .Call(`_cTMed_MCPhiSigmaI`, theta, vcov_theta, test_phi, sigma_diag)
 }
 
-.MCPhiSigma <- function(theta, vcov_theta, R, test_phi = TRUE, diag_sigma = FALSE) {
-    .Call(`_cTMed_MCPhiSigma`, theta, vcov_theta, R, test_phi, diag_sigma)
+.MCPhiSigma <- function(theta, vcov_theta, R, test_phi = TRUE, sigma_diag = FALSE) {
+    .Call(`_cTMed_MCPhiSigma`, theta, vcov_theta, R, test_phi, sigma_diag)
 }
 
 .MCPhi <- function(phi, vcov_phi_vec_l, R, test_phi = TRUE) {

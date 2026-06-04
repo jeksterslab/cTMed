@@ -123,7 +123,7 @@ lapply(
           vcov_theta = vcov_theta,
           delta_t = delta_t,
           R = 1000,
-          diag_sigma = TRUE,
+          sigma_diag = TRUE,
           seed = 42
         )
         testthat::expect_true(
@@ -248,7 +248,7 @@ lapply(
           R = 1000,
           seed = NULL,
           test_phi = FALSE,
-          diag_sigma = TRUE
+          sigma_diag = TRUE
         )
         print(mc)
         summary(mc)
@@ -262,7 +262,7 @@ lapply(
           R = 1000,
           seed = NULL,
           test_phi = FALSE,
-          diag_sigma = TRUE
+          sigma_diag = TRUE
         )
         print(mc)
         summary(mc)
