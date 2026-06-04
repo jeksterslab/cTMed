@@ -19,6 +19,7 @@ DeltaMedStd(
   from,
   to,
   med,
+  sigma_diag = FALSE,
   ncores = NULL,
   tol = 0.01
 )
@@ -57,6 +58,11 @@ DeltaMedStd(
 - med:
 
   Character vector. Name/s of the mediator variable/s in `phi`.
+
+- sigma_diag:
+
+  Logical. If `sigma_diag = TRUE`, treat \\\boldsymbol{\Sigma}\\ as a
+  diagonal matrix.
 
 - ncores:
 

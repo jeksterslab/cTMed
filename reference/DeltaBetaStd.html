@@ -65,7 +65,15 @@ and process noise covariance matrix \(\boldsymbol{\Sigma}\).</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">DeltaBetaStd</span><span class="op">(</span><span class="va">phi</span>, <span class="va">sigma</span>, <span class="va">vcov_theta</span>, <span class="va">delta_t</span>, ncores <span class="op">=</span> <span class="cn">NULL</span>, tol <span class="op">=</span> <span class="fl">0.01</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">DeltaBetaStd</span><span class="op">(</span></span>
+<span>  <span class="va">phi</span>,</span>
+<span>  <span class="va">sigma</span>,</span>
+<span>  <span class="va">vcov_theta</span>,</span>
+<span>  <span class="va">delta_t</span>,</span>
+<span>  sigma_diag <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  ncores <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  tol <span class="op">=</span> <span class="fl">0.01</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -95,6 +103,12 @@ The sampling variance-covariance matrix of
 <dd><p>Numeric.
 Time interval
 (\(\Delta t\)).</p></dd>
+
+
+<dt id="arg-sigma-diag">sigma_diag<a class="anchor" aria-label="anchor" href="#arg-sigma-diag"></a></dt>
+<dd><p>Logical.
+If <code>sigma_diag = TRUE</code>,
+treat \(\boldsymbol{\Sigma}\) as a diagonal matrix.</p></dd>
 
 
 <dt id="arg-ncores">ncores<a class="anchor" aria-label="anchor" href="#arg-ncores"></a></dt>

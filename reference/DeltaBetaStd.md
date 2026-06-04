@@ -11,7 +11,15 @@ stochastic differential equation model's drift matrix
 ## Usage
 
 ``` r
-DeltaBetaStd(phi, sigma, vcov_theta, delta_t, ncores = NULL, tol = 0.01)
+DeltaBetaStd(
+  phi,
+  sigma,
+  vcov_theta,
+  delta_t,
+  sigma_diag = FALSE,
+  ncores = NULL,
+  tol = 0.01
+)
 ```
 
 ## Arguments
@@ -35,6 +43,11 @@ DeltaBetaStd(phi, sigma, vcov_theta, delta_t, ncores = NULL, tol = 0.01)
 - delta_t:
 
   Numeric. Time interval (\\\Delta t\\).
+
+- sigma_diag:
+
+  Logical. If `sigma_diag = TRUE`, treat \\\boldsymbol{\Sigma}\\ as a
+  diagonal matrix.
 
 - ncores:
 

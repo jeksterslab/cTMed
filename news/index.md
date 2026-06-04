@@ -4,6 +4,12 @@
 
 ### Patch
 
+- Allow diagonal `sigma` in
+  [`DeltaBetaStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaBetaStd.md),
+  [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md),
+  [`MCBetaStd()`](https://github.com/jeksterslab/cTMed/reference/MCBetaStd.md),
+  and
+  [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md).
 - Added direct effect centrality.
 
 ## cTMed 1.0.9
