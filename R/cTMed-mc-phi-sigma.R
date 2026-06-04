@@ -59,8 +59,8 @@
 #'   The sampling variance-covariance matrix of
 #'   \eqn{\mathrm{vec} \left( \boldsymbol{\Phi} \right)} and
 #'   \eqn{\mathrm{vech} \left( \boldsymbol{\Sigma} \right)}
-#' @param diag_sigma Logical.
-#'   If `diag_sigma = TRUE`,
+#' @param sigma_diag Logical.
+#'   If `sigma_diag = TRUE`,
 #'   treat \eqn{\boldsymbol{\Sigma}} as a diagonal matrix.
 #'
 #' @return Returns an object
@@ -106,14 +106,14 @@ MCPhiSigma <- function(phi,
                        vcov_theta,
                        R,
                        test_phi = TRUE,
-                       diag_sigma = FALSE,
+                       sigma_diag = FALSE,
                        ncores = NULL,
                        seed = NULL) {
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi)
   )
-  if (diag_sigma) {
+  if (sigma_diag) {
     theta <- c(
       .Vec(phi),
       diag(sigma)
@@ -165,7 +165,7 @@ MCPhiSigma <- function(phi,
             theta = theta,
             vcov_theta = vcov_theta,
             test_phi = test_phi,
-            diag_sigma = diag_sigma
+            sigma_diag = sigma_diag
           )
         },
         mc.cores = ncores
@@ -189,7 +189,7 @@ MCPhiSigma <- function(phi,
             theta = theta,
             vcov_theta = vcov_theta,
             test_phi = test_phi,
-            diag_sigma = diag_sigma
+            sigma_diag = sigma_diag
           )
         }
       )
@@ -204,7 +204,7 @@ MCPhiSigma <- function(phi,
       vcov_theta = vcov_theta,
       R = R,
       test_phi = test_phi,
-      diag_sigma = diag_sigma
+      sigma_diag = sigma_diag
     )
   }
   output <- lapply(

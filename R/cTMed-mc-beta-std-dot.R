@@ -4,10 +4,10 @@
                        delta_t,
                        R,
                        test_phi = TRUE,
-                       diag_sigma = FALSE,
+                       sigma_diag = FALSE,
                        ncores = NULL,
                        seed = NULL) {
-  if (diag_sigma) {
+  if (sigma_diag) {
     theta <- c(
       .Vec(phi),
       diag(sigma)
@@ -64,7 +64,7 @@
             theta = theta,
             vcov_theta = vcov_theta,
             test_phi = test_phi,
-            diag_sigma = diag_sigma
+            sigma_diag = sigma_diag
           )
         },
         mc.cores = ncores
@@ -123,7 +123,7 @@
             theta = theta,
             vcov_theta = vcov_theta,
             test_phi = test_phi,
-            diag_sigma = diag_sigma
+            sigma_diag = sigma_diag
           )
         }
       )
@@ -175,7 +175,7 @@
           theta = theta,
           vcov_theta = vcov_theta,
           test_phi = test_phi,
-          diag_sigma = diag_sigma
+          sigma_diag = sigma_diag
         )
       }
     )

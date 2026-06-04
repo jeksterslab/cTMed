@@ -102,7 +102,7 @@ lapply(
           sigma = sigma,
           vcov_theta = vcov_theta,
           R = R,
-          diag_sigma = TRUE,
+          sigma_diag = TRUE,
           seed = 42
         )$output
         mc_phi <- lapply(
@@ -139,7 +139,7 @@ lapply(
           vcov_theta = vcov_theta,
           R = R,
           test_phi = FALSE,
-          diag_sigma = TRUE,
+          sigma_diag = TRUE,
           seed = 42
         )
         print(mc)
