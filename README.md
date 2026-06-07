@@ -1,7 +1,7 @@
 cTMed
 ================
 Ivan Jacob Agaloos Pesigan
-2026-06-04
+2026-06-06
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -72,7 +72,7 @@ To cite `cTMed` in publications, please cite Pesigan et al. (2025).
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0" line-spacing="2">
+data-entry-spacing="0" data-line-spacing="2">
 
 <div id="ref-Pesigan-Russell-Chow-2025o" class="csl-entry">
 
