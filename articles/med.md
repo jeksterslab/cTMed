@@ -137,7 +137,7 @@ delta <- DeltaMed(
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 0.7753465 secs
+#> Time difference of 0.7869008 secs
 ```
 
 ``` r
@@ -162,10 +162,11 @@ mc <- MCMed(
   R = 20000L,
   ncores = parallel::detectCores() # use multiple cores
 )
+#> Warning in cleanup(mc.cleanup): unable to terminate child: No such process
 end <- Sys.time()
 elapsed <- end - start
 elapsed
-#> Time difference of 14.84773 mins
+#> Time difference of 15.16983 mins
 ```
 
 ``` r
