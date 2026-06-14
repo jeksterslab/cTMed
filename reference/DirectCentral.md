@@ -5,7 +5,7 @@ Direct Effect Centrality
 ## Usage
 
 ``` r
-DirectCentral(phi, delta_t, tol = 0.01)
+DirectCentral(phi, delta_t, tol = 0.001)
 ```
 
 ## Arguments
@@ -89,9 +89,11 @@ Other Continuous-Time Mediation Functions:
 [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md),
 [`DeltaTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.md),
 [`Direct()`](https://github.com/jeksterslab/cTMed/reference/Direct.md),
+[`DirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DirectCentralStd.md),
 [`DirectStd()`](https://github.com/jeksterslab/cTMed/reference/DirectStd.md),
 [`Indirect()`](https://github.com/jeksterslab/cTMed/reference/Indirect.md),
 [`IndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentral.md),
+[`IndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentralStd.md),
 [`IndirectStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectStd.md),
 [`MCBeta()`](https://github.com/jeksterslab/cTMed/reference/MCBeta.md),
 [`MCBetaStd()`](https://github.com/jeksterslab/cTMed/reference/MCBetaStd.md),
@@ -111,6 +113,7 @@ Other Continuous-Time Mediation Functions:
 [`PosteriorTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.md),
 [`Total()`](https://github.com/jeksterslab/cTMed/reference/Total.md),
 [`TotalCentral()`](https://github.com/jeksterslab/cTMed/reference/TotalCentral.md),
+[`TotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/TotalCentralStd.md),
 [`TotalStd()`](https://github.com/jeksterslab/cTMed/reference/TotalStd.md),
 [`Trajectory()`](https://github.com/jeksterslab/cTMed/reference/Trajectory.md)
 

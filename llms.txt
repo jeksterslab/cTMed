@@ -1,6 +1,6 @@
 # cTMed
 
-Ivan Jacob Agaloos Pesigan 2026-06-07
+Ivan Jacob Agaloos Pesigan 2026-06-14
 
 ## Description
 
@@ -241,8 +241,12 @@ computing*. R Foundation for Statistical Computing.
   Intervals
 - [`DirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DirectCentral.md)
   : Direct Effect Centrality
+- [`DirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DirectCentralStd.md)
+  : Standardized Direct Effect Centrality
 - [`IndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentral.md)
   : Indirect Effect Centrality
+- [`IndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentralStd.md)
+  : Standardized Indirect Effect Centrality
 - [`MCDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentral.md)
   : Monte Carlo Sampling Distribution of Direct Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
@@ -263,6 +267,8 @@ computing*. R Foundation for Statistical Computing.
   Specific Time Interval or a Range of Time Intervals
 - [`TotalCentral()`](https://github.com/jeksterslab/cTMed/reference/TotalCentral.md)
   : Total Effect Centrality
+- [`TotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/TotalCentralStd.md)
+  : Standardized Total Effect Centrality
 
 ## Effects
 
@@ -270,12 +276,16 @@ computing*. R Foundation for Statistical Computing.
   : Direct Effect of X on Y Over a Specific Time Interval
 - [`DirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DirectCentral.md)
   : Direct Effect Centrality
+- [`DirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DirectCentralStd.md)
+  : Standardized Direct Effect Centrality
 - [`DirectStd()`](https://github.com/jeksterslab/cTMed/reference/DirectStd.md)
   : Standardized Direct Effect of X on Y Over a Specific Time Interval
 - [`Indirect()`](https://github.com/jeksterslab/cTMed/reference/Indirect.md)
   : Indirect Effect of X on Y Through M Over a Specific Time Interval
 - [`IndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentral.md)
   : Indirect Effect Centrality
+- [`IndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectCentralStd.md)
+  : Standardized Indirect Effect Centrality
 - [`IndirectStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectStd.md)
   : Standardized Indirect Effect of X on Y Through M Over a Specific
   Time Interval
@@ -289,6 +299,8 @@ computing*. R Foundation for Statistical Computing.
   Total Effect Matrix Over a Specific Time Interval
 - [`TotalCentral()`](https://github.com/jeksterslab/cTMed/reference/TotalCentral.md)
   : Total Effect Centrality
+- [`TotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/TotalCentralStd.md)
+  : Standardized Total Effect Centrality
 - [`TotalStd()`](https://github.com/jeksterslab/cTMed/reference/TotalStd.md)
   : Standardized Total Effect Matrix Over a Specific Time Interval
 - [`Trajectory()`](https://github.com/jeksterslab/cTMed/reference/Trajectory.md)

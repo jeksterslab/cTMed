@@ -1,6 +1,6 @@
 # Changelog
 
-## cTMed 1.0.10
+## cTMed 1.0.9.9000
 
 ### Patch
 
@@ -11,6 +11,7 @@
   and
   [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md).
 - Added direct effect centrality.
+- Added standardized centrality measures.
 
 ## cTMed 1.0.9
 
