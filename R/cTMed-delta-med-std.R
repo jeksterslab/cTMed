@@ -250,7 +250,7 @@ DeltaMedStd <- function(phi,
                         med,
                         sigma_diag = FALSE,
                         ncores = NULL,
-                        tol = 0.01) {
+                        tol = 0.001) {
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi),

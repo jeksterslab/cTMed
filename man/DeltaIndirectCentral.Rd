@@ -7,7 +7,7 @@ for the Indirect Effect Centrality
 Over a Specific Time Interval
 or a Range of Time Intervals}
 \usage{
-DeltaIndirectCentral(phi, vcov_phi_vec, delta_t, ncores = NULL, tol = 0.01)
+DeltaIndirectCentral(phi, vcov_phi_vec, delta_t, ncores = NULL, tol = 0.001)
 }
 \arguments{
 \item{phi}{Numeric matrix.
@@ -261,9 +261,11 @@ Other Continuous-Time Mediation Functions:
 \code{\link[=DeltaTotalCentral]{DeltaTotalCentral()}},
 \code{\link[=Direct]{Direct()}},
 \code{\link[=DirectCentral]{DirectCentral()}},
+\code{\link[=DirectCentralStd]{DirectCentralStd()}},
 \code{\link[=DirectStd]{DirectStd()}},
 \code{\link[=Indirect]{Indirect()}},
 \code{\link[=IndirectCentral]{IndirectCentral()}},
+\code{\link[=IndirectCentralStd]{IndirectCentralStd()}},
 \code{\link[=IndirectStd]{IndirectStd()}},
 \code{\link[=MCBeta]{MCBeta()}},
 \code{\link[=MCBetaStd]{MCBetaStd()}},
@@ -283,6 +285,7 @@ Other Continuous-Time Mediation Functions:
 \code{\link[=PosteriorTotalCentral]{PosteriorTotalCentral()}},
 \code{\link[=Total]{Total()}},
 \code{\link[=TotalCentral]{TotalCentral()}},
+\code{\link[=TotalCentralStd]{TotalCentralStd()}},
 \code{\link[=TotalStd]{TotalStd()}},
 \code{\link[=Trajectory]{Trajectory()}}
 }

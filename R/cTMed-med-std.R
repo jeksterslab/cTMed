@@ -97,7 +97,7 @@ MedStd <- function(phi,
                    from,
                    to,
                    med,
-                   tol = 0.01) {
+                   tol = 0.001) {
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi),

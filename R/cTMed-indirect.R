@@ -260,7 +260,11 @@ Indirect <- function(phi,
   }
   args <- list(
     phi = phi,
+    sigma = NULL,
     delta_t = delta_t,
+    network = FALSE,
+    type = "indirect",
+    standardized = FALSE,
     from = from,
     to = to,
     med = med

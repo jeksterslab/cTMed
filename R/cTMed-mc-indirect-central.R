@@ -165,12 +165,12 @@ MCIndirectCentral <- function(phi,
                               test_phi = TRUE,
                               ncores = NULL,
                               seed = NULL,
-                              tol = 0.01) {
+                              tol = 0.001) {
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi)
   )
-  centrality <- "indirect"
+  type <- "indirect"
   args <- list(
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
@@ -181,7 +181,7 @@ MCIndirectCentral <- function(phi,
     seed = seed,
     method = "mc",
     network = TRUE,
-    centrality = centrality
+    type = type
   )
   delta_t <- sort(
     ifelse(
@@ -194,7 +194,7 @@ MCIndirectCentral <- function(phi,
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
     delta_t = delta_t,
-    centrality = centrality,
+    type = type,
     R = R,
     test_phi = test_phi,
     ncores = ncores,

@@ -5,6 +5,18 @@
     .Call(`_cTMed_DirectCentrals`, phi, delta_t)
 }
 
+.DirectCentralStds <- function(phi, sigma, delta_t) {
+    .Call(`_cTMed_DirectCentralStds`, phi, sigma, delta_t)
+}
+
+.DirectCentralStdVec <- function(v, delta_t, sigma_diag = FALSE) {
+    .Call(`_cTMed_DirectCentralStdVec`, v, delta_t, sigma_diag)
+}
+
+.DirectCentralStd <- function(phi, sigma, delta_t) {
+    .Call(`_cTMed_DirectCentralStd`, phi, sigma, delta_t)
+}
+
 .DirectCentralVec <- function(phi_vec, delta_t) {
     .Call(`_cTMed_DirectCentralVec`, phi_vec, delta_t)
 }
@@ -23,6 +35,18 @@
 
 .IndirectCentrals <- function(phi, delta_t) {
     .Call(`_cTMed_IndirectCentrals`, phi, delta_t)
+}
+
+.IndirectCentralStds <- function(phi, sigma, delta_t) {
+    .Call(`_cTMed_IndirectCentralStds`, phi, sigma, delta_t)
+}
+
+.IndirectCentralStdVec <- function(v, delta_t, sigma_diag = FALSE) {
+    .Call(`_cTMed_IndirectCentralStdVec`, v, delta_t, sigma_diag)
+}
+
+.IndirectCentralStd <- function(phi, sigma, delta_t) {
+    .Call(`_cTMed_IndirectCentralStd`, phi, sigma, delta_t)
 }
 
 .IndirectCentralVec <- function(phi_vec, delta_t) {
@@ -91,6 +115,18 @@
 
 .TotalCentrals <- function(phi, delta_t) {
     .Call(`_cTMed_TotalCentrals`, phi, delta_t)
+}
+
+.TotalCentralStds <- function(phi, sigma, delta_t) {
+    .Call(`_cTMed_TotalCentralStds`, phi, sigma, delta_t)
+}
+
+.TotalCentralStdVec <- function(v, delta_t, sigma_diag = FALSE) {
+    .Call(`_cTMed_TotalCentralStdVec`, v, delta_t, sigma_diag)
+}
+
+.TotalCentralStd <- function(phi, sigma, delta_t) {
+    .Call(`_cTMed_TotalCentralStd`, phi, sigma, delta_t)
 }
 
 .TotalCentralVec <- function(phi_vec, delta_t) {

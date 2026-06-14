@@ -167,7 +167,7 @@ MCBeta <- function(phi,
                    test_phi = TRUE,
                    ncores = NULL,
                    seed = NULL,
-                   tol = 0.01) {
+                   tol = 0.001) {
   idx <- rownames(phi)
   stopifnot(
     idx == colnames(phi)

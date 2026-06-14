@@ -59,7 +59,7 @@
 #' @export
 IndirectCentral <- function(phi,
                             delta_t,
-                            tol = 0.01) {
+                            tol = 0.001) {
   delta_t <- ifelse(
     test = delta_t < tol,
     yes = tol, # .Machine$double.xmin
@@ -67,9 +67,11 @@ IndirectCentral <- function(phi,
   )
   args <- list(
     phi = phi,
+    sigma = NULL,
     delta_t = delta_t,
     network = TRUE,
-    centrality = "indirect"
+    type = "indirect",
+    standardized = FALSE
   )
   if (length(delta_t) > 1) {
     output <- .IndirectCentrals(

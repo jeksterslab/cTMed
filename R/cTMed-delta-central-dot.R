@@ -1,14 +1,14 @@
 .DeltaCentral <- function(delta_t,
                           phi,
                           vcov_phi_vec,
-                          centrality) {
-  if (centrality == "total") {
+                          type) {
+  if (type == "total") {
     Fun <- .TotalCentralVec
   }
-  if (centrality == "direct") {
+  if (type == "direct") {
     Fun <- .DirectCentralVec
   }
-  if (centrality == "indirect") {
+  if (type == "indirect") {
     Fun <- .IndirectCentralVec
   }
   constructor <- function(delta_t,

@@ -58,7 +58,7 @@
 #' @export
 TotalCentral <- function(phi,
                          delta_t,
-                         tol = 0.01) {
+                         tol = 0.001) {
   delta_t <- ifelse(
     test = delta_t < tol,
     yes = tol, # .Machine$double.xmin
@@ -66,9 +66,11 @@ TotalCentral <- function(phi,
   )
   args <- list(
     phi = phi,
+    sigma = NULL,
     delta_t = delta_t,
     network = TRUE,
-    centrality = "total"
+    type = "total",
+    standardized = FALSE
   )
   if (length(delta_t) > 1) {
     output <- .TotalCentrals(

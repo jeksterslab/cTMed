@@ -118,19 +118,19 @@
 PosteriorTotalCentral <- function(phi,
                                   delta_t,
                                   ncores = NULL,
-                                  tol = 0.01) {
+                                  tol = 0.001) {
   stopifnot(
     is.list(phi),
     is.matrix(phi[[1]])
   )
-  centrality <- "total"
+  type <- "total"
   args <- list(
     phi = phi,
     delta_t = delta_t,
     ncores = ncores,
     method = "posterior",
     network = TRUE,
-    centrality = centrality
+    type = type
   )
   delta_t <- sort(
     ifelse(
@@ -142,7 +142,7 @@ PosteriorTotalCentral <- function(phi,
   output <- .PosteriorCentral(
     phi = phi,
     delta_t = delta_t,
-    centrality = centrality,
+    type = type,
     ncores = ncores
   )
   names(output) <- delta_t

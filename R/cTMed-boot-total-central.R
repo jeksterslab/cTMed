@@ -153,12 +153,12 @@ BootTotalCentral <- function(phi,
                              phi_hat,
                              delta_t,
                              ncores = NULL,
-                             tol = 0.01) {
+                             tol = 0.001) {
   idx <- rownames(phi_hat)
   stopifnot(
     idx == colnames(phi_hat)
   )
-  centrality <- "total"
+  type <- "total"
   args <- list(
     phi = phi,
     phi_hat = phi_hat,
@@ -166,7 +166,7 @@ BootTotalCentral <- function(phi,
     ncores = ncores,
     method = "boot",
     network = TRUE,
-    centrality = centrality
+    type = type
   )
   delta_t <- sort(
     ifelse(
@@ -179,7 +179,7 @@ BootTotalCentral <- function(phi,
     phi = phi,
     phi_hat = phi_hat,
     delta_t = delta_t,
-    centrality = centrality,
+    type = type,
     ncores = ncores
   )
   names(output) <- delta_t

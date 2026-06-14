@@ -191,14 +191,14 @@
   if (is.null(col)) {
     col <- grDevices::rainbow(length(effect))
   }
-  if (object$args$centrality == "total") {
-    centrality <- " Total Effect Centrality of "
+  if (object$args$type == "total") {
+    type <- " Total Effect Centrality of "
   }
-  if (object$args$centrality == "direct") {
-    centrality <- " Direct Effect Centrality of "
+  if (object$args$type == "direct") {
+    type <- " Direct Effect Centrality of "
   }
-  if (object$args$centrality == "indirect") {
-    centrality <- " Indirect Effect Centrality of "
+  if (object$args$type == "indirect") {
+    type <- " Indirect Effect Centrality of "
   }
   foo <- function(effect,
                   col,
@@ -207,7 +207,7 @@
     main <- paste0(
       (1 - alpha) * 100,
       "% CI for the",
-      centrality,
+      type,
       effect,
       " (",
       method,

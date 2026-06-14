@@ -76,8 +76,11 @@ TotalStd <- function(phi,
   )
   args <- list(
     phi = phi,
-    sigma = sigma,
-    delta_t = delta_t
+    sigma = NULL,
+    delta_t = delta_t,
+    network = FALSE,
+    type = "total",
+    standardized = TRUE
   )
   output <- .TotalStd(
     phi = phi,
