@@ -1,22 +1,22 @@
-#' Direct Effect Centrality
+#' Standardized Indirect Effect Centrality
 #'
-#' @details Direct effect centrality
-#' is the sum of all possible direct effects
+#' @details Standardized indirect effect centrality
+#' is the sum of all possible standardized indirect effects
 #' between different pairs of variables
 #' in which a specific variable serves as the only mediator.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
-#' @inheritParams Med
-#' @inherit Direct references
+#' @inheritParams IndirectCentral
+#' @inheritParams IndirectStd
 #'
 #' @return Returns an object
 #'   of class `ctmedmed` which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
-#'     \item{fun}{Function used ("DirectCentral").}
-#'     \item{output}{A matrix of direct effect centrality.}
+#'     \item{fun}{Function used ("IndirectCentralStd").}
+#'     \item{output}{A matrix of standardized indirect effect centrality.}
 #'   }
 #'
 #' @examples
@@ -29,37 +29,49 @@
 #'   nrow = 3
 #' )
 #' colnames(phi) <- rownames(phi) <- c("x", "m", "y")
+#' sigma <- matrix(
+#'   data = c(
+#'     0.24455556, 0.02201587, -0.05004762,
+#'     0.02201587, 0.07067800, 0.01539456,
+#'     -0.05004762, 0.01539456, 0.07553061
+#'   ),
+#'   nrow = 3
+#' )
 #'
 #' # Specific time interval ----------------------------------------------------
-#' DirectCentral(
+#' IndirectCentralStd(
 #'   phi = phi,
+#'   sigma = sigma,
 #'   delta_t = 1
 #' )
 #'
 #' # Range of time intervals ---------------------------------------------------
-#' direct_central <- DirectCentral(
+#' indirect_central_std <- IndirectCentralStd(
 #'   phi = phi,
+#'   sigma = sigma,
 #'   delta_t = 1:30
 #' )
-#' plot(direct_central)
+#' plot(indirect_central_std)
 #'
 #' # Methods -------------------------------------------------------------------
-#' # DirectCentral has a number of methods including
+#' # IndirectCentralStd has a number of methods including
 #' # print, summary, and plot
-#' direct_central <- DirectCentral(
+#' indirect_central_std <- IndirectCentralStd(
 #'   phi = phi,
+#'   sigma = sigma,
 #'   delta_t = 1:5
 #' )
-#' print(direct_central)
-#' summary(direct_central)
-#' plot(direct_central)
+#' print(indirect_central_std)
+#' summary(indirect_central_std)
+#' plot(indirect_central_std)
 #'
 #' @family Continuous-Time Mediation Functions
 #' @keywords cTMed network effects
 #' @export
-DirectCentral <- function(phi,
-                          delta_t,
-                          tol = 0.001) {
+IndirectCentralStd <- function(phi,
+                               sigma,
+                               delta_t,
+                               tol = 0.001) {
   delta_t <- ifelse(
     test = delta_t < tol,
     yes = tol, # .Machine$double.xmin
@@ -67,45 +79,41 @@ DirectCentral <- function(phi,
   )
   args <- list(
     phi = phi,
-    sigma = NULL,
+    sigma = sigma,
     delta_t = delta_t,
     network = TRUE,
-    type = "direct",
-    standardized = FALSE
+    type = "indirect",
+    standardized = TRUE
   )
   if (length(delta_t) > 1) {
-    output <- .DirectCentrals(
+    output <- .IndirectCentralStds(
       phi = phi,
+      sigma = sigma,
       delta_t = delta_t
     )
   } else {
     output <- matrix(
       data = c(
-        .DirectCentral(
+        .IndirectCentralStd(
           phi = phi,
+          sigma = sigma,
           delta_t = delta_t
         )
       ),
       nrow = 1
     )
   }
-  output <- cbind(
-    output,
-    delta_t
-  )
-  colnames(output) <- c(
-    colnames(phi),
-    "interval"
-  )
+
+  output <- cbind(output, delta_t)
+  colnames(output) <- c(colnames(phi), "interval")
+
   out <- list(
     call = match.call(),
     args = args,
-    fun = "DirectCentral",
+    fun = "IndirectCentralStd",
     output = output
   )
-  class(out) <- c(
-    "ctmedmed",
-    class(out)
-  )
+
+  class(out) <- c("ctmedmed", class(out))
   out
 }

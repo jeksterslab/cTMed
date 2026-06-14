@@ -187,7 +187,11 @@ Total <- function(phi,
   )
   args <- list(
     phi = phi,
-    delta_t = delta_t
+    sigma = NULL,
+    delta_t = delta_t,
+    network = FALSE,
+    type = "total",
+    standardized = FALSE
   )
   output <- .Total(
     phi = phi,

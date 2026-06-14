@@ -1,18 +1,18 @@
 .MCCentral <- function(phi,
                        vcov_phi_vec,
                        delta_t,
-                       centrality,
+                       type,
                        R,
                        test_phi = TRUE,
                        ncores = NULL,
                        seed = NULL) {
-  if (centrality == "total") {
+  if (type == "total") {
     Fun <- .TotalCentral
   }
-  if (centrality == "direct") {
+  if (type == "direct") {
     Fun <- .DirectCentral
   }
-  if (centrality == "indirect") {
+  if (type == "indirect") {
     Fun <- .IndirectCentral
   }
   # nocov start

@@ -165,7 +165,7 @@ BootBetaStd <- function(phi,
                         sigma_hat,
                         delta_t,
                         ncores = NULL,
-                        tol = 0.01) {
+                        tol = 0.001) {
   idx <- rownames(phi_hat)
   stopifnot(
     idx == colnames(phi_hat)

@@ -51,13 +51,13 @@
       )
     )
   }
-  if (object$args$centrality == "total") {
+  if (object$args$type == "total") {
     main <- "Total Effect Centrality"
   }
-  if (object$args$centrality == "direct") {
+  if (object$args$type == "direct") {
     main <- "Direct Effect Centrality"
   }
-  if (object$args$centrality == "indirect") {
+  if (object$args$type == "indirect") {
     main <- "Indirect Effect Centrality"
   }
   delta_t <- object$output[, "interval"]

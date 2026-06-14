@@ -133,7 +133,7 @@ PosteriorMed <- function(phi,
                          to,
                          med,
                          ncores = NULL,
-                         tol = 0.01) {
+                         tol = 0.001) {
   stopifnot(
     is.list(phi),
     is.matrix(phi[[1]])

@@ -4,7 +4,7 @@
 \alias{IndirectCentral}
 \title{Indirect Effect Centrality}
 \usage{
-IndirectCentral(phi, delta_t, tol = 0.01)
+IndirectCentral(phi, delta_t, tol = 0.001)
 }
 \arguments{
 \item{phi}{Numeric matrix.
@@ -116,8 +116,10 @@ Other Continuous-Time Mediation Functions:
 \code{\link[=DeltaTotalCentral]{DeltaTotalCentral()}},
 \code{\link[=Direct]{Direct()}},
 \code{\link[=DirectCentral]{DirectCentral()}},
+\code{\link[=DirectCentralStd]{DirectCentralStd()}},
 \code{\link[=DirectStd]{DirectStd()}},
 \code{\link[=Indirect]{Indirect()}},
+\code{\link[=IndirectCentralStd]{IndirectCentralStd()}},
 \code{\link[=IndirectStd]{IndirectStd()}},
 \code{\link[=MCBeta]{MCBeta()}},
 \code{\link[=MCBetaStd]{MCBetaStd()}},
@@ -137,6 +139,7 @@ Other Continuous-Time Mediation Functions:
 \code{\link[=PosteriorTotalCentral]{PosteriorTotalCentral()}},
 \code{\link[=Total]{Total()}},
 \code{\link[=TotalCentral]{TotalCentral()}},
+\code{\link[=TotalCentralStd]{TotalCentralStd()}},
 \code{\link[=TotalStd]{TotalStd()}},
 \code{\link[=Trajectory]{Trajectory()}}
 }

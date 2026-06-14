@@ -1,14 +1,14 @@
 .PosteriorCentral <- function(phi,
                               delta_t,
-                              centrality,
+                              type,
                               ncores = NULL) {
-  if (centrality == "total") {
+  if (type == "total") {
     Fun <- .TotalCentral
   }
-  if (centrality == "direct") {
+  if (type == "direct") {
     Fun <- .DirectCentral
   }
-  if (centrality == "indirect") {
+  if (type == "indirect") {
     Fun <- .IndirectCentral
   }
   # nocov start
