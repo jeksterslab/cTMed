@@ -358,7 +358,7 @@ theta_l <- t(chol(theta))
 ```
 
 ```{r}
-R <- 1000L # use at least 1000 in actual research
+R <- 200L # use at least 1000 in actual research
 path <- getwd()
 prefix <- "ou"
 ```

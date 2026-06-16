@@ -11,7 +11,7 @@
 #' using the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
-#' @details See [DirectCentral()] more details.
+#' @details See [DirectCentral()] for more details.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -24,7 +24,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("BootDirectCentral").}
-#'     \item{output}{A list with length of `length(delta_t)`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -159,21 +159,25 @@ BootDirectCentral <- function(phi,
     idx == colnames(phi_hat)
   )
   type <- "direct"
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
+  )
   args <- list(
     phi = phi,
+    sigma = NULL,
     phi_hat = phi_hat,
+    sigma_hat = NULL,
     delta_t = delta_t,
     ncores = ncores,
     method = "boot",
     network = TRUE,
-    type = type
-  )
-  delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
-    )
+    type = type,
+    standardized = FALSE
   )
   output <- .BootCentral(
     phi = phi,

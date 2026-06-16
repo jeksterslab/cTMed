@@ -11,7 +11,7 @@
 #' using the first-order stochastic differential equation model's
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
-#' @details See [TotalCentral()] more details.
+#' @details See [TotalCentral()] for more details.
 #'
 #' ## Delta Method
 #'   Let \eqn{\boldsymbol{\theta}} be
@@ -119,8 +119,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("DeltaTotalCentral").}
-#'     \item{output}{A list the length of which is equal to
-#'         the length of `delta_t`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -210,6 +209,14 @@ DeltaTotalCentral <- function(phi,
     idx == colnames(phi)
   )
   type <- "total"
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
+  )
   args <- list(
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
@@ -218,13 +225,6 @@ DeltaTotalCentral <- function(phi,
     method = "delta",
     network = TRUE,
     type = type
-  )
-  delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
-    )
   )
   # nocov start
   par <- FALSE

@@ -1,5 +1,4 @@
 ## ---- test-cTMed-indirect-central-std
-
 lapply(
   X = 1,
   FUN = function(i,

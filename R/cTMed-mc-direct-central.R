@@ -76,8 +76,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("MCDirectCentral").}
-#'     \item{output}{A list the length of which is equal to
-#'         the length of `delta_t`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -171,6 +170,14 @@ MCDirectCentral <- function(phi,
     idx == colnames(phi)
   )
   type <- "direct"
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
+  )
   args <- list(
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
@@ -182,13 +189,6 @@ MCDirectCentral <- function(phi,
     method = "mc",
     network = TRUE,
     type = type
-  )
-  delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
-    )
   )
   output <- .MCCentral(
     phi = phi,

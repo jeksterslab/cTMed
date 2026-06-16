@@ -45,15 +45,16 @@ lapply(
               }
             }
           }
-          testthat::expect_true(
-            all(
-              (
-                answer - DirectCentral(
-                  phi = phi,
-                  delta_t = delta_t
-                )$output
-              ) <= tol
-            )
+          obtained <- as.numeric(
+            DirectCentral(
+              phi = phi,
+              delta_t = delta_t
+            )$output[1, colnames(phi)]
+          )
+          testthat::expect_equal(
+            obtained,
+            answer,
+            tolerance = tol
           )
         }
       )
@@ -89,20 +90,16 @@ lapply(
               }
             }
           }
-          testthat::expect_true(
-            all(
-              (
-                answer - c(
-                  as.vector(
-                    cTMed:::.DirectCentrals(
-                      phi = phi,
-                      delta_t = delta_t
-                    )
-                  ),
-                  delta_t
-                )
-              ) <= tol
+          obtained <- as.vector(
+            cTMed:::.DirectCentrals(
+              phi = phi,
+              delta_t = delta_t
             )
+          )
+          testthat::expect_equal(
+            obtained,
+            answer,
+            tolerance = tol
           )
         }
       )

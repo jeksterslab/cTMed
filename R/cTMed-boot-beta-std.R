@@ -12,7 +12,8 @@
 #' over a specific time interval \eqn{\Delta t}
 #' or a range of time intervals
 #' using the first-order stochastic differential equation model
-#' drift matrix \eqn{\boldsymbol{\Phi}}.
+#' drift matrix \eqn{\boldsymbol{\Phi}} and
+#' process noise covariance matrix \eqn{\boldsymbol{\Sigma}}.
 #'
 #' @details See [TotalStd()].
 #'
@@ -27,7 +28,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("BootBetaStd").}
-#'     \item{output}{A list with length of `length(delta_t)`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -170,6 +171,14 @@ BootBetaStd <- function(phi,
   stopifnot(
     idx == colnames(phi_hat)
   )
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
+  )
   args <- list(
     phi = phi,
     sigma = sigma,
@@ -179,13 +188,6 @@ BootBetaStd <- function(phi,
     ncores = ncores,
     method = "boot",
     network = FALSE
-  )
-  delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
-    )
   )
   output <- .BootBetaStd(
     phi = phi,

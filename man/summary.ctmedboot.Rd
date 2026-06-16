@@ -12,7 +12,7 @@
 \item{alpha}{Numeric vector.
 Significance level \eqn{\alpha}.}
 
-\item{type}{Charater string.
+\item{type}{Character string.
 Confidence interval type, that is,
 \code{type = "pc"} for percentile;
 \code{type = "bc"} for bias corrected.}

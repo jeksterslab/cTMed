@@ -16,7 +16,7 @@ If missing, all parameters are considered.}
 
 \item{level}{the confidence level required.}
 
-\item{type}{Charater string.
+\item{type}{Character string.
 Confidence interval type, that is,
 \code{type = "pc"} for percentile;
 \code{type = "bc"} for bias corrected.}

@@ -49,9 +49,16 @@ articles:
   contents:
   - med
   - med-std
+- title: Confidence Intervals for Continuous-Time Mediation Centrality
+  contents:
+  - centrality
+  - centrality-std
 - title: Confidence Intervals for Continuous-Time Mediation Models (Parametric Bootstrap)
   contents:
   - med-boot
+- title: Confidence Intervals for Continuous-Time Mediation Centrality (Parametric Bootstrap)
+  contents:
+  - centrality-boot
 - title: Session Information
   contents:
   - session

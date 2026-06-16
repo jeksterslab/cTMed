@@ -83,7 +83,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("MCMed").}
-#'     \item{output}{A list with length of `length(delta_t)`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -193,6 +193,24 @@ MCMed <- function(phi,
       med[i] %in% idx
     )
   }
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
+  )
+  from <- which(idx == from)
+  to <- which(idx == to)
+  med <- sapply(
+    X = med,
+    FUN = function(x,
+                   idx) {
+      which(idx == x)
+    },
+    idx = idx
+  )
   args <- list(
     phi = phi,
     vcov_phi_vec = vcov_phi_vec,
@@ -206,23 +224,6 @@ MCMed <- function(phi,
     seed = seed,
     method = "mc",
     network = FALSE
-  )
-  delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
-    )
-  )
-  from <- which(idx == from)
-  to <- which(idx == to)
-  med <- sapply(
-    X = med,
-    FUN = function(x,
-                   idx) {
-      which(idx == x)
-    },
-    idx = idx
   )
   output <- .MCMed(
     phi = phi,

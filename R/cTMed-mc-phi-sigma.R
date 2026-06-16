@@ -4,7 +4,7 @@
 #'
 #' This function generates random
 #' drift matrices \eqn{\boldsymbol{\Phi}}
-#' and process noise covariabces matrices \eqn{\boldsymbol{\Sigma}}
+#' and process noise covariance matrices \eqn{\boldsymbol{\Sigma}}
 #' using the Monte Carlo method.
 #'
 #' @details
@@ -64,12 +64,12 @@
 #'   treat \eqn{\boldsymbol{\Sigma}} as a diagonal matrix.
 #'
 #' @return Returns an object
-#'   of class `ctmedmc` which is a list with the following elements:
+#'   of class `ctmedmcphi` which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("MCPhiSigma").}
-#'     \item{output}{A list simulated drift matrices.}
+#'     \item{output}{A list of simulated draws. Each element contains a drift matrix and a process noise covariance matrix.}
 #'   }
 #'
 #' @examples

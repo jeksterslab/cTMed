@@ -2,8 +2,8 @@
 #'
 #' This function simulates trajectories of variables
 #' without measurement error or process noise.
-#' `Total` corresponds to the total effect
-#' and `Direct` corresponds to the portion of the total effect
+#' `total` corresponds to the total effect
+#' and `direct` corresponds to the portion of the total effect
 #' where the indirect effect is removed.
 #'
 #' @inheritParams Indirect
@@ -18,7 +18,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("Trajectory").}
-#'     \item{output}{A data frame of simulated data.}
+#'     \item{output}{A list containing simulated trajectories for total, direct, and indirect effects.}
 #'   }
 #'
 #' @examples

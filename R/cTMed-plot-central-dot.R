@@ -1,10 +1,10 @@
-#' Plot Results of The TotalCentral
-#' or The IndirectCentral Functions
+#' Plot Results of the Centrality Functions
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object R object.
-#'   Output of the [TotalCentral()] or the [IndirectCentral()] functions.
+#'   Output of [TotalCentral()], [DirectCentral()], [IndirectCentral()],
+#'   [TotalCentralStd()], [DirectCentralStd()], or [IndirectCentralStd()].
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.

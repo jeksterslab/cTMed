@@ -12,7 +12,7 @@
 #' of the first-order stochastic differential equation model
 #' drift matrix \eqn{\boldsymbol{\Phi}}.
 #'
-#' @details See [TotalCentral()] for more details.
+#' @details See [DirectCentral()] for more details.
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
@@ -32,15 +32,14 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("PosteriorDirectCentral").}
-#'     \item{output}{A list the length of which is equal to
-#'         the length of `delta_t`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
 #'     \item{est}{Mean of the posterior distribution
-#'     of the total, direct, and direct effects.}
+#'     of the direct effect centrality.}
 #'     \item{thetahatstar}{Posterior distribution of the
-#'     total, direct, and direct effects.}
+#'     direct effect centrality measure.}
 #'   }
 #'
 #' @examples
@@ -124,6 +123,14 @@ PosteriorDirectCentral <- function(phi,
     is.matrix(phi[[1]])
   )
   type <- "direct"
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
+  )
   args <- list(
     phi = phi,
     delta_t = delta_t,
@@ -131,13 +138,6 @@ PosteriorDirectCentral <- function(phi,
     method = "posterior",
     network = TRUE,
     type = type
-  )
-  delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
-    )
   )
   output <- .PosteriorCentral(
     phi = phi,

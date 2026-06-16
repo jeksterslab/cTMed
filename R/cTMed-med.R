@@ -211,18 +211,13 @@ Med <- function(phi,
       med[i] %in% idx
     )
   }
-  delta_t <- ifelse(
-    test = delta_t < tol,
-    yes = tol, # .Machine$double.xmin
-    no = delta_t
-  )
-  args <- list(
-    phi = phi,
-    delta_t = delta_t,
-    from = from,
-    to = to,
-    med = med,
-    network = FALSE
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
   )
   from <- which(idx == from)
   to <- which(idx == to)
@@ -233,6 +228,14 @@ Med <- function(phi,
       which(idx == x)
     },
     idx = idx
+  )
+  args <- list(
+    phi = phi,
+    delta_t = delta_t,
+    from = from,
+    to = to,
+    med = med,
+    network = FALSE
   )
   if (length(delta_t) > 1) {
     output <- .Meds(

@@ -1,0 +1,240 @@
+.MCCentralStd <- function(phi,
+                          sigma,
+                          vcov_theta,
+                          delta_t,
+                          type,
+                          R,
+                          test_phi = TRUE,
+                          sigma_diag = FALSE,
+                          ncores = NULL,
+                          seed = NULL) {
+  if (type == "total") {
+    Fun <- .TotalCentralStd
+  }
+  if (type == "direct") {
+    Fun <- .DirectCentralStd
+  }
+  if (type == "indirect") {
+    Fun <- .IndirectCentralStd
+  }
+  if (sigma_diag) {
+    theta <- c(
+      .Vec(phi),
+      diag(sigma)
+    )
+  } else {
+    theta <- c(
+      .Vec(phi),
+      .Vech(sigma)
+    )
+  }
+  # nocov start
+  par <- FALSE
+  if (!is.null(ncores)) {
+    ncores <- as.integer(ncores)
+    if (ncores > R) {
+      ncores <- R
+    }
+    if (ncores > 1) {
+      par <- TRUE
+    }
+  }
+  if (par) {
+    os_type <- Sys.info()["sysname"]
+    if (os_type == "Darwin") {
+      fork <- TRUE
+    } else if (os_type == "Linux") {
+      fork <- TRUE
+    } else {
+      fork <- FALSE
+    }
+    if (fork) {
+      if (!is.null(seed)) {
+        set.seed(seed)
+      }
+      phis <- parallel::mclapply(
+        X = seq_len(R),
+        FUN = function(i) {
+          .MCPhiSigmaI(
+            theta = theta,
+            vcov_theta = vcov_theta,
+            test_phi = test_phi,
+            sigma_diag = sigma_diag
+          )
+        },
+        mc.cores = ncores
+      )
+      output <- lapply(
+        X = delta_t,
+        FUN = function(i) {
+          thetahatstar <- parallel::mclapply(
+            X = phis,
+            FUN = function(x,
+                           delta_t) {
+              Fun(
+                phi = x[[1]],
+                sigma = x[[2]],
+                delta_t = delta_t
+              )
+            },
+            delta_t = i,
+            mc.cores = ncores
+          )
+          thetahatstar <- do.call(
+            what = "rbind",
+            args = thetahatstar
+          )
+          colnames(thetahatstar) <- colnames(phi)
+          thetahatstar <- cbind(
+            thetahatstar,
+            interval = i
+          )
+          est <- c(
+            Fun(
+              phi = phi,
+              sigma = sigma,
+              delta_t = i
+            ),
+            i
+          )
+          names(est) <- c(
+            colnames(phi),
+            "interval"
+          )
+          list(
+            delta_t = i,
+            est = est,
+            thetahatstar = thetahatstar
+          )
+        }
+      )
+    } else {
+      cl <- parallel::makeCluster(ncores)
+      on.exit(
+        parallel::stopCluster(cl = cl)
+      )
+      if (!is.null(seed)) {
+        parallel::clusterSetRNGStream(
+          cl = cl,
+          iseed = seed
+        )
+      }
+      phis <- parallel::parLapply(
+        cl = cl,
+        X = seq_len(R),
+        fun = function(i) {
+          .MCPhiSigmaI(
+            theta = theta,
+            vcov_theta = vcov_theta,
+            test_phi = test_phi,
+            sigma_diag = sigma_diag
+          )
+        }
+      )
+      output <- lapply(
+        X = delta_t,
+        FUN = function(i) {
+          thetahatstar <- parallel::parLapply(
+            cl = cl,
+            X = phis,
+            fun = function(x,
+                           delta_t) {
+              Fun(
+                phi = x[[1]],
+                sigma = x[[2]],
+                delta_t = delta_t
+              )
+            },
+            delta_t = i
+          )
+          thetahatstar <- do.call(
+            what = "rbind",
+            args = thetahatstar
+          )
+          colnames(thetahatstar) <- colnames(phi)
+          thetahatstar <- cbind(
+            thetahatstar,
+            interval = i
+          )
+          est <- c(
+            Fun(
+              phi = phi,
+              sigma = sigma,
+              delta_t = i
+            ),
+            i
+          )
+          names(est) <- c(
+            colnames(phi),
+            "interval"
+          )
+          list(
+            delta_t = i,
+            est = est,
+            thetahatstar = thetahatstar
+          )
+        }
+      )
+    }
+    # nocov end
+  } else {
+    if (!is.null(seed)) {
+      set.seed(seed)
+    }
+    phis <- lapply(
+      X = seq_len(R),
+      FUN = function(i) {
+        .MCPhiSigmaI(
+          theta = theta,
+          vcov_theta = vcov_theta,
+          test_phi = test_phi,
+          sigma_diag = sigma_diag
+        )
+      }
+    )
+    output <- lapply(
+      X = delta_t,
+      FUN = function(i) {
+        thetahatstar <- lapply(
+          X = phis,
+          FUN = function(x,
+                         delta_t) {
+            Fun(
+              phi = x[[1]],
+              sigma = x[[2]],
+              delta_t = delta_t
+            )
+          },
+          delta_t = i
+        )
+        thetahatstar <- do.call(
+          what = "rbind",
+          args = thetahatstar
+        )
+        colnames(thetahatstar) <- colnames(phi)
+        thetahatstar <- cbind(
+          thetahatstar,
+          interval = i
+        )
+        est <- c(
+          Fun(
+            phi = phi,
+            sigma = sigma,
+            delta_t = i
+          ),
+          i
+        )
+        names(est) <- c(
+          colnames(phi),
+          "interval"
+        )
+        list(
+          delta_t = i,
+          est = est,
+          thetahatstar = thetahatstar
+        )
+      }
+    )
+  }
+  output
+}

@@ -40,7 +40,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("BootMed").}
-#'     \item{output}{A list with length of `length(delta_t)`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -192,22 +192,12 @@ BootMed <- function(phi,
       med[i] %in% idx
     )
   }
-  args <- list(
-    phi = phi,
-    phi_hat = phi_hat,
-    delta_t = delta_t,
-    from = from,
-    to = to,
-    med = med,
-    ncores = ncores,
-    method = "boot",
-    network = FALSE
-  )
   delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
     )
   )
   from <- which(idx == from)
@@ -219,6 +209,17 @@ BootMed <- function(phi,
       which(idx == x)
     },
     idx = idx
+  )
+  args <- list(
+    phi = phi,
+    phi_hat = phi_hat,
+    delta_t = delta_t,
+    from = from,
+    to = to,
+    med = med,
+    ncores = ncores,
+    method = "boot",
+    network = FALSE
   )
   output <- .BootMed(
     phi = phi,

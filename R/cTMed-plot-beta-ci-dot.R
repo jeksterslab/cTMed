@@ -5,14 +5,19 @@
 #' @param object R object.
 #'   Output of any of the following functions:
 #'   [DeltaBeta()],
-#'   [MCBeta()], and
-#'   [PosteriorBeta()].
+#'   [DeltaBetaStd()],
+#'   [MCBeta()],
+#'   [MCBetaStd()],
+#'   [PosteriorBeta()],
+#'   [PosteriorBetaStd()],
+#'   [BootBeta()], or
+#'   [BootBetaStd()].
 #' @param alpha Numeric.
 #'   Significance level.
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
-#' @param type Charater string.
+#' @param type Character string.
 #'   Confidence interval type, that is,
 #'   `type = "pc"` for percentile;
 #'   `type = "bc"` for bias corrected.

@@ -2,9 +2,18 @@
 
 ## Patch
 
-* Allow diagonal `sigma` in `DeltaBetaStd()`, `DeltaMedStd()`, `MCBetaStd()`, and `MCMedStd()`.
-* Added direct effect centrality.
 * Added standardized centrality measures.
+* Allow diagonal `sigma` in
+  - `DeltaBetaStd()`,
+  - `DeltaMedStd()`,
+  - `DeltaTotalCentralStd()`,
+  - `DeltaDirectCentralStd()`,
+  - `DeltaIndirectCentralStd()`,
+  - `MCBetaStd()`,
+  - `MCMedStd()`,
+  - `MCTotalCentralStd()`,
+  - `MCDirectCentralStd()`, and
+  - `MCIndirectCentralStd()`.
 
 # cTMed 1.0.9
 

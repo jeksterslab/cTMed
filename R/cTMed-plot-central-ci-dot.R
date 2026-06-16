@@ -5,17 +5,29 @@
 #' @param object R object.
 #'   Output of any of the following functions:
 #'   [DeltaTotalCentral()],
+#'   [DeltaDirectCentral()],
 #'   [DeltaIndirectCentral()],
+#'   [DeltaTotalCentralStd()],
+#'   [DeltaDirectCentralStd()],
+#'   [DeltaIndirectCentralStd()],
 #'   [MCTotalCentral()],
+#'   [MCDirectCentral()],
 #'   [MCIndirectCentral()],
-#'   [PosteriorTotalCentral()], and
-#'   [PosteriorIndirectCentral()].
+#'   [MCTotalCentralStd()],
+#'   [MCDirectCentralStd()],
+#'   [MCIndirectCentralStd()],
+#'   [PosteriorTotalCentral()],
+#'   [PosteriorDirectCentral()],
+#'   [PosteriorIndirectCentral()],
+#'   [PosteriorTotalCentralStd()],
+#'   [PosteriorDirectCentralStd()], or
+#'   [PosteriorIndirectCentralStd()].
 #' @param alpha Numeric.
 #'   Significance level.
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
-#' @param type Charater string.
+#' @param type Character string.
 #'   Confidence interval type, that is,
 #'   `type = "pc"` for percentile;
 #'   `type = "bc"` for bias corrected.

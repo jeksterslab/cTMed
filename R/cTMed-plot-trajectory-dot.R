@@ -1,9 +1,9 @@
-#' Plot Results of The Trajectory Function
+#' Plot Results of the Trajectory Function
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object R object.
-#'   Output of the [Med()] function.
+#'   Output of the [Trajectory()] function.
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
