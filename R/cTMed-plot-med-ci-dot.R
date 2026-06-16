@@ -3,13 +3,15 @@
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object R object.
-#'   Output of the [DeltaMed()], [MCMed()], [PosteriorMed()] functions.
+#'   Output of [DeltaMed()], [DeltaMedStd()], [MCMed()], [MCMedStd()],
+#'   [PosteriorMed()], [PosteriorMedStd()], [BootMed()], or
+#'   [BootMedStd()].
 #' @param alpha Numeric.
 #'   Significance level.
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
-#' @param type Charater string.
+#' @param type Character string.
 #'   Confidence interval type, that is,
 #'   `type = "pc"` for percentile;
 #'   `type = "bc"` for bias corrected.

@@ -5,7 +5,7 @@
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
 #' @param digits Integer indicating the number of decimal places to display.
-#' @param type Charater string.
+#' @param type Character string.
 #'   Confidence interval type, that is,
 #'   `type = "pc"` for percentile;
 #'   `type = "bc"` for bias corrected.
@@ -155,7 +155,7 @@ print.ctmedboot <- function(x,
 #' @param ... additional arguments.
 #' @param alpha Numeric vector.
 #'   Significance level \eqn{\alpha}.
-#' @param type Charater string.
+#' @param type Character string.
 #'   Confidence interval type, that is,
 #'   `type = "pc"` for percentile;
 #'   `type = "bc"` for bias corrected.
@@ -412,7 +412,7 @@ print.summary.ctmedboot <- function(x,
 #'   either a vector of numbers or a vector of names.
 #'   If missing, all parameters are considered.
 #' @param level the confidence level required.
-#' @param type Charater string.
+#' @param type Character string.
 #'   Confidence interval type, that is,
 #'   `type = "pc"` for percentile;
 #'   `type = "bc"` for bias corrected.
@@ -538,8 +538,8 @@ confint.ctmedboot <- function(object,
                               type = "pc",
                               ...) {
   if (is.null(parm)) {
-    parm <- seq_along(
-      object$output[[1]]$est[1:3]
+    parm <- seq_len(
+      length(object$output[[1]]$est) - 1
     )
   }
   ci <- .BootCI(
@@ -591,7 +591,7 @@ confint.ctmedboot <- function(object,
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.
-#' @param type Charater string.
+#' @param type Character string.
 #'   Confidence interval type, that is,
 #'   `type = "pc"` for percentile;
 #'   `type = "bc"` for bias corrected.

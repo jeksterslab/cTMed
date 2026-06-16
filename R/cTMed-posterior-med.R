@@ -38,8 +38,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("PosteriorMed").}
-#'     \item{output}{A list the length of which is equal to
-#'         the length of `delta_t`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -151,21 +150,12 @@ PosteriorMed <- function(phi,
       med[i] %in% idx
     )
   }
-  args <- list(
-    phi = phi,
-    delta_t = delta_t,
-    from = from,
-    to = to,
-    med = med,
-    ncores = ncores,
-    method = "posterior",
-    network = FALSE
-  )
   delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
     )
   )
   from <- which(idx == from)
@@ -177,6 +167,16 @@ PosteriorMed <- function(phi,
       which(idx == x)
     },
     idx = idx
+  )
+  args <- list(
+    phi = phi,
+    delta_t = delta_t,
+    from = from,
+    to = to,
+    med = med,
+    ncores = ncores,
+    method = "posterior",
+    network = FALSE
   )
   output <- .PosteriorMed(
     phi = phi,

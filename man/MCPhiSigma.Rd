@@ -59,18 +59,18 @@ is a large value.}
 }
 \value{
 Returns an object
-of class \code{ctmedmc} which is a list with the following elements:
+of class \code{ctmedmcphi} which is a list with the following elements:
 \describe{
 \item{call}{Function call.}
 \item{args}{Function arguments.}
 \item{fun}{Function used ("MCPhiSigma").}
-\item{output}{A list simulated drift matrices.}
+\item{output}{A list of simulated draws. Each element contains a drift matrix and a process noise covariance matrix.}
 }
 }
 \description{
 This function generates random
 drift matrices \eqn{\boldsymbol{\Phi}}
-and process noise covariabces matrices \eqn{\boldsymbol{\Sigma}}
+and process noise covariance matrices \eqn{\boldsymbol{\Sigma}}
 using the Monte Carlo method.
 }
 \details{
@@ -151,17 +151,22 @@ Other Continuous-Time Mediation Functions:
 \code{\link[=BootBeta]{BootBeta()}},
 \code{\link[=BootBetaStd]{BootBetaStd()}},
 \code{\link[=BootDirectCentral]{BootDirectCentral()}},
+\code{\link[=BootDirectCentralStd]{BootDirectCentralStd()}},
 \code{\link[=BootIndirectCentral]{BootIndirectCentral()}},
+\code{\link[=BootIndirectCentralStd]{BootIndirectCentralStd()}},
 \code{\link[=BootMed]{BootMed()}},
 \code{\link[=BootMedStd]{BootMedStd()}},
 \code{\link[=BootTotalCentral]{BootTotalCentral()}},
+\code{\link[=BootTotalCentralStd]{BootTotalCentralStd()}},
 \code{\link[=DeltaBeta]{DeltaBeta()}},
 \code{\link[=DeltaBetaStd]{DeltaBetaStd()}},
 \code{\link[=DeltaDirectCentral]{DeltaDirectCentral()}},
+\code{\link[=DeltaDirectCentralStd]{DeltaDirectCentralStd()}},
 \code{\link[=DeltaIndirectCentral]{DeltaIndirectCentral()}},
 \code{\link[=DeltaMed]{DeltaMed()}},
 \code{\link[=DeltaMedStd]{DeltaMedStd()}},
 \code{\link[=DeltaTotalCentral]{DeltaTotalCentral()}},
+\code{\link[=DeltaTotalCentralStd]{DeltaTotalCentralStd()}},
 \code{\link[=Direct]{Direct()}},
 \code{\link[=DirectCentral]{DirectCentral()}},
 \code{\link[=DirectCentralStd]{DirectCentralStd()}},
@@ -173,18 +178,26 @@ Other Continuous-Time Mediation Functions:
 \code{\link[=MCBeta]{MCBeta()}},
 \code{\link[=MCBetaStd]{MCBetaStd()}},
 \code{\link[=MCDirectCentral]{MCDirectCentral()}},
+\code{\link[=MCDirectCentralStd]{MCDirectCentralStd()}},
 \code{\link[=MCIndirectCentral]{MCIndirectCentral()}},
+\code{\link[=MCIndirectCentralStd]{MCIndirectCentralStd()}},
 \code{\link[=MCMed]{MCMed()}},
 \code{\link[=MCMedStd]{MCMedStd()}},
 \code{\link[=MCPhi]{MCPhi()}},
 \code{\link[=MCTotalCentral]{MCTotalCentral()}},
+\code{\link[=MCTotalCentralStd]{MCTotalCentralStd()}},
 \code{\link[=Med]{Med()}},
 \code{\link[=MedStd]{MedStd()}},
 \code{\link[=PosteriorBeta]{PosteriorBeta()}},
+\code{\link[=PosteriorBetaStd]{PosteriorBetaStd()}},
 \code{\link[=PosteriorDirectCentral]{PosteriorDirectCentral()}},
+\code{\link[=PosteriorDirectCentralStd]{PosteriorDirectCentralStd()}},
 \code{\link[=PosteriorIndirectCentral]{PosteriorIndirectCentral()}},
+\code{\link[=PosteriorIndirectCentralStd]{PosteriorIndirectCentralStd()}},
 \code{\link[=PosteriorMed]{PosteriorMed()}},
+\code{\link[=PosteriorMedStd]{PosteriorMedStd()}},
 \code{\link[=PosteriorTotalCentral]{PosteriorTotalCentral()}},
+\code{\link[=PosteriorTotalCentralStd]{PosteriorTotalCentralStd()}},
 \code{\link[=Total]{Total()}},
 \code{\link[=TotalCentral]{TotalCentral()}},
 \code{\link[=TotalCentralStd]{TotalCentralStd()}},

@@ -68,12 +68,12 @@
 #' @param seed Random seed.
 #'
 #' @return Returns an object
-#'   of class `ctmedmc` which is a list with the following elements:
+#'   of class `ctmedmcphi` which is a list with the following elements:
 #'   \describe{
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("MCPhi").}
-#'     \item{output}{A list simulated drift matrices.}
+#'     \item{output}{A list of simulated drift matrices.}
 #'   }
 #'
 #' @examples

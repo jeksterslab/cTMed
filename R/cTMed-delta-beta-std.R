@@ -10,8 +10,8 @@
 #' over a specific time interval \eqn{\Delta t}
 #' or a range of time intervals
 #' using the first-order stochastic differential equation model's
-#' drift matrix \eqn{\boldsymbol{\Phi}}
-#' and process noise covariance matrix \eqn{\boldsymbol{\Sigma}}.
+#' drift matrix \eqn{\boldsymbol{\Phi}} and
+#' process noise covariance matrix \eqn{\boldsymbol{\Sigma}}.
 #'
 #' @details See [TotalStd()].
 #'
@@ -121,8 +121,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("DeltaBetaStd").}
-#'     \item{output}{A list the length of which is equal to
-#'         the length of `delta_t`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -243,6 +242,14 @@ DeltaBetaStd <- function(phi,
   stopifnot(
     idx == colnames(phi)
   )
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
+  )
   args <- list(
     phi = phi,
     sigma = sigma,
@@ -251,13 +258,6 @@ DeltaBetaStd <- function(phi,
     ncores = ncores,
     method = "delta",
     network = FALSE
-  )
-  delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
-    )
   )
   # nocov start
   par <- FALSE

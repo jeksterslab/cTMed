@@ -380,8 +380,8 @@ confint.ctmedmc <- function(object,
                             level = 0.95,
                             ...) {
   if (is.null(parm)) {
-    parm <- seq_along(
-      object$output[[1]]$est[1:3]
+    parm <- seq_len(
+      length(object$output[[1]]$est) - 1
     )
   }
   ci <- .MCCI(
@@ -505,14 +505,29 @@ plot.ctmedmc <- function(x,
       col = col
     )
   } else {
-    if (x$fun %in% c("MCMed", "MCMedStd", "PosteriorMed", "BootMed")) {
+    if (
+      x$fun %in% c(
+        "MCMed",
+        "MCMedStd",
+        "PosteriorMed",
+        "PosteriorMedStd",
+        "BootMed"
+      )
+    ) {
       .PlotMedCI(
         object = x,
         alpha = alpha,
         col = col
       )
     }
-    if (x$fun %in% c("MCBeta", "MCBetaStd", "PosteriorBeta")) {
+    if (
+      x$fun %in% c(
+        "MCBeta",
+        "MCBetaStd",
+        "PosteriorBeta",
+        "PosteriorBetaStd"
+      )
+    ) {
       .PlotBetaCI(
         object = x,
         alpha = alpha,

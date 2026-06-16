@@ -33,8 +33,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("PosteriorBeta").}
-#'     \item{output}{A list the length of which is equal to
-#'         the length of `delta_t`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -124,19 +123,20 @@ PosteriorBeta <- function(phi,
   stopifnot(
     idx == colnames(phi)
   )
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
+  )
   args <- list(
     phi = phi,
     delta_t = delta_t,
     ncores = ncores,
     method = "posterior",
     network = FALSE
-  )
-  delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
-    )
   )
   output <- .PosteriorBeta(
     phi = phi,

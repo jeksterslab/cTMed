@@ -60,10 +60,13 @@
 IndirectCentral <- function(phi,
                             delta_t,
                             tol = 0.001) {
-  delta_t <- ifelse(
-    test = delta_t < tol,
-    yes = tol, # .Machine$double.xmin
-    no = delta_t
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
   )
   args <- list(
     phi = phi,

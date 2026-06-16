@@ -1,9 +1,9 @@
-#' Plot Results of The Med Function
+#' Plot Results of the Mediation Functions
 #'
 #' @author Ivan Jacob Agaloos Pesigan
 #'
 #' @param object R object.
-#'   Output of the [Med()] function.
+#'   Output of the [Med()] or [MedStd()] function.
 #' @param col Character vector.
 #'   Optional argument.
 #'   Character vector of colors.

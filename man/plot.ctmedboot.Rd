@@ -16,7 +16,7 @@ Significance level}
 Optional argument.
 Character vector of colors.}
 
-\item{type}{Charater string.
+\item{type}{Character string.
 Confidence interval type, that is,
 \code{type = "pc"} for percentile;
 \code{type = "bc"} for bias corrected.}

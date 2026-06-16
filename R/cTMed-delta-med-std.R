@@ -13,8 +13,8 @@
 #' over a specific time interval \eqn{\Delta t}
 #' or a range of time intervals
 #' using the first-order stochastic differential equation model's
-#' drift matrix \eqn{\boldsymbol{\Phi}}
-#' and process noise covariance matrix \eqn{\boldsymbol{\Sigma}}.
+#' drift matrix \eqn{\boldsymbol{\Phi}} and
+#' process noise covariance matrix \eqn{\boldsymbol{\Sigma}}.
 #'
 #' @details See [TotalStd()],
 #'   [DirectStd()], and
@@ -126,8 +126,7 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("DeltaMedStd").}
-#'     \item{output}{A list the length of which is equal to
-#'         the length of `delta_t`.}
+#'     \item{output}{A list of length `length(delta_t)`.}
 #'   }
 #'   Each element in the `output` list has the following elements:
 #'   \describe{
@@ -264,6 +263,24 @@ DeltaMedStd <- function(phi,
       med[i] %in% idx
     )
   }
+  delta_t <- sort(
+    unique(
+      pmax(
+        delta_t,
+        tol
+      )
+    )
+  )
+  from <- which(idx == from)
+  to <- which(idx == to)
+  med <- sapply(
+    X = med,
+    FUN = function(x,
+                   idx) {
+      which(idx == x)
+    },
+    idx = idx
+  )
   args <- list(
     phi = phi,
     sigma = sigma,
@@ -276,23 +293,6 @@ DeltaMedStd <- function(phi,
     ncores = ncores,
     method = "delta",
     network = FALSE
-  )
-  delta_t <- sort(
-    ifelse(
-      test = delta_t < tol,
-      yes = tol, # .Machine$double.xmin
-      no = delta_t
-    )
-  )
-  from <- which(idx == from)
-  to <- which(idx == to)
-  med <- sapply(
-    X = med,
-    FUN = function(x,
-                   idx) {
-      which(idx == x)
-    },
-    idx = idx
   )
   # nocov start
   par <- FALSE
