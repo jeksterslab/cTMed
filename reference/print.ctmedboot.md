@@ -25,7 +25,7 @@ print(x, alpha = 0.05, digits = 4, type = "pc", ...)
 
 - type:
 
-  Charater string. Confidence interval type, that is, `type = "pc"` for
+  Character string. Confidence interval type, that is, `type = "pc"` for
   percentile; `type = "bc"` for bias corrected.
 
 - ...:

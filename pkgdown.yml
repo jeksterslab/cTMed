@@ -2,6 +2,9 @@ pandoc: '3.10'
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
+  centrality-boot: centrality-boot.html
+  centrality-std: centrality-std.html
+  centrality: centrality.html
   cTMed: cTMed.html
   fit-ct-var-dynr: fit-ct-var-dynr.html
   fit-ct-var-mx: fit-ct-var-mx.html
@@ -9,7 +12,7 @@ articles:
   med-std: med-std.html
   med: med.html
   session: session.html
-last_built: 2026-06-14T02:38Z
+last_built: 2026-06-16T06:36Z
 urls:
   reference: https://github.com/jeksterslab/cTMed/reference
   article: https://github.com/jeksterslab/cTMed/articles

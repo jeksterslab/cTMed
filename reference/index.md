@@ -13,9 +13,15 @@
 - [`MCDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentral.md)
   : Monte Carlo Sampling Distribution of Direct Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`MCDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentralStd.md)
+  : Monte Carlo Sampling Distribution of Standardized Direct Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`MCIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.md)
   : Monte Carlo Sampling Distribution of Indirect Effect Centrality Over
   a Specific Time Interval or a Range of Time Intervals
+- [`MCIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentralStd.md)
+  : Monte Carlo Sampling Distribution of Standardized Indirect Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`MCMed()`](https://github.com/jeksterslab/cTMed/reference/MCMed.md) :
   Monte Carlo Sampling Distribution of Total, Direct, and Indirect
   Effects of X on Y Through M Over a Specific Time Interval or a Range
@@ -32,6 +38,9 @@
 - [`MCTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentral.md)
   : Monte Carlo Sampling Distribution of Total Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`MCTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentralStd.md)
+  : Monte Carlo Sampling Distribution of Standardized Total Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 
 ## Delta Method
 
@@ -47,10 +56,18 @@
   : Delta Method Sampling Variance-Covariance Matrix for the Direct
   Effect Centrality Over a Specific Time Interval or a Range of Time
   Intervals
+- [`DeltaDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentralStd.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the
+  Standardized Direct Effect Centrality Over a Specific Time Interval or
+  a Range of Time Intervals
 - [`DeltaIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.md)
   : Delta Method Sampling Variance-Covariance Matrix for the Indirect
   Effect Centrality Over a Specific Time Interval or a Range of Time
   Intervals
+- [`DeltaIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentralStd.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the
+  Standardized Indirect Effect Centrality Over a Specific Time Interval
+  or a Range of Time Intervals
 - [`DeltaMed()`](https://github.com/jeksterslab/cTMed/reference/DeltaMed.md)
   : Delta Method Sampling Variance-Covariance Matrix for the Total,
   Direct, and Indirect Effects of X on Y Through M Over a Specific Time
@@ -63,6 +80,10 @@
   : Delta Method Sampling Variance-Covariance Matrix for the Total
   Effect Centrality Over a Specific Time Interval or a Range of Time
   Intervals
+- [`DeltaTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentralStd.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the
+  Standardized Total Effect Centrality Over a Specific Time Interval or
+  a Range of Time Intervals
 
 ## Posterior
 
@@ -70,19 +91,36 @@
   : Posterior Sampling Distribution for the Elements of the Matrix of
   Lagged Coefficients Over a Specific Time Interval or a Range of Time
   Intervals
+- [`PosteriorBetaStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorBetaStd.md)
+  : Posterior Distribution for the Elements of the Standardized Matrix
+  of Lagged Coefficients Over a Specific Time Interval or a Range of
+  Time Intervals
 - [`PosteriorDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentral.md)
   : Posterior Distribution of the Direct Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`PosteriorDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentralStd.md)
+  : Posterior Distribution of the Standardized Direct Effect Centrality
+  Over a Specific Time Interval or a Range of Time Intervals
 - [`PosteriorIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.md)
   : Posterior Distribution of the Indirect Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`PosteriorIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentralStd.md)
+  : Posterior Distribution of the Standardized Indirect Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`PosteriorMed()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMed.md)
   : Posterior Distribution of Total, Direct, and Indirect Effects of X
   on Y Through M Over a Specific Time Interval or a Range of Time
   Intervals
+- [`PosteriorMedStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMedStd.md)
+  : Posterior Distribution of Standardized Total, Direct, and Indirect
+  Effects of X on Y Through M Over a Specific Time Interval or a Range
+  of Time Intervals
 - [`PosteriorTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.md)
   : Posterior Distribution of the Total Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`PosteriorTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentralStd.md)
+  : Posterior Distribution of the Standardized Total Effect Centrality
+  Over a Specific Time Interval or a Range of Time Intervals
 
 ## Bootstrap
 
@@ -97,9 +135,15 @@
 - [`BootDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentral.md)
   : Bootstrap Sampling Distribution for the Direct Effect Centrality
   Over a Specific Time Interval or a Range of Time Intervals
+- [`BootDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentralStd.md)
+  : Bootstrap Sampling Distribution for the Standardized Direct Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`BootIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentral.md)
   : Bootstrap Sampling Distribution for the Indirect Effect Centrality
   Over a Specific Time Interval or a Range of Time Intervals
+- [`BootIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentralStd.md)
+  : Bootstrap Sampling Distribution for the Standardized Indirect Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`BootMed()`](https://github.com/jeksterslab/cTMed/reference/BootMed.md)
   : Bootstrap Sampling Distribution of Total, Direct, and Indirect
   Effects of X on Y Through M Over a Specific Time Interval or a Range
@@ -111,6 +155,9 @@
 - [`BootTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentral.md)
   : Bootstrap Sampling Distribution for the Total Effect Centrality Over
   a Specific Time Interval or a Range of Time Intervals
+- [`BootTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentralStd.md)
+  : Bootstrap Sampling Distribution for the Standardized Total Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 
 ## Mediation
 
@@ -156,6 +203,10 @@
   : Posterior Distribution of Total, Direct, and Indirect Effects of X
   on Y Through M Over a Specific Time Interval or a Range of Time
   Intervals
+- [`PosteriorMedStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMedStd.md)
+  : Posterior Distribution of Standardized Total, Direct, and Indirect
+  Effects of X on Y Through M Over a Specific Time Interval or a Range
+  of Time Intervals
 - [`Trajectory()`](https://github.com/jeksterslab/cTMed/reference/Trajectory.md)
   : Simulate Trajectories of Variables
 
@@ -164,24 +215,45 @@
 - [`BootDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentral.md)
   : Bootstrap Sampling Distribution for the Direct Effect Centrality
   Over a Specific Time Interval or a Range of Time Intervals
+- [`BootDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentralStd.md)
+  : Bootstrap Sampling Distribution for the Standardized Direct Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`BootIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentral.md)
   : Bootstrap Sampling Distribution for the Indirect Effect Centrality
   Over a Specific Time Interval or a Range of Time Intervals
+- [`BootIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentralStd.md)
+  : Bootstrap Sampling Distribution for the Standardized Indirect Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`BootTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentral.md)
   : Bootstrap Sampling Distribution for the Total Effect Centrality Over
   a Specific Time Interval or a Range of Time Intervals
+- [`BootTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentralStd.md)
+  : Bootstrap Sampling Distribution for the Standardized Total Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`DeltaDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentral.md)
   : Delta Method Sampling Variance-Covariance Matrix for the Direct
   Effect Centrality Over a Specific Time Interval or a Range of Time
   Intervals
+- [`DeltaDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentralStd.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the
+  Standardized Direct Effect Centrality Over a Specific Time Interval or
+  a Range of Time Intervals
 - [`DeltaIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.md)
   : Delta Method Sampling Variance-Covariance Matrix for the Indirect
   Effect Centrality Over a Specific Time Interval or a Range of Time
   Intervals
+- [`DeltaIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentralStd.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the
+  Standardized Indirect Effect Centrality Over a Specific Time Interval
+  or a Range of Time Intervals
 - [`DeltaTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.md)
   : Delta Method Sampling Variance-Covariance Matrix for the Total
   Effect Centrality Over a Specific Time Interval or a Range of Time
   Intervals
+- [`DeltaTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentralStd.md)
+  : Delta Method Sampling Variance-Covariance Matrix for the
+  Standardized Total Effect Centrality Over a Specific Time Interval or
+  a Range of Time Intervals
 - [`DirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DirectCentral.md)
   : Direct Effect Centrality
 - [`DirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DirectCentralStd.md)
@@ -193,21 +265,39 @@
 - [`MCDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentral.md)
   : Monte Carlo Sampling Distribution of Direct Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`MCDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentralStd.md)
+  : Monte Carlo Sampling Distribution of Standardized Direct Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`MCIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.md)
   : Monte Carlo Sampling Distribution of Indirect Effect Centrality Over
   a Specific Time Interval or a Range of Time Intervals
+- [`MCIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentralStd.md)
+  : Monte Carlo Sampling Distribution of Standardized Indirect Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`MCTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentral.md)
   : Monte Carlo Sampling Distribution of Total Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`MCTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentralStd.md)
+  : Monte Carlo Sampling Distribution of Standardized Total Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`PosteriorDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentral.md)
   : Posterior Distribution of the Direct Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`PosteriorDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentralStd.md)
+  : Posterior Distribution of the Standardized Direct Effect Centrality
+  Over a Specific Time Interval or a Range of Time Intervals
 - [`PosteriorIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.md)
   : Posterior Distribution of the Indirect Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`PosteriorIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentralStd.md)
+  : Posterior Distribution of the Standardized Indirect Effect
+  Centrality Over a Specific Time Interval or a Range of Time Intervals
 - [`PosteriorTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.md)
   : Posterior Distribution of the Total Effect Centrality Over a
   Specific Time Interval or a Range of Time Intervals
+- [`PosteriorTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentralStd.md)
+  : Posterior Distribution of the Standardized Total Effect Centrality
+  Over a Specific Time Interval or a Range of Time Intervals
 - [`TotalCentral()`](https://github.com/jeksterslab/cTMed/reference/TotalCentral.md)
   : Total Effect Centrality
 - [`TotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/TotalCentralStd.md)

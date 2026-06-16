@@ -145,8 +145,7 @@ of class <code>ctmedmc</code> which is a list with the following elements:</p><d
 <dd><p>Function used ("MCBeta").</p></dd>
 
 <dt>output</dt>
-<dd><p>A list the length of which is equal to
-the length of <code>delta_t</code>.</p></dd>
+<dd><p>A list of length <code>length(delta_t)</code>.</p></dd>
 
 
 </dl><p>Each element in the <code>output</code> list has the following elements:</p><dl><dt>est</dt>
@@ -244,17 +243,22 @@ Psychometrika, 87 (1), 214-252.
 <code><a href="BootBeta.html">BootBeta()</a></code>,
 <code><a href="BootBetaStd.html">BootBetaStd()</a></code>,
 <code><a href="BootDirectCentral.html">BootDirectCentral()</a></code>,
+<code><a href="BootDirectCentralStd.html">BootDirectCentralStd()</a></code>,
 <code><a href="BootIndirectCentral.html">BootIndirectCentral()</a></code>,
+<code><a href="BootIndirectCentralStd.html">BootIndirectCentralStd()</a></code>,
 <code><a href="BootMed.html">BootMed()</a></code>,
 <code><a href="BootMedStd.html">BootMedStd()</a></code>,
 <code><a href="BootTotalCentral.html">BootTotalCentral()</a></code>,
+<code><a href="BootTotalCentralStd.html">BootTotalCentralStd()</a></code>,
 <code><a href="DeltaBeta.html">DeltaBeta()</a></code>,
 <code><a href="DeltaBetaStd.html">DeltaBetaStd()</a></code>,
 <code><a href="DeltaDirectCentral.html">DeltaDirectCentral()</a></code>,
+<code><a href="DeltaDirectCentralStd.html">DeltaDirectCentralStd()</a></code>,
 <code><a href="DeltaIndirectCentral.html">DeltaIndirectCentral()</a></code>,
 <code><a href="DeltaMed.html">DeltaMed()</a></code>,
 <code><a href="DeltaMedStd.html">DeltaMedStd()</a></code>,
 <code><a href="DeltaTotalCentral.html">DeltaTotalCentral()</a></code>,
+<code><a href="DeltaTotalCentralStd.html">DeltaTotalCentralStd()</a></code>,
 <code><a href="Direct.html">Direct()</a></code>,
 <code><a href="DirectCentral.html">DirectCentral()</a></code>,
 <code><a href="DirectCentralStd.html">DirectCentralStd()</a></code>,
@@ -265,19 +269,27 @@ Psychometrika, 87 (1), 214-252.
 <code><a href="IndirectStd.html">IndirectStd()</a></code>,
 <code><a href="MCBetaStd.html">MCBetaStd()</a></code>,
 <code><a href="MCDirectCentral.html">MCDirectCentral()</a></code>,
+<code><a href="MCDirectCentralStd.html">MCDirectCentralStd()</a></code>,
 <code><a href="MCIndirectCentral.html">MCIndirectCentral()</a></code>,
+<code><a href="MCIndirectCentralStd.html">MCIndirectCentralStd()</a></code>,
 <code><a href="MCMed.html">MCMed()</a></code>,
 <code><a href="MCMedStd.html">MCMedStd()</a></code>,
 <code><a href="MCPhi.html">MCPhi()</a></code>,
 <code><a href="MCPhiSigma.html">MCPhiSigma()</a></code>,
 <code><a href="MCTotalCentral.html">MCTotalCentral()</a></code>,
+<code><a href="MCTotalCentralStd.html">MCTotalCentralStd()</a></code>,
 <code><a href="Med.html">Med()</a></code>,
 <code><a href="MedStd.html">MedStd()</a></code>,
 <code><a href="PosteriorBeta.html">PosteriorBeta()</a></code>,
+<code><a href="PosteriorBetaStd.html">PosteriorBetaStd()</a></code>,
 <code><a href="PosteriorDirectCentral.html">PosteriorDirectCentral()</a></code>,
+<code><a href="PosteriorDirectCentralStd.html">PosteriorDirectCentralStd()</a></code>,
 <code><a href="PosteriorIndirectCentral.html">PosteriorIndirectCentral()</a></code>,
+<code><a href="PosteriorIndirectCentralStd.html">PosteriorIndirectCentralStd()</a></code>,
 <code><a href="PosteriorMed.html">PosteriorMed()</a></code>,
+<code><a href="PosteriorMedStd.html">PosteriorMedStd()</a></code>,
 <code><a href="PosteriorTotalCentral.html">PosteriorTotalCentral()</a></code>,
+<code><a href="PosteriorTotalCentralStd.html">PosteriorTotalCentralStd()</a></code>,
 <code><a href="Total.html">Total()</a></code>,
 <code><a href="TotalCentral.html">TotalCentral()</a></code>,
 <code><a href="TotalCentralStd.html">TotalCentralStd()</a></code>,
@@ -489,18 +501,48 @@ Psychometrika, 87 (1), 214-252.
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  from x to x        1  0.62172403  0.79874753</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  from x to m        1  0.42325918  0.56229947</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3  from x to y        1 -0.15232781 -0.04123191</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  from x to x        2  0.41161279  0.62262364</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  from x to m        2  0.54595994  0.76312096</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  from x to y        2  0.01734713  0.13816481</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  from x to x        3  0.27099116  0.47958487</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  from x to m        3  0.52606339  0.79739417</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  from x to y        3  0.17891544  0.31595326</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 from x to x        4  0.16662023  0.37091634</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 from x to m        4  0.45470526  0.74465355</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 from x to y        4  0.27762014  0.42528849</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 from x to x        5  0.08673995  0.31323136</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 from x to m        5  0.35387853  0.65674061</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 from x to y        5  0.30966378  0.47707320</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  from m to x        1 -0.08309181  0.06870048</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  from m to m        1  0.53611751  0.66024544</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  from m to y        1  0.34904206  0.44107580</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  from y to x        1 -0.07516818  0.06985211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  from y to m        1 -0.04753145  0.07133458</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  from y to y        1  0.46515192  0.55299508</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 from x to x        2  0.41161279  0.62262364</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 from x to m        2  0.54595994  0.76312096</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 from x to y        2  0.01734713  0.13816481</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 from m to x        2 -0.09753023  0.08374131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 from m to m        2  0.27706960  0.46307954</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 from m to y        2  0.38132743  0.48822358</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 from y to x        2 -0.08913858  0.08529630</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 from y to m        2 -0.09080343  0.09573818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 from y to y        2  0.20802246  0.31124751</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 from x to x        3  0.27099116  0.47958487</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 from x to m        3  0.52606339  0.79739417</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 from x to y        3  0.17891544  0.31595326</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 from m to x        3 -0.09374183  0.07830556</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 from m to m        3  0.11251361  0.34437473</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 from m to y        3  0.30801023  0.41379039</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 from y to x        3 -0.07920504  0.07814819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 from y to m        3 -0.10862134  0.10752526</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 from y to y        3  0.08639794  0.19667600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 from x to x        4  0.16662023  0.37091634</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 from x to m        4  0.45470526  0.74465355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 from x to y        4  0.27762014  0.42528849</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 from m to x        4 -0.08664498  0.08069059</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 from m to m        4  0.01300602  0.26278517</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 from m to y        4  0.20901912  0.33888337</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 from y to x        4 -0.06149070  0.06614243</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 from y to m        4 -0.10867847  0.11051060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 from y to y        4  0.01346188  0.13508616</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 from x to x        5  0.08673995  0.31323136</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 from x to m        5  0.35387853  0.65674061</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 from x to y        5  0.30966378  0.47707320</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 from m to x        5 -0.07559840  0.07873901</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 from m to m        5 -0.03300829  0.20494763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 from m to y        5  0.12500037  0.26786178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 from y to x        5 -0.04617549  0.05602058</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 from y to m        5 -0.09741901  0.10601744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 from y to y        5 -0.02520207  0.09709249</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">mc</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="MCBeta-10.png" alt="" width="700" height="433"></span>
 <span class="r-plt img"><img src="MCBeta-11.png" alt="" width="700" height="433"></span>

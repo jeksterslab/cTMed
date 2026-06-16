@@ -15,11 +15,25 @@
   Mediation
   Model](https://github.com/jeksterslab/cTMed/articles/med-std.md):
 
+### Confidence Intervals for Continuous-Time Mediation Centrality
+
+- [Total and Indirect Effect Centrality in Continuous-Time Mediation
+  Model](https://github.com/jeksterslab/cTMed/articles/centrality.md):
+- [Standardized Total and Indirect Effect Centrality in Continuous-Time
+  Mediation
+  Model](https://github.com/jeksterslab/cTMed/articles/centrality-std.md):
+
 ### Confidence Intervals for Continuous-Time Mediation Models (Parametric Bootstrap)
 
 - [Total, Direct, and Indirect Effects in Continuous-Time Mediation
   Model
   (Bootstrap)](https://github.com/jeksterslab/cTMed/articles/med-boot.md):
+
+### Confidence Intervals for Continuous-Time Mediation Centrality (Parametric Bootstrap)
+
+- [Total and Indirect Effect Centrality in Continuous-Time Mediation
+  Model
+  (Bootstrap)](https://github.com/jeksterslab/cTMed/articles/centrality-boot.md):
 
 ### Session Information
 

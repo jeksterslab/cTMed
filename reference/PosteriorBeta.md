@@ -54,7 +54,7 @@ elements:
 
 - output:
 
-  A list the length of which is equal to the length of `delta_t`.
+  A list of length `length(delta_t)`.
 
 Each element in the `output` list has the following elements:
 
@@ -98,17 +98,22 @@ Other Continuous-Time Mediation Functions:
 [`BootBeta()`](https://github.com/jeksterslab/cTMed/reference/BootBeta.md),
 [`BootBetaStd()`](https://github.com/jeksterslab/cTMed/reference/BootBetaStd.md),
 [`BootDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentral.md),
+[`BootDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentralStd.md),
 [`BootIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentral.md),
+[`BootIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentralStd.md),
 [`BootMed()`](https://github.com/jeksterslab/cTMed/reference/BootMed.md),
 [`BootMedStd()`](https://github.com/jeksterslab/cTMed/reference/BootMedStd.md),
 [`BootTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentral.md),
+[`BootTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentralStd.md),
 [`DeltaBeta()`](https://github.com/jeksterslab/cTMed/reference/DeltaBeta.md),
 [`DeltaBetaStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaBetaStd.md),
 [`DeltaDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentral.md),
+[`DeltaDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentralStd.md),
 [`DeltaIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.md),
 [`DeltaMed()`](https://github.com/jeksterslab/cTMed/reference/DeltaMed.md),
 [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md),
 [`DeltaTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.md),
+[`DeltaTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentralStd.md),
 [`Direct()`](https://github.com/jeksterslab/cTMed/reference/Direct.md),
 [`DirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DirectCentral.md),
 [`DirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DirectCentralStd.md),
@@ -120,18 +125,26 @@ Other Continuous-Time Mediation Functions:
 [`MCBeta()`](https://github.com/jeksterslab/cTMed/reference/MCBeta.md),
 [`MCBetaStd()`](https://github.com/jeksterslab/cTMed/reference/MCBetaStd.md),
 [`MCDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentral.md),
+[`MCDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentralStd.md),
 [`MCIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.md),
+[`MCIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentralStd.md),
 [`MCMed()`](https://github.com/jeksterslab/cTMed/reference/MCMed.md),
 [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md),
 [`MCPhi()`](https://github.com/jeksterslab/cTMed/reference/MCPhi.md),
 [`MCPhiSigma()`](https://github.com/jeksterslab/cTMed/reference/MCPhiSigma.md),
 [`MCTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentral.md),
+[`MCTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentralStd.md),
 [`Med()`](https://github.com/jeksterslab/cTMed/reference/Med.md),
 [`MedStd()`](https://github.com/jeksterslab/cTMed/reference/MedStd.md),
+[`PosteriorBetaStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorBetaStd.md),
 [`PosteriorDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentral.md),
+[`PosteriorDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentralStd.md),
 [`PosteriorIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.md),
+[`PosteriorIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentralStd.md),
 [`PosteriorMed()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMed.md),
+[`PosteriorMedStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMedStd.md),
 [`PosteriorTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.md),
+[`PosteriorTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentralStd.md),
 [`Total()`](https://github.com/jeksterslab/cTMed/reference/Total.md),
 [`TotalCentral()`](https://github.com/jeksterslab/cTMed/reference/TotalCentral.md),
 [`TotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/TotalCentralStd.md),
@@ -204,15 +217,15 @@ PosteriorBeta(
 #> Total, Direct, and Indirect Effects
 #> 
 #>        effect interval     est     se    R    2.5%   97.5%
-#> 1 from x to x        1  0.6998 0.0463 1000  0.6151  0.7991
-#> 2 from x to m        1  0.4977 0.0345 1000  0.4344  0.5679
-#> 3 from x to y        1 -0.1005 0.0307 1000 -0.1602 -0.0410
-#> 4 from m to x        1  0.0021 0.0439 1000 -0.0829  0.0894
-#> 5 from m to m        1  0.6013 0.0322 1000  0.5393  0.6640
-#> 6 from m to y        1  0.3994 0.0283 1000  0.3447  0.4551
-#> 7 from y to x        1  0.0009 0.0427 1000 -0.0843  0.0824
-#> 8 from y to m        1  0.0000 0.0307 1000 -0.0589  0.0598
-#> 9 from y to y        1  0.4997 0.0265 1000  0.4500  0.5523
+#> 1 from x to x        1  0.7005 0.0459 1000  0.6167  0.7991
+#> 2 from x to m        1  0.4980 0.0350 1000  0.4344  0.5670
+#> 3 from x to y        1 -0.1005 0.0305 1000 -0.1605 -0.0410
+#> 4 from m to x        1  0.0016 0.0434 1000 -0.0825  0.0878
+#> 5 from m to m        1  0.6016 0.0328 1000  0.5384  0.6645
+#> 6 from m to y        1  0.3994 0.0279 1000  0.3443  0.4513
+#> 7 from y to x        1 -0.0001 0.0419 1000 -0.0815  0.0808
+#> 8 from y to m        1 -0.0008 0.0306 1000 -0.0579  0.0628
+#> 9 from y to y        1  0.5001 0.0263 1000  0.4528  0.5541
 
 # Range of time intervals ---------------------------------------------------
 posterior <- PosteriorBeta(
@@ -240,51 +253,51 @@ print(posterior)
 #> Total, Direct, and Indirect Effects
 #> 
 #>         effect interval     est     se    R    2.5%   97.5%
-#> 1  from x to x        1  0.6998 0.0463 1000  0.6151  0.7991
-#> 2  from x to m        1  0.4977 0.0345 1000  0.4344  0.5679
-#> 3  from x to y        1 -0.1005 0.0307 1000 -0.1602 -0.0410
-#> 4  from m to x        1  0.0021 0.0439 1000 -0.0829  0.0894
-#> 5  from m to m        1  0.6013 0.0322 1000  0.5393  0.6640
-#> 6  from m to y        1  0.3994 0.0283 1000  0.3447  0.4551
-#> 7  from y to x        1  0.0009 0.0427 1000 -0.0843  0.0824
-#> 8  from y to m        1  0.0000 0.0307 1000 -0.0589  0.0598
-#> 9  from y to y        1  0.4997 0.0265 1000  0.4500  0.5523
-#> 10 from x to x        2  0.4907 0.0543 1000  0.3994  0.6117
-#> 11 from x to m        2  0.6476 0.0525 1000  0.5522  0.7579
-#> 12 from x to y        2  0.0783 0.0347 1000  0.0050  0.1411
-#> 13 from m to x        2  0.0031 0.0515 1000 -0.0970  0.1046
-#> 14 from m to m        2  0.3626 0.0493 1000  0.2690  0.4606
-#> 15 from m to y        2  0.4395 0.0332 1000  0.3789  0.5078
-#> 16 from y to x        2  0.0011 0.0516 1000 -0.1025  0.0999
-#> 17 from y to m        2  0.0004 0.0497 1000 -0.1008  0.0965
-#> 18 from y to y        2  0.2496 0.0306 1000  0.1939  0.3104
-#> 19 from x to x        3  0.3448 0.0547 1000  0.2528  0.4631
-#> 20 from x to m        3  0.6336 0.0647 1000  0.5207  0.7680
-#> 21 from x to y        3  0.2484 0.0356 1000  0.1777  0.3183
-#> 22 from m to x        3  0.0034 0.0500 1000 -0.0930  0.1029
-#> 23 from m to m        3  0.2195 0.0594 1000  0.1071  0.3407
-#> 24 from m to y        3  0.3641 0.0335 1000  0.3028  0.4321
-#> 25 from y to x        3  0.0010 0.0473 1000 -0.0955  0.0913
-#> 26 from y to m        3  0.0008 0.0598 1000 -0.1181  0.1113
-#> 27 from y to y        3  0.1248 0.0288 1000  0.0711  0.1838
-#> 28 from x to x        4  0.2428 0.0539 1000  0.1526  0.3541
-#> 29 from x to m        4  0.5526 0.0716 1000  0.4337  0.7058
-#> 30 from x to y        4  0.3425 0.0398 1000  0.2701  0.4224
-#> 31 from m to x        4  0.0031 0.0461 1000 -0.0876  0.0980
-#> 32 from m to m        4  0.1337 0.0636 1000  0.0143  0.2657
-#> 33 from m to y        4  0.2693 0.0351 1000  0.2060  0.3392
-#> 34 from y to x        4  0.0008 0.0391 1000 -0.0804  0.0731
-#> 35 from y to m        4  0.0009 0.0617 1000 -0.1224  0.1118
-#> 36 from y to y        4  0.0626 0.0304 1000  0.0032  0.1251
-#> 37 from x to x        5  0.1714 0.0531 1000  0.0838  0.2841
-#> 38 from x to m        5  0.4531 0.0749 1000  0.3274  0.6108
-#> 39 from x to y        5  0.3674 0.0449 1000  0.2855  0.4639
-#> 40 from m to x        5  0.0027 0.0411 1000 -0.0776  0.0890
-#> 41 from m to m        5  0.0819 0.0635 1000 -0.0414  0.2158
-#> 42 from m to y        5  0.1876 0.0374 1000  0.1198  0.2662
-#> 43 from y to x        5  0.0006 0.0307 1000 -0.0638  0.0584
-#> 44 from y to m        5  0.0010 0.0577 1000 -0.1192  0.1073
-#> 45 from y to y        5  0.0316 0.0342 1000 -0.0349  0.0988
+#> 1  from x to x        1  0.7005 0.0459 1000  0.6167  0.7991
+#> 2  from x to m        1  0.4980 0.0350 1000  0.4344  0.5670
+#> 3  from x to y        1 -0.1005 0.0305 1000 -0.1605 -0.0410
+#> 4  from m to x        1  0.0016 0.0434 1000 -0.0825  0.0878
+#> 5  from m to m        1  0.6016 0.0328 1000  0.5384  0.6645
+#> 6  from m to y        1  0.3994 0.0279 1000  0.3443  0.4513
+#> 7  from y to x        1 -0.0001 0.0419 1000 -0.0815  0.0808
+#> 8  from y to m        1 -0.0008 0.0306 1000 -0.0579  0.0628
+#> 9  from y to y        1  0.5001 0.0263 1000  0.4528  0.5541
+#> 10 from x to x        2  0.4915 0.0546 1000  0.3974  0.6171
+#> 11 from x to m        2  0.6485 0.0528 1000  0.5512  0.7594
+#> 12 from x to y        2  0.0783 0.0352 1000  0.0044  0.1435
+#> 13 from m to x        2  0.0020 0.0520 1000 -0.1002  0.1037
+#> 14 from m to m        2  0.3624 0.0504 1000  0.2620  0.4641
+#> 15 from m to y        2  0.4399 0.0324 1000  0.3801  0.5049
+#> 16 from y to x        2 -0.0001 0.0508 1000 -0.1006  0.0975
+#> 17 from y to m        2 -0.0009 0.0493 1000 -0.0965  0.0971
+#> 18 from y to y        2  0.2498 0.0305 1000  0.1939  0.3112
+#> 19 from x to x        3  0.3453 0.0558 1000  0.2498  0.4727
+#> 20 from x to m        3  0.6348 0.0651 1000  0.5213  0.7815
+#> 21 from x to y        3  0.2488 0.0367 1000  0.1769  0.3219
+#> 22 from m to x        3  0.0020 0.0514 1000 -0.1000  0.1005
+#> 23 from m to m        3  0.2187 0.0610 1000  0.1009  0.3442
+#> 24 from m to y        3  0.3645 0.0328 1000  0.3044  0.4282
+#> 25 from y to x        3 -0.0001 0.0466 1000 -0.0937  0.0881
+#> 26 from y to m        3 -0.0008 0.0593 1000 -0.1194  0.1145
+#> 27 from y to y        3  0.1246 0.0288 1000  0.0714  0.1861
+#> 28 from x to x        4  0.2429 0.0558 1000  0.1500  0.3691
+#> 29 from x to m        4  0.5537 0.0728 1000  0.4286  0.7142
+#> 30 from x to y        4  0.3433 0.0407 1000  0.2701  0.4262
+#> 31 from m to x        4  0.0017 0.0479 1000 -0.0939  0.0980
+#> 32 from m to m        4  0.1323 0.0658 1000  0.0055  0.2668
+#> 33 from m to y        4  0.2695 0.0349 1000  0.2069  0.3396
+#> 34 from y to x        4 -0.0001 0.0385 1000 -0.0768  0.0726
+#> 35 from y to m        4 -0.0006 0.0611 1000 -0.1234  0.1144
+#> 36 from y to y        4  0.0620 0.0305 1000  0.0051  0.1260
+#> 37 from x to x        5  0.1710 0.0557 1000  0.0778  0.3024
+#> 38 from x to m        5  0.4538 0.0773 1000  0.3228  0.6270
+#> 39 from x to y        5  0.3684 0.0456 1000  0.2835  0.4685
+#> 40 from m to x        5  0.0014 0.0428 1000 -0.0836  0.0903
+#> 41 from m to m        5  0.0802 0.0660 1000 -0.0444  0.2158
+#> 42 from m to y        5  0.1874 0.0376 1000  0.1157  0.2664
+#> 43 from y to x        5 -0.0001 0.0303 1000 -0.0608  0.0586
+#> 44 from y to m        5 -0.0005 0.0571 1000 -0.1163  0.1106
+#> 45 from y to y        5  0.0308 0.0342 1000 -0.0339  0.1007
 summary(posterior)
 #> Call:
 #> PosteriorBeta(phi = phi, delta_t = 1:5)
@@ -292,68 +305,98 @@ summary(posterior)
 #> Total, Direct, and Indirect Effects
 #> 
 #>         effect interval     est     se    R    2.5%   97.5%
-#> 1  from x to x        1  0.6998 0.0463 1000  0.6151  0.7991
-#> 2  from x to m        1  0.4977 0.0345 1000  0.4344  0.5679
-#> 3  from x to y        1 -0.1005 0.0307 1000 -0.1602 -0.0410
-#> 4  from m to x        1  0.0021 0.0439 1000 -0.0829  0.0894
-#> 5  from m to m        1  0.6013 0.0322 1000  0.5393  0.6640
-#> 6  from m to y        1  0.3994 0.0283 1000  0.3447  0.4551
-#> 7  from y to x        1  0.0009 0.0427 1000 -0.0843  0.0824
-#> 8  from y to m        1  0.0000 0.0307 1000 -0.0589  0.0598
-#> 9  from y to y        1  0.4997 0.0265 1000  0.4500  0.5523
-#> 10 from x to x        2  0.4907 0.0543 1000  0.3994  0.6117
-#> 11 from x to m        2  0.6476 0.0525 1000  0.5522  0.7579
-#> 12 from x to y        2  0.0783 0.0347 1000  0.0050  0.1411
-#> 13 from m to x        2  0.0031 0.0515 1000 -0.0970  0.1046
-#> 14 from m to m        2  0.3626 0.0493 1000  0.2690  0.4606
-#> 15 from m to y        2  0.4395 0.0332 1000  0.3789  0.5078
-#> 16 from y to x        2  0.0011 0.0516 1000 -0.1025  0.0999
-#> 17 from y to m        2  0.0004 0.0497 1000 -0.1008  0.0965
-#> 18 from y to y        2  0.2496 0.0306 1000  0.1939  0.3104
-#> 19 from x to x        3  0.3448 0.0547 1000  0.2528  0.4631
-#> 20 from x to m        3  0.6336 0.0647 1000  0.5207  0.7680
-#> 21 from x to y        3  0.2484 0.0356 1000  0.1777  0.3183
-#> 22 from m to x        3  0.0034 0.0500 1000 -0.0930  0.1029
-#> 23 from m to m        3  0.2195 0.0594 1000  0.1071  0.3407
-#> 24 from m to y        3  0.3641 0.0335 1000  0.3028  0.4321
-#> 25 from y to x        3  0.0010 0.0473 1000 -0.0955  0.0913
-#> 26 from y to m        3  0.0008 0.0598 1000 -0.1181  0.1113
-#> 27 from y to y        3  0.1248 0.0288 1000  0.0711  0.1838
-#> 28 from x to x        4  0.2428 0.0539 1000  0.1526  0.3541
-#> 29 from x to m        4  0.5526 0.0716 1000  0.4337  0.7058
-#> 30 from x to y        4  0.3425 0.0398 1000  0.2701  0.4224
-#> 31 from m to x        4  0.0031 0.0461 1000 -0.0876  0.0980
-#> 32 from m to m        4  0.1337 0.0636 1000  0.0143  0.2657
-#> 33 from m to y        4  0.2693 0.0351 1000  0.2060  0.3392
-#> 34 from y to x        4  0.0008 0.0391 1000 -0.0804  0.0731
-#> 35 from y to m        4  0.0009 0.0617 1000 -0.1224  0.1118
-#> 36 from y to y        4  0.0626 0.0304 1000  0.0032  0.1251
-#> 37 from x to x        5  0.1714 0.0531 1000  0.0838  0.2841
-#> 38 from x to m        5  0.4531 0.0749 1000  0.3274  0.6108
-#> 39 from x to y        5  0.3674 0.0449 1000  0.2855  0.4639
-#> 40 from m to x        5  0.0027 0.0411 1000 -0.0776  0.0890
-#> 41 from m to m        5  0.0819 0.0635 1000 -0.0414  0.2158
-#> 42 from m to y        5  0.1876 0.0374 1000  0.1198  0.2662
-#> 43 from y to x        5  0.0006 0.0307 1000 -0.0638  0.0584
-#> 44 from y to m        5  0.0010 0.0577 1000 -0.1192  0.1073
-#> 45 from y to y        5  0.0316 0.0342 1000 -0.0349  0.0988
+#> 1  from x to x        1  0.7005 0.0459 1000  0.6167  0.7991
+#> 2  from x to m        1  0.4980 0.0350 1000  0.4344  0.5670
+#> 3  from x to y        1 -0.1005 0.0305 1000 -0.1605 -0.0410
+#> 4  from m to x        1  0.0016 0.0434 1000 -0.0825  0.0878
+#> 5  from m to m        1  0.6016 0.0328 1000  0.5384  0.6645
+#> 6  from m to y        1  0.3994 0.0279 1000  0.3443  0.4513
+#> 7  from y to x        1 -0.0001 0.0419 1000 -0.0815  0.0808
+#> 8  from y to m        1 -0.0008 0.0306 1000 -0.0579  0.0628
+#> 9  from y to y        1  0.5001 0.0263 1000  0.4528  0.5541
+#> 10 from x to x        2  0.4915 0.0546 1000  0.3974  0.6171
+#> 11 from x to m        2  0.6485 0.0528 1000  0.5512  0.7594
+#> 12 from x to y        2  0.0783 0.0352 1000  0.0044  0.1435
+#> 13 from m to x        2  0.0020 0.0520 1000 -0.1002  0.1037
+#> 14 from m to m        2  0.3624 0.0504 1000  0.2620  0.4641
+#> 15 from m to y        2  0.4399 0.0324 1000  0.3801  0.5049
+#> 16 from y to x        2 -0.0001 0.0508 1000 -0.1006  0.0975
+#> 17 from y to m        2 -0.0009 0.0493 1000 -0.0965  0.0971
+#> 18 from y to y        2  0.2498 0.0305 1000  0.1939  0.3112
+#> 19 from x to x        3  0.3453 0.0558 1000  0.2498  0.4727
+#> 20 from x to m        3  0.6348 0.0651 1000  0.5213  0.7815
+#> 21 from x to y        3  0.2488 0.0367 1000  0.1769  0.3219
+#> 22 from m to x        3  0.0020 0.0514 1000 -0.1000  0.1005
+#> 23 from m to m        3  0.2187 0.0610 1000  0.1009  0.3442
+#> 24 from m to y        3  0.3645 0.0328 1000  0.3044  0.4282
+#> 25 from y to x        3 -0.0001 0.0466 1000 -0.0937  0.0881
+#> 26 from y to m        3 -0.0008 0.0593 1000 -0.1194  0.1145
+#> 27 from y to y        3  0.1246 0.0288 1000  0.0714  0.1861
+#> 28 from x to x        4  0.2429 0.0558 1000  0.1500  0.3691
+#> 29 from x to m        4  0.5537 0.0728 1000  0.4286  0.7142
+#> 30 from x to y        4  0.3433 0.0407 1000  0.2701  0.4262
+#> 31 from m to x        4  0.0017 0.0479 1000 -0.0939  0.0980
+#> 32 from m to m        4  0.1323 0.0658 1000  0.0055  0.2668
+#> 33 from m to y        4  0.2695 0.0349 1000  0.2069  0.3396
+#> 34 from y to x        4 -0.0001 0.0385 1000 -0.0768  0.0726
+#> 35 from y to m        4 -0.0006 0.0611 1000 -0.1234  0.1144
+#> 36 from y to y        4  0.0620 0.0305 1000  0.0051  0.1260
+#> 37 from x to x        5  0.1710 0.0557 1000  0.0778  0.3024
+#> 38 from x to m        5  0.4538 0.0773 1000  0.3228  0.6270
+#> 39 from x to y        5  0.3684 0.0456 1000  0.2835  0.4685
+#> 40 from m to x        5  0.0014 0.0428 1000 -0.0836  0.0903
+#> 41 from m to m        5  0.0802 0.0660 1000 -0.0444  0.2158
+#> 42 from m to y        5  0.1874 0.0376 1000  0.1157  0.2664
+#> 43 from y to x        5 -0.0001 0.0303 1000 -0.0608  0.0586
+#> 44 from y to m        5 -0.0005 0.0571 1000 -0.1163  0.1106
+#> 45 from y to y        5  0.0308 0.0342 1000 -0.0339  0.1007
 confint(posterior, level = 0.95)
 #>         effect interval        2.5 %      97.5 %
-#> 1  from x to x        1  0.615077559  0.79909237
-#> 2  from x to m        1  0.434406622  0.56791660
-#> 3  from x to y        1 -0.160219435 -0.04098514
-#> 4  from x to x        2  0.399419871  0.61173690
-#> 5  from x to m        2  0.552153140  0.75786017
-#> 6  from x to y        2  0.004972431  0.14110172
-#> 7  from x to x        3  0.252788824  0.46310472
-#> 8  from x to m        3  0.520666214  0.76798977
-#> 9  from x to y        3  0.177739549  0.31828824
-#> 10 from x to x        4  0.152597586  0.35410705
-#> 11 from x to m        4  0.433719879  0.70584106
-#> 12 from x to y        4  0.270116254  0.42244066
-#> 13 from x to x        5  0.083759930  0.28405495
-#> 14 from x to m        5  0.327425315  0.61079299
-#> 15 from x to y        5  0.285480283  0.46391752
+#> 1  from x to x        1  0.616733974  0.79909822
+#> 2  from x to m        1  0.434362221  0.56704068
+#> 3  from x to y        1 -0.160466336 -0.04099099
+#> 4  from m to x        1 -0.082547162  0.08781072
+#> 5  from m to m        1  0.538436856  0.66453689
+#> 6  from m to y        1  0.344285545  0.45127729
+#> 7  from y to x        1 -0.081488237  0.08080213
+#> 8  from y to m        1 -0.057914084  0.06275387
+#> 9  from y to y        1  0.452763210  0.55412643
+#> 10 from x to x        2  0.397363368  0.61706647
+#> 11 from x to m        2  0.551242396  0.75943697
+#> 12 from x to y        2  0.004384326  0.14349322
+#> 13 from m to x        2 -0.100207649  0.10369542
+#> 14 from m to m        2  0.262035619  0.46414611
+#> 15 from m to y        2  0.380087785  0.50492632
+#> 16 from y to x        2 -0.100560203  0.09751705
+#> 17 from y to m        2 -0.096510078  0.09705996
+#> 18 from y to y        2  0.193901260  0.31115718
+#> 19 from x to x        3  0.249811049  0.47273056
+#> 20 from x to m        3  0.521279120  0.78145826
+#> 21 from x to y        3  0.176939533  0.32188069
+#> 22 from m to x        3 -0.100046827  0.10049703
+#> 23 from m to m        3  0.100861560  0.34415912
+#> 24 from m to y        3  0.304375171  0.42818155
+#> 25 from y to x        3 -0.093706942  0.08808043
+#> 26 from y to m        3 -0.119394454  0.11448483
+#> 27 from y to y        3  0.071403513  0.18605440
+#> 28 from x to x        4  0.150024560  0.36907160
+#> 29 from x to m        4  0.428596593  0.71424698
+#> 30 from x to y        4  0.270116254  0.42616496
+#> 31 from m to x        4 -0.093887342  0.09803768
+#> 32 from m to m        4  0.005548960  0.26681974
+#> 33 from m to y        4  0.206942676  0.33958857
+#> 34 from y to x        4 -0.076811636  0.07264047
+#> 35 from y to m        4 -0.123433377  0.11442935
+#> 36 from y to y        4  0.005078871  0.12595826
+#> 37 from x to x        5  0.077778773  0.30238314
+#> 38 from x to m        5  0.322840631  0.62695796
+#> 39 from x to y        5  0.283500487  0.46854501
+#> 40 from m to x        5 -0.083578716  0.09033935
+#> 41 from m to m        5 -0.044396900  0.21579508
+#> 42 from m to y        5  0.115666004  0.26644885
+#> 43 from y to x        5 -0.060790141  0.05857253
+#> 44 from y to m        5 -0.116317805  0.11059869
+#> 45 from y to y        5 -0.033923023  0.10067844
 plot(posterior)
 
 

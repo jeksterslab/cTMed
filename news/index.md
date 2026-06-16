@@ -4,14 +4,19 @@
 
 ### Patch
 
-- Allow diagonal `sigma` in
-  [`DeltaBetaStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaBetaStd.md),
-  [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md),
-  [`MCBetaStd()`](https://github.com/jeksterslab/cTMed/reference/MCBetaStd.md),
-  and
-  [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md).
-- Added direct effect centrality.
 - Added standardized centrality measures.
+- Allow diagonal `sigma` in
+  - [`DeltaBetaStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaBetaStd.md),
+  - [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md),
+  - [`DeltaTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentralStd.md),
+  - [`DeltaDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentralStd.md),
+  - [`DeltaIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentralStd.md),
+  - [`MCBetaStd()`](https://github.com/jeksterslab/cTMed/reference/MCBetaStd.md),
+  - [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md),
+  - [`MCTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentralStd.md),
+  - [`MCDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentralStd.md),
+    and
+  - [`MCIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentralStd.md).
 
 ## cTMed 1.0.9
 

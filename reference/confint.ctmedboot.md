@@ -27,7 +27,7 @@ confint(object, parm = NULL, level = 0.95, type = "pc", ...)
 
 - type:
 
-  Charater string. Confidence interval type, that is, `type = "pc"` for
+  Character string. Confidence interval type, that is, `type = "pc"` for
   percentile; `type = "bc"` for bias corrected.
 
 - ...:

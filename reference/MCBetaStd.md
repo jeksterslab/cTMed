@@ -96,7 +96,7 @@ elements:
 
 - output:
 
-  A list the length of which is equal to the length of `delta_t`.
+  A list of length `length(delta_t)`.
 
 Each element in the `output` list has the following elements:
 
@@ -171,17 +171,22 @@ Other Continuous-Time Mediation Functions:
 [`BootBeta()`](https://github.com/jeksterslab/cTMed/reference/BootBeta.md),
 [`BootBetaStd()`](https://github.com/jeksterslab/cTMed/reference/BootBetaStd.md),
 [`BootDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentral.md),
+[`BootDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootDirectCentralStd.md),
 [`BootIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentral.md),
+[`BootIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootIndirectCentralStd.md),
 [`BootMed()`](https://github.com/jeksterslab/cTMed/reference/BootMed.md),
 [`BootMedStd()`](https://github.com/jeksterslab/cTMed/reference/BootMedStd.md),
 [`BootTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentral.md),
+[`BootTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/BootTotalCentralStd.md),
 [`DeltaBeta()`](https://github.com/jeksterslab/cTMed/reference/DeltaBeta.md),
 [`DeltaBetaStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaBetaStd.md),
 [`DeltaDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentral.md),
+[`DeltaDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaDirectCentralStd.md),
 [`DeltaIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaIndirectCentral.md),
 [`DeltaMed()`](https://github.com/jeksterslab/cTMed/reference/DeltaMed.md),
 [`DeltaMedStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaMedStd.md),
 [`DeltaTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentral.md),
+[`DeltaTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DeltaTotalCentralStd.md),
 [`Direct()`](https://github.com/jeksterslab/cTMed/reference/Direct.md),
 [`DirectCentral()`](https://github.com/jeksterslab/cTMed/reference/DirectCentral.md),
 [`DirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/DirectCentralStd.md),
@@ -192,19 +197,27 @@ Other Continuous-Time Mediation Functions:
 [`IndirectStd()`](https://github.com/jeksterslab/cTMed/reference/IndirectStd.md),
 [`MCBeta()`](https://github.com/jeksterslab/cTMed/reference/MCBeta.md),
 [`MCDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentral.md),
+[`MCDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCDirectCentralStd.md),
 [`MCIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentral.md),
+[`MCIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCIndirectCentralStd.md),
 [`MCMed()`](https://github.com/jeksterslab/cTMed/reference/MCMed.md),
 [`MCMedStd()`](https://github.com/jeksterslab/cTMed/reference/MCMedStd.md),
 [`MCPhi()`](https://github.com/jeksterslab/cTMed/reference/MCPhi.md),
 [`MCPhiSigma()`](https://github.com/jeksterslab/cTMed/reference/MCPhiSigma.md),
 [`MCTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentral.md),
+[`MCTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/MCTotalCentralStd.md),
 [`Med()`](https://github.com/jeksterslab/cTMed/reference/Med.md),
 [`MedStd()`](https://github.com/jeksterslab/cTMed/reference/MedStd.md),
 [`PosteriorBeta()`](https://github.com/jeksterslab/cTMed/reference/PosteriorBeta.md),
+[`PosteriorBetaStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorBetaStd.md),
 [`PosteriorDirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentral.md),
+[`PosteriorDirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorDirectCentralStd.md),
 [`PosteriorIndirectCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentral.md),
+[`PosteriorIndirectCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorIndirectCentralStd.md),
 [`PosteriorMed()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMed.md),
+[`PosteriorMedStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorMedStd.md),
 [`PosteriorTotalCentral()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentral.md),
+[`PosteriorTotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/PosteriorTotalCentralStd.md),
 [`Total()`](https://github.com/jeksterslab/cTMed/reference/Total.md),
 [`TotalCentral()`](https://github.com/jeksterslab/cTMed/reference/TotalCentral.md),
 [`TotalCentralStd()`](https://github.com/jeksterslab/cTMed/reference/TotalCentralStd.md),
@@ -440,22 +453,52 @@ summary(mc)
 #> 44 from y to m        5  0.0000 0.0425 100 -0.0761  0.0825
 #> 45 from y to y        5  0.0313 0.0342 100 -0.0316  0.0922
 confint(mc, level = 0.95)
-#>         effect interval       2.5 %      97.5 %
-#> 1  from x to x        1  0.60980026  0.79613691
-#> 2  from x to m        1  0.34030143  0.43607954
-#> 3  from x to y        1 -0.17134324 -0.03910697
-#> 4  from x to x        2  0.40979261  0.60379349
-#> 5  from x to m        2  0.43870397  0.58099242
-#> 6  from x to y        2  0.01652097  0.15495342
-#> 7  from x to x        3  0.26218727  0.44344399
-#> 8  from x to m        3  0.42197725  0.58218446
-#> 9  from x to y        3  0.19406457  0.33680333
-#> 10 from x to x        4  0.15968127  0.32901570
-#> 11 from x to m        4  0.35892031  0.52043922
-#> 12 from x to y        4  0.30375980  0.45341980
-#> 13 from x to x        5  0.08188246  0.27142605
-#> 14 from x to m        5  0.26647254  0.44158762
-#> 15 from x to y        5  0.33845203  0.47862426
+#>         effect interval        2.5 %      97.5 %
+#> 1  from x to x        1  0.609800263  0.79613691
+#> 2  from x to m        1  0.340301435  0.43607954
+#> 3  from x to y        1 -0.171343235 -0.03910697
+#> 4  from m to x        1 -0.114554864  0.10917299
+#> 5  from m to m        1  0.539629131  0.65446006
+#> 6  from m to y        1  0.486375503  0.62210286
+#> 7  from y to x        1 -0.069978350  0.08419140
+#> 8  from y to m        1 -0.038467706  0.04661579
+#> 9  from y to y        1  0.455466431  0.55535984
+#> 10 from x to x        2  0.409792609  0.60379349
+#> 11 from x to m        2  0.438703968  0.58099242
+#> 12 from x to y        2  0.016520970  0.15495342
+#> 13 from m to x        2 -0.128501620  0.12002161
+#> 14 from m to m        2  0.271065357  0.43159309
+#> 15 from m to y        2  0.529851093  0.66921661
+#> 16 from y to x        2 -0.087029210  0.10356125
+#> 17 from y to m        2 -0.062692060  0.07479334
+#> 18 from y to y        2  0.195824888  0.30557324
+#> 19 from x to x        3  0.262187269  0.44344399
+#> 20 from x to m        3  0.421977255  0.58218446
+#> 21 from x to y        3  0.194064568  0.33680333
+#> 22 from m to x        3 -0.113592271  0.10738078
+#> 23 from m to m        3  0.105419527  0.31077230
+#> 24 from m to y        3  0.421397024  0.58962597
+#> 25 from y to x        3 -0.080624702  0.09382282
+#> 26 from y to m        3 -0.075852552  0.08350084
+#> 27 from y to y        3  0.073229218  0.17243310
+#> 28 from x to x        4  0.159681273  0.32901570
+#> 29 from x to m        4  0.358920308  0.52043922
+#> 30 from x to y        4  0.303759800  0.45341980
+#> 31 from m to x        4 -0.092728769  0.11293315
+#> 32 from m to m        4  0.005256487  0.24206241
+#> 33 from m to y        4  0.285419794  0.45755739
+#> 34 from y to x        4 -0.067122703  0.07692317
+#> 35 from y to m        4 -0.081739936  0.08638891
+#> 36 from y to y        4  0.008546347  0.12408688
+#> 37 from x to x        5  0.081882464  0.27142605
+#> 38 from x to m        5  0.266472539  0.44158762
+#> 39 from x to y        5  0.338452030  0.47862426
+#> 40 from m to x        5 -0.071091485  0.10982758
+#> 41 from m to m        5 -0.031648320  0.20294748
+#> 42 from m to y        5  0.159033085  0.35086532
+#> 43 from y to x        5 -0.051647520  0.05887924
+#> 44 from y to m        5 -0.076134392  0.08247566
+#> 45 from y to y        5 -0.031634742  0.09222349
 plot(mc)
 
 

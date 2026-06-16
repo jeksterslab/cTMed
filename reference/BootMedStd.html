@@ -8,7 +8,8 @@ through mediator variables \(\mathbf{m}\)
 over a specific time interval \(\Delta t\)
 or a range of time intervals
 using the first-order stochastic differential equation model
-drift matrix \(\boldsymbol{\Phi}\)."><meta property="og:description" content="This function generates a bootstrap method
+drift matrix \(\boldsymbol{\Phi}\) and
+process noise covariance matrix \(\boldsymbol{\Sigma}\)."><meta property="og:description" content="This function generates a bootstrap method
 sampling distribution
 of the standardized total, direct and indirect effects
 of the independent variable \(X\)
@@ -17,7 +18,8 @@ through mediator variables \(\mathbf{m}\)
 over a specific time interval \(\Delta t\)
 or a range of time intervals
 using the first-order stochastic differential equation model
-drift matrix \(\boldsymbol{\Phi}\)."><script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body>
+drift matrix \(\boldsymbol{\Phi}\) and
+process noise covariance matrix \(\boldsymbol{\Sigma}\)."><script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -63,7 +65,8 @@ through mediator variables \(\mathbf{m}\)
 over a specific time interval \(\Delta t\)
 or a range of time intervals
 using the first-order stochastic differential equation model
-drift matrix \(\boldsymbol{\Phi}\).</p>
+drift matrix \(\boldsymbol{\Phi}\) and
+process noise covariance matrix \(\boldsymbol{\Sigma}\).</p>
     </div>
 
     <div class="section level2">
@@ -163,7 +166,7 @@ of class <code>ctmedboot</code> which is a list with the following elements:</p>
 <dd><p>Function used ("BootMedStd").</p></dd>
 
 <dt>output</dt>
-<dd><p>A list with length of <code>length(delta_t)</code>.</p></dd>
+<dd><p>A list of length <code>length(delta_t)</code>.</p></dd>
 
 
 </dl><p>Each element in the <code>output</code> list has the following elements:</p><dl><dt>est</dt>
@@ -209,16 +212,21 @@ Psychometrika, 87 (1), 214-252.
 <code><a href="BootBeta.html">BootBeta()</a></code>,
 <code><a href="BootBetaStd.html">BootBetaStd()</a></code>,
 <code><a href="BootDirectCentral.html">BootDirectCentral()</a></code>,
+<code><a href="BootDirectCentralStd.html">BootDirectCentralStd()</a></code>,
 <code><a href="BootIndirectCentral.html">BootIndirectCentral()</a></code>,
+<code><a href="BootIndirectCentralStd.html">BootIndirectCentralStd()</a></code>,
 <code><a href="BootMed.html">BootMed()</a></code>,
 <code><a href="BootTotalCentral.html">BootTotalCentral()</a></code>,
+<code><a href="BootTotalCentralStd.html">BootTotalCentralStd()</a></code>,
 <code><a href="DeltaBeta.html">DeltaBeta()</a></code>,
 <code><a href="DeltaBetaStd.html">DeltaBetaStd()</a></code>,
 <code><a href="DeltaDirectCentral.html">DeltaDirectCentral()</a></code>,
+<code><a href="DeltaDirectCentralStd.html">DeltaDirectCentralStd()</a></code>,
 <code><a href="DeltaIndirectCentral.html">DeltaIndirectCentral()</a></code>,
 <code><a href="DeltaMed.html">DeltaMed()</a></code>,
 <code><a href="DeltaMedStd.html">DeltaMedStd()</a></code>,
 <code><a href="DeltaTotalCentral.html">DeltaTotalCentral()</a></code>,
+<code><a href="DeltaTotalCentralStd.html">DeltaTotalCentralStd()</a></code>,
 <code><a href="Direct.html">Direct()</a></code>,
 <code><a href="DirectCentral.html">DirectCentral()</a></code>,
 <code><a href="DirectCentralStd.html">DirectCentralStd()</a></code>,
@@ -230,19 +238,27 @@ Psychometrika, 87 (1), 214-252.
 <code><a href="MCBeta.html">MCBeta()</a></code>,
 <code><a href="MCBetaStd.html">MCBetaStd()</a></code>,
 <code><a href="MCDirectCentral.html">MCDirectCentral()</a></code>,
+<code><a href="MCDirectCentralStd.html">MCDirectCentralStd()</a></code>,
 <code><a href="MCIndirectCentral.html">MCIndirectCentral()</a></code>,
+<code><a href="MCIndirectCentralStd.html">MCIndirectCentralStd()</a></code>,
 <code><a href="MCMed.html">MCMed()</a></code>,
 <code><a href="MCMedStd.html">MCMedStd()</a></code>,
 <code><a href="MCPhi.html">MCPhi()</a></code>,
 <code><a href="MCPhiSigma.html">MCPhiSigma()</a></code>,
 <code><a href="MCTotalCentral.html">MCTotalCentral()</a></code>,
+<code><a href="MCTotalCentralStd.html">MCTotalCentralStd()</a></code>,
 <code><a href="Med.html">Med()</a></code>,
 <code><a href="MedStd.html">MedStd()</a></code>,
 <code><a href="PosteriorBeta.html">PosteriorBeta()</a></code>,
+<code><a href="PosteriorBetaStd.html">PosteriorBetaStd()</a></code>,
 <code><a href="PosteriorDirectCentral.html">PosteriorDirectCentral()</a></code>,
+<code><a href="PosteriorDirectCentralStd.html">PosteriorDirectCentralStd()</a></code>,
 <code><a href="PosteriorIndirectCentral.html">PosteriorIndirectCentral()</a></code>,
+<code><a href="PosteriorIndirectCentralStd.html">PosteriorIndirectCentralStd()</a></code>,
 <code><a href="PosteriorMed.html">PosteriorMed()</a></code>,
+<code><a href="PosteriorMedStd.html">PosteriorMedStd()</a></code>,
 <code><a href="PosteriorTotalCentral.html">PosteriorTotalCentral()</a></code>,
+<code><a href="PosteriorTotalCentralStd.html">PosteriorTotalCentralStd()</a></code>,
 <code><a href="Total.html">Total()</a></code>,
 <code><a href="TotalCentral.html">TotalCentral()</a></code>,
 <code><a href="TotalCentralStd.html">TotalCentralStd()</a></code>,
