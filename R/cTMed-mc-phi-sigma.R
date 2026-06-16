@@ -69,7 +69,9 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("MCPhiSigma").}
-#'     \item{output}{A list of simulated draws. Each element contains a drift matrix and a process noise covariance matrix.}
+#'     \item{output}{A list of simulated draws.
+#'       Each element contains a drift matrix and
+#'       a process noise covariance matrix.}
 #'   }
 #'
 #' @examples

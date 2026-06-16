@@ -18,7 +18,8 @@
 #'     \item{call}{Function call.}
 #'     \item{args}{Function arguments.}
 #'     \item{fun}{Function used ("Trajectory").}
-#'     \item{output}{A list containing simulated trajectories for total, direct, and indirect effects.}
+#'     \item{output}{A list containing simulated trajectories
+#'       for total, direct, and indirect effects.}
 #'   }
 #'
 #' @examples
