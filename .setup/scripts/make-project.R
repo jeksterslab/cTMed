@@ -77,9 +77,9 @@ Sys.setenv(
 )
 installed <- installed.packages()
 pkg_installed <- installed[, "Package"]
-if (!("remotes" %in% pkg_installed)) {
+if (!("pak" %in% pkg_installed)) {
   install.packages(
-    "remotes",
+    "pak",
     repos = c(REPO_NAME = "https://packagemanager.rstudio.com/all/latest"),
     lib = dot_library_folder,
     quiet = TRUE
@@ -87,27 +87,24 @@ if (!("remotes" %in% pkg_installed)) {
 }
 if (project == "rProject") {
   if (!("rProject" %in% pkg_installed)) {
-    remotes::install_github(
-      "ijapesigan/rProject",
-      quiet = TRUE,
+    pak::pkg_install(
+      pkg = "ijapesigan/rProject",
       lib = dot_library_folder
     )
   }
 } else {
   if (is.null(rproject_ver)) {
-    remotes::install_github(
-      "ijapesigan/rProject",
-      quiet = TRUE,
+    pak::pkg_install(
+      pkg = "ijapesigan/rProject",
       lib = dot_library_folder
     )
   } else {
-    remotes::install_github(
-      paste0(
+    pak::pkg_install(
+      pkg = paste0(
         "ijapesigan/rProject",
         "@",
         rproject_ver
       ),
-      quiet = TRUE,
       lib = dot_library_folder
     )
   }

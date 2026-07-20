@@ -1,6 +1,6 @@
 Package: cTMed
 Title: Continuous-Time Mediation
-Version: 1.0.9.9000
+Version: 1.0.10
 Authors@R: c(
     person(given = "Ivan Jacob Agaloos",
            family = "Pesigan",
@@ -46,4 +46,4 @@ Suggests:
     betaDelta,
     bootStateSpace
 SystemRequirements: GNU GSL (>= 2.5)
-Config/roxygen2/version: 8.0.0.9000
+Config/roxygen2/version: 8.0.0
