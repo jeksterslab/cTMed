@@ -1,6 +1,6 @@
 Package: cTMed
 Title: Continuous-Time Mediation
-Version: 1.0.9.9000
+Version: 1.0.10
 Authors@R: c(
     person(given = "Ivan Jacob Agaloos",
            family = "Pesigan",
@@ -33,9 +33,9 @@ Imports: Rcpp (>= 1.0.12), numDeriv, parallel, simStateSpace
 Suggests: knitr, rmarkdown, testthat, expm, dynr, betaDelta,
         bootStateSpace
 SystemRequirements: GNU GSL (>= 2.5)
-Config/roxygen2/version: 8.0.0.9000
+Config/roxygen2/version: 8.0.0
 NeedsCompilation: yes
-Packaged: 2026-06-16 14:48:41 UTC; root
+Packaged: 2026-07-20 16:03:17 UTC; root
 Author: Ivan Jacob Agaloos Pesigan [aut, cre, cph] (ORCID:
     <https://orcid.org/0000-0003-4818-8420>),
   Michael A. Russell [ctb] (ORCID:
