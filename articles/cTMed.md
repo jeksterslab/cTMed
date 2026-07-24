@@ -40,19 +40,12 @@ for the compiled PDF.
 
 You can install the CRAN release of `cTMed` with:
 
-``` r
-
-install.packages("cTMed")
-```
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"cTMed"``)`
 
 You can install the development version of `cTMed` from
 [GitHub](https://github.com/jeksterslab/cTMed) with:
 
-``` r
-
-if (!require("pak")) install.packages("pak")
-pak::pkg_install("jeksterslab/cTMed")
-```
+`if`` ``(``!`[`require`](https://rdrr.io/r/base/library.html)`(`[`"pak"`](https://pak.r-lib.org/)`)``)`` `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"pak"``)`` ``pak``::`[`pkg_install`](https://pak.r-lib.org/reference/pkg_install.html)`(``"jeksterslab/cTMed"``)`
 
 ## Documentation
 

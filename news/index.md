@@ -2,6 +2,8 @@
 
 ## cTMed 1.0.10
 
+CRAN release: 2026-07-21
+
 ### Patch
 
 - Added standardized centrality measures.
