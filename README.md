@@ -1,7 +1,7 @@
 cTMed
 ================
 Ivan Jacob Agaloos Pesigan
-2026-07-24
+2026-09-18
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -59,6 +59,10 @@ You can install the development version of `cTMed` from
 if (!require("pak")) install.packages("pak")
 pak::pkg_install("jeksterslab/cTMed")
 ```
+
+## Tutorial on cTMed Presented at BERD
+
+<https://jeksterslab.github.io/presentation-2026-02-02-berd/>
 
 ## Documentation
 
