@@ -60,6 +60,10 @@ if (!require("pak")) install.packages("pak")
 pak::pkg_install("jeksterslab/cTMed")
 ```
 
+## Tutorial on cTMed Presented at BERD 
+
+https://jeksterslab.github.io/presentation-2026-02-02-berd/
+
 ## Documentation
 
 See
